@@ -315,6 +315,32 @@ section.block{padding-block:88px}
   .reel figure{aspect-ratio:4/5}
   .stage .nav{width:38px;height:38px}
 }
+/* Enquiry form panel */
+.enq-scrim{position:fixed;inset:0;background:rgba(17,16,16,.35);z-index:60;opacity:0;pointer-events:none;transition:opacity .3s}
+.enq-scrim.open{opacity:1;pointer-events:auto}
+.enq{position:fixed;top:0;right:0;bottom:0;width:min(520px,100%);background:var(--bg);z-index:61;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.7,.2,1);overflow-y:auto;border-left:1px solid var(--ink);
+  padding:calc(28px + env(safe-area-inset-top,0px)) max(28px, env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) 32px}
+.enq.open{transform:none}
+.enq-close{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:max(16px, env(safe-area-inset-right,0px));width:40px;height:40px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-size:18px}
+.enq h2{font-family:var(--display);font-weight:400;font-size:clamp(32px,3.4vw,44px);line-height:1.02;margin:10px 48px 10px 0;text-wrap:balance}
+.enq .intro-txt{margin:0 0 26px;max-width:42ch}
+.enq form{display:grid;gap:18px}
+.field{display:grid;gap:6px}
+.field label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.field label span{color:var(--muted);text-transform:none;letter-spacing:0;font-weight:400}
+.field input,.field textarea{font:inherit;font-size:16px;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--ink);padding:8px 0;border-radius:0;width:100%}
+.field textarea{border:1px solid var(--ink);padding:10px 12px;min-height:110px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--marsala);box-shadow:0 1px 0 0 var(--marsala)}
+.field textarea:focus{box-shadow:0 0 0 1px var(--marsala)}
+.field .err{font-size:12.5px;color:#9b2c1f;min-height:0}
+.field.invalid input,.field.invalid textarea{border-color:#9b2c1f}
+.enq .row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.enq .fine{font-size:12.5px;color:var(--muted);margin:0}
+.enq .submit{justify-self:start}
+.enq .status{font-size:14px;margin:0}
+.enq .done{display:grid;gap:14px}
+.hp{position:absolute;left:-9999px}
+@media (max-width:520px){.enq{padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px))}.enq .row2{grid-template-columns:1fr}}
 </style>
 <div class="notice"><div class="wrap">Made to order in Portugal · Delivered across the UK, white glove</div></div>
 
@@ -467,7 +493,7 @@ section.block{padding-block:88px}
         <dl class="spec" id="pd-spec"></dl>
         <div class="actions">
           <button class="btn btn-solid" type="button" id="pd-enquire">Enquire about this piece</button>
-          <a class="btn" href="#bespoke" id="pd-bespoke">Make it bespoke</a>
+          <button class="btn" type="button" id="pd-bespoke">Make it bespoke</button>
         </div>
         <p class="note">Prices on request. Every piece is made to order in Portugal and delivered white glove across the UK.</p>
       </div>
@@ -482,6 +508,30 @@ section.block{padding-block:88px}
     <div class="reel-bar"><i id="reel-bar"></i></div>
   </section></div>
   <div class="wrap"><section class="related"><div class="head"><h3 id="pd-rel-title">You may also like</h3><a class="link" id="pd-rel-link" href="#collections">View all</a></div><div class="grid" id="pd-related" style="--cols:4"></div></section></div>
+  <div class="enq-scrim" id="enq-scrim"></div>
+  <aside class="enq" id="enq" role="dialog" aria-modal="true" aria-labelledby="enq-title" aria-hidden="true">
+    <button class="enq-close" type="button" id="enq-close" aria-label="Close">×</button>
+    <span class="eyebrow" id="enq-eyebrow">Enquiry</span>
+    <h2 id="enq-title">Enquire about this piece</h2>
+    <div id="enq-body">
+      <p class="intro-txt" id="enq-intro">Leave your details and our studio will reply within one working day with pricing, lead time and finish options.</p>
+      <form name="enquiry" id="enq-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="enquiry">
+        <input type="hidden" name="request" id="enq-request" value="Enquiry">
+        <input type="hidden" name="piece" id="enq-piece" value="">
+        <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <div class="field"><label for="enq-name">Name</label><input id="enq-name" name="name" type="text" autocomplete="name" required><span class="err" aria-live="polite"></span></div>
+        <div class="row2">
+          <div class="field"><label for="enq-email">Email</label><input id="enq-email" name="email" type="email" autocomplete="email" required><span class="err" aria-live="polite"></span></div>
+          <div class="field"><label for="enq-phone">Phone number</label><input id="enq-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required><span class="err" aria-live="polite"></span></div>
+        </div>
+        <div class="field"><label for="enq-msg">Additional information <span>(optional)</span></label><textarea id="enq-msg" name="message" rows="4" maxlength="1500" placeholder="Room size, preferred veneers, delivery date…"></textarea></div>
+        <p class="fine">We use your details only to reply to this request.</p>
+        <button class="btn btn-solid submit" type="submit" id="enq-submit">Send request</button>
+        <p class="status" id="enq-status" role="status"></p>
+      </form>
+    </div>
+  </aside>
 </main>
 <footer id="contact">
   <div class="wrap cols">
@@ -786,7 +836,50 @@ $("pd-img").addEventListener("click",()=>$("pd-stage").classList.toggle("zoom"))
 document.addEventListener("keydown",e=>{ if($("view-product").hidden) return; if(e.key==="ArrowLeft") show(cur-1); if(e.key==="ArrowRight") show(cur+1); });
 let tx=null; $("pd-stage").addEventListener("touchstart",e=>{tx=e.touches[0].clientX},{passive:true});
 $("pd-stage").addEventListener("touchend",e=>{ if(tx===null) return; const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>40) show(cur+(dx<0?1:-1)); tx=null; });
-$("pd-enquire").onclick=()=>{ $("contact").scrollIntoView({behavior:"smooth"}); setTimeout(()=>$("email").focus({preventScroll:true}),600); };
+
+/* enquiry form */
+let enqLast=null;
+function openEnq(kind){
+  const p=current; if(!p) return;
+  enqLast=document.activeElement;
+  const bespoke = kind==="bespoke";
+  $("enq-eyebrow").textContent = bespoke ? "Bespoke request" : "Enquiry";
+  $("enq-title").textContent = bespoke ? `Make the ${p.name} yours` : `Enquire about the ${p.name}`;
+  $("enq-intro").textContent = bespoke ? "Tell us how you would like to adapt this piece: size, veneers or finish. Our studio will reply within one working day." : "Leave your details and our studio will reply within one working day with pricing, lead time and finish options.";
+  $("enq-request").value = bespoke ? "Bespoke" : "Enquiry";
+  $("enq-piece").value = p.name;
+  $("enq-form").hidden=false; $("enq-status").textContent=""; const d=$("enq-body").querySelector(".done"); if(d) d.remove();
+  $("enq").classList.add("open"); $("enq-scrim").classList.add("open"); $("enq").setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden"; setTimeout(()=>$("enq-name").focus(),350);
+}
+function closeEnq(){
+  if(!$("enq").classList.contains("open")) return;
+  $("enq").classList.remove("open"); $("enq-scrim").classList.remove("open"); $("enq").setAttribute("aria-hidden","true");
+  document.body.style.overflow=""; enqLast&&enqLast.focus();
+}
+$("pd-enquire").onclick=()=>openEnq("enquiry");
+$("pd-bespoke").onclick=()=>openEnq("bespoke");
+$("enq-close").onclick=closeEnq; $("enq-scrim").onclick=closeEnq;
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeEnq(); });
+window.addEventListener("hashchange",closeEnq);
+function check(id,ok,msg){ const f=$(id).closest(".field"); f.classList.toggle("invalid",!ok); f.querySelector(".err").textContent= ok?"":msg; return ok; }
+$("enq-form").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=$("enq-name").value.trim(), email=$("enq-email").value.trim(), phone=$("enq-phone").value.trim();
+  const ok=[check("enq-name",name.length>1,"Enter your name."),
+            check("enq-email",/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email),"Enter a valid email address, like name@example.com."),
+            check("enq-phone",phone.replace(/\D/g,"").length>=7,"Enter a phone number, including the country code if outside the UK.")];
+  if(ok.includes(false)){ $("enq-form").querySelector(".invalid input, .invalid textarea").focus(); return; }
+  const btn=$("enq-submit"); btn.disabled=true; btn.textContent="Sending…"; $("enq-status").textContent="";
+  try{
+    const res=await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData($("enq-form"))).toString()});
+    if(!res.ok) throw new Error(res.status);
+    $("enq-form").hidden=true; $("enq-form").reset();
+    $("enq-body").insertAdjacentHTML("beforeend",`<div class="done"><p class="intro-txt" style="margin:0">Thank you, ${esc(name.split(" ")[0])}. Your request about the ${esc(current.name)} has been sent. We will reply to ${esc(email)} within one working day.</p><button class="btn" type="button" onclick="document.getElementById('enq-close').click()">Close</button></div>`);
+  }catch(err){
+    $("enq-status").textContent="We couldn't send your request. Please try again, or email info@marquetery.uk.";
+  }finally{ btn.disabled=false; btn.textContent="Send request"; }
+});
 })();
 
 (()=>{
