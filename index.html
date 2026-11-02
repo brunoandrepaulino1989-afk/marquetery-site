@@ -299,7 +299,22 @@ section.block{padding-block:88px}
 .reel figure{margin:0;scroll-snap-align:start;background:var(--tile);aspect-ratio:16/9;position:relative;overflow:hidden;max-width:100%}
 .reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .reel figure.cutout img{inset:5%;width:90%;height:90%;object-fit:contain;mix-blend-mode:multiply}
-.reel-bar{height:1px;background:var(--line);margin-top:14px;position:relative}
+/* Marquetry frame around the gallery: wengue edge, white-oak fillets, a 45° band of ash root and palissander, checkered corner blocks. */
+.frame{--wengue:#1d1713;--palissander:#6a2c20;--ashroot:#b98a52;--ashroot-2:#cfa56d;--oak:#eadcc0;--fw:32px;
+  position:relative;padding:var(--fw);
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.07) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(45deg, var(--ashroot) 0 12px, var(--wengue) 12px 14px, var(--palissander) 14px 26px, var(--oak) 26px 28px, var(--ashroot-2) 28px 40px, var(--wengue) 40px 42px);
+  box-shadow:inset 0 0 0 3px var(--wengue), inset 0 0 0 5px var(--oak), inset 0 0 0 7px var(--wengue), 0 18px 40px -24px rgba(29,23,19,.55)}
+.frame::after{content:"";position:absolute;inset:calc(var(--fw) - 7px);border:2px solid var(--oak);outline:3px solid var(--wengue);outline-offset:0;pointer-events:none;z-index:1}
+.frame .corner{position:absolute;width:var(--fw);height:var(--fw);z-index:2;
+  background:conic-gradient(var(--wengue) 0 25%, var(--oak) 0 50%, var(--wengue) 0 75%, var(--oak) 0) 0 0/50% 50%;
+  box-shadow:inset 0 0 0 2px var(--wengue)}
+.frame .corner::after{content:"";position:absolute;inset:28%;background:var(--palissander);transform:rotate(45deg);box-shadow:0 0 0 2px var(--oak)}
+.frame .tl{top:0;left:0}.frame .tr{top:0;right:0}.frame .bl{bottom:0;left:0}.frame .br{bottom:0;right:0}
+.frame .reel{position:relative;z-index:0}
+@media (max-width:960px){.frame{--fw:16px}.frame::after{inset:calc(var(--fw) - 5px)}}
+.reel-bar{height:1px;background:var(--line);margin-top:20px;position:relative}
 .reel-bar i{position:absolute;left:0;top:0;height:1px;background:var(--ink);transition:width .4s,left .4s}
 @media (prefers-reduced-motion:reduce){.reel{scroll-behavior:auto}}
 .related{border-top:1px solid var(--line);padding-block:72px 96px}
@@ -472,7 +487,9 @@ section.block{padding-block:88px}
   <div class="wrap" id="pd-story-wrap"><section class="story" id="pd-story"></section></div>
   <div class="wrap"><section class="amb" id="pd-amb" aria-label="Gallery" aria-roledescription="carousel">
     <div class="amb-head"><h3>Gallery</h3><div class="amb-ctrl"><button type="button" id="reel-prev" aria-label="Previous image">←</button><span id="reel-count"></span><button type="button" id="reel-next" aria-label="Next image">→</button></div></div>
-    <div class="reel" id="reel" tabindex="0"></div>
+    <div class="frame"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="reel" id="reel" tabindex="0"></div>
+    </div>
     <div class="reel-bar"><i id="reel-bar"></i></div>
   </section></div>
   <div class="wrap"><section class="related"><div class="head"><h3 id="pd-rel-title">You may also like</h3><a class="link" id="pd-rel-link" href="#collections">View all</a></div><div class="grid" id="pd-related" style="--cols:4"></div></section></div>
