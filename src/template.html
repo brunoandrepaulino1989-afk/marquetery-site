@@ -1,0 +1,370 @@
+<title>Marquetery All Products</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Marquetery: handcrafted marquetry furniture. Tables, storage, seating, lighting and accessories, made to order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Layout: gallery-white catalogue. Thin top bar, breadcrumb + title block, sticky filter rail, airy 4-col grid of object photos on soft stone tiles, lowercase captions. */
+:root{
+  /* Cloud Dancer ground (PANTONE 11-4201), black type, RAL 1011 Brown beige banners. */
+  --bg:#f0eee9;              /* Cloud Dancer */
+  --tile:#e7e4dd;            /* Cloud Dancer, one step deeper */
+  --ink:#111010;             /* black text */
+  --muted:#2e2b28;           /* secondary text, still near-black */
+  --line:#c8c2b6;
+  --accent:#111010;          /* text accents stay black */
+  --marsala:#8a6642;         /* RAL 1011 Brown beige: banners and solid buttons */
+  --on-marsala:#f0eee9;
+  --veneer-a:#d3c3a8; --veneer-b:#b29a7c; --veneer-c:#8c8174; --veneer-d:#f0eee9;
+  --overlay:rgba(240,238,233,.72);
+  --display:"Poiret One", "Josefin Sans", "Futura", "Avenir Next", sans-serif;
+  --body:"Jost", "Futura", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --gutter:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:400;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+:focus-visible{outline:1.5px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1440px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+
+/* announcement + header */
+.notice{background:var(--marsala);color:var(--on-marsala);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:center}
+.notice .wrap{padding-block:8px}
+header.site{border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:22px}
+.logo{font-family:var(--display);font-size:25px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;line-height:1;white-space:nowrap}
+.logo span{color:var(--accent)}
+nav.main{display:flex;gap:28px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+nav.main a{padding-block:4px;border-bottom:1px solid transparent}
+nav.main a[aria-current]{border-color:var(--ink)}
+nav.main a:hover{border-color:var(--muted)}
+.tools{display:flex;gap:18px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.menu-btn{display:none}
+
+/* title block */
+.crumbs{font-size:12px;color:var(--muted);letter-spacing:.06em;padding-top:28px}
+.crumbs a:hover{color:var(--ink)}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:32px;align-items:end;padding-block:28px 40px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,7.4vw,104px);line-height:.95;letter-spacing:.01em;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--accent)}
+.intro p{margin:0;color:var(--muted);max-width:42ch;font-size:16px}
+
+/* filter rail */
+.rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rail .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.groups,.types{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.groups::-webkit-scrollbar,.types::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border:1px solid transparent;border-radius:999px;color:var(--muted)}
+.chip:hover{color:var(--ink)}
+.chip[aria-pressed="true"]{color:var(--ink);border-color:var(--ink)}
+.chip sup{font-size:9px;margin-left:3px;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-right{display:flex;align-items:center;gap:14px;flex-shrink:0;font-size:12.5px;letter-spacing:.06em;color:var(--muted)}
+.rail-right select{font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);padding:4px 2px;text-transform:uppercase;letter-spacing:.06em;font-size:12px}
+.density{display:flex;gap:4px}
+.density button{width:26px;height:26px;display:grid;place-items:center;color:var(--muted);border-radius:4px}
+.density button[aria-pressed="true"]{color:var(--ink);background:var(--tile)}
+.density svg{width:14px;height:14px;fill:currentColor}
+.subrail{border-bottom:1px solid var(--line)}
+.subrail .wrap{padding-block:8px}
+.subrail .chip{font-size:11.5px;padding:5px 10px;text-transform:none;letter-spacing:.02em}
+
+/* grid */
+.count{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;padding-block:22px 0;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(var(--cols,4),minmax(0,1fr));gap:48px 20px;padding-block:22px 96px}
+.card{display:flex;flex-direction:column;gap:14px;text-align:left;min-width:0}
+.media{position:relative;aspect-ratio:4/5;max-width:100%;background:var(--tile);overflow:hidden;display:grid;place-items:center}
+.media img{position:absolute;inset:8%;width:84%;height:84%;object-fit:contain;transition:transform .6s cubic-bezier(.2,.7,.2,1);mix-blend-mode:multiply}
+.card:hover .media img{transform:scale(1.04)}
+.media .veneer{position:absolute;inset:0;opacity:0;transition:opacity .3s}
+.media.noimg .veneer{opacity:.22}
+.media.noimg img{display:none}
+.veneer-label{position:relative;font-family:var(--display);letter-spacing:.06em;font-size:clamp(22px,2.4vw,34px);color:var(--ink);padding:6px 14px;opacity:0}
+.media.noimg .veneer-label{opacity:1}
+.tag{position:absolute;top:12px;left:12px;background:var(--bg);padding:3px 7px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.quick{position:absolute;left:12px;right:12px;bottom:12px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:var(--bg);color:var(--ink);padding:10px;text-align:center;opacity:0;transform:translateY(6px);transition:.3s}
+.card:hover .quick,.card:focus-visible .quick{opacity:1;transform:none}
+.caption{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.caption h2{font-family:var(--body);font-weight:400;font-size:15px;margin:0;text-transform:lowercase;letter-spacing:.01em}
+.caption span{font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:80px 0}
+
+/* bespoke band */
+.band{background:var(--marsala);color:var(--on-marsala)}
+.band .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;padding-block:64px;align-items:center}
+.band h3{font-family:var(--display);font-weight:400;font-size:clamp(30px,4vw,48px);line-height:1.05;margin:0;text-wrap:balance}
+.band p{margin:0 0 20px;max-width:46ch}
+.btn{display:inline-block;border:1px solid currentColor;padding:12px 22px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.btn:hover{background:var(--on-marsala);color:var(--marsala)}
+.btn:not(.band .btn):not(.btn-solid):hover{background:var(--ink);color:var(--bg)}
+
+/* footer */
+footer{border-top:1px solid var(--line);font-size:13px}
+footer .cols{display:grid;grid-template-columns:1.4fr repeat(3,1fr) 1.4fr;gap:32px;padding-block:56px}
+footer h4{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;margin:0 0 14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;color:var(--muted)}
+footer ul a:hover{color:var(--ink)}
+footer form{display:flex;border-bottom:1px solid var(--ink);margin-top:6px}
+footer input{flex:1;min-width:0;font:inherit;background:transparent;border:0;color:var(--ink);padding:8px 0}
+footer input::placeholder{color:var(--muted)}
+footer form button{font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.form-note{font-size:12px;color:var(--accent);min-height:1.4em;margin:8px 0 0}
+.legal{border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+.legal .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:18px}
+.legal span:first-child{max-width:80ch}
+
+/* quick view drawer */
+.scrim{position:fixed;inset:0;background:var(--overlay);z-index:40;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--bg);z-index:41;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;overflow-y:auto;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) 0}
+.drawer.open{transform:none}
+.drawer .media{aspect-ratio:1/1;flex-shrink:0}
+.drawer .body{padding:28px 32px 40px;display:grid;gap:18px}
+.drawer .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.drawer h2{font-family:var(--display);font-weight:400;font-size:38px;line-height:1;margin:0}
+.drawer p{margin:0;max-width:52ch}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:8px 24px;font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+.spec dt{color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-size:11px;padding-top:2px}
+.spec dd{margin:0;font-variant-numeric:tabular-nums}
+.drawer .actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-solid{background:var(--marsala);color:var(--on-marsala);border-color:var(--marsala)}
+.btn-solid:hover{background:transparent;color:var(--marsala)}
+.close{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:calc(14px + env(safe-area-inset-right,0px));width:40px;height:40px;border-radius:50%;background:var(--bg);display:grid;place-items:center;z-index:2;font-size:20px}
+
+@media (max-width:1100px){nav.main{gap:18px}.grid{--cols:3 !important}footer .cols{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:860px){
+  nav.main,.tools .t-hide{display:none}.menu-btn{display:block}
+  .intro{grid-template-columns:1fr}.band .wrap{grid-template-columns:1fr}
+  .grid{--cols:2 !important;gap:36px 12px}.density{display:none}
+  .rail .wrap{flex-wrap:wrap}.rail-right{width:100%;justify-content:space-between}
+  footer .cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:420px){.caption{flex-direction:column;gap:2px}.drawer .body{padding:24px 20px 32px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="notice"><div class="wrap">Made to order in Portugal · Delivered across the UK, white glove</div></div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Marquetery home">Marque<span>tery</span></a>
+    <nav class="main" aria-label="Main">
+      <a href="products.html" aria-current="page">Collections</a>
+      <a href="#bespoke">Bespoke</a>
+      <a href="#top">Projects</a>
+      <a href="#top">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="tools">
+      <a class="t-hide" href="#top">Search</a>
+      <a href="#top">Bag (0)</a>
+      <button class="menu-btn" type="button" aria-label="Open menu">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Home</a> / All products</div>
+    <div class="intro">
+      <h1>All <em>products</em></h1>
+      <p>Tables, storage and sculptural pieces in hand-cut wood marquetry. Every piece is made to order, and each can be adapted in veneer, finish and size.</p>
+    </div>
+  </div>
+
+  <div class="rail">
+    <div class="wrap">
+      <div class="groups" id="groups" role="toolbar" aria-label="Filter by category"></div>
+      <div class="rail-right">
+        <label for="sort">Sort</label>
+        <select id="sort">
+          <option value="featured">Featured</option>
+          <option value="az">Name, A–Z</option>
+          <option value="za">Name, Z–A</option>
+          <option value="size">Largest first</option>
+        </select>
+        <div class="density" role="group" aria-label="Grid density">
+          <button type="button" data-cols="3" aria-label="Three columns"><svg viewBox="0 0 14 14"><rect x="0" y="0" width="4" height="14"/><rect x="5" y="0" width="4" height="14"/><rect x="10" y="0" width="4" height="14"/></svg></button>
+          <button type="button" data-cols="4" aria-label="Four columns"><svg viewBox="0 0 14 14"><rect x="0" y="0" width="2.75" height="14"/><rect x="3.75" y="0" width="2.75" height="14"/><rect x="7.5" y="0" width="2.75" height="14"/><rect x="11.25" y="0" width="2.75" height="14"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="subrail" id="subrail" hidden><div class="wrap"><div class="types" id="types" role="toolbar" aria-label="Filter by type"></div></div></div>
+
+  <div class="wrap">
+    <div class="count" id="count" aria-live="polite"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <section class="band" id="bespoke">
+    <div class="wrap">
+      <h3>Every piece, cut to your room.</h3>
+      <div>
+        <p>Change the veneer palette, resize a dining table to seat twelve, or commission a one-off totem for a hotel lobby. Our studio works with architects and private clients from sketch to installation.</p>
+        <a class="btn" href="#contact">Start a bespoke project</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap cols">
+    <div>
+      <a class="logo" href="index.html">Marque<span>tery</span></a>
+      <p style="color:var(--muted);max-width:30ch">Handcrafted marquetry furniture for homes, hotels and private residences.</p>
+    </div>
+    <div><h4>Products</h4><ul id="foot-cats"></ul></div>
+    <div><h4>Studio</h4><ul><li><a href="#top">About</a></li><li><a href="#bespoke">Bespoke</a></li><li><a href="#top">Projects</a></li><li><a href="#top">Press</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>info@marquetery.uk</li><li>66 Paul Street<br>London EC2A 4NA<br>United Kingdom</li><li><a href="#top">Instagram</a></li><li><a href="#top">Pinterest</a></li></ul></div>
+    <div>
+      <h4>Newsletter</h4>
+      <p style="color:var(--muted);margin:0">New pieces and studio news, a few times a year.</p>
+      <form id="news" novalidate>
+        <label for="email" style="position:absolute;left:-9999px">Email address</label>
+        <input id="email" type="email" placeholder="Email address" autocomplete="email">
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="form-note" id="news-note"></p>
+    </div>
+  </div>
+  <div class="legal"><div class="wrap"><span>© 2026 Marquetery.uk is a trading name of After Hours Collections Ltd. Registered in England and Wales, company no. 15580283. Registered office: 66 Paul Street, London EC2A 4NA, United Kingdom.</span><span>Prices on request · Lead time 10–12 weeks</span></div></div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="d-name" role="dialog">
+  <button class="close" id="d-close" type="button" aria-label="Close">×</button>
+  <div class="media" id="d-media"><div class="veneer"></div><span class="veneer-label"></span><img alt="" id="d-img"></div>
+  <div class="body">
+    <div class="eyebrow" id="d-cat"></div>
+    <h2 id="d-name"></h2>
+    <p id="d-desc"></p>
+    <dl class="spec">
+      <dt>Size</dt><dd id="d-dim"></dd>
+      <dt>Made</dt><dd>To order, 10–12 weeks</dd>
+      <dt>Options</dt><dd>Veneer, finish and dimensions on request</dd>
+    </dl>
+    <div class="actions">
+      <a class="btn btn-solid" href="#contact" id="d-enquire">Enquire</a>
+      <a class="btn" id="d-source" href="#" target="_blank" rel="noopener">Reference sheet</a>
+    </div>
+  </div>
+</aside>
+
+<script>
+const PRODUCTS = /*DATA*/[];
+const GROUP_LABEL = {Tables:"Tables",Storage:"Storage",Seating:"Seating",Lighting:"Lighting",Complements:"Accessories"};
+const GROUP_ORDER = ["Tables","Storage","Seating","Lighting","Complements"];
+const slug = g => GROUP_LABEL[g].toLowerCase();
+function fromHash(){ const h=(location.hash||"").slice(1).toLowerCase(); const g=GROUP_ORDER.find(x=>slug(x)===h); state.group=g||"all"; state.type="all"; }
+const TYPE_PLURAL = t => t==="Bench"?"Benches":t==="Dresser"?"Dressers":t==="Wall Decor"?"Wall decor":t+"s";
+
+let state = {group:"all", type:"all", sort:"featured", cols:4};
+try { const c = localStorage.getItem("mq-cols"); if (c) state.cols = +c; } catch(e){}
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const area = d => { const n = (d.match(/[\d.]+/g)||[]).map(Number); return n.length>=3 ? n[0]*n[1]*n[2] : 0; };
+
+/* deterministic marquetry pattern, shown when a photo is missing */
+function veneer(seed){
+  let h=0; for (const ch of seed) h=(h*31+ch.charCodeAt(0))>>>0;
+  const vars=["--veneer-a","--veneer-b","--veneer-c","--veneer-d"];
+  const pick=i=>`var(${vars[(h>>(i*2))&3]})`;
+  const a=(h%8)*45;
+  return `background:conic-gradient(from ${a}deg at 50% 50%, ${pick(0)} 0 25%, ${pick(1)} 0 50%, ${pick(2)} 0 75%, ${pick(3)} 0), var(--tile);background-size:${60+(h%4)*20}px ${60+(h%4)*20}px`;
+}
+
+function chip(label, count, pressed, data){
+  return `<button type="button" class="chip" aria-pressed="${pressed}" ${data}>${esc(label)}<sup>${count}</sup></button>`;
+}
+
+function renderGroups(){
+  let html = chip("All", PRODUCTS.length, state.group==="all", 'data-group="all"');
+  for (const g of GROUP_ORDER){
+    const n = PRODUCTS.filter(p=>p.group===g).length;
+    if (n) html += chip(GROUP_LABEL[g], n, state.group===g, `data-group="${g}"`);
+  }
+  $("groups").innerHTML = html;
+  const sub = $("subrail");
+  if (state.group==="all"){ sub.hidden = true; return; }
+  const types = [...new Set(PRODUCTS.filter(p=>p.group===state.group).map(p=>p.type))];
+  if (types.length < 2){ sub.hidden = true; return; }
+  sub.hidden = false;
+  $("types").innerHTML = chip("All "+GROUP_LABEL[state.group].toLowerCase(), PRODUCTS.filter(p=>p.group===state.group).length, state.type==="all", 'data-type="all"') +
+    types.map(t=>chip(TYPE_PLURAL(t), PRODUCTS.filter(p=>p.type===t).length, state.type===t, `data-type="${esc(t)}"`)).join("");
+}
+
+function visible(){
+  let list = PRODUCTS.map((p,i)=>({...p,i})).filter(p => (state.group==="all"||p.group===state.group) && (state.type==="all"||p.type===state.type));
+  if (state.sort==="az") list.sort((a,b)=>a.name.localeCompare(b.name));
+  if (state.sort==="za") list.sort((a,b)=>b.name.localeCompare(a.name));
+  if (state.sort==="size") list.sort((a,b)=>area(b.dimensions)-area(a.dimensions));
+  return list;
+}
+
+function mediaHTML(p, eager){
+  const img = p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="${eager?"eager":"lazy"}" decoding="async" onerror="this.parentNode.classList.add('noimg')">` : "";
+  return `<div class="media${p.image?"":" noimg"}"><div class="veneer" style="${veneer(p.id)}"></div><span class="veneer-label">${esc(p.name.split(" ")[0])}</span>${img}`;
+}
+
+function renderGrid(){
+  const list = visible();
+  $("count").textContent = `${list.length} ${list.length===1?"piece":"pieces"}`;
+  $("grid").style.setProperty("--cols", state.cols);
+  $("grid").innerHTML = list.length ? list.map((p,k)=>`
+    <button type="button" class="card" data-id="${esc(p.id)}" aria-label="${esc(p.name)}, quick view">
+      ${mediaHTML(p, k<8)}<span class="tag">${esc(p.type)}</span><span class="quick">Quick view</span></div>
+      <div class="caption"><h2>${esc(p.name)}</h2><span>${esc(p.dimensions.replace(/ cm$/,""))}</span></div>
+    </button>`).join("") : `<p class="empty">No pieces in this category yet.</p>`;
+  document.querySelectorAll(".density button").forEach(b=>b.setAttribute("aria-pressed", +b.dataset.cols===state.cols));
+}
+
+function render(){ renderGroups(); renderGrid(); }
+
+$("groups").addEventListener("click", e=>{ const b=e.target.closest("[data-group]"); if(!b) return; state.group=b.dataset.group; state.type="all"; try{history.replaceState(null,"",state.group==="all"?location.pathname:"#"+slug(state.group))}catch(err){} render(); });
+window.addEventListener("hashchange", ()=>{ fromHash(); render(); });
+$("types").addEventListener("click", e=>{ const b=e.target.closest("[data-type]"); if(!b) return; state.type=b.dataset.type; render(); });
+$("sort").addEventListener("change", e=>{ state.sort=e.target.value; renderGrid(); });
+document.querySelector(".density").addEventListener("click", e=>{ const b=e.target.closest("[data-cols]"); if(!b) return; state.cols=+b.dataset.cols; try{localStorage.setItem("mq-cols",state.cols)}catch(err){} renderGrid(); });
+
+/* quick view */
+let lastFocus=null;
+function openDrawer(id){
+  const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
+  lastFocus=document.activeElement;
+  const m=$("d-media"); m.classList.toggle("noimg", !p.image);
+  m.querySelector(".veneer").setAttribute("style", veneer(p.id));
+  m.querySelector(".veneer-label").textContent = p.name.split(" ")[0];
+  const img=$("d-img"); img.onerror=()=>m.classList.add("noimg"); img.alt=p.name; if(p.image) img.src=p.image; else img.removeAttribute("src");
+  $("d-cat").textContent = `${GROUP_LABEL[p.group]} / ${p.type}`;
+  $("d-name").textContent = p.name;
+  $("d-desc").textContent = p.description;
+  $("d-dim").textContent = p.dimensions.replace(/ x /g," × ") + " (W × D × H)";
+  $("d-source").href = p.source;
+  $("drawer").classList.add("open"); $("scrim").classList.add("open"); $("drawer").setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden"; $("d-close").focus();
+}
+function closeDrawer(){
+  $("drawer").classList.remove("open"); $("scrim").classList.remove("open"); $("drawer").setAttribute("aria-hidden","true");
+  document.body.style.overflow=""; lastFocus&&lastFocus.focus();
+}
+$("grid").addEventListener("click", e=>{ const c=e.target.closest(".card"); if(c) openDrawer(c.dataset.id); });
+$("d-close").addEventListener("click", closeDrawer);
+$("scrim").addEventListener("click", closeDrawer);
+$("d-enquire").addEventListener("click", closeDrawer);
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeDrawer(); });
+
+/* footer + newsletter */
+$("foot-cats").innerHTML = GROUP_ORDER.map(g=>`<li><a href="products.html#${slug(g)}">${GROUP_LABEL[g]}</a></li>`).join("");
+$("news").addEventListener("submit", e=>{ e.preventDefault(); const v=$("email").value.trim();
+  $("news-note").textContent = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v) ? "Thank you. You're on the list." : "Enter a valid email address, like name@example.com."; });
+
+fromHash();
+render();
+</script>

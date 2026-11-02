@@ -1,0 +1,235 @@
+<style>
+/* Home: slider hero, category tiles, studio statement, craft sequence with veneer swatches, featured scroller, bespoke band, catalogue request. */
+.hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+.slides{position:relative;min-height:clamp(480px,72vh,760px)}
+.slide{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s .9s}
+.slide.on{opacity:1;visibility:visible;transition:opacity .9s ease}
+.slide .copy{display:flex;flex-direction:column;justify-content:center;gap:22px;padding-block:48px;padding-left:max(16px, env(safe-area-inset-left, 0px), calc((100vw - 1440px)/2 + 16px));padding-right:40px}
+.eyebrow{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.slide h2{font-family:var(--display);font-weight:400;font-size:clamp(52px,7vw,112px);line-height:.92;margin:0;letter-spacing:.02em}
+.slide h2 span{display:block;font-size:.36em;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-top:12px}
+.slide p{margin:0;max-width:38ch;color:var(--muted);font-size:16px}
+.slide .media{aspect-ratio:auto;height:100%}
+.slide .media img{inset:6%;width:88%;height:88%}
+.slide .copy > *{transform:translateY(14px);opacity:0;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .8s}
+.slide.on .copy > *{transform:none;opacity:1}
+.slide.on .copy > :nth-child(2){transition-delay:.08s}.slide.on .copy > :nth-child(3){transition-delay:.16s}.slide.on .copy > :nth-child(4){transition-delay:.24s}
+.hero-ctrl{position:absolute;left:max(16px, env(safe-area-inset-left, 0px), calc((100vw - 1440px)/2 + 16px));bottom:28px;display:flex;align-items:center;gap:18px;z-index:2;font-size:12px;letter-spacing:.12em;font-variant-numeric:tabular-nums}
+.dots{display:flex;gap:8px}
+.dots button{width:38px;height:20px;position:relative}
+.dots button::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line)}
+.dots button i{position:absolute;left:0;top:50%;height:1px;width:0;background:var(--ink)}
+.dots button[aria-current="true"] i{animation:fill 6s linear forwards}
+.paused .dots button[aria-current="true"] i{animation-play-state:paused}
+@keyframes fill{to{width:100%}}
+.hero-ctrl .arrow{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:14px}
+.hero-ctrl .arrow:hover{border-color:var(--ink)}
+
+section.block{padding-block:88px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+.head h3{font-family:var(--display);font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1;margin:0;letter-spacing:.02em}
+.link{font-size:12px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:3px}
+
+.cats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.cat{display:flex;flex-direction:column;gap:14px;min-width:0}
+.cat .media{aspect-ratio:5/4}
+.cat .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.cat h4{font-family:var(--display);font-weight:400;font-size:28px;margin:0;letter-spacing:.04em}
+.cat small{font-size:12.5px;color:var(--muted)}
+.cat:hover .media img{transform:scale(1.04)}
+
+.about{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:start;border-top:1px solid var(--line)}
+.about blockquote{margin:0;font-family:var(--display);font-size:clamp(30px,3.6vw,50px);line-height:1.12;letter-spacing:.01em;text-wrap:balance}
+.about blockquote em{font-style:normal;color:var(--accent)}
+.about .txt{display:grid;gap:18px;color:var(--muted);font-size:16px;max-width:44ch}
+
+.craft{background:var(--bg);border-top:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;counter-reset:s}
+.step{display:grid;gap:12px;border-top:1px solid var(--ink);padding-top:20px}
+.step b{font-family:var(--display);font-weight:400;font-size:44px;line-height:1}
+.step h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin:0}
+.step p{margin:0;color:var(--muted);max-width:40ch}
+.swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:56px}
+.sw{display:grid;gap:8px;font-size:12px;color:var(--muted)}
+.sw i{display:block;aspect-ratio:1;border-radius:2px}
+.sw span{color:var(--ink);font-size:13px}
+
+.scroller{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,22%);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;scrollbar-width:thin}
+.scroller .card{scroll-snap-align:start}
+
+.catalogue{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;border-top:1px solid var(--line)}
+.catalogue p{color:var(--muted);margin:14px 0 0;max-width:44ch}
+.catalogue form{display:flex;border-bottom:1px solid var(--ink)}
+.catalogue input{flex:1;min-width:0;font:inherit;font-size:16px;background:transparent;border:0;color:var(--ink);padding:12px 0}
+.catalogue input::placeholder{color:var(--muted)}
+.catalogue button{font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+
+@media (max-width:1100px){.cats{grid-template-columns:repeat(2,minmax(0,1fr))}.scroller{grid-auto-columns:minmax(240px,30%)}}
+@media (max-width:860px){
+  .slides{min-height:0}
+  .slide{position:relative;display:none;grid-template-columns:1fr}
+  .slide.on{display:grid}
+  .slide .media{aspect-ratio:1/1;height:auto;order:-1}
+  .slide .copy{padding:28px var(--gutter-r) 90px var(--gutter)}
+  .about,.catalogue{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:28px}
+  .swatches{grid-template-columns:repeat(3,minmax(0,1fr))}
+  section.block{padding-block:64px}
+  .scroller{grid-auto-columns:72%}
+}
+@media (max-width:520px){.cats{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.dots button i{animation:none!important;width:100%}}
+</style>
+
+{{HEADER}}
+
+<main id="top">
+  <section class="hero" aria-roledescription="carousel" aria-label="Featured pieces">
+    <div class="slides" id="slides"></div>
+    <div class="hero-ctrl">
+      <button class="arrow" type="button" id="prev" aria-label="Previous slide">←</button>
+      <div class="dots" id="dots"></div>
+      <button class="arrow" type="button" id="next" aria-label="Next slide">→</button>
+      <span id="counter"></span>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="head"><h3>Collections</h3><a class="link" href="products.html">View all 50 pieces</a></div>
+      <div class="cats" id="cats"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap about">
+      <blockquote>Furniture as <em>inlaid art</em>. Hundreds of slivers of wood, cut by hand and set into one surface.</blockquote>
+      <div class="txt">
+        <p>Marquetery brings collectable marquetry furniture to homes, hotels and private residences across the United Kingdom.</p>
+        <p>Each piece is built to order by master craftsmen in Portugal, using techniques that date back to the cabinet-makers of the 17th century, and drawn with the geometry of Art Deco, Cubism and the Memphis group.</p>
+        <a class="link" href="#bespoke" style="justify-self:start">Our bespoke service</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block craft">
+    <div class="wrap">
+      <div class="head"><h3>From veneer to finished piece</h3><span class="eyebrow">10–12 weeks, made to order</span></div>
+      <div class="steps">
+        <div class="step"><b>I</b><h4>Selecting the veneer</h4><p>Sheets of bird's-eye maple, walnut root and wenge are chosen for figure and tone, then matched across the whole piece.</p></div>
+        <div class="step"><b>II</b><h4>Cutting and assembling</h4><p>Each shape is cut by hand, fitted edge to edge like a puzzle and pressed onto a stable core.</p></div>
+        <div class="step"><b>III</b><h4>Lacquering and finishing</h4><p>Surfaces are sanded, sealed and polished to a soft satin or a deep gloss lacquer, with brass or gold steel details where the design calls for them.</p></div>
+      </div>
+      <div class="swatches" aria-label="Veneers we work with">
+        <div class="sw"><i style="background:linear-gradient(115deg,#e8dcc4,#f3ead8 40%,#dccaa6)"></i><span>Bird's-eye maple</span>Pale, speckled</div>
+        <div class="sw"><i style="background:radial-gradient(circle at 30% 40%,#8a5a35,#5e3a20 60%,#7a4c2b)"></i><span>Walnut root</span>Burled, warm</div>
+        <div class="sw"><i style="background:repeating-linear-gradient(95deg,#2b241f 0 3px,#3b3029 3px 7px)"></i><span>Wenge</span>Near black, straight grain</div>
+        <div class="sw"><i style="background:radial-gradient(circle at 60% 50%,#c9a77c,#a98257 55%,#c2a078)"></i><span>Ash root</span>Swirling figure</div>
+        <div class="sw"><i style="background:repeating-linear-gradient(80deg,#5a2f22 0 4px,#6e3a2a 4px 9px)"></i><span>Palissander</span>Deep red-brown</div>
+        <div class="sw"><i style="background:radial-gradient(circle at 40% 60%,#a5583a,#8a4630 60%,#9c5236)"></i><span>Cherry root</span>Rich, figured</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="head"><h3>Featured pieces</h3><a class="link" href="products.html">All products</a></div>
+      <div class="scroller" id="featured"></div>
+    </div>
+  </section>
+
+  <section class="band" id="bespoke">
+    <div class="wrap">
+      <h3>Every piece, cut to your room.</h3>
+      <div>
+        <p>Change the veneer palette, resize a dining table to seat twelve, or commission a one-off totem for a hotel lobby. Our studio works with architects and private clients from sketch to installation.</p>
+        <a class="btn" href="#contact">Start a bespoke project</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap catalogue">
+      <div>
+        <h3 class="head" style="margin:0"><span style="font-family:var(--display);font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1">The 2026 catalogue</span></h3>
+        <p>All 50 pieces with full dimensions, veneer options and lead times. Leave your email and we will send the PDF.</p>
+      </div>
+      <div>
+        <form id="cat-form" novalidate>
+          <label for="cat-email" style="position:absolute;left:-9999px">Email address</label>
+          <input id="cat-email" type="email" placeholder="Your email address" autocomplete="email">
+          <button type="submit">Request catalogue</button>
+        </form>
+        <p class="form-note" id="cat-note"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{FOOTER}}
+
+<script>
+const PRODUCTS = /*DATA*/[];
+const byId = id => PRODUCTS.find(p=>p.id===id);
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function veneer(seed){
+  let h=0; for (const ch of seed) h=(h*31+ch.charCodeAt(0))>>>0;
+  const vars=["--veneer-a","--veneer-b","--veneer-c","--veneer-d"];
+  const pick=i=>`var(${vars[(h>>(i*2))&3]})`;
+  return `background:conic-gradient(from ${(h%8)*45}deg at 50% 50%, ${pick(0)} 0 25%, ${pick(1)} 0 50%, ${pick(2)} 0 75%, ${pick(3)} 0), var(--tile);background-size:${60+(h%4)*20}px ${60+(h%4)*20}px`;
+}
+function media(p, label, eager){
+  const img = p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="${eager?"eager":"lazy"}" decoding="async" onerror="this.parentNode.classList.add('noimg')">` : "";
+  return `<div class="media${p.image?"":" noimg"}"><div class="veneer" style="${veneer(p.id)}"></div><span class="veneer-label">${esc(label||p.name.split(" ")[0])}</span>${img}</div>`;
+}
+
+/* hero */
+const SLIDES = [
+  {id:"fuschia-dining-table", eyebrow:"New in · Dining", title:"Fuschia", sub:"Dining table", text:"Bird's-eye veneer, ivory lacquer and polished gold, drawn from 1980s Memphis design. Seats ten.", href:"products.html#tables"},
+  {id:"mikado-room-divider", eyebrow:"Statement pieces", title:"Mikado", sub:"Room divider", text:"Five asymmetric marquetry panels in a jewel-toned Art Deco palette, three metres wide.", href:"products.html#accessories"},
+  {id:"charlot-console-table", eyebrow:"Entrance", title:"Charlot", sub:"Console table", text:"A marble top over marquetry panels. The first piece your guests see.", href:"products.html#tables"},
+];
+let cur=0, timer=null;
+$("slides").innerHTML = SLIDES.map((s,i)=>`
+  <div class="slide${i?"":" on"}" role="group" aria-roledescription="slide" aria-label="${i+1} of ${SLIDES.length}">
+    <div class="copy"><span class="eyebrow">${esc(s.eyebrow)}</span><h2>${esc(s.title)}<span>${esc(s.sub)}</span></h2><p>${esc(s.text)}</p><a class="btn btn-solid" href="${s.href}" style="justify-self:start;align-self:start">Discover</a></div>
+    ${media(byId(s.id), s.title, true)}
+  </div>`).join("");
+$("dots").innerHTML = SLIDES.map((s,i)=>`<button type="button" aria-label="Show ${esc(s.title)}" aria-current="${i===0}"><i></i></button>`).join("");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function go(n){
+  cur=(n+SLIDES.length)%SLIDES.length;
+  document.querySelectorAll(".slide").forEach((el,i)=>el.classList.toggle("on",i===cur));
+  document.querySelectorAll(".dots button").forEach((b,i)=>{ b.setAttribute("aria-current", i===cur); const f=b.querySelector("i"); f.style.animation="none"; void f.offsetWidth; f.style.animation=""; });
+  $("counter").textContent = `0${cur+1} / 0${SLIDES.length}`;
+  clearTimeout(timer); if(!reduce) timer=setTimeout(()=>go(cur+1),6000);
+}
+$("prev").onclick=()=>go(cur-1); $("next").onclick=()=>go(cur+1);
+$("dots").addEventListener("click",e=>{const b=e.target.closest("button"); if(b) go([...b.parentNode.children].indexOf(b));});
+const hero=document.querySelector(".hero");
+hero.addEventListener("mouseenter",()=>{clearTimeout(timer);hero.classList.add("paused")});
+hero.addEventListener("mouseleave",()=>{hero.classList.remove("paused");go(cur)});
+go(0);
+
+/* collections */
+const CATS = [
+  {label:"Tables", line:"Dining, centre, side, bedside and console", id:"zimmer-dining-table", href:"products.html#tables", n:30},
+  {label:"Storage", line:"Sideboards, cabinets and dressing tables", id:"ruskin-cabinet", href:"products.html#storage", n:5},
+  {label:"Accessories", line:"Mirrors, totems, wall decor and screens", id:"cleo-mirror", href:"products.html#accessories", n:13},
+  {label:"Seating", line:"Benches upholstered in velvet", id:"becket-bench", href:"products.html#seating", n:1},
+  {label:"Lighting", line:"Turned-wood floor lamps", id:"luminous-wood-floor-lamp", href:"products.html#lighting", n:1},
+  {label:"All products", line:"The complete collection", id:"jojo-sideboard-2", href:"products.html", n:50},
+];
+$("cats").innerHTML = CATS.map(c=>`<a class="cat" href="${c.href}">${media(byId(c.id), c.label)}<div class="row"><h4>${esc(c.label)}</h4><small>${c.n} ${c.n===1?"piece":"pieces"}</small></div><small>${esc(c.line)}</small></a>`).join("");
+
+/* featured */
+const FEAT = ["amadeo-dining-table","cleo-mirror","rumba-console-table","madame-totem","1987-desk","folk-prisma-side-table","roy-wood-sideboard","claire-dressing-tabe"];
+$("featured").innerHTML = FEAT.map(id=>{const p=byId(id); return `<a class="card" href="products.html">${media(p)}<div class="caption"><h2>${esc(p.name)}</h2><span>${esc(p.dimensions.replace(/ cm$/,""))}</span></div></a>`;}).join("");
+
+/* forms + footer */
+const okEmail = v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim());
+$("cat-form").addEventListener("submit",e=>{e.preventDefault(); $("cat-note").textContent = okEmail($("cat-email").value) ? "Thank you. The catalogue is on its way to your inbox." : "Enter a valid email address, like name@example.com.";});
+$("news").addEventListener("submit",e=>{e.preventDefault(); $("news-note").textContent = okEmail($("email").value) ? "Thank you. You're on the list." : "Enter a valid email address, like name@example.com.";});
+$("foot-cats").innerHTML = [["Tables","tables"],["Storage","storage"],["Seating","seating"],["Lighting","lighting"],["Accessories","accessories"]].map(([l,h])=>`<li><a href="products.html#${h}">${l}</a></li>`).join("");
+</script>
