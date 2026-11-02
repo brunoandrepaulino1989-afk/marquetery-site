@@ -22,19 +22,26 @@
 .story{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:end;padding-block:72px;border-top:1px solid var(--line)}
 .story h2{font-family:var(--display);font-weight:400;font-size:clamp(32px,3.8vw,54px);line-height:1.05;margin:0;text-wrap:balance}
 .story p{margin:0;max-width:56ch;font-size:16px}
-.amb{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding-bottom:88px}
-.amb figure{margin:0;background:var(--tile);overflow:hidden;aspect-ratio:1/1;max-width:100%}
-.amb figure.wide,.amb figure:last-child:nth-child(even){grid-column:1/-1;aspect-ratio:16/9}
-.amb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-.amb figure:hover img{transform:scale(1.03)}
+.amb{padding-bottom:88px}
+.amb-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}
+.amb-head h3{font-family:var(--display);font-weight:400;font-size:clamp(28px,3vw,40px);margin:0;letter-spacing:.02em}
+.amb-ctrl{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.12em;font-variant-numeric:tabular-nums}
+.amb-ctrl button{width:40px;height:40px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-size:15px}
+.amb-ctrl button:disabled{opacity:.3;cursor:default}
+.amb-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 24px)/3);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;overscroll-behavior-x:contain}
+.amb-track::-webkit-scrollbar{display:none}
+.amb-track figure{margin:0;scroll-snap-align:start;background:var(--tile);overflow:hidden;aspect-ratio:4/5;position:relative;cursor:zoom-in}
+.amb-track img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.amb-track figure.cutout img{inset:6%;width:88%;height:88%;object-fit:contain;mix-blend-mode:multiply}
+.amb-track figure:hover img{transform:scale(1.03)}
+@media (prefers-reduced-motion:reduce){.amb-track{scroll-behavior:auto}}
 .related{border-top:1px solid var(--line);padding-block:72px 96px}
 .related .grid{padding-block:0}
 @media (max-width:960px){
   .pd-top{grid-template-columns:1fr;gap:28px}
   .info{position:static}
   .story{grid-template-columns:1fr;gap:20px;padding-block:52px}
-  .amb{grid-template-columns:1fr}
-  .amb figure.wide{aspect-ratio:4/3}
+  .amb-track{grid-auto-columns:82%}
   .stage .nav{width:38px;height:38px}
 }
 </style>
@@ -66,7 +73,10 @@
     </div>
   </div>
   <div class="wrap" id="pd-story-wrap"><section class="story" id="pd-story"></section></div>
-  <div class="wrap"><section class="amb" id="pd-amb" aria-label="In the room"></section></div>
+  <div class="wrap"><section class="amb" id="pd-amb" aria-label="Gallery">
+    <div class="amb-head"><h3>Gallery</h3><div class="amb-ctrl"><button type="button" id="amb-prev" aria-label="Previous images">←</button><span id="amb-count"></span><button type="button" id="amb-next" aria-label="Next images">→</button></div></div>
+    <div class="amb-track" id="amb-track" tabindex="0" aria-label="Scroll sideways for more images"></div>
+  </section></div>
   <div class="wrap"><section class="related"><div class="head"><h3 id="pd-rel-title">You may also like</h3><a class="link" id="pd-rel-link" href="#collections">View all</a></div><div class="grid" id="pd-related" style="--cols:4"></div></section></div>
 </main>
 
@@ -121,9 +131,11 @@ window.renderProduct = function(id){
   const story=$("pd-story");
   if(p.story){ story.innerHTML = `<h2>${esc(p.story.title)}</h2><p>${esc(p.story.text)}</p>`; $("pd-story-wrap").hidden=false; }
   else $("pd-story-wrap").hidden=true;
-  const amb=$("pd-amb");
-  amb.innerHTML = (p.ambience||[]).map((a,k)=>`<figure class="${k===0?"wide":""}"><img src="${esc(a.src)}" alt="${esc(a.alt)}" loading="lazy"></figure>`).join("");
-  amb.hidden = !(p.ambience||[]).length;
+  const ambSrc=(p.ambience||[]).map(a=>a.src);
+  const items=[...(p.ambience||[]).map(a=>({src:a.src,alt:a.alt,cut:false})), ...imgs.filter(s=>!ambSrc.includes(s)).map(s=>({src:s,alt:p.name,cut:true}))];
+  $("amb-track").innerHTML = items.map(it=>`<figure class="${it.cut?"cutout":""}" data-src="${esc(it.src)}"><img src="${esc(it.src)}" alt="${esc(it.alt)}" loading="lazy"></figure>`).join("");
+  $("pd-amb").hidden = items.length<2;
+  $("amb-track").scrollLeft=0; ambTotal=items.length; setTimeout(ambUpdate,0);
 
   let rel = PRODUCTS.filter(x=>x.id!==p.id && x.type===p.type);
   if(rel.length<4) rel = rel.concat(PRODUCTS.filter(x=>x.id!==p.id && x.group===p.group && x.type!==p.type)).slice(0,4);
@@ -132,6 +144,22 @@ window.renderProduct = function(id){
   document.title = `${p.name} · Marquetery`;
   return true;
 };
+
+let ambTotal=0;
+function ambStep(){ const tr=$("amb-track"); const f=tr.querySelector("figure"); return f ? f.getBoundingClientRect().width+12 : tr.clientWidth; }
+function ambUpdate(){
+  const tr=$("amb-track"); const step=ambStep();
+  const first=Math.round(tr.scrollLeft/step)+1, vis=Math.max(1,Math.round(tr.clientWidth/step));
+  const last=Math.min(ambTotal, first+vis-1);
+  $("amb-count").textContent = ambTotal ? `${String(first).padStart(2,"0")}–${String(last).padStart(2,"0")} / ${String(ambTotal).padStart(2,"0")}` : "";
+  $("amb-prev").disabled = tr.scrollLeft<=2;
+  $("amb-next").disabled = tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-2;
+}
+$("amb-prev").onclick=()=>$("amb-track").scrollBy({left:-ambStep()});
+$("amb-next").onclick=()=>$("amb-track").scrollBy({left:ambStep()});
+$("amb-track").addEventListener("scroll",()=>requestAnimationFrame(ambUpdate),{passive:true});
+window.addEventListener("resize",ambUpdate);
+$("amb-track").addEventListener("click",e=>{ const f=e.target.closest("figure"); if(!f) return; const i=imgs.indexOf(f.dataset.src); if(i>=0){ show(i); $("pd-stage").scrollIntoView({behavior:"smooth",block:"center"}); } });
 
 $("pd-prev").onclick=()=>show(cur-1);
 $("pd-next").onclick=()=>show(cur+1);
