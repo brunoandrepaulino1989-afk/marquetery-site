@@ -46,6 +46,11 @@ nav.main a[aria-current]{border-color:var(--ink)}
 nav.main a:hover{border-color:var(--muted)}
 .tools{display:flex;gap:18px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
 .menu-btn{display:none}
+.tools{align-items:center}
+.icon-btn{display:inline-grid;place-items:center;width:32px;height:32px;margin:-6px 0}
+.icon-btn:hover{opacity:.7}
+.tools > *{white-space:nowrap}
+@media (max-width:440px){.logo{font-size:20px;letter-spacing:.18em}.tools{gap:12px}}
 
 /* title block */
 .crumbs{font-size:12px;color:var(--muted);letter-spacing:.06em;padding-top:28px}
@@ -300,7 +305,7 @@ section.block{padding-block:88px}
       <a href="#contact">Contact</a>
     </nav>
     <div class="tools">
-      <a class="t-hide" href="#top">Search</a>
+      <a class="icon-btn" href="#top" aria-label="Search" title="Search"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg></a>
       <a href="#top">Bag (0)</a>
       <button class="menu-btn" type="button" aria-label="Open menu">Menu</button>
     </div>
