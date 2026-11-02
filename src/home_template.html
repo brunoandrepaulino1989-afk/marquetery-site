@@ -148,13 +148,6 @@ section.block{padding-block:88px}
     </div>
   </section>
 
-  <section class="block">
-    <div class="wrap">
-      <div class="head"><h3>Featured pieces</h3><a class="link" href="products.html">All products</a></div>
-      <div class="scroller" id="featured"></div>
-    </div>
-  </section>
-
   <section class="band" id="bespoke">
     <div class="wrap">
       <h3>Every piece, cut to your room.</h3>
@@ -246,10 +239,6 @@ const CATS = [
   {label:"All products", line:"The complete collection", id:"jojo-sideboard-2", href:"products.html", n:50},
 ];
 $("cats").innerHTML = CATS.map(c=>`<a class="cat" href="${c.href}">${media(byId(c.id), c.label)}<div class="row"><h4>${esc(c.label)}</h4><small>${c.n} ${c.n===1?"piece":"pieces"}</small></div><small>${esc(c.line)}</small></a>`).join("");
-
-/* featured */
-const FEAT = ["amadeo-dining-table","cleo-mirror","rumba-console-table","madame-totem","1987-desk","folk-prisma-side-table","roy-wood-sideboard","claire-dressing-tabe"];
-$("featured").innerHTML = FEAT.map(id=>{const p=byId(id); return `<a class="card" href="products.html">${media(p)}<div class="caption"><h2>${esc(p.name)}</h2><span>${esc(p.dimensions.replace(/ cm$/,""))}</span></div></a>`;}).join("");
 
 /* forms + footer */
 const okEmail = v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim());
