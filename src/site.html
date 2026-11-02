@@ -482,7 +482,7 @@ section.block{padding-block:88px}
         <dl class="spec" id="pd-spec"></dl>
         <div class="actions">
           <button class="btn btn-solid" type="button" id="pd-enquire">Enquire about this piece</button>
-          <button class="btn" type="button" id="pd-bespoke">Make it bespoke</button>
+          <button class="btn" type="button" id="pd-bespoke">Customization request</button>
         </div>
         <p class="note">Prices on request. Every piece is made to order in Portugal and delivered white glove across the UK.</p>
       </div>
@@ -832,10 +832,10 @@ function openEnq(kind){
   const p=current; if(!p) return;
   enqLast=document.activeElement;
   const bespoke = kind==="bespoke";
-  $("enq-eyebrow").textContent = bespoke ? "Bespoke request" : "Enquiry";
+  $("enq-eyebrow").textContent = bespoke ? "Customization request" : "Enquiry";
   $("enq-title").textContent = bespoke ? `Make the ${p.name} yours` : `Enquire about the ${p.name}`;
   $("enq-intro").textContent = bespoke ? "Tell us how you would like to adapt this piece: size, veneers or finish. Our studio will reply within one working day." : "Leave your details and our studio will reply within one working day with pricing, lead time and finish options.";
-  $("enq-request").value = bespoke ? "Bespoke" : "Enquiry";
+  $("enq-request").value = bespoke ? "Customization request" : "Enquiry";
   $("enq-piece").value = p.name;
   $("enq-form").hidden=false; $("enq-status").textContent=""; const d=$("enq-body").querySelector(".done"); if(d) d.remove();
   $("enq").classList.add("open"); $("enq-scrim").classList.add("open"); $("enq").setAttribute("aria-hidden","false");
