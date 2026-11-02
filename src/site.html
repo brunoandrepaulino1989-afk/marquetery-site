@@ -279,24 +279,25 @@ section.block{padding-block:88px}
 .amb{padding-bottom:96px}
 .amb-head{margin-bottom:22px}
 .amb-head h3{font-family:var(--display);font-weight:400;font-size:clamp(28px,3vw,40px);margin:0;letter-spacing:.02em}
-.mosaic{display:grid;grid-template-columns:5fr 4fr 3fr;gap:16px;align-items:start}
-.mosaic figure{margin:0;background:var(--tile);overflow:hidden;position:relative;cursor:zoom-in;max-width:100%}
-.mosaic figure:nth-child(1){aspect-ratio:4/5}
-.mosaic figure:nth-child(2){aspect-ratio:1/1;margin-top:72px}
-.mosaic figure:nth-child(3){aspect-ratio:3/4;margin-top:24px}
-.mosaic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-.mosaic figure.cutout img{inset:6%;width:88%;height:88%;object-fit:contain;mix-blend-mode:multiply}
-.mosaic figure:hover img{transform:scale(1.03)}
+.amb-head{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.amb-ctrl{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.12em;font-variant-numeric:tabular-nums}
+.amb-ctrl button{width:42px;height:42px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-size:15px}
+.amb-ctrl button:hover{background:var(--ink);color:var(--bg)}
+.reel{display:grid;grid-auto-flow:column;grid-auto-columns:100%;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;overscroll-behavior-x:contain}
+.reel::-webkit-scrollbar{display:none}
+.reel figure{margin:0;scroll-snap-align:start;background:var(--tile);aspect-ratio:16/9;position:relative;overflow:hidden;max-width:100%}
+.reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.reel figure.cutout img{inset:5%;width:90%;height:90%;object-fit:contain;mix-blend-mode:multiply}
+.reel-bar{height:1px;background:var(--line);margin-top:14px;position:relative}
+.reel-bar i{position:absolute;left:0;top:0;height:1px;background:var(--ink);transition:width .4s,left .4s}
+@media (prefers-reduced-motion:reduce){.reel{scroll-behavior:auto}}
 .related{border-top:1px solid var(--line);padding-block:72px 96px}
 .related .grid{padding-block:0}
 @media (max-width:960px){
   .pd-top{grid-template-columns:1fr;gap:28px}
   .info{position:static}
   .story{grid-template-columns:1fr;gap:20px;padding-block:52px}
-  .mosaic{grid-template-columns:4fr 3fr;gap:10px}
-  .mosaic figure:nth-child(1){grid-column:1/-1}
-  .mosaic figure:nth-child(2){margin-top:0}
-  .mosaic figure:nth-child(3){margin-top:40px}
+  .reel figure{aspect-ratio:4/5}
   .stage .nav{width:38px;height:38px}
 }
 </style>
@@ -458,9 +459,10 @@ section.block{padding-block:88px}
     </div>
   </div>
   <div class="wrap" id="pd-story-wrap"><section class="story" id="pd-story"></section></div>
-  <div class="wrap"><section class="amb" id="pd-amb" aria-label="Gallery">
-    <div class="amb-head"><h3>Gallery</h3></div>
-    <div class="mosaic" id="pd-mosaic"></div>
+  <div class="wrap"><section class="amb" id="pd-amb" aria-label="Gallery" aria-roledescription="carousel">
+    <div class="amb-head"><h3>Gallery</h3><div class="amb-ctrl"><button type="button" id="reel-prev" aria-label="Previous image">←</button><span id="reel-count"></span><button type="button" id="reel-next" aria-label="Next image">→</button></div></div>
+    <div class="reel" id="reel" tabindex="0"></div>
+    <div class="reel-bar"><i id="reel-bar"></i></div>
   </section></div>
   <div class="wrap"><section class="related"><div class="head"><h3 id="pd-rel-title">You may also like</h3><a class="link" id="pd-rel-link" href="#collections">View all</a></div><div class="grid" id="pd-related" style="--cols:4"></div></section></div>
 </main>
@@ -739,9 +741,9 @@ window.renderProduct = function(id){
   if(p.story){ story.innerHTML = `<h2>${esc(p.story.title)}</h2><p>${esc(p.story.text)}</p>`; $("pd-story-wrap").hidden=false; }
   else $("pd-story-wrap").hidden=true;
   const ambSrc=(p.ambience||[]).map(a=>a.src);
-  const items=[...(p.ambience||[]).map(a=>({src:a.src,alt:a.alt,cut:false})), ...imgs.filter(s=>!ambSrc.includes(s)).map(s=>({src:s,alt:p.name,cut:true}))].slice(0,3);
-  $("pd-mosaic").innerHTML = items.map(it=>`<figure class="${it.cut?"cutout":""}" data-src="${esc(it.src)}"><img src="${esc(it.src)}" alt="${esc(it.alt)}" loading="lazy"></figure>`).join("");
-  $("pd-amb").hidden = items.length<3;
+  const items=[...(p.ambience||[]).map(a=>({src:a.src,alt:a.alt,cut:false})), ...imgs.filter(s=>!ambSrc.includes(s)).map(s=>({src:s,alt:p.name,cut:true}))];
+  $("reel").innerHTML = items.map(it=>`<figure class="${it.cut?"cutout":""}"><img src="${esc(it.src)}" alt="${esc(it.alt)}" loading="lazy"></figure>`).join("");
+  $("pd-amb").hidden = items.length<2; reelN=items.length; $("reel").scrollLeft=0; setTimeout(reelUpdate,0);
 
   let rel = PRODUCTS.filter(x=>x.id!==p.id && x.type===p.type);
   if(rel.length<4) rel = rel.concat(PRODUCTS.filter(x=>x.id!==p.id && x.group===p.group && x.type!==p.type)).slice(0,4);
@@ -751,7 +753,14 @@ window.renderProduct = function(id){
   return true;
 };
 
-$("pd-mosaic").addEventListener("click",e=>{ const f=e.target.closest("figure"); if(!f) return; const i=imgs.indexOf(f.dataset.src); if(i>=0){ show(i); $("pd-stage").scrollIntoView({behavior:"smooth",block:"center"}); } });
+let reelN=0;
+const reelIdx=()=>{ const r=$("reel"); return r.clientWidth ? Math.round(r.scrollLeft/r.clientWidth) : 0; };
+function reelGo(i){ const r=$("reel"); i=(i+reelN)%reelN; r.scrollTo({left:i*r.clientWidth}); }
+function reelUpdate(){ if(!reelN) return; const i=reelIdx(); $("reel-count").textContent=`${String(i+1).padStart(2,"0")} / ${String(reelN).padStart(2,"0")}`; const b=$("reel-bar"); b.style.width=(100/reelN)+"%"; b.style.left=(100*i/reelN)+"%"; }
+$("reel-prev").onclick=()=>reelGo(reelIdx()-1);
+$("reel-next").onclick=()=>reelGo(reelIdx()+1);
+$("reel").addEventListener("scroll",()=>requestAnimationFrame(reelUpdate),{passive:true});
+window.addEventListener("resize",reelUpdate);
 
 $("pd-prev").onclick=()=>show(cur-1);
 $("pd-next").onclick=()=>show(cur+1);
