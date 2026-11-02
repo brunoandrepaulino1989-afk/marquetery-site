@@ -198,7 +198,7 @@ function media(p, label, eager){
 
 /* opening diptych */
 const DIPTYCH = [
-  {id:"amadeo-dining-table", eyebrow:"Dining table", title:"Amadeo", href:"#amadeo-dining-table", photo:"images/amadeo/amadeo-room.webp"},
+  {id:"emile-dining-table", eyebrow:"Dining table", title:"Émile", href:"#emile-dining-table", photo:"images/emile/emile-room.webp"},
   {id:"cleo-mirror", eyebrow:"Accessories", title:"Cleo", href:"#accessories"},
 ];
 $("diptych").innerHTML = DIPTYCH.map(d=>`<a class="panel" href="${d.href}">${d.photo ? media({...byId(d.id), image:d.photo}, d.title, true).replace('class="media','class="media photo') : media(byId(d.id), d.title, true)}<div class="cap"><div><span class="eyebrow">${esc(d.eyebrow)}</span><h2>${esc(d.title)}</h2></div><span class="link">Discover</span></div></a>`).join("");
