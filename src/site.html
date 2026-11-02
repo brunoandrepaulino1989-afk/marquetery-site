@@ -1,0 +1,631 @@
+<title>Marquetery</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Marquetery: handcrafted marquetry furniture. Tables, storage, seating, lighting and accessories, made to order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Layout: gallery-white catalogue. Thin top bar, breadcrumb + title block, sticky filter rail, airy 4-col grid of object photos on soft stone tiles, lowercase captions. */
+:root{
+  /* Cloud Dancer ground (PANTONE 11-4201), black type, RAL 1011 Brown beige banners. */
+  --bg:#f0eee9;              /* Cloud Dancer */
+  --tile:#e7e4dd;            /* Cloud Dancer, one step deeper */
+  --ink:#111010;             /* black text */
+  --muted:#2e2b28;           /* secondary text, still near-black */
+  --line:#c8c2b6;
+  --accent:#111010;          /* text accents stay black */
+  --marsala:#8a6642;         /* RAL 1011 Brown beige: banners and solid buttons */
+  --on-marsala:#f0eee9;
+  --veneer-a:#d3c3a8; --veneer-b:#b29a7c; --veneer-c:#8c8174; --veneer-d:#f0eee9;
+  --overlay:rgba(240,238,233,.72);
+  --display:"Poiret One", "Josefin Sans", "Futura", "Avenir Next", sans-serif;
+  --body:"Jost", "Futura", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --gutter:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:400;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+:focus-visible{outline:1.5px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1440px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+
+/* announcement + header */
+.notice{background:var(--marsala);color:var(--on-marsala);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:center}
+.notice .wrap{padding-block:8px}
+header.site{border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:22px}
+.logo{font-family:var(--display);font-size:25px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;line-height:1;white-space:nowrap}
+.logo span{color:var(--accent)}
+nav.main{display:flex;gap:28px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+nav.main a{padding-block:4px;border-bottom:1px solid transparent}
+nav.main a[aria-current]{border-color:var(--ink)}
+nav.main a:hover{border-color:var(--muted)}
+.tools{display:flex;gap:18px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.menu-btn{display:none}
+
+/* title block */
+.crumbs{font-size:12px;color:var(--muted);letter-spacing:.06em;padding-top:28px}
+.crumbs a:hover{color:var(--ink)}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:32px;align-items:end;padding-block:28px 40px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,7.4vw,104px);line-height:.95;letter-spacing:.01em;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--accent)}
+.intro p{margin:0;color:var(--muted);max-width:42ch;font-size:16px}
+
+/* filter rail */
+.rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rail .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.groups,.types{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.groups::-webkit-scrollbar,.types::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border:1px solid transparent;border-radius:999px;color:var(--muted)}
+.chip:hover{color:var(--ink)}
+.chip[aria-pressed="true"]{color:var(--ink);border-color:var(--ink)}
+.chip sup{font-size:9px;margin-left:3px;letter-spacing:0;font-variant-numeric:tabular-nums}
+.rail-right{display:flex;align-items:center;gap:14px;flex-shrink:0;font-size:12.5px;letter-spacing:.06em;color:var(--muted)}
+.rail-right select{font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);padding:4px 2px;text-transform:uppercase;letter-spacing:.06em;font-size:12px}
+.density{display:flex;gap:4px}
+.density button{width:26px;height:26px;display:grid;place-items:center;color:var(--muted);border-radius:4px}
+.density button[aria-pressed="true"]{color:var(--ink);background:var(--tile)}
+.density svg{width:14px;height:14px;fill:currentColor}
+.subrail{border-bottom:1px solid var(--line)}
+.subrail .wrap{padding-block:8px}
+.subrail .chip{font-size:11.5px;padding:5px 10px;text-transform:none;letter-spacing:.02em}
+
+/* grid */
+.count{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;padding-block:22px 0;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(var(--cols,4),minmax(0,1fr));gap:48px 20px;padding-block:22px 96px}
+.card{display:flex;flex-direction:column;gap:14px;text-align:left;min-width:0}
+.media{position:relative;aspect-ratio:4/5;max-width:100%;background:var(--tile);overflow:hidden;display:grid;place-items:center}
+.media img{position:absolute;inset:8%;width:84%;height:84%;object-fit:contain;transition:transform .6s cubic-bezier(.2,.7,.2,1);mix-blend-mode:multiply}
+.card:hover .media img{transform:scale(1.04)}
+.media .veneer{position:absolute;inset:0;opacity:0;transition:opacity .3s}
+.media.noimg .veneer{opacity:.22}
+.media.noimg img{display:none}
+.veneer-label{position:relative;font-family:var(--display);letter-spacing:.06em;font-size:clamp(22px,2.4vw,34px);color:var(--ink);padding:6px 14px;opacity:0}
+.media.noimg .veneer-label{opacity:1}
+.tag{position:absolute;top:12px;left:12px;background:var(--bg);padding:3px 7px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.quick{position:absolute;left:12px;right:12px;bottom:12px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:var(--bg);color:var(--ink);padding:10px;text-align:center;opacity:0;transform:translateY(6px);transition:.3s}
+.card:hover .quick,.card:focus-visible .quick{opacity:1;transform:none}
+.caption{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.caption h2{font-family:var(--body);font-weight:400;font-size:15px;margin:0;text-transform:lowercase;letter-spacing:.01em}
+.caption span{font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:80px 0}
+
+/* bespoke band */
+.band{background:var(--marsala);color:var(--on-marsala)}
+.band .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;padding-block:64px;align-items:center}
+.band h3{font-family:var(--display);font-weight:400;font-size:clamp(30px,4vw,48px);line-height:1.05;margin:0;text-wrap:balance}
+.band p{margin:0 0 20px;max-width:46ch}
+.btn{display:inline-block;border:1px solid currentColor;padding:12px 22px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.btn:hover{background:var(--on-marsala);color:var(--marsala)}
+.btn:not(.band .btn):not(.btn-solid):hover{background:var(--ink);color:var(--bg)}
+
+/* footer */
+footer{border-top:1px solid var(--line);font-size:13px}
+footer .cols{display:grid;grid-template-columns:1.4fr repeat(3,1fr) 1.4fr;gap:32px;padding-block:56px}
+footer h4{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;margin:0 0 14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;color:var(--muted)}
+footer ul a:hover{color:var(--ink)}
+footer form{display:flex;border-bottom:1px solid var(--ink);margin-top:6px}
+footer input{flex:1;min-width:0;font:inherit;background:transparent;border:0;color:var(--ink);padding:8px 0}
+footer input::placeholder{color:var(--muted)}
+footer form button{font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.form-note{font-size:12px;color:var(--accent);min-height:1.4em;margin:8px 0 0}
+.legal{border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+.legal .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:18px}
+.legal span:first-child{max-width:80ch}
+
+/* quick view drawer */
+.scrim{position:fixed;inset:0;background:var(--overlay);z-index:40;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--bg);z-index:41;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;overflow-y:auto;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) 0}
+.drawer.open{transform:none}
+.drawer .media{aspect-ratio:1/1;flex-shrink:0}
+.drawer .body{padding:28px 32px 40px;display:grid;gap:18px}
+.drawer .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.drawer h2{font-family:var(--display);font-weight:400;font-size:38px;line-height:1;margin:0}
+.drawer p{margin:0;max-width:52ch}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:8px 24px;font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+.spec dt{color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-size:11px;padding-top:2px}
+.spec dd{margin:0;font-variant-numeric:tabular-nums}
+.drawer .actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-solid{background:var(--marsala);color:var(--on-marsala);border-color:var(--marsala)}
+.btn-solid:hover{background:transparent;color:var(--marsala)}
+.close{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:calc(14px + env(safe-area-inset-right,0px));width:40px;height:40px;border-radius:50%;background:var(--bg);display:grid;place-items:center;z-index:2;font-size:20px}
+
+@media (max-width:1100px){nav.main{gap:18px}.grid{--cols:3 !important}footer .cols{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:860px){
+  nav.main,.tools .t-hide{display:none}.menu-btn{display:block}
+  .intro{grid-template-columns:1fr}.band .wrap{grid-template-columns:1fr}
+  .grid{--cols:2 !important;gap:36px 12px}.density{display:none}
+  .rail .wrap{flex-wrap:wrap}.rail-right{width:100%;justify-content:space-between}
+  footer .cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:420px){.caption{flex-direction:column;gap:2px}.drawer .body{padding:24px 20px 32px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>
+/* Home: slider hero, category tiles, studio statement, craft sequence with veneer swatches, featured scroller, bespoke band, catalogue request. */
+/* Opening diptych: two large images side by side, before the slider. */
+.diptych{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:var(--line);border-bottom:1px solid var(--line)}
+.panel{position:relative;display:block;min-width:0;background:var(--bg)}
+.panel .media{aspect-ratio:auto;height:clamp(520px,86vh,960px);max-width:100%}
+.panel .media img{inset:7%;width:86%;height:86%}
+.panel:hover .media img{transform:scale(1.03)}
+.panel .veneer-label{display:none}
+.panel .cap{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:end;gap:16px;padding:28px max(16px, env(safe-area-inset-left, 0px)) 28px 32px}
+.panel:nth-child(2) .cap{padding-left:32px;padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.panel .cap h2{font-family:var(--display);font-weight:400;font-size:clamp(40px,4.6vw,72px);line-height:.95;margin:6px 0 0;letter-spacing:.02em}
+.panel .cap .link{white-space:nowrap}
+@media (max-width:860px){
+  .diptych{grid-template-columns:1fr}
+  .panel .media{height:auto;aspect-ratio:4/5}
+  .panel .cap,.panel:nth-child(2) .cap{padding:20px var(--gutter-r) 22px var(--gutter)}
+}
+.hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+.slides{position:relative;min-height:clamp(480px,72vh,760px)}
+.slide{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s .9s}
+.slide.on{opacity:1;visibility:visible;transition:opacity .9s ease}
+.slide .copy{display:flex;flex-direction:column;justify-content:center;gap:22px;padding-block:48px;padding-left:max(16px, env(safe-area-inset-left, 0px), calc((100vw - 1440px)/2 + 16px));padding-right:40px}
+.eyebrow{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.slide h2{font-family:var(--display);font-weight:400;font-size:clamp(52px,7vw,112px);line-height:.92;margin:0;letter-spacing:.02em}
+.slide h2 span{display:block;font-size:.36em;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-top:12px}
+.slide p{margin:0;max-width:38ch;color:var(--muted);font-size:16px}
+.slide .media{aspect-ratio:auto;height:100%}
+.slide .media img{inset:6%;width:88%;height:88%}
+.slide .copy > *{transform:translateY(14px);opacity:0;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .8s}
+.slide.on .copy > *{transform:none;opacity:1}
+.slide.on .copy > :nth-child(2){transition-delay:.08s}.slide.on .copy > :nth-child(3){transition-delay:.16s}.slide.on .copy > :nth-child(4){transition-delay:.24s}
+.hero-ctrl{position:absolute;left:max(16px, env(safe-area-inset-left, 0px), calc((100vw - 1440px)/2 + 16px));bottom:28px;display:flex;align-items:center;gap:18px;z-index:2;font-size:12px;letter-spacing:.12em;font-variant-numeric:tabular-nums}
+.dots{display:flex;gap:8px}
+.dots button{width:38px;height:20px;position:relative}
+.dots button::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line)}
+.dots button i{position:absolute;left:0;top:50%;height:1px;width:0;background:var(--ink)}
+.dots button[aria-current="true"] i{animation:fill 6s linear forwards}
+.paused .dots button[aria-current="true"] i{animation-play-state:paused}
+@keyframes fill{to{width:100%}}
+.hero-ctrl .arrow{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:14px}
+.hero-ctrl .arrow:hover{border-color:var(--ink)}
+
+section.block{padding-block:88px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+.head h3{font-family:var(--display);font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1;margin:0;letter-spacing:.02em}
+.link{font-size:12px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:3px}
+
+.cats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.cat{display:flex;flex-direction:column;gap:14px;min-width:0}
+.cat .media{aspect-ratio:5/4}
+.cat .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.cat h4{font-family:var(--display);font-weight:400;font-size:28px;margin:0;letter-spacing:.04em}
+.cat small{font-size:12.5px;color:var(--muted)}
+.cat:hover .media img{transform:scale(1.04)}
+
+.about{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:start;border-top:1px solid var(--line)}
+.about blockquote{margin:0;font-family:var(--display);font-size:clamp(30px,3.6vw,50px);line-height:1.12;letter-spacing:.01em;text-wrap:balance}
+.about blockquote em{font-style:normal;color:var(--accent)}
+.about .txt{display:grid;gap:18px;color:var(--muted);font-size:16px;max-width:44ch}
+
+.craft{background:var(--bg);border-top:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;counter-reset:s}
+.step{display:grid;gap:12px;border-top:1px solid var(--ink);padding-top:20px}
+.step b{font-family:var(--display);font-weight:400;font-size:44px;line-height:1}
+.step h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin:0}
+.step p{margin:0;color:var(--muted);max-width:40ch}
+.swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:56px}
+.sw{display:grid;gap:8px;font-size:12px;color:var(--muted)}
+.sw i{display:block;aspect-ratio:1;border-radius:2px}
+.sw span{color:var(--ink);font-size:13px}
+
+.scroller{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,22%);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;scrollbar-width:thin}
+.scroller .card{scroll-snap-align:start}
+
+.catalogue{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;border-top:1px solid var(--line)}
+.catalogue p{color:var(--muted);margin:14px 0 0;max-width:44ch}
+.catalogue form{display:flex;border-bottom:1px solid var(--ink)}
+.catalogue input{flex:1;min-width:0;font:inherit;font-size:16px;background:transparent;border:0;color:var(--ink);padding:12px 0}
+.catalogue input::placeholder{color:var(--muted)}
+.catalogue button{font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+
+@media (max-width:1100px){.cats{grid-template-columns:repeat(2,minmax(0,1fr))}.scroller{grid-auto-columns:minmax(240px,30%)}}
+@media (max-width:860px){
+  .slides{min-height:0}
+  .slide{position:relative;display:none;grid-template-columns:1fr}
+  .slide.on{display:grid}
+  .slide .media{aspect-ratio:1/1;height:auto;order:-1}
+  .slide .copy{padding:28px var(--gutter-r) 90px var(--gutter)}
+  .about,.catalogue{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:28px}
+  .swatches{grid-template-columns:repeat(3,minmax(0,1fr))}
+  section.block{padding-block:64px}
+  .scroller{grid-auto-columns:72%}
+}
+@media (max-width:520px){.cats{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.dots button i{animation:none!important;width:100%}}
+</style>
+<div class="notice"><div class="wrap">Made to order in Portugal · Delivered across the UK, white glove</div></div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#home" aria-label="Marquetery home">Marque<span>tery</span></a>
+    <nav class="main" aria-label="Main">
+      <a href="#collections">Collections</a>
+      <a href="#bespoke">Bespoke</a>
+      <a href="#top">Projects</a>
+      <a href="#top">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="tools">
+      <a class="t-hide" href="#top">Search</a>
+      <a href="#top">Bag (0)</a>
+      <button class="menu-btn" type="button" aria-label="Open menu">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="view-home">
+  <section class="diptych" id="diptych" aria-label="Highlights"></section>
+  <section class="hero" aria-roledescription="carousel" aria-label="Featured pieces">
+    <div class="slides" id="slides"></div>
+    <div class="hero-ctrl">
+      <button class="arrow" type="button" id="prev" aria-label="Previous slide">←</button>
+      <div class="dots" id="dots"></div>
+      <button class="arrow" type="button" id="next" aria-label="Next slide">→</button>
+      <span id="counter"></span>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="head"><h3>Collections</h3><a class="link" href="#collections">View all 50 pieces</a></div>
+      <div class="cats" id="cats"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap about">
+      <blockquote>Furniture as <em>inlaid art</em>. Hundreds of slivers of wood, cut by hand and set into one surface.</blockquote>
+      <div class="txt">
+        <p>Marquetery brings collectable marquetry furniture to homes, hotels and private residences across the United Kingdom.</p>
+        <p>Each piece is built to order by master craftsmen in Portugal, using techniques that date back to the cabinet-makers of the 17th century, and drawn with the geometry of Art Deco, Cubism and the Memphis group.</p>
+        <a class="link" href="#bespoke" style="justify-self:start">Our bespoke service</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block craft">
+    <div class="wrap">
+      <div class="head"><h3>From veneer to finished piece</h3><span class="eyebrow">10–12 weeks, made to order</span></div>
+      <div class="steps">
+        <div class="step"><b>I</b><h4>Selecting the veneer</h4><p>Sheets of bird's-eye maple, walnut root and wenge are chosen for figure and tone, then matched across the whole piece.</p></div>
+        <div class="step"><b>II</b><h4>Cutting and assembling</h4><p>Each shape is cut by hand, fitted edge to edge like a puzzle and pressed onto a stable core.</p></div>
+        <div class="step"><b>III</b><h4>Lacquering and finishing</h4><p>Surfaces are sanded, sealed and polished to a soft satin or a deep gloss lacquer, with brass or gold steel details where the design calls for them.</p></div>
+      </div>
+      <div class="swatches" aria-label="Veneers we work with">
+        <div class="sw"><i style="background:linear-gradient(115deg,#e8dcc4,#f3ead8 40%,#dccaa6)"></i><span>Bird's-eye maple</span>Pale, speckled</div>
+        <div class="sw"><i style="background:radial-gradient(circle at 30% 40%,#8a5a35,#5e3a20 60%,#7a4c2b)"></i><span>Walnut root</span>Burled, warm</div>
+        <div class="sw"><i style="background:repeating-linear-gradient(95deg,#2b241f 0 3px,#3b3029 3px 7px)"></i><span>Wenge</span>Near black, straight grain</div>
+        <div class="sw"><i style="background:radial-gradient(circle at 60% 50%,#c9a77c,#a98257 55%,#c2a078)"></i><span>Ash root</span>Swirling figure</div>
+        <div class="sw"><i style="background:repeating-linear-gradient(80deg,#5a2f22 0 4px,#6e3a2a 4px 9px)"></i><span>Palissander</span>Deep red-brown</div>
+        <div class="sw"><i style="background:radial-gradient(circle at 40% 60%,#a5583a,#8a4630 60%,#9c5236)"></i><span>Cherry root</span>Rich, figured</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="head"><h3>Featured pieces</h3><a class="link" href="#collections">All products</a></div>
+      <div class="scroller" id="featured"></div>
+    </div>
+  </section>
+
+  <section class="band" id="bespoke">
+    <div class="wrap">
+      <h3>Every piece, cut to your room.</h3>
+      <div>
+        <p>Change the veneer palette, resize a dining table to seat twelve, or commission a one-off totem for a hotel lobby. Our studio works with architects and private clients from sketch to installation.</p>
+        <a class="btn" href="#contact">Start a bespoke project</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap catalogue">
+      <div>
+        <h3 class="head" style="margin:0"><span style="font-family:var(--display);font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1">The 2026 catalogue</span></h3>
+        <p>All 50 pieces with full dimensions, veneer options and lead times. Leave your email and we will send the PDF.</p>
+      </div>
+      <div>
+        <form id="cat-form" novalidate>
+          <label for="cat-email" style="position:absolute;left:-9999px">Email address</label>
+          <input id="cat-email" type="email" placeholder="Your email address" autocomplete="email">
+          <button type="submit">Request catalogue</button>
+        </form>
+        <p class="form-note" id="cat-note"></p>
+      </div>
+    </div>
+  </section>
+</main>
+<main id="view-products" hidden>
+  <div class="wrap">
+    <div class="crumbs"><a href="#home">Home</a> / All products</div>
+    <div class="intro">
+      <h1>All <em>products</em></h1>
+      <p>Tables, storage and sculptural pieces in hand-cut wood marquetry. Every piece is made to order, and each can be adapted in veneer, finish and size.</p>
+    </div>
+  </div>
+
+  <div class="rail">
+    <div class="wrap">
+      <div class="groups" id="groups" role="toolbar" aria-label="Filter by category"></div>
+      <div class="rail-right">
+        <label for="sort">Sort</label>
+        <select id="sort">
+          <option value="featured">Featured</option>
+          <option value="az">Name, A–Z</option>
+          <option value="za">Name, Z–A</option>
+          <option value="size">Largest first</option>
+        </select>
+        <div class="density" role="group" aria-label="Grid density">
+          <button type="button" data-cols="3" aria-label="Three columns"><svg viewBox="0 0 14 14"><rect x="0" y="0" width="4" height="14"/><rect x="5" y="0" width="4" height="14"/><rect x="10" y="0" width="4" height="14"/></svg></button>
+          <button type="button" data-cols="4" aria-label="Four columns"><svg viewBox="0 0 14 14"><rect x="0" y="0" width="2.75" height="14"/><rect x="3.75" y="0" width="2.75" height="14"/><rect x="7.5" y="0" width="2.75" height="14"/><rect x="11.25" y="0" width="2.75" height="14"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="subrail" id="subrail" hidden><div class="wrap"><div class="types" id="types" role="toolbar" aria-label="Filter by type"></div></div></div>
+
+  <div class="wrap">
+    <div class="count" id="count" aria-live="polite"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+
+  </main>
+<footer id="contact">
+  <div class="wrap cols">
+    <div>
+      <a class="logo" href="#home">Marque<span>tery</span></a>
+      <p style="color:var(--muted);max-width:30ch">Handcrafted marquetry furniture for homes, hotels and private residences.</p>
+    </div>
+    <div><h4>Products</h4><ul id="foot-cats"></ul></div>
+    <div><h4>Studio</h4><ul><li><a href="#top">About</a></li><li><a href="#bespoke">Bespoke</a></li><li><a href="#top">Projects</a></li><li><a href="#top">Press</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>info@marquetery.uk</li><li>66 Paul Street<br>London EC2A 4NA<br>United Kingdom</li><li><a href="#top">Instagram</a></li><li><a href="#top">Pinterest</a></li></ul></div>
+    <div>
+      <h4>Newsletter</h4>
+      <p style="color:var(--muted);margin:0">New pieces and studio news, a few times a year.</p>
+      <form id="news" novalidate>
+        <label for="email" style="position:absolute;left:-9999px">Email address</label>
+        <input id="email" type="email" placeholder="Email address" autocomplete="email">
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="form-note" id="news-note"></p>
+    </div>
+  </div>
+  <div class="legal"><div class="wrap"><span>© 2026 Marquetery.uk is a trading name of After Hours Collections Ltd. Registered in England and Wales, company no. 15580283. Registered office: 66 Paul Street, London EC2A 4NA, United Kingdom.</span><span>Prices on request · Lead time 10–12 weeks</span></div></div>
+</footer>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="d-name" role="dialog">
+  <button class="close" id="d-close" type="button" aria-label="Close">×</button>
+  <div class="media" id="d-media"><div class="veneer"></div><span class="veneer-label"></span><img alt="" id="d-img"></div>
+  <div class="body">
+    <div class="eyebrow" id="d-cat"></div>
+    <h2 id="d-name"></h2>
+    <p id="d-desc"></p>
+    <dl class="spec">
+      <dt>Size</dt><dd id="d-dim"></dd>
+      <dt>Made</dt><dd>To order, 10–12 weeks</dd>
+      <dt>Options</dt><dd>Veneer, finish and dimensions on request</dd>
+    </dl>
+    <div class="actions">
+      <a class="btn btn-solid" href="#contact" id="d-enquire">Enquire</a>
+      <a class="btn" id="d-source" href="#" target="_blank" rel="noopener">Reference sheet</a>
+    </div>
+  </div>
+</aside>
+
+<script>
+(()=>{
+const PRODUCTS = [{"id": "amadeo-dining-table", "name": "Amadeo Dining Table", "group": "Tables", "type": "Dining Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL169-hommes-studio-amadeo-dining-table-01.png", "dimensions": "240 x 120 x 74 cm", "description": "A dining table blending timeless materials with modern wood marquetry, for contemporary and mid-century interiors.", "source": "https://hommes.studio/tables/dining-table/amadeo-dining-table/"}, {"id": "ruskin-cabinet", "name": "Ruskin Cabinet", "group": "Storage", "type": "Cabinet", "image": "https://hommes.studio/wp-content/uploads/HOMMESTR033-hommes-ruskin-cabinet-v2-closed-01-front.png", "dimensions": "180 x 55 x 150 cm", "description": "A minimalist storage piece with a bold striped wood veneer, three doors, and six drawers, suited to modern interiors.", "source": "https://hommes.studio/storage/cabinet/ruskin-cabinet/"}, {"id": "dylan-sideboard", "name": "Dylan Sideboard", "group": "Storage", "type": "Sideboard", "image": "https://hommes.studio/wp-content/uploads/HOMMESTR035-hommes-sideboard-01-estudio-01-front.png", "dimensions": "140 x 40 x 80 cm", "description": "A mid-century modern wood sideboard with four discreet drawers and a playful, sculptural look.", "source": "https://hommes.studio/storage/sideboard/dylan-sideboard/"}, {"id": "becket-bench", "name": "Becket Bench", "group": "Seating", "type": "Bench", "image": "https://hommes.studio/wp-content/uploads/HOMMESEAT151-hommes-becket-bench-cherry-01-front.png", "dimensions": "180 x 50 x 85 cm", "description": "A cherry-veneer bench with a cream velvet seat, suited to entryways or dining rooms.", "source": "https://hommes.studio/seating/bench/becket-bench/"}, {"id": "1987-desk", "name": "1987 Desk", "group": "Tables", "type": "Desk", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL160-001-hommes-studio-1987-desk.png", "dimensions": "180 x 70 x 79 cm", "description": "An oval wooden desk with a modern twist on marquetry and a vintage-inspired, timeless look.", "source": "https://hommes.studio/tables/desk-tables/1987-desk/"}, {"id": "hazel-wall-decor", "name": "Hazel Wall Decor", "group": "Complements", "type": "Wall Decor", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL049-001-hommes.studio-hazel-wall-decor.png", "dimensions": "90 x 10 x 140 cm", "description": "A geometric wall panel built from marquetry in several wood tones, arranged to create depth.", "source": "https://hommes.studio/complements/wall-decor/hazel-wall-decor/"}, {"id": "cleo-mirror", "name": "Cleo Mirror", "group": "Complements", "type": "Mirror", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL046-001-hommes.studio-cleo-mirror.png", "dimensions": "130 x 9 x 130 cm", "description": "A wall mirror with a sunburst-style frame of layered wood veneers, a sculptural focal point.", "source": "https://hommes.studio/complements/mirror/cleo-mirror/"}, {"id": "zola-wall-decor", "name": "Zola Wall Decor", "group": "Complements", "type": "Wall Decor", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL047-001-hommes.studio-zola-wall-decor.png", "dimensions": "90 x 10 x 120 cm", "description": "A handcrafted wood wall panel with flowing, nature-inspired curves and geometric lines.", "source": "https://hommes.studio/complements/wall-decor/zola-wall-decor/"}, {"id": "ruby-wall-decor", "name": "Ruby Wall Decor", "group": "Complements", "type": "Wall Decor", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL048-001-hommes.studio-ruby-wall-decor.png", "dimensions": "70 x 10 x 125 cm", "description": "A handcrafted wooden wall piece with lively, irregular forms that add movement to a room.", "source": "https://hommes.studio/complements/wall-decor/ruby-wall-decor/"}, {"id": "jojo-sideboard-2", "name": "Jojo Sideboard", "group": "Storage", "type": "Sideboard", "image": "https://hommes.studio/wp-content/uploads/HOMMESTR033-hommes-jojo-sideboard-001.png", "dimensions": "240 x 55 x 82 cm", "description": "An Art Deco-inspired sideboard with black marquetry doors and a white maple interior.", "source": "https://hommes.studio/storage/sideboard/jojo-sideboard-2/"}, {"id": "blanco-mirror", "name": "Blanco Mirror", "group": "Complements", "type": "Mirror", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL043-001-hommes.studio-blanco-mirror.png", "dimensions": "130 x 8 x 130 cm", "description": "A circular mirror pairing warm wood marquetry with a soft white lacquered finish.", "source": "https://hommes.studio/complements/mirror/blanco-mirror/"}, {"id": "kali-mirror", "name": "Kali Mirror", "group": "Complements", "type": "Mirror", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL042-001-hommes.studio-kali-mirror.png", "dimensions": "102.5 x 12 x 140 cm", "description": "An oval wall mirror with a warm wooden frame inlaid with a geometric marquetry pattern.", "source": "https://hommes.studio/complements/mirror/kali-mirror/"}, {"id": "cora-mirror", "name": "Cora Mirror", "group": "Complements", "type": "Mirror", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL041-001-hommes.studio-cora-mirror.png", "dimensions": "130 x 8 x 130 cm", "description": "A round wood wall mirror with a geometric marquetry pattern and mid-century styling.", "source": "https://hommes.studio/complements/mirror/cora-mirror/"}, {"id": "rubik-totem", "name": "Rubik Totem", "group": "Complements", "type": "Totem", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL039-hommes-totem-rubik-001.png", "dimensions": "30 x 30 x 180 cm", "description": "A mid-century modern totem with geometric wood marquetry in black, white and ash.", "source": "https://hommes.studio/complements/totem/rubik-totem/"}, {"id": "jacarta-totem", "name": "Jacarta Totem", "group": "Complements", "type": "Totem", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL040-hommes-totem-jacarta-001.png", "dimensions": "35 x 50 x 180 cm", "description": "An abstract wood marquetry piece in black and dark orange, combining shapes of different sizes.", "source": "https://hommes.studio/complements/totem/jacarta-totem/"}, {"id": "amalia-totem", "name": "Amalia Totem", "group": "Complements", "type": "Totem", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL038-hommes-totem-amalia-001.png", "dimensions": "40 x 40 x 160 cm", "description": "A tall geometric piece in black gloss and white bird's-eye wood marquetry.", "source": "https://hommes.studio/complements/totem/amalia-totem/"}, {"id": "santiago-center-table", "name": "Santiago Center Table", "group": "Tables", "type": "Center Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL019-001-hommes-studio-santiago-center-table-front.png", "dimensions": "100 x 100 x 50 cm", "description": "A coffee table with a bird's-eye marquetry top and glossy black lacquered legs, inspired by Cubism.", "source": "https://hommes.studio/tables/center-table/santiago-center-table/"}, {"id": "mikado-room-divider", "name": "Mikado Room Divider", "group": "Complements", "type": "Room Divider", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL035-mikado-folding-screen-001.png", "dimensions": "300 x 6 x 200 cm", "description": "A folding screen with asymmetrical marquetry panels in a jewel-toned, Art Deco palette.", "source": "https://hommes.studio/complements/room-divider/mikado-room-divider/"}, {"id": "brutus-totem", "name": "Brutus Totem", "group": "Complements", "type": "Totem", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL037-hommes-totem-brutus-001.png", "dimensions": "40 x 40 x 180 cm", "description": "An obelisk-like piece covered in black wood marquetry patterns.", "source": "https://hommes.studio/complements/totem/brutus-totem/"}, {"id": "madame-totem", "name": "Madame Totem", "group": "Complements", "type": "Totem", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL036-madame-totem-001.png", "dimensions": "49 x 49 x 160 cm", "description": "A handmade decorative column with striking monochrome geometric marquetry.", "source": "https://hommes.studio/complements/totem/madame-totem/"}, {"id": "nice-prisma-side-table", "name": "Nice Prisma Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL017-001-hommes-studio-nice-side-table-front.png", "dimensions": "60 x 60 x 45 cm", "description": "A cube-shaped side table with a white and blue marquetry pattern, inspired by Yves Klein.", "source": "https://hommes.studio/tables/side-table/nice-prisma-side-table/"}, {"id": "folk-bedside-table", "name": "Folk Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL115-001-hommes-studio-folk-bedside-table-front.png", "dimensions": "55 x 55 x 50 cm", "description": "A round, three-legged bedside table with marquetry in black, white and ash wood.", "source": "https://hommes.studio/tables/bedside-table/folk-bedside-table/"}, {"id": "roy-wood-sideboard", "name": "Roy Wood Sideboard", "group": "Storage", "type": "Sideboard", "image": "https://hommes.studio/wp-content/uploads/HOMMESTR030-001-hommes-studio-roy-wood-sideboard.png", "dimensions": "160 x 55 x 85 cm", "description": "A marquetry sideboard with Art Deco touches, in black wenge ash with gold stainless steel details.", "source": "https://hommes.studio/storage/sideboard/roy-wood-sideboard/"}, {"id": "palma-center-table", "name": "Palma Center Table", "group": "Tables", "type": "Center Table", "image": "", "dimensions": "100 x 100 x 50 cm", "description": "A center table with mid-century lines and a marquetry top in walnut root, bird's eye and ash root.", "source": "https://hommes.studio/tables/center-table/palma-center-table/"}, {"id": "dolores-side-table", "name": "Dolores Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL125-001-hommes-studio-dolores-side-table-front.png", "dimensions": "55 x 55 x 51 cm", "description": "A side table with a marquetry top in a playful, Dada-inspired geometric pattern.", "source": "https://hommes.studio/tables/side-table/dolores-side-table/"}, {"id": "austria-side-table", "name": "Austria Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL023-001-hommes-studio-austria-side-table-front.png", "dimensions": "55 x 55 x 51 cm", "description": "A nature-inspired marquetry side table, tailored to your preferred wood tones.", "source": "https://hommes.studio/tables/side-table/austria-side-table/"}, {"id": "tribal-bedside-table", "name": "Tribal Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL108-001-hommes-studio-tribal-bedside-table-front.png", "dimensions": "57 x 50 x 60 cm", "description": "A black bedside table with three drawers, marquetry detailing and sphere-style legs.", "source": "https://hommes.studio/tables/bedside-table/tribal-bedside-table/"}, {"id": "folk-center-table", "name": "Folk Center Table", "group": "Tables", "type": "Center Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL103-001-hommes-studio-folk-center-table-front.png", "dimensions": "100 x 100 x 50 cm", "description": "A three-legged table with a marquetry top drawing on multicultural motifs and pop imagery.", "source": "https://hommes.studio/tables/center-table/folk-center-table/"}, {"id": "malaga-bedside-table", "name": "Malaga Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL106-001-hommes-studio-malaga-bedside-table-front.png", "dimensions": "57 x 50 x 60 cm", "description": "A cubist-inspired nightstand on wooden-sphere legs, white bird's-eye body with grey marquetry.", "source": "https://hommes.studio/tables/bedside-table/malaga-bedside-table/"}, {"id": "nice-side-table", "name": "Nice Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL126-001-hommes-studio-yves-side-table-front.png", "dimensions": "55 x 55 x 51 cm", "description": "A compact round marquetry side table inlaid in black and natural bird's-eye veneer.", "source": "https://hommes.studio/tables/side-table/nice-side-table/"}, {"id": "folk-prisma-side-table", "name": "Folk Prisma Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL130-001-hommes-studio-folk-prisma-side-table-quarter.png", "dimensions": "60 x 60 x 45 cm", "description": "A cube-shaped marquetry side table in black, white and cherry-root wood.", "source": "https://hommes.studio/tables/side-table/folk-prisma-side-table/"}, {"id": "nice-bedside-table", "name": "Nice Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL107-001-hommes-studio-nice-bedside-table-front.png", "dimensions": "57 x 50 x 60 cm", "description": "A three-drawer nightstand on spherical wooden legs, in black and natural bird's-eye marquetry.", "source": "https://hommes.studio/tables/bedside-table/nice-bedside-table/"}, {"id": "fuschia-dining-table", "name": "Fuschia Dining Table", "group": "Tables", "type": "Dining Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL001-001-hommes-studio-fuschia-dining-table-front-2.png", "dimensions": "280 x 120 x 77 cm", "description": "An ivory dining table with a bird's-eye veneer top and polished gold details, inspired by 1980s Memphis design.", "source": "https://hommes.studio/tables/dining-table/fuschia-dining-table/"}, {"id": "joan-prisma-side-table", "name": "Joan Prisma Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL128-001-hommes-studio-joan-prisma-side-table-side1.png", "dimensions": "60 x 60 x 45 cm", "description": "A cube-shaped side table with Dada-inspired marquetry in bird's-eye, pear and ash root.", "source": "https://hommes.studio/tables/side-table/joan-prisma-side-table/"}, {"id": "malaga-center-table", "name": "Malaga Center Table", "group": "Tables", "type": "Center Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL097-001-hommes-studio-malaga-center-table-front.png", "dimensions": "100 x 100 x 50 cm", "description": "A coffee table with a cubist-inspired top in white and black bird's-eye on three beige lacquer legs.", "source": "https://hommes.studio/tables/center-table/malaga-center-table/"}, {"id": "ruiz-bedside-table", "name": "Ruiz Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL131-001-hommes-studio-ruiz-bedside-table-front.png", "dimensions": "57 x 50 x 60 cm", "description": "A handmade nightstand with a Picasso-inspired marquetry pattern and sphere-shaped legs.", "source": "https://hommes.studio/tables/bedside-table/ruiz-bedside-table/"}, {"id": "malaga-prisma-side-table", "name": "Malaga Prisma Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL129-001-hommes-studio-malaga-prisma-side-table-front.png", "dimensions": "60 x 60 x 45 cm", "description": "A cube-shaped side table in gloss white and black bird's-eye marquetry.", "source": "https://hommes.studio/tables/side-table/malaga-prisma-side-table/"}, {"id": "ludwika-prisma-side-table", "name": "Ludwika Prisma Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL127-001-hommes-studio-ludwika-prisma-side-table-front.png", "dimensions": "60 x 60 x 45 cm", "description": "A geometric side table in mixed-wood marquetry, inspired by Malevich.", "source": "https://hommes.studio/tables/side-table/ludwika-prisma-side-table/"}, {"id": "cadiz-bedside-table", "name": "Cadiz Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL117-001-hommes-studio-cadiz-bedside-table-front.png", "dimensions": "55 x 55 x 50 cm", "description": "A nightstand on three slim legs with a marquetry top of Picasso-inspired cubist figures.", "source": "https://hommes.studio/tables/bedside-table/cadiz-bedside-table/"}, {"id": "austria-center-table", "name": "Austria Center Table", "group": "Tables", "type": "Center Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL071-001-hommes-studio-austria-center-table-front.png", "dimensions": "120 x 120 x 30 cm", "description": "A coffee table inlaid in toulipier, black bird's eye, ash root and cherry root.", "source": "https://hommes.studio/tables/center-table/austria-center-table/"}, {"id": "zimmer-dining-table", "name": "Zimmer Dining Table", "group": "Tables", "type": "Dining Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL064-001-hommes-studio-zimmer-dining-table-front-1.png", "dimensions": "280 x 110 x 76 cm", "description": "A contemporary table on black-lacquered legs with an inlaid top of mixed wood veneers.", "source": "https://hommes.studio/tables/dining-table/zimmer-dining-table/"}, {"id": "claire-dressing-tabe", "name": "Claire Dressing Table", "group": "Storage", "type": "Dresser", "image": "https://hommes.studio/wp-content/uploads/HOMMESBED001-001-hommes-studio-claire-dressing-table-front-2.png", "dimensions": "155 x 55 x 144 cm", "description": "An Art Deco-inspired dressing table with rounded, lavish forms for the master bedroom.", "source": "https://hommes.studio/storage/dresser/claire-dressing-tabe/"}, {"id": "ludwika-side-table", "name": "Ludwika Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL122-001-hommes-studio-ludwika-side-table-front.png", "dimensions": "55 x 55 x 51 cm", "description": "A marquetry side table inspired by Kazimir Malevich's geometric style.", "source": "https://hommes.studio/tables/side-table/ludwika-side-table/"}, {"id": "rapple-console-table", "name": "Rapple Console Table", "group": "Tables", "type": "Console Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL032-001-hommes-studio-raplee-console-front-2.png", "dimensions": "160 x 41 x 95 cm", "description": "A 1920s-inspired console with a glossy black top, gold-toned trim and bird's-eye finishes.", "source": "https://hommes.studio/tables/console-table/rapple-console-table/"}, {"id": "annali-console-table", "name": "Annali Console Table", "group": "Tables", "type": "Console Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL036-001-hommes-studio-analli-console-front-2.png", "dimensions": "140 x 47 x 85 cm", "description": "A glossy terra brown and ivory drawer console with an Art Deco look.", "source": "https://hommes.studio/tables/console-table/annali-console-table/"}, {"id": "rumba-console-table", "name": "Rumba Console Table", "group": "Tables", "type": "Console Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL031-001-hommes-studio-rumba-console-back-2.png", "dimensions": "150 x 50 x 93 cm", "description": "A console with marquetry tops and playful motifs that bring energy to an entryway.", "source": "https://hommes.studio/tables/console-table/rumba-console-table/"}, {"id": "matrioska-bedside-table", "name": "Matrioska Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESBED009-001-hommes-studio-matrioska-bedside-table-quarter-2.png", "dimensions": "57 x 50 x 60 cm", "description": "A geometric nightstand in walnut and bird's-eye marquetry with gold steel and black lacquer.", "source": "https://hommes.studio/tables/side-table/matrioska-bedside-table/"}, {"id": "charlot-console-table", "name": "Charlot Console Table", "group": "Tables", "type": "Console Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL038-001-hommes-studio-charlot-console-front-1.png", "dimensions": "180 x 45 x 96 cm", "description": "An Art Deco-inspired entrance console with a marble top and marquetry panels.", "source": "https://hommes.studio/tables/console-table/charlot-console-table/"}, {"id": "luminous-wood-floor-lamp", "name": "Luminous Wood Floor Lamp", "group": "Lighting", "type": "Floor Lamp", "image": "https://hommes.studio/wp-content/uploads/HOMMESLGHT016-001-hommes-studio-luminous-wood-floor-lamp-45-1.png", "dimensions": "51 x 51 x 154 cm", "description": "A 1930s-style turned-wood lamp in walnut and wenge with gold details and a white glass globe.", "source": "https://hommes.studio/lighting/floor-lamp/luminous-wood-floor-lamp/"}, {"id": "austria-bedside-table", "name": "Austria Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESBED010-001-hommes-studio-austria-bedside-table-front.png", "dimensions": "55 x 55 x 50 cm", "description": "A marquetry nightstand with a gloss white interior, in customisable wood finishes.", "source": "https://hommes.studio/tables/side-table/austria-bedside-table/"}];
+const byId = id => PRODUCTS.find(p=>p.id===id);
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function veneer(seed){
+  let h=0; for (const ch of seed) h=(h*31+ch.charCodeAt(0))>>>0;
+  const vars=["--veneer-a","--veneer-b","--veneer-c","--veneer-d"];
+  const pick=i=>`var(${vars[(h>>(i*2))&3]})`;
+  return `background:conic-gradient(from ${(h%8)*45}deg at 50% 50%, ${pick(0)} 0 25%, ${pick(1)} 0 50%, ${pick(2)} 0 75%, ${pick(3)} 0), var(--tile);background-size:${60+(h%4)*20}px ${60+(h%4)*20}px`;
+}
+function media(p, label, eager){
+  const img = p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="${eager?"eager":"lazy"}" decoding="async" onerror="this.parentNode.classList.add('noimg')">` : "";
+  return `<div class="media${p.image?"":" noimg"}"><div class="veneer" style="${veneer(p.id)}"></div><span class="veneer-label">${esc(label||p.name.split(" ")[0])}</span>${img}</div>`;
+}
+
+/* opening diptych */
+const DIPTYCH = [
+  {id:"amadeo-dining-table", eyebrow:"Tables", title:"Amadeo", href:"#tables"},
+  {id:"cleo-mirror", eyebrow:"Accessories", title:"Cleo", href:"#accessories"},
+];
+$("diptych").innerHTML = DIPTYCH.map(d=>`<a class="panel" href="${d.href}">${media(byId(d.id), d.title, true)}<div class="cap"><div><span class="eyebrow">${esc(d.eyebrow)}</span><h2>${esc(d.title)}</h2></div><span class="link">Discover</span></div></a>`).join("");
+
+/* hero */
+const SLIDES = [
+  {id:"fuschia-dining-table", eyebrow:"New in · Dining", title:"Fuschia", sub:"Dining table", text:"Bird's-eye veneer, ivory lacquer and polished gold, drawn from 1980s Memphis design. Seats ten.", href:"#tables"},
+  {id:"mikado-room-divider", eyebrow:"Statement pieces", title:"Mikado", sub:"Room divider", text:"Five asymmetric marquetry panels in a jewel-toned Art Deco palette, three metres wide.", href:"#accessories"},
+  {id:"charlot-console-table", eyebrow:"Entrance", title:"Charlot", sub:"Console table", text:"A marble top over marquetry panels. The first piece your guests see.", href:"#tables"},
+];
+let cur=0, timer=null;
+$("slides").innerHTML = SLIDES.map((s,i)=>`
+  <div class="slide${i?"":" on"}" role="group" aria-roledescription="slide" aria-label="${i+1} of ${SLIDES.length}">
+    <div class="copy"><span class="eyebrow">${esc(s.eyebrow)}</span><h2>${esc(s.title)}<span>${esc(s.sub)}</span></h2><p>${esc(s.text)}</p><a class="btn btn-solid" href="${s.href}" style="justify-self:start;align-self:start">Discover</a></div>
+    ${media(byId(s.id), s.title, true)}
+  </div>`).join("");
+$("dots").innerHTML = SLIDES.map((s,i)=>`<button type="button" aria-label="Show ${esc(s.title)}" aria-current="${i===0}"><i></i></button>`).join("");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function go(n){
+  cur=(n+SLIDES.length)%SLIDES.length;
+  document.querySelectorAll(".slide").forEach((el,i)=>el.classList.toggle("on",i===cur));
+  document.querySelectorAll(".dots button").forEach((b,i)=>{ b.setAttribute("aria-current", i===cur); const f=b.querySelector("i"); f.style.animation="none"; void f.offsetWidth; f.style.animation=""; });
+  $("counter").textContent = `0${cur+1} / 0${SLIDES.length}`;
+  clearTimeout(timer); if(!reduce) timer=setTimeout(()=>go(cur+1),6000);
+}
+$("prev").onclick=()=>go(cur-1); $("next").onclick=()=>go(cur+1);
+$("dots").addEventListener("click",e=>{const b=e.target.closest("button"); if(b) go([...b.parentNode.children].indexOf(b));});
+const hero=document.querySelector(".hero");
+hero.addEventListener("mouseenter",()=>{clearTimeout(timer);hero.classList.add("paused")});
+hero.addEventListener("mouseleave",()=>{hero.classList.remove("paused");go(cur)});
+go(0);
+
+/* collections */
+const CATS = [
+  {label:"Tables", line:"Dining, centre, side, bedside and console", id:"zimmer-dining-table", href:"#tables", n:30},
+  {label:"Storage", line:"Sideboards, cabinets and dressing tables", id:"ruskin-cabinet", href:"#storage", n:5},
+  {label:"Accessories", line:"Mirrors, totems, wall decor and screens", id:"cleo-mirror", href:"#accessories", n:13},
+  {label:"Seating", line:"Benches upholstered in velvet", id:"becket-bench", href:"#seating", n:1},
+  {label:"Lighting", line:"Turned-wood floor lamps", id:"luminous-wood-floor-lamp", href:"#lighting", n:1},
+  {label:"All products", line:"The complete collection", id:"jojo-sideboard-2", href:"#collections", n:50},
+];
+$("cats").innerHTML = CATS.map(c=>`<a class="cat" href="${c.href}">${media(byId(c.id), c.label)}<div class="row"><h4>${esc(c.label)}</h4><small>${c.n} ${c.n===1?"piece":"pieces"}</small></div><small>${esc(c.line)}</small></a>`).join("");
+
+/* featured */
+const FEAT = ["amadeo-dining-table","cleo-mirror","rumba-console-table","madame-totem","1987-desk","folk-prisma-side-table","roy-wood-sideboard","claire-dressing-tabe"];
+$("featured").innerHTML = FEAT.map(id=>{const p=byId(id); return `<a class="card" href="#collections">${media(p)}<div class="caption"><h2>${esc(p.name)}</h2><span>${esc(p.dimensions.replace(/ cm$/,""))}</span></div></a>`;}).join("");
+
+/* forms + footer */
+const okEmail = v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim());
+$("cat-form").addEventListener("submit",e=>{e.preventDefault(); $("cat-note").textContent = okEmail($("cat-email").value) ? "Thank you. The catalogue is on its way to your inbox." : "Enter a valid email address, like name@example.com.";});
+
+$("foot-cats").innerHTML = [["Tables","tables"],["Storage","storage"],["Seating","seating"],["Lighting","lighting"],["Accessories","accessories"]].map(([l,h])=>`<li><a href="#${h}">${l}</a></li>`).join("");
+})();
+(()=>{
+const PRODUCTS = [{"id": "amadeo-dining-table", "name": "Amadeo Dining Table", "group": "Tables", "type": "Dining Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL169-hommes-studio-amadeo-dining-table-01.png", "dimensions": "240 x 120 x 74 cm", "description": "A dining table blending timeless materials with modern wood marquetry, for contemporary and mid-century interiors.", "source": "https://hommes.studio/tables/dining-table/amadeo-dining-table/"}, {"id": "ruskin-cabinet", "name": "Ruskin Cabinet", "group": "Storage", "type": "Cabinet", "image": "https://hommes.studio/wp-content/uploads/HOMMESTR033-hommes-ruskin-cabinet-v2-closed-01-front.png", "dimensions": "180 x 55 x 150 cm", "description": "A minimalist storage piece with a bold striped wood veneer, three doors, and six drawers, suited to modern interiors.", "source": "https://hommes.studio/storage/cabinet/ruskin-cabinet/"}, {"id": "dylan-sideboard", "name": "Dylan Sideboard", "group": "Storage", "type": "Sideboard", "image": "https://hommes.studio/wp-content/uploads/HOMMESTR035-hommes-sideboard-01-estudio-01-front.png", "dimensions": "140 x 40 x 80 cm", "description": "A mid-century modern wood sideboard with four discreet drawers and a playful, sculptural look.", "source": "https://hommes.studio/storage/sideboard/dylan-sideboard/"}, {"id": "becket-bench", "name": "Becket Bench", "group": "Seating", "type": "Bench", "image": "https://hommes.studio/wp-content/uploads/HOMMESEAT151-hommes-becket-bench-cherry-01-front.png", "dimensions": "180 x 50 x 85 cm", "description": "A cherry-veneer bench with a cream velvet seat, suited to entryways or dining rooms.", "source": "https://hommes.studio/seating/bench/becket-bench/"}, {"id": "1987-desk", "name": "1987 Desk", "group": "Tables", "type": "Desk", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL160-001-hommes-studio-1987-desk.png", "dimensions": "180 x 70 x 79 cm", "description": "An oval wooden desk with a modern twist on marquetry and a vintage-inspired, timeless look.", "source": "https://hommes.studio/tables/desk-tables/1987-desk/"}, {"id": "hazel-wall-decor", "name": "Hazel Wall Decor", "group": "Complements", "type": "Wall Decor", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL049-001-hommes.studio-hazel-wall-decor.png", "dimensions": "90 x 10 x 140 cm", "description": "A geometric wall panel built from marquetry in several wood tones, arranged to create depth.", "source": "https://hommes.studio/complements/wall-decor/hazel-wall-decor/"}, {"id": "cleo-mirror", "name": "Cleo Mirror", "group": "Complements", "type": "Mirror", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL046-001-hommes.studio-cleo-mirror.png", "dimensions": "130 x 9 x 130 cm", "description": "A wall mirror with a sunburst-style frame of layered wood veneers, a sculptural focal point.", "source": "https://hommes.studio/complements/mirror/cleo-mirror/"}, {"id": "zola-wall-decor", "name": "Zola Wall Decor", "group": "Complements", "type": "Wall Decor", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL047-001-hommes.studio-zola-wall-decor.png", "dimensions": "90 x 10 x 120 cm", "description": "A handcrafted wood wall panel with flowing, nature-inspired curves and geometric lines.", "source": "https://hommes.studio/complements/wall-decor/zola-wall-decor/"}, {"id": "ruby-wall-decor", "name": "Ruby Wall Decor", "group": "Complements", "type": "Wall Decor", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL048-001-hommes.studio-ruby-wall-decor.png", "dimensions": "70 x 10 x 125 cm", "description": "A handcrafted wooden wall piece with lively, irregular forms that add movement to a room.", "source": "https://hommes.studio/complements/wall-decor/ruby-wall-decor/"}, {"id": "jojo-sideboard-2", "name": "Jojo Sideboard", "group": "Storage", "type": "Sideboard", "image": "https://hommes.studio/wp-content/uploads/HOMMESTR033-hommes-jojo-sideboard-001.png", "dimensions": "240 x 55 x 82 cm", "description": "An Art Deco-inspired sideboard with black marquetry doors and a white maple interior.", "source": "https://hommes.studio/storage/sideboard/jojo-sideboard-2/"}, {"id": "blanco-mirror", "name": "Blanco Mirror", "group": "Complements", "type": "Mirror", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL043-001-hommes.studio-blanco-mirror.png", "dimensions": "130 x 8 x 130 cm", "description": "A circular mirror pairing warm wood marquetry with a soft white lacquered finish.", "source": "https://hommes.studio/complements/mirror/blanco-mirror/"}, {"id": "kali-mirror", "name": "Kali Mirror", "group": "Complements", "type": "Mirror", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL042-001-hommes.studio-kali-mirror.png", "dimensions": "102.5 x 12 x 140 cm", "description": "An oval wall mirror with a warm wooden frame inlaid with a geometric marquetry pattern.", "source": "https://hommes.studio/complements/mirror/kali-mirror/"}, {"id": "cora-mirror", "name": "Cora Mirror", "group": "Complements", "type": "Mirror", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL041-001-hommes.studio-cora-mirror.png", "dimensions": "130 x 8 x 130 cm", "description": "A round wood wall mirror with a geometric marquetry pattern and mid-century styling.", "source": "https://hommes.studio/complements/mirror/cora-mirror/"}, {"id": "rubik-totem", "name": "Rubik Totem", "group": "Complements", "type": "Totem", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL039-hommes-totem-rubik-001.png", "dimensions": "30 x 30 x 180 cm", "description": "A mid-century modern totem with geometric wood marquetry in black, white and ash.", "source": "https://hommes.studio/complements/totem/rubik-totem/"}, {"id": "jacarta-totem", "name": "Jacarta Totem", "group": "Complements", "type": "Totem", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL040-hommes-totem-jacarta-001.png", "dimensions": "35 x 50 x 180 cm", "description": "An abstract wood marquetry piece in black and dark orange, combining shapes of different sizes.", "source": "https://hommes.studio/complements/totem/jacarta-totem/"}, {"id": "amalia-totem", "name": "Amalia Totem", "group": "Complements", "type": "Totem", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL038-hommes-totem-amalia-001.png", "dimensions": "40 x 40 x 160 cm", "description": "A tall geometric piece in black gloss and white bird's-eye wood marquetry.", "source": "https://hommes.studio/complements/totem/amalia-totem/"}, {"id": "santiago-center-table", "name": "Santiago Center Table", "group": "Tables", "type": "Center Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL019-001-hommes-studio-santiago-center-table-front.png", "dimensions": "100 x 100 x 50 cm", "description": "A coffee table with a bird's-eye marquetry top and glossy black lacquered legs, inspired by Cubism.", "source": "https://hommes.studio/tables/center-table/santiago-center-table/"}, {"id": "mikado-room-divider", "name": "Mikado Room Divider", "group": "Complements", "type": "Room Divider", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL035-mikado-folding-screen-001.png", "dimensions": "300 x 6 x 200 cm", "description": "A folding screen with asymmetrical marquetry panels in a jewel-toned, Art Deco palette.", "source": "https://hommes.studio/complements/room-divider/mikado-room-divider/"}, {"id": "brutus-totem", "name": "Brutus Totem", "group": "Complements", "type": "Totem", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL037-hommes-totem-brutus-001.png", "dimensions": "40 x 40 x 180 cm", "description": "An obelisk-like piece covered in black wood marquetry patterns.", "source": "https://hommes.studio/complements/totem/brutus-totem/"}, {"id": "madame-totem", "name": "Madame Totem", "group": "Complements", "type": "Totem", "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL036-madame-totem-001.png", "dimensions": "49 x 49 x 160 cm", "description": "A handmade decorative column with striking monochrome geometric marquetry.", "source": "https://hommes.studio/complements/totem/madame-totem/"}, {"id": "nice-prisma-side-table", "name": "Nice Prisma Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL017-001-hommes-studio-nice-side-table-front.png", "dimensions": "60 x 60 x 45 cm", "description": "A cube-shaped side table with a white and blue marquetry pattern, inspired by Yves Klein.", "source": "https://hommes.studio/tables/side-table/nice-prisma-side-table/"}, {"id": "folk-bedside-table", "name": "Folk Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL115-001-hommes-studio-folk-bedside-table-front.png", "dimensions": "55 x 55 x 50 cm", "description": "A round, three-legged bedside table with marquetry in black, white and ash wood.", "source": "https://hommes.studio/tables/bedside-table/folk-bedside-table/"}, {"id": "roy-wood-sideboard", "name": "Roy Wood Sideboard", "group": "Storage", "type": "Sideboard", "image": "https://hommes.studio/wp-content/uploads/HOMMESTR030-001-hommes-studio-roy-wood-sideboard.png", "dimensions": "160 x 55 x 85 cm", "description": "A marquetry sideboard with Art Deco touches, in black wenge ash with gold stainless steel details.", "source": "https://hommes.studio/storage/sideboard/roy-wood-sideboard/"}, {"id": "palma-center-table", "name": "Palma Center Table", "group": "Tables", "type": "Center Table", "image": "", "dimensions": "100 x 100 x 50 cm", "description": "A center table with mid-century lines and a marquetry top in walnut root, bird's eye and ash root.", "source": "https://hommes.studio/tables/center-table/palma-center-table/"}, {"id": "dolores-side-table", "name": "Dolores Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL125-001-hommes-studio-dolores-side-table-front.png", "dimensions": "55 x 55 x 51 cm", "description": "A side table with a marquetry top in a playful, Dada-inspired geometric pattern.", "source": "https://hommes.studio/tables/side-table/dolores-side-table/"}, {"id": "austria-side-table", "name": "Austria Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL023-001-hommes-studio-austria-side-table-front.png", "dimensions": "55 x 55 x 51 cm", "description": "A nature-inspired marquetry side table, tailored to your preferred wood tones.", "source": "https://hommes.studio/tables/side-table/austria-side-table/"}, {"id": "tribal-bedside-table", "name": "Tribal Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL108-001-hommes-studio-tribal-bedside-table-front.png", "dimensions": "57 x 50 x 60 cm", "description": "A black bedside table with three drawers, marquetry detailing and sphere-style legs.", "source": "https://hommes.studio/tables/bedside-table/tribal-bedside-table/"}, {"id": "folk-center-table", "name": "Folk Center Table", "group": "Tables", "type": "Center Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL103-001-hommes-studio-folk-center-table-front.png", "dimensions": "100 x 100 x 50 cm", "description": "A three-legged table with a marquetry top drawing on multicultural motifs and pop imagery.", "source": "https://hommes.studio/tables/center-table/folk-center-table/"}, {"id": "malaga-bedside-table", "name": "Malaga Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL106-001-hommes-studio-malaga-bedside-table-front.png", "dimensions": "57 x 50 x 60 cm", "description": "A cubist-inspired nightstand on wooden-sphere legs, white bird's-eye body with grey marquetry.", "source": "https://hommes.studio/tables/bedside-table/malaga-bedside-table/"}, {"id": "nice-side-table", "name": "Nice Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL126-001-hommes-studio-yves-side-table-front.png", "dimensions": "55 x 55 x 51 cm", "description": "A compact round marquetry side table inlaid in black and natural bird's-eye veneer.", "source": "https://hommes.studio/tables/side-table/nice-side-table/"}, {"id": "folk-prisma-side-table", "name": "Folk Prisma Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL130-001-hommes-studio-folk-prisma-side-table-quarter.png", "dimensions": "60 x 60 x 45 cm", "description": "A cube-shaped marquetry side table in black, white and cherry-root wood.", "source": "https://hommes.studio/tables/side-table/folk-prisma-side-table/"}, {"id": "nice-bedside-table", "name": "Nice Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL107-001-hommes-studio-nice-bedside-table-front.png", "dimensions": "57 x 50 x 60 cm", "description": "A three-drawer nightstand on spherical wooden legs, in black and natural bird's-eye marquetry.", "source": "https://hommes.studio/tables/bedside-table/nice-bedside-table/"}, {"id": "fuschia-dining-table", "name": "Fuschia Dining Table", "group": "Tables", "type": "Dining Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL001-001-hommes-studio-fuschia-dining-table-front-2.png", "dimensions": "280 x 120 x 77 cm", "description": "An ivory dining table with a bird's-eye veneer top and polished gold details, inspired by 1980s Memphis design.", "source": "https://hommes.studio/tables/dining-table/fuschia-dining-table/"}, {"id": "joan-prisma-side-table", "name": "Joan Prisma Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL128-001-hommes-studio-joan-prisma-side-table-side1.png", "dimensions": "60 x 60 x 45 cm", "description": "A cube-shaped side table with Dada-inspired marquetry in bird's-eye, pear and ash root.", "source": "https://hommes.studio/tables/side-table/joan-prisma-side-table/"}, {"id": "malaga-center-table", "name": "Malaga Center Table", "group": "Tables", "type": "Center Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL097-001-hommes-studio-malaga-center-table-front.png", "dimensions": "100 x 100 x 50 cm", "description": "A coffee table with a cubist-inspired top in white and black bird's-eye on three beige lacquer legs.", "source": "https://hommes.studio/tables/center-table/malaga-center-table/"}, {"id": "ruiz-bedside-table", "name": "Ruiz Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL131-001-hommes-studio-ruiz-bedside-table-front.png", "dimensions": "57 x 50 x 60 cm", "description": "A handmade nightstand with a Picasso-inspired marquetry pattern and sphere-shaped legs.", "source": "https://hommes.studio/tables/bedside-table/ruiz-bedside-table/"}, {"id": "malaga-prisma-side-table", "name": "Malaga Prisma Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL129-001-hommes-studio-malaga-prisma-side-table-front.png", "dimensions": "60 x 60 x 45 cm", "description": "A cube-shaped side table in gloss white and black bird's-eye marquetry.", "source": "https://hommes.studio/tables/side-table/malaga-prisma-side-table/"}, {"id": "ludwika-prisma-side-table", "name": "Ludwika Prisma Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL127-001-hommes-studio-ludwika-prisma-side-table-front.png", "dimensions": "60 x 60 x 45 cm", "description": "A geometric side table in mixed-wood marquetry, inspired by Malevich.", "source": "https://hommes.studio/tables/side-table/ludwika-prisma-side-table/"}, {"id": "cadiz-bedside-table", "name": "Cadiz Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL117-001-hommes-studio-cadiz-bedside-table-front.png", "dimensions": "55 x 55 x 50 cm", "description": "A nightstand on three slim legs with a marquetry top of Picasso-inspired cubist figures.", "source": "https://hommes.studio/tables/bedside-table/cadiz-bedside-table/"}, {"id": "austria-center-table", "name": "Austria Center Table", "group": "Tables", "type": "Center Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL071-001-hommes-studio-austria-center-table-front.png", "dimensions": "120 x 120 x 30 cm", "description": "A coffee table inlaid in toulipier, black bird's eye, ash root and cherry root.", "source": "https://hommes.studio/tables/center-table/austria-center-table/"}, {"id": "zimmer-dining-table", "name": "Zimmer Dining Table", "group": "Tables", "type": "Dining Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL064-001-hommes-studio-zimmer-dining-table-front-1.png", "dimensions": "280 x 110 x 76 cm", "description": "A contemporary table on black-lacquered legs with an inlaid top of mixed wood veneers.", "source": "https://hommes.studio/tables/dining-table/zimmer-dining-table/"}, {"id": "claire-dressing-tabe", "name": "Claire Dressing Table", "group": "Storage", "type": "Dresser", "image": "https://hommes.studio/wp-content/uploads/HOMMESBED001-001-hommes-studio-claire-dressing-table-front-2.png", "dimensions": "155 x 55 x 144 cm", "description": "An Art Deco-inspired dressing table with rounded, lavish forms for the master bedroom.", "source": "https://hommes.studio/storage/dresser/claire-dressing-tabe/"}, {"id": "ludwika-side-table", "name": "Ludwika Side Table", "group": "Tables", "type": "Side Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL122-001-hommes-studio-ludwika-side-table-front.png", "dimensions": "55 x 55 x 51 cm", "description": "A marquetry side table inspired by Kazimir Malevich's geometric style.", "source": "https://hommes.studio/tables/side-table/ludwika-side-table/"}, {"id": "rapple-console-table", "name": "Rapple Console Table", "group": "Tables", "type": "Console Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL032-001-hommes-studio-raplee-console-front-2.png", "dimensions": "160 x 41 x 95 cm", "description": "A 1920s-inspired console with a glossy black top, gold-toned trim and bird's-eye finishes.", "source": "https://hommes.studio/tables/console-table/rapple-console-table/"}, {"id": "annali-console-table", "name": "Annali Console Table", "group": "Tables", "type": "Console Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL036-001-hommes-studio-analli-console-front-2.png", "dimensions": "140 x 47 x 85 cm", "description": "A glossy terra brown and ivory drawer console with an Art Deco look.", "source": "https://hommes.studio/tables/console-table/annali-console-table/"}, {"id": "rumba-console-table", "name": "Rumba Console Table", "group": "Tables", "type": "Console Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL031-001-hommes-studio-rumba-console-back-2.png", "dimensions": "150 x 50 x 93 cm", "description": "A console with marquetry tops and playful motifs that bring energy to an entryway.", "source": "https://hommes.studio/tables/console-table/rumba-console-table/"}, {"id": "matrioska-bedside-table", "name": "Matrioska Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESBED009-001-hommes-studio-matrioska-bedside-table-quarter-2.png", "dimensions": "57 x 50 x 60 cm", "description": "A geometric nightstand in walnut and bird's-eye marquetry with gold steel and black lacquer.", "source": "https://hommes.studio/tables/side-table/matrioska-bedside-table/"}, {"id": "charlot-console-table", "name": "Charlot Console Table", "group": "Tables", "type": "Console Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL038-001-hommes-studio-charlot-console-front-1.png", "dimensions": "180 x 45 x 96 cm", "description": "An Art Deco-inspired entrance console with a marble top and marquetry panels.", "source": "https://hommes.studio/tables/console-table/charlot-console-table/"}, {"id": "luminous-wood-floor-lamp", "name": "Luminous Wood Floor Lamp", "group": "Lighting", "type": "Floor Lamp", "image": "https://hommes.studio/wp-content/uploads/HOMMESLGHT016-001-hommes-studio-luminous-wood-floor-lamp-45-1.png", "dimensions": "51 x 51 x 154 cm", "description": "A 1930s-style turned-wood lamp in walnut and wenge with gold details and a white glass globe.", "source": "https://hommes.studio/lighting/floor-lamp/luminous-wood-floor-lamp/"}, {"id": "austria-bedside-table", "name": "Austria Bedside Table", "group": "Tables", "type": "Bedside Table", "image": "https://hommes.studio/wp-content/uploads/HOMMESBED010-001-hommes-studio-austria-bedside-table-front.png", "dimensions": "55 x 55 x 50 cm", "description": "A marquetry nightstand with a gloss white interior, in customisable wood finishes.", "source": "https://hommes.studio/tables/side-table/austria-bedside-table/"}];
+const GROUP_LABEL = {Tables:"Tables",Storage:"Storage",Seating:"Seating",Lighting:"Lighting",Complements:"Accessories"};
+const GROUP_ORDER = ["Tables","Storage","Seating","Lighting","Complements"];
+const slug = g => GROUP_LABEL[g].toLowerCase();
+function fromHash(){ const h=(location.hash||"").slice(1).toLowerCase(); const g=GROUP_ORDER.find(x=>slug(x)===h); state.group=g||"all"; state.type="all"; }
+const TYPE_PLURAL = t => t==="Bench"?"Benches":t==="Dresser"?"Dressers":t==="Wall Decor"?"Wall decor":t+"s";
+
+let state = {group:"all", type:"all", sort:"featured", cols:4};
+try { const c = localStorage.getItem("mq-cols"); if (c) state.cols = +c; } catch(e){}
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const area = d => { const n = (d.match(/[\d.]+/g)||[]).map(Number); return n.length>=3 ? n[0]*n[1]*n[2] : 0; };
+
+/* deterministic marquetry pattern, shown when a photo is missing */
+function veneer(seed){
+  let h=0; for (const ch of seed) h=(h*31+ch.charCodeAt(0))>>>0;
+  const vars=["--veneer-a","--veneer-b","--veneer-c","--veneer-d"];
+  const pick=i=>`var(${vars[(h>>(i*2))&3]})`;
+  const a=(h%8)*45;
+  return `background:conic-gradient(from ${a}deg at 50% 50%, ${pick(0)} 0 25%, ${pick(1)} 0 50%, ${pick(2)} 0 75%, ${pick(3)} 0), var(--tile);background-size:${60+(h%4)*20}px ${60+(h%4)*20}px`;
+}
+
+function chip(label, count, pressed, data){
+  return `<button type="button" class="chip" aria-pressed="${pressed}" ${data}>${esc(label)}<sup>${count}</sup></button>`;
+}
+
+function renderGroups(){
+  let html = chip("All", PRODUCTS.length, state.group==="all", 'data-group="all"');
+  for (const g of GROUP_ORDER){
+    const n = PRODUCTS.filter(p=>p.group===g).length;
+    if (n) html += chip(GROUP_LABEL[g], n, state.group===g, `data-group="${g}"`);
+  }
+  $("groups").innerHTML = html;
+  const sub = $("subrail");
+  if (state.group==="all"){ sub.hidden = true; return; }
+  const types = [...new Set(PRODUCTS.filter(p=>p.group===state.group).map(p=>p.type))];
+  if (types.length < 2){ sub.hidden = true; return; }
+  sub.hidden = false;
+  $("types").innerHTML = chip("All "+GROUP_LABEL[state.group].toLowerCase(), PRODUCTS.filter(p=>p.group===state.group).length, state.type==="all", 'data-type="all"') +
+    types.map(t=>chip(TYPE_PLURAL(t), PRODUCTS.filter(p=>p.type===t).length, state.type===t, `data-type="${esc(t)}"`)).join("");
+}
+
+function visible(){
+  let list = PRODUCTS.map((p,i)=>({...p,i})).filter(p => (state.group==="all"||p.group===state.group) && (state.type==="all"||p.type===state.type));
+  if (state.sort==="az") list.sort((a,b)=>a.name.localeCompare(b.name));
+  if (state.sort==="za") list.sort((a,b)=>b.name.localeCompare(a.name));
+  if (state.sort==="size") list.sort((a,b)=>area(b.dimensions)-area(a.dimensions));
+  return list;
+}
+
+function mediaHTML(p, eager){
+  const img = p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="${eager?"eager":"lazy"}" decoding="async" onerror="this.parentNode.classList.add('noimg')">` : "";
+  return `<div class="media${p.image?"":" noimg"}"><div class="veneer" style="${veneer(p.id)}"></div><span class="veneer-label">${esc(p.name.split(" ")[0])}</span>${img}`;
+}
+
+function renderGrid(){
+  const list = visible();
+  $("count").textContent = `${list.length} ${list.length===1?"piece":"pieces"}`;
+  $("grid").style.setProperty("--cols", state.cols);
+  $("grid").innerHTML = list.length ? list.map((p,k)=>`
+    <button type="button" class="card" data-id="${esc(p.id)}" aria-label="${esc(p.name)}, quick view">
+      ${mediaHTML(p, k<8)}<span class="tag">${esc(p.type)}</span><span class="quick">Quick view</span></div>
+      <div class="caption"><h2>${esc(p.name)}</h2><span>${esc(p.dimensions.replace(/ cm$/,""))}</span></div>
+    </button>`).join("") : `<p class="empty">No pieces in this category yet.</p>`;
+  document.querySelectorAll(".density button").forEach(b=>b.setAttribute("aria-pressed", +b.dataset.cols===state.cols));
+}
+
+function render(){ renderGroups(); renderGrid(); }
+
+$("groups").addEventListener("click", e=>{ const b=e.target.closest("[data-group]"); if(!b) return; state.group=b.dataset.group; state.type="all"; try{history.replaceState(null,"","#"+(state.group==="all"?"collections":slug(state.group)))}catch(err){} render(); });
+window.addEventListener("hashchange", ()=>{ fromHash(); render(); });
+$("types").addEventListener("click", e=>{ const b=e.target.closest("[data-type]"); if(!b) return; state.type=b.dataset.type; render(); });
+$("sort").addEventListener("change", e=>{ state.sort=e.target.value; renderGrid(); });
+document.querySelector(".density").addEventListener("click", e=>{ const b=e.target.closest("[data-cols]"); if(!b) return; state.cols=+b.dataset.cols; try{localStorage.setItem("mq-cols",state.cols)}catch(err){} renderGrid(); });
+
+/* quick view */
+let lastFocus=null;
+function openDrawer(id){
+  const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
+  lastFocus=document.activeElement;
+  const m=$("d-media"); m.classList.toggle("noimg", !p.image);
+  m.querySelector(".veneer").setAttribute("style", veneer(p.id));
+  m.querySelector(".veneer-label").textContent = p.name.split(" ")[0];
+  const img=$("d-img"); img.onerror=()=>m.classList.add("noimg"); img.alt=p.name; if(p.image) img.src=p.image; else img.removeAttribute("src");
+  $("d-cat").textContent = `${GROUP_LABEL[p.group]} / ${p.type}`;
+  $("d-name").textContent = p.name;
+  $("d-desc").textContent = p.description;
+  $("d-dim").textContent = p.dimensions.replace(/ x /g," × ") + " (W × D × H)";
+  $("d-source").href = p.source;
+  $("drawer").classList.add("open"); $("scrim").classList.add("open"); $("drawer").setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden"; $("d-close").focus();
+}
+function closeDrawer(){
+  $("drawer").classList.remove("open"); $("scrim").classList.remove("open"); $("drawer").setAttribute("aria-hidden","true");
+  document.body.style.overflow=""; lastFocus&&lastFocus.focus();
+}
+$("grid").addEventListener("click", e=>{ const c=e.target.closest(".card"); if(c) openDrawer(c.dataset.id); });
+$("d-close").addEventListener("click", closeDrawer);
+$("scrim").addEventListener("click", closeDrawer);
+$("d-enquire").addEventListener("click", closeDrawer);
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeDrawer(); });
+
+/* footer + newsletter */
+$("foot-cats").innerHTML = GROUP_ORDER.map(g=>`<li><a href="#${slug(g)}">${GROUP_LABEL[g]}</a></li>`).join("");
+$("news").addEventListener("submit", e=>{ e.preventDefault(); const v=$("email").value.trim();
+  $("news-note").textContent = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v) ? "Thank you. You're on the list." : "Enter a valid email address, like name@example.com."; });
+
+fromHash();
+render();
+})();
+
+(()=>{
+  const PRODUCT_VIEWS=["collections","tables","storage","seating","lighting","accessories"];
+  const home=document.getElementById("view-home"), prod=document.getElementById("view-products");
+  const navCol=document.querySelector('nav.main a[href="#collections"]');
+  function route(){
+    const h=(location.hash||"").slice(1).toLowerCase();
+    const isProd=PRODUCT_VIEWS.includes(h);
+    home.hidden=isProd; prod.hidden=!isProd;
+    if(isProd) navCol.setAttribute("aria-current","page"); else navCol.removeAttribute("aria-current");
+    document.title = isProd ? "Collections · Marquetery" : "Marquetery";
+    const target = !isProd && h && h!=="home" && h!=="top" ? document.getElementById(h) : null;
+    if(target) target.scrollIntoView(); else window.scrollTo(0,0);
+  }
+  window.addEventListener("hashchange", route);
+  document.querySelectorAll('a.logo, a[href="#home"]').forEach(a=>a.addEventListener("click",()=>{ if(location.hash==="#home"||!location.hash) setTimeout(route,0); }));
+  route();
+})();
+</script>
