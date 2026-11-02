@@ -4,10 +4,50 @@
     "name": "Amadeo Dining Table",
     "group": "Tables",
     "type": "Dining Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL169-hommes-studio-amadeo-dining-table-01.png",
+    "image": "images/amadeo/amadeo-front.webp",
     "dimensions": "240 x 120 x 74 cm",
     "description": "A dining table blending timeless materials with modern wood marquetry, for contemporary and mid-century interiors.",
-    "source": "https://hommes.studio/tables/dining-table/amadeo-dining-table/"
+    "source": "https://hommes.studio/tables/dining-table/amadeo-dining-table/",
+    "lede": "A dining table drawn in long bands of veneer: palissander, ash root and black wengue, set off by fine lines of white oak and finished in high-gloss lacquer. Two banded pedestals carry a top that seats eight to ten.",
+    "materials": [
+      "Palissander wood veneer, gloss marquetry",
+      "Ash root wood veneer",
+      "White oak wood veneer",
+      "Black wengue wood"
+    ],
+    "finish": "High-gloss lacquer",
+    "gallery": [
+      "images/amadeo/amadeo-front.webp",
+      "images/amadeo/amadeo-top.webp",
+      "images/amadeo/amadeo-end.webp",
+      "images/amadeo/amadeo-pedestals.webp",
+      "images/amadeo/amadeo-room.webp",
+      "images/amadeo/amadeo-stools.webp",
+      "images/amadeo/amadeo-detail-edge.webp",
+      "images/amadeo/amadeo-detail-corner.webp"
+    ],
+    "story": {
+      "title": "Stripes that run from top to floor",
+      "text": "The bands of the top continue down each cylindrical pedestal, so the table reads as one continuous piece of marquetry from every side. Every strip is cut and matched by hand, then sealed under several coats of lacquer for a deep, mirror-like surface."
+    },
+    "ambience": [
+      {
+        "src": "images/amadeo/amadeo-room.webp",
+        "alt": "Amadeo Dining Table in a dining room with sculpted wooden stools and a striped rug"
+      },
+      {
+        "src": "images/amadeo/amadeo-stools.webp",
+        "alt": "Amadeo Dining Table with wooden stools, side view"
+      },
+      {
+        "src": "images/amadeo/amadeo-detail-edge.webp",
+        "alt": "Close-up of the Amadeo table edge and banded pedestal"
+      },
+      {
+        "src": "images/amadeo/amadeo-detail-corner.webp",
+        "alt": "Corner of the Amadeo top showing ash root and palissander bands"
+      }
+    ]
   },
   {
     "id": "ruskin-cabinet",

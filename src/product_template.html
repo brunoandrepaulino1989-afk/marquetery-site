@@ -1,0 +1,144 @@
+<style>
+/* Product page: gallery left, sticky details right; ambience images below; related pieces. */
+.pd-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:start;padding-block:24px 88px}
+.stage{position:relative;aspect-ratio:1/1;max-width:100%;background:var(--tile);overflow:hidden}
+.stage .media{position:absolute;inset:0;aspect-ratio:auto}
+.stage .media img{inset:4%;width:92%;height:92%;cursor:zoom-in}
+.stage.zoom .media img{inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.6);cursor:zoom-out}
+.stage .nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-size:16px;z-index:2}
+.stage .nav.prev{left:16px}.stage .nav.next{right:16px}
+.stage .count{position:absolute;right:16px;bottom:14px;font-size:12px;letter-spacing:.12em;font-variant-numeric:tabular-nums;background:var(--bg);padding:3px 8px;z-index:2}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px;margin-top:10px}
+.thumbs button{aspect-ratio:1/1;background:var(--tile);overflow:hidden;border:1px solid transparent;position:relative}
+.thumbs button[aria-current="true"]{border-color:var(--ink)}
+.thumbs img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
+.info{position:sticky;top:calc(24px + env(safe-area-inset-top,0px));display:grid;gap:22px}
+.info h1{font-size:clamp(42px,4.6vw,68px);line-height:1}
+.info .lede{margin:0;font-size:16.5px;max-width:46ch}
+.spec{grid-template-columns:minmax(110px,auto) 1fr}
+.spec dd ul{margin:0;padding:0;list-style:none;display:grid;gap:3px}
+.info .actions{display:flex;gap:12px;flex-wrap:wrap}
+.info .note{font-size:13px;color:var(--muted);margin:0}
+.story{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:end;padding-block:72px;border-top:1px solid var(--line)}
+.story h2{font-family:var(--display);font-weight:400;font-size:clamp(32px,3.8vw,54px);line-height:1.05;margin:0;text-wrap:balance}
+.story p{margin:0;max-width:56ch;font-size:16px}
+.amb{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding-bottom:88px}
+.amb figure{margin:0;background:var(--tile);overflow:hidden;aspect-ratio:1/1;max-width:100%}
+.amb figure.wide,.amb figure:last-child:nth-child(even){grid-column:1/-1;aspect-ratio:16/9}
+.amb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.amb figure:hover img{transform:scale(1.03)}
+.related{border-top:1px solid var(--line);padding-block:72px 96px}
+.related .grid{padding-block:0}
+@media (max-width:960px){
+  .pd-top{grid-template-columns:1fr;gap:28px}
+  .info{position:static}
+  .story{grid-template-columns:1fr;gap:20px;padding-block:52px}
+  .amb{grid-template-columns:1fr}
+  .amb figure.wide{aspect-ratio:4/3}
+  .stage .nav{width:38px;height:38px}
+}
+</style>
+
+<main id="view-product" hidden>
+  <div class="wrap">
+    <div class="crumbs" id="pd-crumbs"></div>
+    <div class="pd-top">
+      <div>
+        <div class="stage" id="pd-stage">
+          <div class="media" id="pd-media"><div class="veneer"></div><span class="veneer-label"></span><img id="pd-img" alt=""></div>
+          <button class="nav prev" type="button" id="pd-prev" aria-label="Previous image">←</button>
+          <button class="nav next" type="button" id="pd-next" aria-label="Next image">→</button>
+          <span class="count" id="pd-count"></span>
+        </div>
+        <div class="thumbs" id="pd-thumbs" role="tablist" aria-label="Product images"></div>
+      </div>
+      <div class="info">
+        <span class="eyebrow" id="pd-cat"></span>
+        <h1 id="pd-name"></h1>
+        <p class="lede" id="pd-desc"></p>
+        <dl class="spec" id="pd-spec"></dl>
+        <div class="actions">
+          <button class="btn btn-solid" type="button" id="pd-enquire">Enquire about this piece</button>
+          <a class="btn" href="#bespoke" id="pd-bespoke">Make it bespoke</a>
+        </div>
+        <p class="note">Prices on request. Every piece is made to order in Portugal and delivered white glove across the UK.</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" id="pd-story-wrap"><section class="story" id="pd-story"></section></div>
+  <div class="wrap"><section class="amb" id="pd-amb" aria-label="In the room"></section></div>
+  <div class="wrap"><section class="related"><div class="head"><h3 id="pd-rel-title">You may also like</h3><a class="link" id="pd-rel-link" href="#collections">View all</a></div><div class="grid" id="pd-related" style="--cols:4"></div></section></div>
+</main>
+
+<script>
+const GROUP_LABEL = {Tables:"Tables",Storage:"Storage",Seating:"Seating",Lighting:"Lighting",Complements:"Accessories"};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const inches = d => (d.match(/[\d.]+/g)||[]).slice(0,3).map(n=>(n/2.54).toFixed(1)).join(" × ");
+function veneer(seed){
+  let h=0; for (const ch of seed) h=(h*31+ch.charCodeAt(0))>>>0;
+  const vars=["--veneer-a","--veneer-b","--veneer-c","--veneer-d"];
+  const pick=i=>`var(${vars[(h>>(i*2))&3]})`;
+  return `background:conic-gradient(from ${(h%8)*45}deg at 50% 50%, ${pick(0)} 0 25%, ${pick(1)} 0 50%, ${pick(2)} 0 75%, ${pick(3)} 0), var(--tile);background-size:${60+(h%4)*20}px ${60+(h%4)*20}px`;
+}
+function card(p){
+  const img = p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('noimg')">` : "";
+  return `<a class="card" href="#${esc(p.id)}"><div class="media${p.image?"":" noimg"}"><div class="veneer" style="${veneer(p.id)}"></div><span class="veneer-label">${esc(p.name.split(" ")[0])}</span>${img}<span class="tag">${esc(p.type)}</span></div><div class="caption"><h2>${esc(p.name)}</h2><span>${esc(p.dimensions.replace(/ cm$/,""))}</span></div></a>`;
+}
+
+let cur=0, imgs=[], current=null;
+function show(i){
+  cur=(i+imgs.length)%imgs.length;
+  const m=$("pd-media"), img=$("pd-img");
+  $("pd-stage").classList.remove("zoom");
+  m.classList.toggle("noimg", !imgs.length);
+  if(imgs.length){ img.src=imgs[cur]; img.alt=`${current.name}, image ${cur+1} of ${imgs.length}`; }
+  $("pd-count").textContent = imgs.length>1 ? `${String(cur+1).padStart(2,"0")} / ${String(imgs.length).padStart(2,"0")}` : "";
+  $("pd-thumbs").querySelectorAll("button").forEach((b,k)=>b.setAttribute("aria-current", k===cur));
+  ["pd-prev","pd-next"].forEach(id=>$(id).hidden = imgs.length<2);
+}
+
+window.renderProduct = function(id){
+  const p = PRODUCTS.find(x=>x.id===id); if(!p) return false;
+  current=p;
+  const groupSlug = GROUP_LABEL[p.group].toLowerCase();
+  $("pd-crumbs").innerHTML = `<a href="#home">Home</a> / <a href="#collections">Collections</a> / <a href="#${groupSlug}">${GROUP_LABEL[p.group]}</a> / ${esc(p.name)}`;
+  $("pd-cat").textContent = `${GROUP_LABEL[p.group]} · ${p.type}`;
+  $("pd-name").textContent = p.name;
+  $("pd-desc").textContent = p.lede || p.description;
+  const rows = [["Dimensions", `${p.dimensions.replace(/ cm$/,"").replace(/ x /g," × ")} cm<br><span style="color:var(--muted)">${inches(p.dimensions)} in · W × D × H</span>`]];
+  if(p.materials) rows.push(["Materials", `<ul>${p.materials.map(m=>`<li>${esc(m)}</li>`).join("")}</ul>`]);
+  if(p.finish) rows.push(["Finish", esc(p.finish)]);
+  rows.push(["Lead time","10–12 weeks, made to order"],["Options","Veneers, finish and size can be adapted"]);
+  $("pd-spec").innerHTML = rows.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join("");
+
+  imgs = (p.gallery && p.gallery.length) ? p.gallery : (p.image ? [p.image] : []);
+  const m=$("pd-media"); m.querySelector(".veneer").setAttribute("style", veneer(p.id)); m.querySelector(".veneer-label").textContent = p.name.split(" ")[0];
+  $("pd-img").onerror = ()=>m.classList.add("noimg");
+  $("pd-thumbs").innerHTML = imgs.length>1 ? imgs.map((src,k)=>`<button type="button" role="tab" aria-label="Image ${k+1}"><img src="${esc(src)}" alt="" loading="lazy"></button>`).join("") : "";
+  show(0);
+
+  const story=$("pd-story");
+  if(p.story){ story.innerHTML = `<h2>${esc(p.story.title)}</h2><p>${esc(p.story.text)}</p>`; $("pd-story-wrap").hidden=false; }
+  else $("pd-story-wrap").hidden=true;
+  const amb=$("pd-amb");
+  amb.innerHTML = (p.ambience||[]).map((a,k)=>`<figure class="${k===0?"wide":""}"><img src="${esc(a.src)}" alt="${esc(a.alt)}" loading="lazy"></figure>`).join("");
+  amb.hidden = !(p.ambience||[]).length;
+
+  let rel = PRODUCTS.filter(x=>x.id!==p.id && x.type===p.type);
+  if(rel.length<4) rel = rel.concat(PRODUCTS.filter(x=>x.id!==p.id && x.group===p.group && x.type!==p.type)).slice(0,4);
+  $("pd-related").innerHTML = rel.slice(0,4).map(card).join("");
+  $("pd-rel-link").href = "#"+groupSlug; $("pd-rel-link").textContent = "All "+GROUP_LABEL[p.group].toLowerCase();
+  document.title = `${p.name} · Marquetery`;
+  return true;
+};
+
+$("pd-prev").onclick=()=>show(cur-1);
+$("pd-next").onclick=()=>show(cur+1);
+$("pd-thumbs").addEventListener("click",e=>{const b=e.target.closest("button"); if(b) show([...b.parentNode.children].indexOf(b));});
+$("pd-img").addEventListener("click",()=>$("pd-stage").classList.toggle("zoom"));
+document.addEventListener("keydown",e=>{ if($("view-product").hidden) return; if(e.key==="ArrowLeft") show(cur-1); if(e.key==="ArrowRight") show(cur+1); });
+let tx=null; $("pd-stage").addEventListener("touchstart",e=>{tx=e.touches[0].clientX},{passive:true});
+$("pd-stage").addEventListener("touchend",e=>{ if(tx===null) return; const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>40) show(cur+(dx<0?1:-1)); tx=null; });
+$("pd-enquire").onclick=()=>{ $("contact").scrollIntoView({behavior:"smooth"}); setTimeout(()=>$("email").focus({preventScroll:true}),600); };
+</script>

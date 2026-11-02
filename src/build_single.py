@@ -16,21 +16,27 @@ pm=pm[:pm.index('<section class="band" id="bespoke">')]+'</main>'
 pm=pm.replace('<main id="top">','<main id="view-products" hidden>',1)
 footer=t[t.index('<footer id="contact">'):t.index('</footer>')+9]
 drawer=t[t.index('<div class="scrim"'):t.index('<script>')]
-pscript=t[t.index('<script>')+8:t.rindex('</script>')].replace('/*DATA*/[]',data)
+pscript=t[t.index('<script>')+8:t.rindex('</script>')].replace('const PRODUCTS = /*DATA*/[];','')
+pt=open(S+'/product_template.html').read()
+pts=pt[:pt.index('</style>')+8]
+ptm=pt[pt.index('<main id="view-product" hidden>'):pt.index('</main>')+7]
+ptscript=pt[pt.index('<script>')+8:pt.rindex('</script>')]
 hs=h[:h.index('</style>')+8]
 hm=h[h.index('<main id="top">'):h.index('</main>')+7].replace('<main id="top">','<main id="view-home">',1)
-hscript=h[h.index('<script>')+8:h.rindex('</script>')].replace('/*DATA*/[]',data)
+hscript=h[h.index('<script>')+8:h.rindex('</script>')].replace('const PRODUCTS = /*DATA*/[];','')
 hscript=hscript.replace('$("news").addEventListener("submit",e=>{e.preventDefault(); $("news-note").textContent = okEmail($("email").value) ? "Thank you. You\'re on the list." : "Enter a valid email address, like name@example.com.";});','')
 assert '$("news")' not in hscript
 router='''
 (()=>{
   const PRODUCT_VIEWS=["collections","tables","storage","seating","lighting","accessories"];
-  const home=document.getElementById("view-home"), prod=document.getElementById("view-products");
+  const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product");
   const navCol=document.querySelector('nav.main a[href="#collections"]');
   function route(){
     const h=(location.hash||"").slice(1).toLowerCase();
     const isProd=PRODUCT_VIEWS.includes(h);
-    home.hidden=isProd; prod.hidden=!isProd;
+    const isPiece=!isProd && !!h && window.renderProduct(h);
+    home.hidden=isProd||isPiece; prod.hidden=!isProd; piece.hidden=!isPiece;
+    if(isPiece){ window.scrollTo(0,0); navCol.setAttribute("aria-current","page"); return; }
     if(isProd) navCol.setAttribute("aria-current","page"); else navCol.removeAttribute("aria-current");
     document.title = isProd ? "Collections · Marquetery" : "Marquetery";
     const target = !isProd && h && h!=="home" && h!=="top" ? document.getElementById(h) : null;
@@ -41,7 +47,7 @@ router='''
   route();
 })();
 '''
-page=head+'\n'+hs+'\n'+header+hm+'\n'+pm+'\n'+footer+'\n'+drawer+'<script>\n(()=>{'+hscript+'})();\n(()=>{'+pscript+'})();\n'+router+'</script>\n'
+page=head+'\n'+hs+'\n'+pts+'\n'+header+hm+'\n'+pm+'\n'+ptm+'\n'+footer+'\n'+drawer+'<script>\nconst PRODUCTS = '+data+';\n(()=>{'+hscript+'})();\n(()=>{'+pscript+'})();\n(()=>{'+ptscript+'})();\n'+router+'</script>\n'
 open(S+'/site.html','w').write(page)
 BASE_FIX='*{box-sizing:border-box}\nbody{margin:0}\nimg{max-width:100%}\n[hidden]{display:none!important}'
 he=page.index('</style>')+8

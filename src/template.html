@@ -318,10 +318,10 @@ function renderGrid(){
   $("count").textContent = `${list.length} ${list.length===1?"piece":"pieces"}`;
   $("grid").style.setProperty("--cols", state.cols);
   $("grid").innerHTML = list.length ? list.map((p,k)=>`
-    <button type="button" class="card" data-id="${esc(p.id)}" aria-label="${esc(p.name)}, quick view">
-      ${mediaHTML(p, k<8)}<span class="tag">${esc(p.type)}</span><span class="quick">Quick view</span></div>
+    <a class="card" href="#${esc(p.id)}">
+      ${mediaHTML(p, k<8)}<span class="tag">${esc(p.type)}</span><span class="quick">View piece</span></div>
       <div class="caption"><h2>${esc(p.name)}</h2><span>${esc(p.dimensions.replace(/ cm$/,""))}</span></div>
-    </button>`).join("") : `<p class="empty">No pieces in this category yet.</p>`;
+    </a>`).join("") : `<p class="empty">No pieces in this category yet.</p>`;
   document.querySelectorAll(".density button").forEach(b=>b.setAttribute("aria-pressed", +b.dataset.cols===state.cols));
 }
 
@@ -354,7 +354,6 @@ function closeDrawer(){
   $("drawer").classList.remove("open"); $("scrim").classList.remove("open"); $("drawer").setAttribute("aria-hidden","true");
   document.body.style.overflow=""; lastFocus&&lastFocus.focus();
 }
-$("grid").addEventListener("click", e=>{ const c=e.target.closest(".card"); if(c) openDrawer(c.dataset.id); });
 $("d-close").addEventListener("click", closeDrawer);
 $("scrim").addEventListener("click", closeDrawer);
 $("d-enquire").addEventListener("click", closeDrawer);

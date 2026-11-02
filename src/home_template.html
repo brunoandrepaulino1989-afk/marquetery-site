@@ -7,6 +7,8 @@
 .panel .media img{inset:7%;width:86%;height:86%}
 .panel:hover .media img{transform:scale(1.03)}
 .panel .veneer-label{display:none}
+.panel .media.photo img{inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:normal}
+.panel .media.photo ~ .cap{background:var(--bg)}
 .panel .cap{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:end;gap:16px;padding:28px max(16px, env(safe-area-inset-left, 0px)) 28px 32px}
 .panel:nth-child(2) .cap{padding-left:32px;padding-right:max(16px, env(safe-area-inset-right, 0px))}
 .panel .cap h2{font-family:var(--display);font-weight:400;font-size:clamp(40px,4.6vw,72px);line-height:.95;margin:6px 0 0;letter-spacing:.02em}
@@ -196,10 +198,10 @@ function media(p, label, eager){
 
 /* opening diptych */
 const DIPTYCH = [
-  {id:"amadeo-dining-table", eyebrow:"Tables", title:"Amadeo", href:"#tables"},
+  {id:"amadeo-dining-table", eyebrow:"Dining table", title:"Amadeo", href:"#amadeo-dining-table", photo:"images/amadeo/amadeo-room.webp"},
   {id:"cleo-mirror", eyebrow:"Accessories", title:"Cleo", href:"#accessories"},
 ];
-$("diptych").innerHTML = DIPTYCH.map(d=>`<a class="panel" href="${d.href}">${media(byId(d.id), d.title, true)}<div class="cap"><div><span class="eyebrow">${esc(d.eyebrow)}</span><h2>${esc(d.title)}</h2></div><span class="link">Discover</span></div></a>`).join("");
+$("diptych").innerHTML = DIPTYCH.map(d=>`<a class="panel" href="${d.href}">${d.photo ? media({...byId(d.id), image:d.photo}, d.title, true).replace('class="media','class="media photo') : media(byId(d.id), d.title, true)}<div class="cap"><div><span class="eyebrow">${esc(d.eyebrow)}</span><h2>${esc(d.title)}</h2></div><span class="link">Discover</span></div></a>`).join("");
 
 /* hero */
 const SLIDES = [
