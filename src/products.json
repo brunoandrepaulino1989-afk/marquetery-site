@@ -50,14 +50,39 @@
     ]
   },
   {
-    "id": "ruskin-cabinet",
-    "name": "Ruskin Cabinet",
+    "id": "alba-cabinet",
+    "name": "Alba Cabinet",
     "group": "Storage",
     "type": "Cabinet",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTR033-hommes-ruskin-cabinet-v2-closed-01-front.png",
+    "image": "images/alba/alba-front.webp",
     "dimensions": "180 x 55 x 150 cm",
-    "description": "A minimalist storage piece with a bold striped wood veneer, three doors, and six drawers, suited to modern interiors.",
-    "source": "https://hommes.studio/storage/cabinet/ruskin-cabinet/"
+    "description": "A storage cabinet with a striped facade of light and dark wood veneers, three doors and six drawers.",
+    "source": "https://hommes.studio/storage/cabinet/ruskin-cabinet/",
+    "lede": "Alternating bands of gloss sucupira and pale sycamore run across three doors and six drawers, shifting rhythm where the drawers begin. The cabinet floats on a recessed plinth, with glass shelves and a bird's-eye interior behind the doors.",
+    "materials": [
+      "Sucupira wood veneer, gloss marquetry",
+      "Sycamore wood veneer",
+      "Natural bird's-eye veneer, interior",
+      "Glass shelves"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/alba/alba-front.webp",
+      "images/alba/alba-angle.webp",
+      "images/alba/alba-open-angle.webp",
+      "images/alba/alba-open-front.webp",
+      "images/alba/alba-room.webp"
+    ],
+    "story": {
+      "title": "A facade that changes its beat",
+      "text": "The stripes on the doors are long and calm; on the drawers below they break into shorter blocks, so the pattern reads like a bar of music. Open the doors and the warm bird's-eye interior and glass shelves turn the cabinet into a display piece for glassware, books or a bar."
+    },
+    "ambience": [
+      {
+        "src": "images/alba/alba-room.webp",
+        "alt": "Alba Cabinet against a green plaster wall between two globe floor lamps"
+      }
+    ]
   },
   {
     "id": "dylan-sideboard",

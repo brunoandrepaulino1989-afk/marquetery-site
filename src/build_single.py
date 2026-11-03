@@ -48,7 +48,7 @@ router='''
 })();
 '''
 page=head+'\n'+hs+'\n'+pts+'\n'+header+hm+'\n'+pm+'\n'+ptm+'\n'+footer+'\n'+drawer+'<script>\nconst PRODUCTS = '+data+';\n(()=>{'+hscript+'})();\n(()=>{'+pscript+'})();\n(()=>{'+ptscript+'})();\n'+router+'</script>\n'
-open(S+'/site.html','w').write(page)
+pass
 BASE_FIX='*{box-sizing:border-box}\nbody{margin:0}\nimg{max-width:100%}\n[hidden]{display:none!important}'
 he=page.index('</style>')+8
 doc='<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'+page[:he]+'\n</head>\n<body>\n'+page[he:]+'\n</body>\n</html>\n'
