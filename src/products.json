@@ -221,14 +221,38 @@
     }
   },
   {
-    "id": "cleo-mirror",
-    "name": "Cleo Mirror",
+    "id": "helix-mirror",
+    "name": "Helix Mirror",
     "group": "Complements",
     "type": "Mirror",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL046-001-hommes.studio-cleo-mirror.png",
+    "image": "images/helix/helix-front.webp",
     "dimensions": "130 x 9 x 130 cm",
     "description": "A wall mirror with a sunburst-style frame of layered wood veneers, a sculptural focal point.",
-    "source": "https://hommes.studio/complements/mirror/cleo-mirror/"
+    "source": "https://hommes.studio/complements/mirror/cleo-mirror/",
+    "lede": "A round mirror framed by a sunburst of marquetry rays in gloss pau ferro, white bird's-eye, black tulipwood and ash root. The points step forward from the wall, so every ray catches the light at its own angle.",
+    "materials": [
+      "Pau ferro wood veneer, gloss marquetry",
+      "White bird's-eye veneer",
+      "Black tulipwood veneer",
+      "Ash root veneer",
+      "Glass mirror"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/helix/helix-front.webp",
+      "images/helix/helix-angle.webp",
+      "images/helix/helix-room.webp"
+    ],
+    "story": {
+      "title": "A sunburst in four woods",
+      "text": "Light, dark and pale veneers alternate around the glass like the rays of a compass rose, with scalloped black points between them. The raised pau ferro ring holds the mirror like a lens. It makes an entrance hall, a living room or a bedroom wall feel finished on its own."
+    },
+    "ambience": [
+      {
+        "src": "images/helix/helix-room.webp",
+        "alt": "Helix Mirror above a black console in a plaster-walled hallway"
+      }
+    ]
   },
   {
     "id": "zola-wall-decor",
