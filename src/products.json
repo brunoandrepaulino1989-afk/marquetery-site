@@ -638,14 +638,30 @@
     "source": "https://hommes.studio/tables/side-table/ludwika-prisma-side-table/"
   },
   {
-    "id": "cadiz-bedside-table",
-    "name": "Cadiz Bedside Table",
+    "id": "georges-bedside-table",
+    "name": "Georges Bedside Table",
     "group": "Tables",
     "type": "Bedside Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL117-001-hommes-studio-cadiz-bedside-table-front.png",
+    "image": "images/georges/georges-front.webp",
     "dimensions": "55 x 55 x 50 cm",
     "description": "A nightstand on three slim legs with a marquetry top of Picasso-inspired cubist figures.",
-    "source": "https://hommes.studio/tables/bedside-table/cadiz-bedside-table/"
+    "source": "https://hommes.studio/tables/bedside-table/cadiz-bedside-table/",
+    "lede": "A round bedside table on three curved legs, laid in gloss white bird's-eye with inlaid black bird's-eye. The top carries a drawing of cubist faces and figures, and fine black stripes run down the drum and legs.",
+    "materials": [
+      "White bird's-eye veneer, gloss marquetry",
+      "Black bird's-eye veneer inlay",
+      "Gloss white bird's-eye interior"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/georges/georges-front.webp",
+      "images/georges/georges-angle.webp",
+      "images/georges/georges-top.webp"
+    ],
+    "story": {
+      "title": "A cubist sketch, in wood",
+      "text": "The top reads like a page from an artist's notebook, with eyes, profiles and hatched lines cut from black bird's-eye and set into the pale veneer. A single curved drawer is hidden in the drum, its edges traced by the stripes. It brings a touch of the studio to a bedroom, a reading corner or a guest suite."
+    }
   },
   {
     "id": "austria-center-table",
