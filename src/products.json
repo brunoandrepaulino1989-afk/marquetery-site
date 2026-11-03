@@ -89,10 +89,39 @@
     "name": "Dylan Sideboard",
     "group": "Storage",
     "type": "Sideboard",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTR035-hommes-sideboard-01-estudio-01-front.png",
+    "image": "images/dylan/dylan-front.webp",
     "dimensions": "140 x 40 x 80 cm",
     "description": "A mid-century modern wood sideboard with four discreet drawers and a playful, sculptural look.",
-    "source": "https://hommes.studio/storage/sideboard/dylan-sideboard/"
+    "source": "https://hommes.studio/storage/sideboard/dylan-sideboard/",
+    "lede": "A long, rounded gloss top in sucupira sits on a row of sculpted columns, its band patched with walnut root, olive, cherry and pau ferro. Four discreet drawers hide in the patchwork and open onto a natural bird's-eye interior.",
+    "materials": [
+      "Sucupira wood veneer, gloss marquetry",
+      "Cherry wood veneer",
+      "Walnut root wood veneer",
+      "Olive tree wood veneer",
+      "Pau ferro wood veneer",
+      "Natural bird's-eye veneer, interior"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/dylan/dylan-front.webp",
+      "images/dylan/dylan-angle.webp",
+      "images/dylan/dylan-back.webp",
+      "images/dylan/dylan-top.webp",
+      "images/dylan/dylan-detail.webp",
+      "images/dylan/dylan-open.webp",
+      "images/dylan/dylan-room.webp"
+    ],
+    "story": {
+      "title": "Solid shapes, set in motion",
+      "text": "Seen from the front, the base reads like a row of organ pipes, with pale olive ovals carved into the darker burr. The patchwork band hides four drawers so well that the sideboard looks like a single sculpted block until you open it. It is made for an entryway or a mid-century dining room that wants one memorable piece."
+    },
+    "ambience": [
+      {
+        "src": "images/dylan/dylan-room.webp",
+        "alt": "Dylan Sideboard against a concrete wall beneath a round black mirror, drawers slightly open"
+      }
+    ]
   },
   {
     "id": "becket-bench",
