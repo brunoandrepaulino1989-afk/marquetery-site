@@ -275,14 +275,40 @@
     "source": "https://hommes.studio/complements/wall-decor/ruby-wall-decor/"
   },
   {
-    "id": "jojo-sideboard-2",
+    "id": "jojo-sideboard",
     "name": "Jojo Sideboard",
     "group": "Storage",
     "type": "Sideboard",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTR033-hommes-jojo-sideboard-001.png",
+    "image": "images/jojo/jojo-front.webp",
     "dimensions": "240 x 55 x 82 cm",
     "description": "An Art Deco-inspired sideboard with black marquetry doors and a white maple interior.",
-    "source": "https://hommes.studio/storage/sideboard/jojo-sideboard-2/"
+    "source": "https://hommes.studio/storage/sideboard/jojo-sideboard-2/",
+    "lede": "Four marquetry fronts set a pale circle inside each square, framed alternately by black-and-white stripes and walnut root. The fronts step in and out along the length, opening onto shelves and drawers in gloss white maple.",
+    "materials": [
+      "Black bird's-eye veneer, gloss marquetry",
+      "White maple veneer",
+      "Walnut root veneer",
+      "Gloss white maple interior"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/jojo/jojo-front.webp",
+      "images/jojo/jojo-angle.webp",
+      "images/jojo/jojo-open-front.webp",
+      "images/jojo/jojo-open-angle.webp",
+      "images/jojo/jojo-drawers.webp",
+      "images/jojo/jojo-room.webp"
+    ],
+    "story": {
+      "title": "Circles, stripes and burl",
+      "text": "The pattern borrows from Art Deco graphics: a black ring around each circle, stripes that run up or down depending on the panel, and warm walnut root to break the rhythm. Behind the doors are adjustable shelves, and one end hides a stack of four drawers. At 240 cm it anchors a dining room, a living room or a long hallway."
+    },
+    "ambience": [
+      {
+        "src": "images/jojo/jojo-room.webp",
+        "alt": "Jojo Sideboard against a curved oak wall beneath an abstract artwork"
+      }
+    ]
   },
   {
     "id": "blanco-mirror",
