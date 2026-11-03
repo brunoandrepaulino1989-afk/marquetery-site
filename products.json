@@ -152,14 +152,45 @@
     }
   },
   {
-    "id": "1987-desk",
-    "name": "1987 Desk",
+    "id": "hastings-desk",
+    "name": "Hastings Desk",
     "group": "Tables",
     "type": "Desk",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL160-001-hommes-studio-1987-desk.png",
+    "image": "images/hastings/hastings-front.webp",
     "dimensions": "180 x 70 x 79 cm",
     "description": "An oval wooden desk with a modern twist on marquetry and a vintage-inspired, timeless look.",
-    "source": "https://hommes.studio/tables/desk-tables/1987-desk/"
+    "source": "https://hommes.studio/tables/desk-tables/1987-desk/",
+    "lede": "An oval top in gloss black bird's-eye rests on two rounded pedestals, banded and inlaid with natural bird's-eye in blocks of gold. Curved doors open onto shelves and a pivoting drawer, all lined in warm bird's-eye.",
+    "materials": [
+      "Black bird's-eye veneer, gloss marquetry",
+      "Natural bird's-eye veneer, inlay and interior"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/hastings/hastings-front.webp",
+      "images/hastings/hastings-angle.webp",
+      "images/hastings/hastings-open-back.webp",
+      "images/hastings/hastings-open-angle.webp",
+      "images/hastings/hastings-shelves.webp",
+      "images/hastings/hastings-drawer.webp",
+      "images/hastings/hastings-study.webp",
+      "images/hastings/hastings-detail.webp",
+      "images/hastings/hastings-salon.webp"
+    ],
+    "story": {
+      "title": "Lacquer black, inlaid with light",
+      "text": "The pale inlays are set like brass plates against the black, running around the edge of the top and across the pedestals in long and short bars. Behind the curved doors are rounded shelves and a drawer that swings out on a pivot, so the desk keeps its clean outline when closed. It suits a study, a private office or a reception room."
+    },
+    "ambience": [
+      {
+        "src": "images/hastings/hastings-study.webp",
+        "alt": "Hastings Desk in a panelled study with a brass desk lamp"
+      },
+      {
+        "src": "images/hastings/hastings-salon.webp",
+        "alt": "Hastings Desk in a panelled salon beneath a crystal chandelier"
+      }
+    ]
   },
   {
     "id": "hazel-wall-decor",
