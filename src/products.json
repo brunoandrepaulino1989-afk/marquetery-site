@@ -339,14 +339,43 @@
     }
   },
   {
-    "id": "kali-mirror",
-    "name": "Kali Mirror",
+    "id": "morris-mirror",
+    "name": "Morris Mirror",
     "group": "Complements",
     "type": "Mirror",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL042-001-hommes.studio-kali-mirror.png",
+    "image": "images/morris/morris-front.webp",
     "dimensions": "102.5 x 12 x 140 cm",
     "description": "An oval wall mirror with a warm wooden frame inlaid with a geometric marquetry pattern.",
-    "source": "https://hommes.studio/complements/mirror/kali-mirror/"
+    "source": "https://hommes.studio/complements/mirror/kali-mirror/",
+    "lede": "A deep oval frame in gloss pau ferro marquetry, crossed by diagonal bands of walnut root, olive and sucupira. The bands meet in chevrons around the glass, so the frame seems to turn as the light moves.",
+    "materials": [
+      "Pau ferro wood veneer, gloss marquetry",
+      "Walnut root veneer",
+      "Olive tree wood veneer",
+      "Sucupira wood veneer",
+      "Glass mirror"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/morris/morris-front.webp",
+      "images/morris/morris-angle.webp",
+      "images/morris/morris-console.webp",
+      "images/morris/morris-arch.webp"
+    ],
+    "story": {
+      "title": "An oval, set in motion",
+      "text": "Light olive and dark walnut root alternate in angled strips, a pattern that reads almost like woven cane from across a room. The frame stands 12 cm from the wall, which gives it real presence above a console or a sideboard. Hung alone, it becomes the focal point of an entrance hall or living room."
+    },
+    "ambience": [
+      {
+        "src": "images/morris/morris-console.webp",
+        "alt": "Morris Mirror above a sculptural console against a white plaster wall"
+      },
+      {
+        "src": "images/morris/morris-arch.webp",
+        "alt": "Morris Mirror in an arched plaster hallway"
+      }
+    ]
   },
   {
     "id": "cora-mirror",
