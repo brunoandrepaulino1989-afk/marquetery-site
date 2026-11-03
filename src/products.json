@@ -124,14 +124,32 @@
     ]
   },
   {
-    "id": "becket-bench",
-    "name": "Becket Bench",
+    "id": "dunn-bench",
+    "name": "Dunn Bench",
     "group": "Seating",
     "type": "Bench",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESEAT151-hommes-becket-bench-cherry-01-front.png",
+    "image": "images/dunn/dunn-front.webp",
     "dimensions": "180 x 50 x 85 cm",
     "description": "A cherry-veneer bench with a cream velvet seat, suited to entryways or dining rooms.",
-    "source": "https://hommes.studio/seating/bench/becket-bench/"
+    "source": "https://hommes.studio/seating/bench/becket-bench/",
+    "lede": "A long seat of cream velvet rests on a single cherry plinth, with a faceted backrest that folds in shallow angles like a paper screen. Every surface is cherry veneer in a high-gloss finish.",
+    "materials": [
+      "Cherry wood veneer, high gloss",
+      "Cream velvet upholstery"
+    ],
+    "finish": "High gloss",
+    "seat_height": "45 cm",
+    "gallery": [
+      "images/dunn/dunn-front.webp",
+      "images/dunn/dunn-angle.webp",
+      "images/dunn/dunn-back.webp",
+      "images/dunn/dunn-detail.webp",
+      "images/dunn/dunn-seat.webp"
+    ],
+    "story": {
+      "title": "A classic bench, folded",
+      "text": "The backrest is cut into angled planes, so the grain of the cherry catches the light differently on each face. It floats on a central post above a deep velvet cushion, which makes the bench feel lighter than its size. It is at home in an entrance hall, along a dining table or at the foot of a bed."
+    }
   },
   {
     "id": "1987-desk",
