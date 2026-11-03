@@ -195,14 +195,30 @@
     ]
   },
   {
-    "id": "hazel-wall-decor",
-    "name": "Hazel Wall Decor",
+    "id": "stuart-wall-decor",
+    "name": "Stuart Wall Decor",
     "group": "Complements",
     "type": "Wall Decor",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL049-001-hommes.studio-hazel-wall-decor.png",
+    "image": "images/stuart/stuart-front.webp",
     "dimensions": "90 x 10 x 140 cm",
     "description": "A geometric wall panel built from marquetry in several wood tones, arranged to create depth.",
-    "source": "https://hommes.studio/complements/wall-decor/hazel-wall-decor/"
+    "source": "https://hommes.studio/complements/wall-decor/hazel-wall-decor/",
+    "lede": "A tall oval panel assembled from quarter circles and squares of sucupira, walnut, pau ferro and olive, set against cream. The pieces sit at slightly different depths, so the composition shifts as you walk past it.",
+    "materials": [
+      "Sucupira wood veneer, gloss marquetry",
+      "Walnut wood veneer",
+      "Pau ferro wood veneer",
+      "Olive tree wood veneer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/stuart/stuart-front.webp",
+      "images/stuart/stuart-angle.webp"
+    ],
+    "story": {
+      "title": "Marquetry, hung like a painting",
+      "text": "Each section is cut and laid by hand, with fine gaps between the pieces that add shadow and depth. Light and dark woods turn around the centre like the curve of a letter, so the panel reads as a single gesture from across the room. It is made to anchor an entrance hall or the main wall of a living room."
+    }
   },
   {
     "id": "cleo-mirror",
