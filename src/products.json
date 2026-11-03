@@ -311,14 +311,32 @@
     ]
   },
   {
-    "id": "blanco-mirror",
-    "name": "Blanco Mirror",
+    "id": "savile-mirror",
+    "name": "Savile Mirror",
     "group": "Complements",
     "type": "Mirror",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL043-001-hommes.studio-blanco-mirror.png",
+    "image": "images/savile/savile-front.webp",
     "dimensions": "130 x 8 x 130 cm",
     "description": "A circular mirror pairing warm wood marquetry with a soft white lacquered finish.",
-    "source": "https://hommes.studio/complements/mirror/blanco-mirror/"
+    "source": "https://hommes.studio/complements/mirror/blanco-mirror/",
+    "lede": "A wide round frame laid in segments of gloss walnut, walnut root, cherry root and pau ferro, broken by two sweeps of white bird's-eye. A bevelled mirror sits deep in the centre.",
+    "materials": [
+      "Walnut wood veneer, gloss marquetry",
+      "Walnut root veneer",
+      "Cherry root veneer",
+      "Pau ferro veneer",
+      "White bird's-eye veneer",
+      "Glass mirror"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/savile/savile-front.webp",
+      "images/savile/savile-angle.webp"
+    ],
+    "story": {
+      "title": "Tailored in five woods",
+      "text": "Each segment of the frame is cut to a different angle, so the pale bird's-eye and the dark roots seem to turn around the glass. The high-gloss finish reflects the room back into the wood itself. It hangs well above a sideboard or a console, or alone as the focal point of a wall."
+    }
   },
   {
     "id": "kali-mirror",
