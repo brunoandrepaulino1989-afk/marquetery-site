@@ -388,14 +388,25 @@
     "source": "https://hommes.studio/complements/mirror/cora-mirror/"
   },
   {
-    "id": "rubik-totem",
-    "name": "Rubik Totem",
+    "id": "jacques-totem",
+    "name": "Jacques Totem",
     "group": "Complements",
     "type": "Totem",
     "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL039-hommes-totem-rubik-001.png",
     "dimensions": "30 x 30 x 180 cm",
     "description": "A mid-century modern totem with geometric wood marquetry in black, white and ash.",
-    "source": "https://hommes.studio/complements/totem/rubik-totem/"
+    "source": "https://hommes.studio/complements/totem/rubik-totem/",
+    "lede": "A tall square column, 180 cm high, laid in a playful geometric marquetry of gloss black bird's-eye, white bird's-eye and ash root.",
+    "materials": [
+      "Black bird's-eye veneer, gloss marquetry",
+      "White bird's-eye veneer",
+      "Ash root veneer"
+    ],
+    "finish": "Gloss",
+    "story": {
+      "title": "A column of light and dark",
+      "text": "Blocks of black and pale bird's-eye shift from one face to the next, with warm ash root to break the rhythm, so the pattern changes as you walk around it. It stands on its own like a sculpture and holds a corner of a living room, a hallway or a hotel lobby."
+    }
   },
   {
     "id": "jacarta-totem",
