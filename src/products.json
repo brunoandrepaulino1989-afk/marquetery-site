@@ -85,11 +85,11 @@
     ]
   },
   {
-    "id": "dylan-sideboard",
-    "name": "Dylan Sideboard",
+    "id": "cadogan-sideboard",
+    "name": "Cadogan Sideboard",
     "group": "Storage",
     "type": "Sideboard",
-    "image": "images/dylan/dylan-front.webp",
+    "image": "images/cadogan/cadogan-front.webp",
     "dimensions": "140 x 40 x 80 cm",
     "description": "A mid-century modern wood sideboard with four discreet drawers and a playful, sculptural look.",
     "source": "https://hommes.studio/storage/sideboard/dylan-sideboard/",
@@ -104,13 +104,13 @@
     ],
     "finish": "Gloss",
     "gallery": [
-      "images/dylan/dylan-front.webp",
-      "images/dylan/dylan-angle.webp",
-      "images/dylan/dylan-back.webp",
-      "images/dylan/dylan-top.webp",
-      "images/dylan/dylan-detail.webp",
-      "images/dylan/dylan-open.webp",
-      "images/dylan/dylan-room.webp"
+      "images/cadogan/cadogan-front.webp",
+      "images/cadogan/cadogan-angle.webp",
+      "images/cadogan/cadogan-back.webp",
+      "images/cadogan/cadogan-top.webp",
+      "images/cadogan/cadogan-detail.webp",
+      "images/cadogan/cadogan-open.webp",
+      "images/cadogan/cadogan-room.webp"
     ],
     "story": {
       "title": "Solid shapes, set in motion",
@@ -118,8 +118,8 @@
     },
     "ambience": [
       {
-        "src": "images/dylan/dylan-room.webp",
-        "alt": "Dylan Sideboard against a concrete wall beneath a round black mirror, drawers slightly open"
+        "src": "images/cadogan/cadogan-room.webp",
+        "alt": "Cadogan Sideboard against a concrete wall beneath a round black mirror, drawers slightly open"
       }
     ]
   },
