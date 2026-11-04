@@ -461,14 +461,41 @@
     }
   },
   {
-    "id": "santiago-center-table",
-    "name": "Santiago Center Table",
+    "id": "gris-center-table",
+    "name": "Gris Center Table",
     "group": "Tables",
     "type": "Center Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL019-001-hommes-studio-santiago-center-table-front.png",
+    "image": "images/gris/gris-top.webp",
     "dimensions": "100 x 100 x 50 cm",
     "description": "A coffee table with a bird's-eye marquetry top and glossy black lacquered legs, inspired by Cubism.",
-    "source": "https://hommes.studio/tables/center-table/santiago-center-table/"
+    "source": "https://hommes.studio/tables/center-table/santiago-center-table/",
+    "lede": "A square low table with a gloss black bird's-eye top inlaid with a cubist drawing in white bird's-eye. The striped edge and fluted black lacquered legs frame the composition.",
+    "materials": [
+      "Black bird's-eye veneer, gloss marquetry",
+      "White bird's-eye veneer",
+      "Gloss black lacquered legs"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/gris/gris-lounge.webp",
+      "images/gris/gris-top.webp",
+      "images/gris/gris-room.webp",
+      "images/gris/gris-detail.webp"
+    ],
+    "story": {
+      "title": "A still life seen from above",
+      "text": "The top reads like a cubist canvas laid flat: faces, a guitar and a bottle broken into planes of cream veneer on black. Early twentieth century Cubism is the reference, cut by hand in contrasting bird's-eye. At 100 cm square and 50 cm high it anchors a seating group and is made to order."
+    },
+    "ambience": [
+      {
+        "src": "images/gris/gris-lounge.webp",
+        "alt": "Gris Center Table between two pink armchairs in a sunlit living room"
+      },
+      {
+        "src": "images/gris/gris-room.webp",
+        "alt": "Gris Center Table with books beside a hoop chair"
+      }
+    ]
   },
   {
     "id": "mikado-room-divider",
