@@ -477,10 +477,10 @@
     ],
     "finish": "Gloss",
     "gallery": [
-      "images/gris/gris-lounge.webp",
       "images/gris/gris-top.webp",
-      "images/gris/gris-room.webp",
-      "images/gris/gris-detail.webp"
+      "images/gris/gris-detail.webp",
+      "images/gris/gris-lounge.webp",
+      "images/gris/gris-room.webp"
     ],
     "story": {
       "title": "A still life seen from above",
