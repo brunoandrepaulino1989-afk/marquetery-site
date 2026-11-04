@@ -409,11 +409,11 @@
     }
   },
   {
-    "id": "jacarta-totem",
-    "name": "Jacarta Totem",
+    "id": "kuching-totem",
+    "name": "Kuching Totem",
     "group": "Complements",
     "type": "Totem",
-    "image": "images/jacarta/jacarta-front.webp",
+    "image": "images/kuching/kuching-front.webp",
     "dimensions": "35 x 50 x 180 cm",
     "description": "An abstract wood marquetry piece in black and dark orange, combining shapes of different sizes.",
     "source": "https://hommes.studio/complements/totem/jacarta-totem/",
@@ -426,9 +426,9 @@
     ],
     "finish": "Matte",
     "gallery": [
-      "images/jacarta/jacarta-front.webp",
-      "images/jacarta/jacarta-angle.webp",
-      "images/jacarta/jacarta-detail.webp"
+      "images/kuching/kuching-front.webp",
+      "images/kuching/kuching-angle.webp",
+      "images/kuching/kuching-detail.webp"
     ],
     "story": {
       "title": "A totem of shapes",
