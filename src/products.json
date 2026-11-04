@@ -413,10 +413,27 @@
     "name": "Jacarta Totem",
     "group": "Complements",
     "type": "Totem",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL040-hommes-totem-jacarta-001.png",
+    "image": "images/jacarta/jacarta-front.webp",
     "dimensions": "35 x 50 x 180 cm",
     "description": "An abstract wood marquetry piece in black and dark orange, combining shapes of different sizes.",
-    "source": "https://hommes.studio/complements/totem/jacarta-totem/"
+    "source": "https://hommes.studio/complements/totem/jacarta-totem/",
+    "lede": "A stack of blocks and rounded forms, 180 cm high, in matte black lacquer and warm cherry. Abstract figures and a single watchful eye are inlaid in black bird's-eye and white maple across the faces.",
+    "materials": [
+      "Black bird's-eye veneer, matte marquetry",
+      "White maple veneer",
+      "Cherry wood veneer",
+      "Matte black lacquer"
+    ],
+    "finish": "Matte",
+    "gallery": [
+      "images/jacarta/jacarta-front.webp",
+      "images/jacarta/jacarta-angle.webp",
+      "images/jacarta/jacarta-detail.webp"
+    ],
+    "story": {
+      "title": "A totem of shapes",
+      "text": "Each block is a different size and turns at a slightly different angle, so the column reads like a stacked sculpture. The inlaid drawings, a face at the top and an eye at the base, take their cue from carved posts in Pacific island architecture. Placed in a corner or a hallway, it turns the room into something closer to a gallery."
+    }
   },
   {
     "id": "amalia-totem",
