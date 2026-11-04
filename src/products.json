@@ -436,14 +436,29 @@
     }
   },
   {
-    "id": "amalia-totem",
-    "name": "Amalia Totem",
+    "id": "tahuna-totem",
+    "name": "Tāhuna Totem",
     "group": "Complements",
     "type": "Totem",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL038-hommes-totem-amalia-001.png",
+    "image": "images/tahuna/tahuna-front.webp",
     "dimensions": "40 x 40 x 160 cm",
     "description": "A tall geometric piece in black gloss and white bird's-eye wood marquetry.",
-    "source": "https://hommes.studio/complements/totem/amalia-totem/"
+    "source": "https://hommes.studio/complements/totem/amalia-totem/",
+    "lede": "A slender column in gloss black bird's-eye rises from a pale white bird's-eye base. Flowing figures and watchful eyes are inlaid across both, black on cream below and cream on black above.",
+    "materials": [
+      "Black bird's-eye veneer, gloss marquetry",
+      "White bird's-eye veneer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/tahuna/tahuna-front.webp",
+      "images/tahuna/tahuna-angle.webp",
+      "images/tahuna/tahuna-detail.webp"
+    ],
+    "story": {
+      "title": "Figures that wrap the corners",
+      "text": "The inlaid drawing runs straight across the edges of the column, so a figure that starts on one face finishes on the next. The base reverses the palette, a dark face with two eyes set into pale veneer. At 160 cm it stands like a small sculpture in a living room, a dining room or an entrance."
+    }
   },
   {
     "id": "santiago-center-table",
