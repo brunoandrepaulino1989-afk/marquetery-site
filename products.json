@@ -588,14 +588,36 @@
     }
   },
   {
-    "id": "nice-prisma-side-table",
-    "name": "Nice Prisma Side Table",
+    "id": "prisme-side-table",
+    "name": "Prisme Side Table",
     "group": "Tables",
     "type": "Side Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL017-001-hommes-studio-nice-side-table-front.png",
+    "image": "images/prisme/prisme-front.webp",
     "dimensions": "60 x 60 x 45 cm",
-    "description": "A cube-shaped side table with a white and blue marquetry pattern, inspired by Yves Klein.",
-    "source": "https://hommes.studio/tables/side-table/nice-prisma-side-table/"
+    "description": "A faceted side table in white tulipwood marquetry with figures inlaid in deep blue.",
+    "source": "https://hommes.studio/tables/side-table/nice-prisma-side-table/",
+    "lede": "A faceted volume of triangular planes, veneered in white tulipwood laid in chevrons. Blue tulipwood figures run, leap and stretch across every face, cut in a single strong colour.",
+    "materials": [
+      "White tulipwood veneer, gloss marquetry",
+      "Blue-dyed tulipwood veneer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/prisme/prisme-front.webp",
+      "images/prisme/prisme-side.webp",
+      "images/prisme/prisme-detail.webp",
+      "images/prisme/prisme-room.webp"
+    ],
+    "story": {
+      "title": "Figures in a single blue",
+      "text": "The deep blue recalls Yves Klein and his search for a colour that stands on its own. Each figure is cut in blue tulipwood and set into white, and the drawing crosses the folds of the prism so it changes with every step around it. At 60 cm wide and 45 cm high it sits beside a sofa or reading chair, and it is made to order."
+    },
+    "ambience": [
+      {
+        "src": "images/prisme/prisme-room.webp",
+        "alt": "Prisme Side Table on a pale rug beside white bookshelves and a slatted lounge chair"
+      }
+    ]
   },
   {
     "id": "folk-bedside-table",
