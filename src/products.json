@@ -536,14 +536,31 @@
     ]
   },
   {
-    "id": "brutus-totem",
-    "name": "Brutus Totem",
+    "id": "charlotte-totem",
+    "name": "Charlotte Totem",
     "group": "Complements",
     "type": "Totem",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL037-hommes-totem-brutus-001.png",
+    "image": "images/charlotte/charlotte-front.webp",
     "dimensions": "40 x 40 x 180 cm",
     "description": "An obelisk-like piece covered in black wood marquetry patterns.",
-    "source": "https://hommes.studio/complements/totem/brutus-totem/"
+    "source": "https://hommes.studio/complements/totem/brutus-totem/",
+    "lede": "Three stacked volumes form a modern obelisk. Two blocks in natural bird's-eye carry bold black marquetry drawings, and a matte black lacquered column sits between them.",
+    "materials": [
+      "Matte black bird's-eye veneer, marquetry",
+      "Natural bird's-eye veneer",
+      "Matte black lacquer"
+    ],
+    "finish": "Matte",
+    "gallery": [
+      "images/charlotte/charlotte-front.webp",
+      "images/charlotte/charlotte-angle.webp",
+      "images/charlotte/charlotte-side.webp",
+      "images/charlotte/charlotte-detail.webp"
+    ],
+    "story": {
+      "title": "A drawing that turns the corner",
+      "text": "The black marquetry reads like an ancient sign, an eye and a reaching figure cut into pale bird's-eye. Each drawing wraps from one face to the next, so the piece changes as you walk around it. At 180 cm tall it holds an entrance hall or the corner of a living room on its own, and it is made to order."
+    }
   },
   {
     "id": "madame-totem",
