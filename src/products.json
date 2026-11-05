@@ -620,14 +620,30 @@
     ]
   },
   {
-    "id": "folk-bedside-table",
-    "name": "Folk Bedside Table",
+    "id": "sanogo-bedside-table",
+    "name": "Sanogo Bedside Table",
     "group": "Tables",
     "type": "Bedside Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL115-001-hommes-studio-folk-bedside-table-front.png",
+    "image": "images/sanogo/sanogo-front.webp",
     "dimensions": "55 x 55 x 50 cm",
     "description": "A round, three-legged bedside table with marquetry in black, white and ash wood.",
-    "source": "https://hommes.studio/tables/bedside-table/folk-bedside-table/"
+    "source": "https://hommes.studio/tables/bedside-table/folk-bedside-table/",
+    "lede": "A round bedside table on three legs, veneered in golden ash root with bands of white tulipwood and gloss black bird's-eye. Its top is inlaid with black and pale signs, faces and patterns, and a curved drawer follows the line of the body.",
+    "materials": [
+      "Ash root veneer",
+      "White tulipwood veneer",
+      "Gloss black bird's-eye veneer, marquetry",
+      "Interior in ash root"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/sanogo/sanogo-front.webp",
+      "images/sanogo/sanogo-detail.webp"
+    ],
+    "story": {
+      "title": "Signs from many places",
+      "text": "The drawing on the top borrows from twentieth-century folk motifs and pop imagery, cut in black and pale veneers on warm ash root. Vertical stripes carry the pattern down the sides and legs. At 55 cm across and 50 cm high it sits beside a bed or an armchair, and it is made to order."
+    }
   },
   {
     "id": "roy-wood-sideboard",
