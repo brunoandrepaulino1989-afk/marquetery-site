@@ -671,14 +671,31 @@
     }
   },
   {
-    "id": "palma-center-table",
-    "name": "Palma Center Table",
+    "id": "catalonia-center-table",
+    "name": "Catalonia Center Table",
     "group": "Tables",
     "type": "Center Table",
-    "image": "",
+    "image": "images/catalonia/catalonia-front.webp",
     "dimensions": "100 x 100 x 50 cm",
     "description": "A center table with mid-century lines and a marquetry top in walnut root, bird's eye and ash root.",
-    "source": "https://hommes.studio/tables/center-table/palma-center-table/"
+    "source": "https://hommes.studio/tables/center-table/palma-center-table/",
+    "lede": "A round low table with a top of walnut root inlaid with playful shapes in ash root and black, white and grey bird's-eye. A striped edge of black and pale bird's-eye wraps the top, which rests on fluted legs in gloss black lacquer.",
+    "materials": [
+      "Walnut root veneer, gloss marquetry",
+      "Ash root veneer",
+      "Black, white and grey bird's-eye veneers",
+      "Gloss black lacquered legs"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/catalonia/catalonia-front.webp",
+      "images/catalonia/catalonia-top.webp",
+      "images/catalonia/catalonia-detail.webp"
+    ],
+    "story": {
+      "title": "Signs, shapes and objects",
+      "text": "The top is a field of pictorial signs, biomorphic forms and abstract objects, scattered across warm walnut root like a mid-century painting. The striped edge and fluted legs keep the outline simple, so the drawing does the talking. At 100 cm across and 50 cm high it anchors a seating group, and it is made to order."
+    }
   },
   {
     "id": "dolores-side-table",
