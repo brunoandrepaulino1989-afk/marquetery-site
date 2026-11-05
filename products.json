@@ -499,14 +499,41 @@
     ]
   },
   {
-    "id": "mikado-room-divider",
-    "name": "Mikado Room Divider",
+    "id": "jean-jacques-room-divider",
+    "name": "Jean-Jacques Room Divider",
     "group": "Complements",
     "type": "Room Divider",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL035-mikado-folding-screen-001.png",
+    "image": "images/jean-jacques/jean-jacques-front.webp",
     "dimensions": "300 x 6 x 200 cm",
-    "description": "A folding screen with asymmetrical marquetry panels in a jewel-toned, Art Deco palette.",
-    "source": "https://hommes.studio/complements/room-divider/mikado-room-divider/"
+    "description": "A four-panel folding screen that alternates gloss black lacquer with abstract marquetry in burr woods.",
+    "source": "https://hommes.studio/complements/room-divider/mikado-room-divider/",
+    "lede": "Four panels of different heights fold into a sculptural screen. Gloss black lacquered leaves alternate with marquetry panels, where loose organic shapes in walnut root, ash root, bird's-eye and white maple meet across the joints.",
+    "materials": [
+      "Walnut root veneer",
+      "Ash root veneer",
+      "Black, grey and natural bird's-eye veneers",
+      "White maple and Canaletto walnut",
+      "Gloss black lacquer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/jean-jacques/jean-jacques-front.webp",
+      "images/jean-jacques/jean-jacques-angle.webp",
+      "images/jean-jacques/jean-jacques-open.webp",
+      "images/jean-jacques/jean-jacques-detail.webp",
+      "images/jean-jacques/jean-jacques-edge.webp",
+      "images/jean-jacques/jean-jacques-room.webp"
+    ],
+    "story": {
+      "title": "A collage in wood",
+      "text": "The marquetry is composed like a cut-paper collage, with warm burrs, pale maple and black bird's-eye set against each other in irregular forms. Stepped silhouettes and cut-out windows let light and the room through, so the screen divides a space without closing it. At 300 cm wide and 200 cm high it suits a living room, a study or a bedroom, and it is made to order."
+    },
+    "ambience": [
+      {
+        "src": "images/jean-jacques/jean-jacques-room.webp",
+        "alt": "Jean-Jacques Room Divider against a timber wall between two sand-coloured armchairs"
+      }
+    ]
   },
   {
     "id": "brutus-totem",
