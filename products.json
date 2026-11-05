@@ -563,14 +563,29 @@
     }
   },
   {
-    "id": "madame-totem",
-    "name": "Madame Totem",
+    "id": "bernard-totem",
+    "name": "Bernard Totem",
     "group": "Complements",
     "type": "Totem",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL036-madame-totem-001.png",
+    "image": "images/bernard/bernard-front.webp",
     "dimensions": "49 x 49 x 160 cm",
     "description": "A handmade decorative column with striking monochrome geometric marquetry.",
-    "source": "https://hommes.studio/complements/totem/madame-totem/"
+    "source": "https://hommes.studio/complements/totem/madame-totem/",
+    "lede": "Five blocks of different sizes are stacked into a playful column. Panels of white bird's-eye carry bold black marquetry faces and signs, set between gloss black lacquered sections and a curved black base.",
+    "materials": [
+      "Gloss black bird's-eye veneer, marquetry",
+      "White bird's-eye veneer",
+      "Gloss black lacquer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/bernard/bernard-front.webp",
+      "images/bernard/bernard-angle.webp"
+    ],
+    "story": {
+      "title": "Faces in black and white",
+      "text": "Each block carries its own part of the drawing: eyes, a mouth, stripes and small signs cut in black and pale bird's-eye. Seen from the side, the faces break apart into pure graphic shapes. At 160 cm tall it works as a centrepiece in a minimal entrance or as an accent in a living room, and it is made to order."
+    }
   },
   {
     "id": "nice-prisma-side-table",
