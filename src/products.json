@@ -646,14 +646,29 @@
     }
   },
   {
-    "id": "roy-wood-sideboard",
-    "name": "Roy Wood Sideboard",
+    "id": "kelly-sideboard",
+    "name": "Kelly Sideboard",
     "group": "Storage",
     "type": "Sideboard",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTR030-001-hommes-studio-roy-wood-sideboard.png",
+    "image": "images/kelly/kelly-front.webp",
     "dimensions": "160 x 55 x 85 cm",
-    "description": "A marquetry sideboard with Art Deco touches, in black wenge ash with gold stainless steel details.",
-    "source": "https://hommes.studio/storage/sideboard/roy-wood-sideboard/"
+    "description": "An angular sideboard in gloss black wenge ash with striped bird's-eye marquetry doors and a polished gold disc.",
+    "source": "https://hommes.studio/storage/sideboard/roy-wood-sideboard/",
+    "lede": "A long, angular body in gloss black wenge ash opens out into faceted wings. Its doors carry diagonal stripes of black and natural bird's-eye, and a polished gold disc sits where the two central doors meet.",
+    "materials": [
+      "Gloss black wenge ash",
+      "Black and natural bird's-eye veneers, gloss marquetry",
+      "Polished gold stainless steel details",
+      "Interior in gloss black wenge ash with an aged mirror back"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/kelly/kelly-front.webp"
+    ],
+    "story": {
+      "title": "Mid-century at first glance",
+      "text": "The proportions recall the mid-century sideboard, but the faceted ends and the striped doors belong to Art Deco. Inside, the aged mirror back catches the light when the doors open. At 160 cm wide and 85 cm high it anchors a dining room or a living room, and it is made to order."
+    }
   },
   {
     "id": "palma-center-table",
