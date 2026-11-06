@@ -786,14 +786,31 @@
     }
   },
   {
-    "id": "folk-center-table",
-    "name": "Folk Center Table",
+    "id": "crown-center-table",
+    "name": "Crown Center Table",
     "group": "Tables",
     "type": "Center Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL103-001-hommes-studio-folk-center-table-front.png",
+    "image": "images/crown/crown-front.webp",
     "dimensions": "100 x 100 x 50 cm",
     "description": "A three-legged table with a marquetry top drawing on multicultural motifs and pop imagery.",
-    "source": "https://hommes.studio/tables/center-table/folk-center-table/"
+    "source": "https://hommes.studio/tables/center-table/folk-center-table/",
+    "lede": "A round low table with a top of warm cherry root, covered in signs, faces, eyes and crowns inlaid in black bird's-eye and white tulipwood. A striped edge of cherry root and black wraps the top, which stands on fluted gloss black legs.",
+    "materials": [
+      "Cherry root veneer, gloss marquetry",
+      "Black bird's-eye veneer",
+      "White tulipwood veneer",
+      "Interior in gloss black bird's-eye"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/crown/crown-front.webp",
+      "images/crown/crown-top.webp",
+      "images/crown/crown-detail.webp"
+    ],
+    "story": {
+      "title": "A crowd of signs",
+      "text": "The top is filled edge to edge with small drawings: crowns, eyes, mouths, hands and zigzags borrowed from twentieth-century folk motifs and pop imagery. Each sign is cut by hand in black or pale veneer and set into cherry root. At 100 cm across and 50 cm high it anchors a seating group, and it is made to order."
+    }
   },
   {
     "id": "malaga-bedside-table",
