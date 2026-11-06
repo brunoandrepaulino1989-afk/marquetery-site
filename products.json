@@ -839,11 +839,11 @@
     }
   },
   {
-    "id": "mapple-side-table",
-    "name": "Mapple Side Table",
+    "id": "maple-side-table",
+    "name": "Maple Side Table",
     "group": "Tables",
     "type": "Side Table",
-    "image": "images/mapple/mapple-front.webp",
+    "image": "images/maple/maple-front.webp",
     "dimensions": "55 x 55 x 51 cm",
     "description": "A compact round marquetry side table inlaid in black and natural bird's-eye veneer.",
     "source": "https://hommes.studio/tables/side-table/nice-side-table/",
@@ -854,8 +854,8 @@
     ],
     "finish": "Gloss",
     "gallery": [
-      "images/mapple/mapple-front.webp",
-      "images/mapple/mapple-top.webp"
+      "images/maple/maple-front.webp",
+      "images/maple/maple-top.webp"
     ],
     "story": {
       "title": "Figures in motion",
