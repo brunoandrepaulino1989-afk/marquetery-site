@@ -873,14 +873,30 @@
     "source": "https://hommes.studio/tables/side-table/folk-prisma-side-table/"
   },
   {
-    "id": "nice-bedside-table",
-    "name": "Nice Bedside Table",
+    "id": "maple-bedside-table",
+    "name": "Maple Bedside Table",
     "group": "Tables",
     "type": "Bedside Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL107-001-hommes-studio-nice-bedside-table-front.png",
+    "image": "images/maple-bedside/maple-bedside-front.webp",
     "dimensions": "57 x 50 x 60 cm",
     "description": "A three-drawer nightstand on spherical wooden legs, in black and natural bird's-eye marquetry.",
-    "source": "https://hommes.studio/tables/bedside-table/nice-bedside-table/"
+    "source": "https://hommes.studio/tables/bedside-table/nice-bedside-table/",
+    "lede": "Three drawers in gloss black bird's-eye are stacked slightly off-centre and rest on ochre lacquered spheres. Figures in natural bird's-eye leap across the fronts, matching the Maple Side Table.",
+    "materials": [
+      "Black bird's-eye veneer, gloss marquetry",
+      "Natural bird's-eye veneer",
+      "Interior in gloss black bird's-eye",
+      "Feet in gloss ochre lacquer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/maple-bedside/maple-bedside-front.webp",
+      "images/maple-bedside/maple-bedside-angle.webp"
+    ],
+    "story": {
+      "title": "A companion to the Maple Side Table",
+      "text": "The same leaping figures as the Maple Side Table, inspired by Yves Klein's body prints, run across three offset drawers. As the drawers open, the figures break apart and meet again. At 57 cm wide and 60 cm high it sits beside a bed in a modern or maximalist bedroom, and it is made to order."
+    }
   },
   {
     "id": "fuschia-dining-table",
