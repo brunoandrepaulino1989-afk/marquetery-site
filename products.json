@@ -899,14 +899,43 @@
     }
   },
   {
-    "id": "fuschia-dining-table",
-    "name": "Fuschia Dining Table",
+    "id": "chrysler-dining-table",
+    "name": "Chrysler Dining Table",
     "group": "Tables",
     "type": "Dining Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL001-001-hommes-studio-fuschia-dining-table-front-2.png",
+    "image": "images/chrysler/chrysler-front.webp",
     "dimensions": "280 x 120 x 77 cm",
-    "description": "An ivory dining table with a bird's-eye veneer top and polished gold details, inspired by 1980s Memphis design.",
-    "source": "https://hommes.studio/tables/dining-table/fuschia-dining-table/"
+    "description": "An oval ivory dining table on two contrasting pedestals, with a bird's-eye top and polished gold details.",
+    "source": "https://hommes.studio/tables/dining-table/fuschia-dining-table/",
+    "lede": "A long oval top in bird's-eye veneer, lacquered ivory and set with polished gold discs, rests on two different pedestals: a fluted ivory column on a black base, and a striped sphere on a black cone. A black and gold band runs around the edge.",
+    "materials": [
+      "Bird's-eye veneer top, ivory lacquer",
+      "Polished gold stainless steel details",
+      "Ivory and black lacquered pedestals"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/chrysler/chrysler-front.webp",
+      "images/chrysler/chrysler-angle.webp",
+      "images/chrysler/chrysler-end.webp",
+      "images/chrysler/chrysler-detail.webp",
+      "images/chrysler/chrysler-dining.webp",
+      "images/chrysler/chrysler-dining-detail.webp"
+    ],
+    "story": {
+      "title": "Two pedestals, one table",
+      "text": "The two bases never match: one is a classical fluted column, the other a striped sphere balanced on a cone. It is a playful idea borrowed from 1980s Memphis design, refined with ivory lacquer and polished gold. At 280 cm long it seats eight to ten in a formal dining room, and it can be customised. It is made to order."
+    },
+    "ambience": [
+      {
+        "src": "images/chrysler/chrysler-dining.webp",
+        "alt": "Chrysler Dining Table with green armchairs under a gold ribbon chandelier"
+      },
+      {
+        "src": "images/chrysler/chrysler-dining-detail.webp",
+        "alt": "Close view of the striped sphere pedestal and gold inlaid top with green armchairs"
+      }
+    ]
   },
   {
     "id": "joan-prisma-side-table",
