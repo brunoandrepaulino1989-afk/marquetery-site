@@ -726,14 +726,37 @@
     }
   },
   {
-    "id": "austria-side-table",
-    "name": "Austria Side Table",
+    "id": "stockletfrieze-side-table",
+    "name": "Stockletfrieze Side Table",
     "group": "Tables",
     "type": "Side Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL023-001-hommes-studio-austria-side-table-front.png",
+    "image": "images/stockletfrieze/stockletfrieze-front.webp",
     "dimensions": "55 x 55 x 51 cm",
-    "description": "A nature-inspired marquetry side table, tailored to your preferred wood tones.",
-    "source": "https://hommes.studio/tables/side-table/austria-side-table/"
+    "description": "A round three-legged side table in a mosaic of white tulipwood, black bird's-eye, ash root and cherry root.",
+    "source": "https://hommes.studio/tables/side-table/austria-side-table/",
+    "lede": "A round side table on three curved legs. Its top is a mosaic of white tulipwood, golden ash root and warm cherry root, divided by sweeping lines of black bird's-eye that continue down the legs.",
+    "materials": [
+      "White tulipwood veneer, gloss marquetry",
+      "Black bird's-eye veneer",
+      "Ash root veneer",
+      "Cherry root veneer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/stockletfrieze/stockletfrieze-front.webp",
+      "images/stockletfrieze/stockletfrieze-detail.webp",
+      "images/stockletfrieze/stockletfrieze-room.webp"
+    ],
+    "story": {
+      "title": "A frieze in wood",
+      "text": "The name nods to the Viennese Secession and its great mosaic friezes, where gold, black and ivory were set side by side. Here the same idea is cut in veneer: pale and warm woods held together by black lines, and the pattern runs from the top onto each leg. At 55 cm across and 51 cm high it sits beside a sofa or armchair, and the wood tones can be tailored. It is made to order."
+    },
+    "ambience": [
+      {
+        "src": "images/stockletfrieze/stockletfrieze-room.webp",
+        "alt": "Stockletfrieze Side Table on a yellow and grey rug beside a cream armchair and a stepped wooden lamp"
+      }
+    ]
   },
   {
     "id": "tribal-bedside-table",
