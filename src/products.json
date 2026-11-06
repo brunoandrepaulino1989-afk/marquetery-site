@@ -869,14 +869,31 @@
     "source": "https://hommes.studio/tables/side-table/malaga-prisma-side-table/"
   },
   {
-    "id": "ludwika-prisma-side-table",
-    "name": "Ludwika Prisma Side Table",
+    "id": "harlequin-side-table",
+    "name": "Harlequin Side Table",
     "group": "Tables",
     "type": "Side Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL127-001-hommes-studio-ludwika-prisma-side-table-front.png",
+    "image": "images/harlequin/harlequin-front.webp",
     "dimensions": "60 x 60 x 45 cm",
-    "description": "A geometric side table in mixed-wood marquetry, inspired by Malevich.",
-    "source": "https://hommes.studio/tables/side-table/ludwika-prisma-side-table/"
+    "description": "A faceted side table in mixed-wood marquetry, with diamonds of ash, pear and red, blue and white tulipwood.",
+    "source": "https://hommes.studio/tables/side-table/ludwika-prisma-side-table/",
+    "lede": "A faceted, prism-like volume dressed in diamonds and triangles of veneer. Pale ash and white tulipwood meet warm pear, red and blue tulipwood and black bird's-eye, so every face shows a different composition.",
+    "materials": [
+      "White tulipwood veneer, gloss marquetry",
+      "Ash and pear wood veneers",
+      "Red and blue tulipwood veneers",
+      "Black bird's-eye veneer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/harlequin/harlequin-front.webp",
+      "images/harlequin/harlequin-angle.webp",
+      "images/harlequin/harlequin-top.webp"
+    ],
+    "story": {
+      "title": "Pure forms, played with light",
+      "text": "The pattern follows Kazimir Malevich and his pure geometric forms. Each facet is cut and coloured so that light and shade build a sense of perspective, like a harlequin's diamonds folding around the body. At 60 cm wide and 45 cm high it works as a side table or as a sculptural accent, and it is made to order."
+    }
   },
   {
     "id": "georges-bedside-table",
