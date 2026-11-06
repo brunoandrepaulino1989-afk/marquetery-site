@@ -726,11 +726,11 @@
     }
   },
   {
-    "id": "stockletfrieze-side-table",
-    "name": "Stockletfrieze Side Table",
+    "id": "stocletfrieze-side-table",
+    "name": "Stocletfrieze Side Table",
     "group": "Tables",
     "type": "Side Table",
-    "image": "images/stockletfrieze/stockletfrieze-front.webp",
+    "image": "images/stocletfrieze/stocletfrieze-front.webp",
     "dimensions": "55 x 55 x 51 cm",
     "description": "A round three-legged side table in a mosaic of white tulipwood, black bird's-eye, ash root and cherry root.",
     "source": "https://hommes.studio/tables/side-table/austria-side-table/",
@@ -743,9 +743,9 @@
     ],
     "finish": "Gloss",
     "gallery": [
-      "images/stockletfrieze/stockletfrieze-front.webp",
-      "images/stockletfrieze/stockletfrieze-detail.webp",
-      "images/stockletfrieze/stockletfrieze-room.webp"
+      "images/stocletfrieze/stocletfrieze-front.webp",
+      "images/stocletfrieze/stocletfrieze-detail.webp",
+      "images/stocletfrieze/stocletfrieze-room.webp"
     ],
     "story": {
       "title": "A frieze in wood",
@@ -753,8 +753,8 @@
     },
     "ambience": [
       {
-        "src": "images/stockletfrieze/stockletfrieze-room.webp",
-        "alt": "Stockletfrieze Side Table on a yellow and grey rug beside a cream armchair and a stepped wooden lamp"
+        "src": "images/stocletfrieze/stocletfrieze-room.webp",
+        "alt": "Stocletfrieze Side Table on a yellow and grey rug beside a cream armchair and a stepped wooden lamp"
       }
     ]
   },
