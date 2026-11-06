@@ -859,14 +859,29 @@
     "source": "https://hommes.studio/tables/bedside-table/ruiz-bedside-table/"
   },
   {
-    "id": "malaga-prisma-side-table",
-    "name": "Malaga Prisma Side Table",
+    "id": "fernand-side-table",
+    "name": "Fernand Side Table",
     "group": "Tables",
     "type": "Side Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL129-001-hommes-studio-malaga-prisma-side-table-front.png",
+    "image": "images/fernand/fernand-front.webp",
     "dimensions": "60 x 60 x 45 cm",
-    "description": "A cube-shaped side table in gloss white and black bird's-eye marquetry.",
-    "source": "https://hommes.studio/tables/side-table/malaga-prisma-side-table/"
+    "description": "A faceted side table in gloss black bird's-eye with a cubist drawing in white bird's-eye.",
+    "source": "https://hommes.studio/tables/side-table/malaga-prisma-side-table/",
+    "lede": "A faceted, prism-like body in gloss black bird's-eye, covered on every face with a drawing in white bird's-eye. Lines, eyes and fragments of faces run across the folds of the volume.",
+    "materials": [
+      "Black bird's-eye veneer, gloss marquetry",
+      "White bird's-eye veneer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/fernand/fernand-front.webp",
+      "images/fernand/fernand-detail.webp",
+      "images/fernand/fernand-detail-2.webp"
+    ],
+    "story": {
+      "title": "Cubism wrapped around a prism",
+      "text": "The drawing takes its cue from Picasso and the Cubists: faces broken into lines and planes, then cut in pale veneer against black. Because the table itself is faceted, the image breaks again at every edge. At 60 cm wide and 45 cm high it sits beside a sofa or armchair, and it is made to order."
+    }
   },
   {
     "id": "harlequin-side-table",
