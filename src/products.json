@@ -698,14 +698,32 @@
     }
   },
   {
-    "id": "dolores-side-table",
-    "name": "Dolores Side Table",
+    "id": "blue-star-side-table",
+    "name": "Blue Star Side Table",
     "group": "Tables",
     "type": "Side Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL125-001-hommes-studio-dolores-side-table-front.png",
+    "image": "images/blue-star/blue-star-front.webp",
     "dimensions": "55 x 55 x 51 cm",
     "description": "A side table with a marquetry top in a playful, Dada-inspired geometric pattern.",
-    "source": "https://hommes.studio/tables/side-table/dolores-side-table/"
+    "source": "https://hommes.studio/tables/side-table/dolores-side-table/",
+    "lede": "A round side table on three curved legs, veneered in white bird's-eye with bands of black. Its top carries a bold face-like drawing in blue tulipwood, outlined in black, with eyes in red tulipwood and ash root.",
+    "materials": [
+      "White bird's-eye veneer, gloss marquetry",
+      "Black bird's-eye veneer",
+      "Blue and red tulipwood veneers",
+      "Ash root veneer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/blue-star/blue-star-front.webp",
+      "images/blue-star/blue-star-top.webp",
+      "images/blue-star/blue-star-detail.webp",
+      "images/blue-star/blue-star-detail-2.webp"
+    ],
+    "story": {
+      "title": "A Dada game on the tabletop",
+      "text": "The drawing on the top plays like a Dada collage: a blue field, a thick black line and two watching eyes. The black bands continue down the legs, so the pattern reads from every side. At 55 cm across and 51 cm high it sits beside a sofa or armchair, and it is made to order."
+    }
   },
   {
     "id": "austria-side-table",
