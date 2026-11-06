@@ -759,14 +759,31 @@
     ]
   },
   {
-    "id": "tribal-bedside-table",
-    "name": "Tribal Bedside Table",
+    "id": "tuxedo-bedside-table",
+    "name": "Tuxedo Bedside Table",
     "group": "Tables",
     "type": "Bedside Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL108-001-hommes-studio-tribal-bedside-table-front.png",
+    "image": "images/tuxedo/tuxedo-front.webp",
     "dimensions": "57 x 50 x 60 cm",
     "description": "A black bedside table with three drawers, marquetry detailing and sphere-style legs.",
-    "source": "https://hommes.studio/tables/bedside-table/tribal-bedside-table/"
+    "source": "https://hommes.studio/tables/bedside-table/tribal-bedside-table/",
+    "lede": "Three drawers in gloss black bird's-eye are stacked slightly off-centre and rest on beige lacquered spheres. Eyes, crowns and dashes in white tulipwood and grey bird's-eye run across the fronts.",
+    "materials": [
+      "Black bird's-eye veneer, gloss marquetry",
+      "White tulipwood veneer",
+      "Grey bird's-eye veneer",
+      "Interior in gloss black bird's-eye",
+      "Feet in gloss beige lacquer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/tuxedo/tuxedo-front.webp",
+      "images/tuxedo/tuxedo-angle.webp"
+    ],
+    "story": {
+      "title": "Black tie, with a wink",
+      "text": "Like a dinner jacket, it is mostly black and very polished, with a few pale details that catch the eye. The signs draw on twentieth-century folk motifs and pop imagery, and each drawer shifts a little so the drawing breaks and meets again. At 57 cm wide and 60 cm high it sits beside a bed or a sofa, and it is made to order."
+    }
   },
   {
     "id": "folk-center-table",
