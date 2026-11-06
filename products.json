@@ -813,14 +813,30 @@
     }
   },
   {
-    "id": "malaga-bedside-table",
-    "name": "Malaga Bedside Table",
+    "id": "kubo-bedside-table",
+    "name": "Kubo Bedside Table",
     "group": "Tables",
     "type": "Bedside Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL106-001-hommes-studio-malaga-bedside-table-front.png",
+    "image": "images/kubo/kubo-front.webp",
     "dimensions": "57 x 50 x 60 cm",
     "description": "A cubist-inspired nightstand on wooden-sphere legs, white bird's-eye body with grey marquetry.",
-    "source": "https://hommes.studio/tables/bedside-table/malaga-bedside-table/"
+    "source": "https://hommes.studio/tables/bedside-table/malaga-bedside-table/",
+    "lede": "Three drawers in gloss white bird's-eye are stacked slightly off-centre and rest on cream lacquered spheres. A cubist drawing in grey bird's-eye, all lines, eyes and broken faces, runs across the fronts.",
+    "materials": [
+      "White bird's-eye veneer, gloss",
+      "Grey bird's-eye marquetry",
+      "Interior in gloss white bird's-eye",
+      "Feet in gloss cream lacquer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/kubo/kubo-front.webp",
+      "images/kubo/kubo-angle.webp"
+    ],
+    "story": {
+      "title": "Cubism in pale tones",
+      "text": "The drawing follows Picasso and the Cubists: faces split into lines and planes, here cut in soft grey against white. Each drawer is offset, so the image shifts as the drawers move. At 57 cm wide and 60 cm high it suits a calm, minimal bedroom as much as a bolder one, and it is made to order."
+    }
   },
   {
     "id": "nice-side-table",
