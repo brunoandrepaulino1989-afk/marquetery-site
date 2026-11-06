@@ -938,14 +938,33 @@
     ]
   },
   {
-    "id": "joan-prisma-side-table",
-    "name": "Joan Prisma Side Table",
+    "id": "ferra-side-table",
+    "name": "Ferrá Side Table",
     "group": "Tables",
     "type": "Side Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL128-001-hommes-studio-joan-prisma-side-table-side1.png",
+    "image": "images/ferra/ferra-front.webp",
     "dimensions": "60 x 60 x 45 cm",
-    "description": "A cube-shaped side table with Dada-inspired marquetry in bird's-eye, pear and ash root.",
-    "source": "https://hommes.studio/tables/side-table/joan-prisma-side-table/"
+    "description": "A faceted side table in gloss black bird's-eye with playful shapes in red tulipwood, pear, ash root and white bird's-eye.",
+    "source": "https://hommes.studio/tables/side-table/joan-prisma-side-table/",
+    "lede": "A faceted, prism-like body in gloss black bird's-eye, scattered with organic shapes: coral-like branches in red tulipwood, blobs of pear and ash root, and pale curls of white bird's-eye.",
+    "materials": [
+      "Black bird's-eye veneer, gloss marquetry",
+      "White bird's-eye veneer",
+      "Red tulipwood veneer",
+      "Pear wood veneer",
+      "Ash root veneer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/ferra/ferra-front.webp",
+      "images/ferra/ferra-side.webp",
+      "images/ferra/ferra-side-2.webp",
+      "images/ferra/ferra-top.webp"
+    ],
+    "story": {
+      "title": "A game of shapes on black",
+      "text": "The pattern plays like a Dada or Surrealist sketchbook: shapes float freely across the black ground and cross the folds of the prism, so every side tells a different story. At 60 cm wide and 45 cm high it works as a side table or a sculptural accent in a living room, and it is made to order."
+    }
   },
   {
     "id": "malaga-center-table",
