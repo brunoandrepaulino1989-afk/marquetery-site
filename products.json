@@ -839,14 +839,28 @@
     }
   },
   {
-    "id": "nice-side-table",
-    "name": "Nice Side Table",
+    "id": "mapple-side-table",
+    "name": "Mapple Side Table",
     "group": "Tables",
     "type": "Side Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL126-001-hommes-studio-yves-side-table-front.png",
+    "image": "images/mapple/mapple-front.webp",
     "dimensions": "55 x 55 x 51 cm",
     "description": "A compact round marquetry side table inlaid in black and natural bird's-eye veneer.",
-    "source": "https://hommes.studio/tables/side-table/nice-side-table/"
+    "source": "https://hommes.studio/tables/side-table/nice-side-table/",
+    "lede": "A round side table on three curved legs in gloss black bird's-eye, banded with natural bird's-eye. Across the top, figures in natural bird's-eye leap and tumble over a black ground.",
+    "materials": [
+      "Black bird's-eye veneer, gloss marquetry",
+      "Natural bird's-eye veneer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/mapple/mapple-front.webp",
+      "images/mapple/mapple-top.webp"
+    ],
+    "story": {
+      "title": "Figures in motion",
+      "text": "The top recalls Yves Klein's experiments, where bodies left their trace on the canvas. Here the figures are cut in warm bird's-eye and scattered across black, and the stripes carry the same two woods down each leg. At 55 cm across and 51 cm high it sits beside a sofa or armchair, and it is made to order."
+    }
   },
   {
     "id": "folk-prisma-side-table",
