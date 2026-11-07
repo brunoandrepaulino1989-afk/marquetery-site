@@ -38,17 +38,17 @@ router='''
 (()=>{
   const PRODUCT_VIEWS=["collections","tables","storage","seating","lighting","accessories"];
   const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product"), proj=document.getElementById("view-projects"), rooms=document.getElementById("view-rooms");
-  const navProj=document.querySelector('nav.main a[href="#bespoke"]'), navRooms=document.querySelector('nav.main a[href="#projects"]');
+  const navProj=document.querySelector('nav.main a[href="#bespoke"]'), navRooms=document.querySelector('nav.main a[href="#inspirations"]');
   const navCol=document.querySelector('nav.main a[href="#collections"]');
   function route(){
     const h=(location.hash||"").slice(1).toLowerCase();
-    const isProj=h==="bespoke", isRooms=h==="projects";
+    const isProj=h==="bespoke", isRooms=h==="inspirations"||h==="projects";
     const isProd=PRODUCT_VIEWS.includes(h);
     const isPiece=!isProd && !isProj && !isRooms && !!h && window.renderProduct(h);
     home.hidden=isProd||isPiece||isProj||isRooms; prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj; rooms.hidden=!isRooms;
     if(navProj){ if(isProj) navProj.setAttribute("aria-current","page"); else navProj.removeAttribute("aria-current"); }
     if(navRooms){ if(isRooms) navRooms.setAttribute("aria-current","page"); else navRooms.removeAttribute("aria-current"); }
-    if(isProj||isRooms){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Bespoke":"Projects")+" · Marquetery"; window.scrollTo(0,0); return; }
+    if(isProj||isRooms){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Bespoke":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
     if(isPiece){ window.scrollTo(0,0); navCol.setAttribute("aria-current","page"); return; }
     if(isProd) navCol.setAttribute("aria-current","page"); else navCol.removeAttribute("aria-current");
     document.title = isProd ? "Collections · Marquetery" : "Marquetery";
