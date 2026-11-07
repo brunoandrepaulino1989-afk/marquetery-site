@@ -726,11 +726,11 @@
     }
   },
   {
-    "id": "stocletfrieze-side-table",
-    "name": "Stocletfrieze Side Table",
+    "id": "gustav-side-table",
+    "name": "Gustav Side Table",
     "group": "Tables",
     "type": "Side Table",
-    "image": "images/stocletfrieze/stocletfrieze-front.webp",
+    "image": "images/gustav-side/gustav-side-front.webp",
     "dimensions": "55 x 55 x 51 cm",
     "description": "A round three-legged side table in a mosaic of white tulipwood, black bird's-eye, ash root and cherry root.",
     "source": "https://hommes.studio/tables/side-table/austria-side-table/",
@@ -743,18 +743,18 @@
     ],
     "finish": "Gloss",
     "gallery": [
-      "images/stocletfrieze/stocletfrieze-front.webp",
-      "images/stocletfrieze/stocletfrieze-detail.webp",
-      "images/stocletfrieze/stocletfrieze-room.webp"
+      "images/gustav-side/gustav-side-front.webp",
+      "images/gustav-side/gustav-side-detail.webp",
+      "images/gustav-side/gustav-side-room.webp"
     ],
     "story": {
       "title": "A frieze in wood",
-      "text": "The name nods to the Viennese Secession and its great mosaic friezes, where gold, black and ivory were set side by side. Here the same idea is cut in veneer: pale and warm woods held together by black lines, and the pattern runs from the top onto each leg. At 55 cm across and 51 cm high it sits beside a sofa or armchair, and the wood tones can be tailored. It is made to order."
+      "text": "Named for the Viennese painter of gold and pattern, it nods to the great mosaic friezes of the Secession, where gold, black and ivory were set side by side. Here the same idea is cut in veneer: pale and warm woods held together by black lines, and the pattern runs from the top onto each leg. At 55 cm across and 51 cm high it sits beside a sofa or armchair, and the wood tones can be tailored. It is made to order."
     },
     "ambience": [
       {
-        "src": "images/stocletfrieze/stocletfrieze-room.webp",
-        "alt": "Stocletfrieze Side Table on a yellow and grey rug beside a cream armchair and a stepped wooden lamp"
+        "src": "images/gustav-side/gustav-side-room.webp",
+        "alt": "Gustav Side Table on a yellow and grey rug beside a cream armchair and a stepped wooden lamp"
       }
     ]
   },
@@ -1251,13 +1251,38 @@
     "source": "https://hommes.studio/lighting/floor-lamp/luminous-wood-floor-lamp/"
   },
   {
-    "id": "austria-bedside-table",
-    "name": "Austria Bedside Table",
+    "id": "gustav-bedside-table",
+    "name": "Gustav Bedside Table",
     "group": "Tables",
     "type": "Bedside Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESBED010-001-hommes-studio-austria-bedside-table-front.png",
+    "image": "images/gustav-bedside/gustav-bedside-front.webp",
     "dimensions": "55 x 55 x 50 cm",
-    "description": "A marquetry nightstand with a gloss white interior, in customisable wood finishes.",
-    "source": "https://hommes.studio/tables/side-table/austria-bedside-table/"
+    "description": "A round marquetry bedside table with a drawer, in white tulipwood, black bird's-eye, ash root and cherry root.",
+    "source": "https://hommes.studio/tables/side-table/austria-bedside-table/",
+    "lede": "A round bedside table whose body is one continuous mosaic of pale tulipwood, golden ash root and deep cherry root, divided by bold bands of black bird's-eye that run down into its legs.",
+    "materials": [
+      "White tulipwood veneer, gloss marquetry",
+      "Black bird's-eye veneer",
+      "Ash root veneer",
+      "Cherry root veneer",
+      "Interior in gloss white tulipwood"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/gustav-bedside/gustav-bedside-front.webp",
+      "images/gustav-bedside/gustav-bedside-top.webp",
+      "images/gustav-bedside/gustav-bedside-detail.webp",
+      "images/gustav-bedside/gustav-bedside-room.webp"
+    ],
+    "story": {
+      "title": "A Viennese mosaic for the bedroom",
+      "text": "The companion to the Gustav Center Table and Side Table, named for the Viennese painter of gold and pattern. Seen from above, the top is an abstract composition of burr woods and pale tulipwood held together by black lines; around the sides the same pieces become vertical bands that frame a curved drawer, lined in gloss white tulipwood. At 55 cm across and 50 cm high it sits neatly beside the bed, best in pairs, and the wood tones can be tailored to order."
+    },
+    "ambience": [
+      {
+        "src": "images/gustav-bedside/gustav-bedside-room.webp",
+        "alt": "A pair of Gustav Bedside Tables either side of a bed against a patterned wall"
+      }
+    ]
   }
 ]
