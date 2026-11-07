@@ -125,6 +125,10 @@ footer .cols{display:grid;grid-template-columns:1.4fr repeat(3,1fr) 1.4fr;gap:32
 footer h4{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;margin:0 0 14px}
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;color:var(--muted)}
 footer ul a:hover{color:var(--ink)}
+footer .pay{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding-bottom:32px}
+footer .pay h4{margin:0}
+footer .pay-list{display:flex;flex-wrap:wrap;gap:10px}
+footer .pay-list svg{display:block;width:56px;height:35px}
 footer form{display:flex;border-bottom:1px solid var(--ink);margin-top:6px}
 footer input{flex:1;min-width:0;font:inherit;background:transparent;border:0;color:var(--ink);padding:8px 0}
 footer input::placeholder{color:var(--muted)}
@@ -249,6 +253,7 @@ footer form button{font-size:11px;letter-spacing:.14em;text-transform:uppercase}
       <p class="form-note" id="news-note"></p>
     </div>
   </div>
+  <div class="wrap pay"><h4>We accept</h4><ul class="pay-list" aria-label="Accepted payment methods"><li title="PayPal"><svg viewBox="0 0 64 40" role="img" aria-label="PayPal"><rect x=".5" y=".5" width="63" height="39" rx="5" fill="#fff" stroke="#d6d2ca"/><text x="32" y="25" text-anchor="middle" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" font-weight="700" font-style="italic"><tspan fill="#003087">Pay</tspan><tspan fill="#009cde">Pal</tspan></text></svg></li><li title="Visa"><svg viewBox="0 0 64 40" role="img" aria-label="Visa"><rect x=".5" y=".5" width="63" height="39" rx="5" fill="#fff" stroke="#d6d2ca"/><text x="32" y="27" text-anchor="middle" font-family="Helvetica Neue,Arial,sans-serif" font-size="17" font-weight="800" font-style="italic" fill="#1a1f71" letter-spacing=".5">VISA</text></svg></li><li title="Mastercard"><svg viewBox="0 0 64 40" role="img" aria-label="Mastercard"><rect x=".5" y=".5" width="63" height="39" rx="5" fill="#fff" stroke="#d6d2ca"/><circle cx="26" cy="20" r="10" fill="#eb001b"/><circle cx="38" cy="20" r="10" fill="#f79e1b"/><path d="M32 12a10 10 0 0 1 0 16a10 10 0 0 1 0-16z" fill="#ff5f00"/></svg></li><li title="Revolut"><svg viewBox="0 0 64 40" role="img" aria-label="Revolut"><rect x=".5" y=".5" width="63" height="39" rx="5" fill="#fff" stroke="#d6d2ca"/><text x="32" y="25" text-anchor="middle" font-family="Helvetica Neue,Arial,sans-serif" font-size="12.5" font-weight="600" fill="#191c1f">Revolut</text></svg></li><li title="Revolut Business"><svg viewBox="0 0 64 40" role="img" aria-label="Revolut Business"><rect x=".5" y=".5" width="63" height="39" rx="5" fill="#fff" stroke="#d6d2ca"/><text x="32" y="20" text-anchor="middle" font-family="Helvetica Neue,Arial,sans-serif" font-size="11.5" font-weight="600" fill="#191c1f">Revolut</text><text x="32" y="30" text-anchor="middle" font-family="Helvetica Neue,Arial,sans-serif" font-size="7" font-weight="500" fill="#191c1f" letter-spacing=".6">BUSINESS</text></svg></li><li title="Wise"><svg viewBox="0 0 64 40" role="img" aria-label="Wise"><rect x=".5" y=".5" width="63" height="39" rx="5" fill="#9fe870" stroke="#d6d2ca"/><text x="32" y="26" text-anchor="middle" font-family="Helvetica Neue,Arial,sans-serif" font-size="15" font-weight="800" fill="#163300">wise</text></svg></li></ul></div>
   <div class="legal"><div class="wrap"><span>© 2026 Marquetery.uk is a trading name of After Hours Collections Ltd. Registered in England and Wales, company no. 15580283. Registered office: 66 Paul Street, London EC2A 4NA, United Kingdom.</span><span>Prices on request · Lead time 10–12 weeks</span></div></div>
 </footer>
 
