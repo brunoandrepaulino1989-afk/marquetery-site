@@ -1151,14 +1151,34 @@
     "ambience": []
   },
   {
-    "id": "claire-dressing-tabe",
-    "name": "Claire Dressing Table",
+    "id": "marie-dressing-table",
+    "name": "Marie Dressing Table",
     "group": "Storage",
     "type": "Dresser",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESBED001-001-hommes-studio-claire-dressing-table-front-2.png",
+    "image": "images/marie/marie-quarter.webp",
     "dimensions": "155 x 55 x 144 cm",
     "description": "An Art Deco-inspired dressing table with rounded, lavish forms for the master bedroom.",
-    "source": "https://hommes.studio/storage/dresser/claire-dressing-tabe/"
+    "source": "https://hommes.studio/storage/dresser/claire-dressing-tabe/",
+    "lede": "An Art Deco dressing table of soft curves and polished brass: a walnut-banded oval top floats above two rounded lacquered pedestals, crowned by a round mirror in a gold frame.",
+    "materials": [
+      "Walnut veneer",
+      "Gloss beige lacquer",
+      "Polished brass",
+      "Clear mirror with gold polished stainless steel trim",
+      "Upholstered synthetic leather top"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/marie/marie-quarter.webp",
+      "images/marie/marie-back.webp",
+      "images/marie/marie-side.webp",
+      "images/marie/marie-quarter-back.webp"
+    ],
+    "story": {
+      "title": "A dressing room centrepiece",
+      "text": "The Marie borrows the opulent geometry of the 1930s: a rounded oval top wrapped in figured walnut, brass collars that lift it clear of the pedestals, and a gleaming circular mirror on slender brass stems. Behind the curved doors of each pedestal there is generous storage, and the upholstered top gives a soft, quiet surface for everyday rituals. Made to order and open to customisation for the master bedroom."
+    },
+    "ambience": []
   },
   {
     "id": "ludwika-side-table",
