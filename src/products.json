@@ -1121,14 +1121,34 @@
     ]
   },
   {
-    "id": "zimmer-dining-table",
-    "name": "Zimmer Dining Table",
+    "id": "kramer-dining-table",
+    "name": "Kramer Dining Table",
     "group": "Tables",
     "type": "Dining Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL064-001-hommes-studio-zimmer-dining-table-front-1.png",
+    "image": "images/kramer/kramer-front.webp",
     "dimensions": "280 x 110 x 76 cm",
-    "description": "A contemporary table on black-lacquered legs with an inlaid top of mixed wood veneers.",
-    "source": "https://hommes.studio/tables/dining-table/zimmer-dining-table/"
+    "description": "A long dining table with a marquetry top of gloss white tulipwood and burr woods, raised on two black-lacquered pedestals.",
+    "source": "https://hommes.studio/tables/dining-table/zimmer-dining-table/",
+    "lede": "Seating ten in comfort, the Kramer is a statement table: a broad marquetry top in pale tulipwood, bird's-eye and root veneers, carried on two sculpted black-lacquered pedestals.",
+    "materials": [
+      "White tulipwood veneer, gloss marquetry",
+      "Black bird's-eye veneer",
+      "Ash root veneer",
+      "Cherry root veneer",
+      "Gloss black lacquered legs",
+      "Polished black trim"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/kramer/kramer-front.webp",
+      "images/kramer/kramer-top.webp",
+      "images/kramer/kramer-angle.webp"
+    ],
+    "story": {
+      "title": "Light and shadow",
+      "text": "Seen from above, the top reads like a composition: fields of white tulipwood set against swirling burrs and bands of black, every piece cut and laid by hand. Below, the two chunky pedestals keep the lines bold and graphic, so the table holds its own in a large dining room or a boardroom alike."
+    },
+    "ambience": []
   },
   {
     "id": "claire-dressing-tabe",
