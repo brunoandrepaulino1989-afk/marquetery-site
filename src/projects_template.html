@@ -101,11 +101,7 @@ const PJ = [
 ];
 const pjSrc = n => "images/projects/"+n+".webp";
 const pjFig = ([n,c],i)=>`<figure><button type="button" data-i="${i}" aria-label="Open photo: ${c}"><img src="${pjSrc(n)}" alt="${c}" loading="lazy"></button><figcaption>${c}</figcaption></figure>`;
-const PJ_SECTIONS = [
-  {key:"chrysler", title:"Chrysler Dining Table", note:"Made in three finishes: pearl-white with steel discs, black lacquer, and green marble.", link:"#chrysler-dining-table"},
-  {key:"", title:"From the workshop"}
-];
-document.getElementById("pj-grid").innerHTML = PJ_SECTIONS.map(sec=>`<section class="pj-sec"><div class="pj-sec-head"><h2>${sec.title}</h2>${sec.note?`<p>${sec.note}</p>`:""}${sec.link?`<a href="${sec.link}">View the piece →</a>`:""}</div><div class="pj-cols">${PJ.map((x,i)=>x[2]===sec.key?pjFig(x,i):"").join("")}</div></section>`).join("");
+document.getElementById("pj-grid").innerHTML = `<div class="pj-cols">${PJ.map(pjFig).join("")}</div>`;
 let pjI=0, pjLast=null;
 const box=document.getElementById("pj-box"), bimg=document.getElementById("pj-img"), bcap=document.getElementById("pj-cap");
 function pjShow(i){ pjI=(i+PJ.length)%PJ.length; bimg.src=pjSrc(PJ[pjI][0]); bimg.alt=PJ[pjI][1]; bcap.textContent=PJ[pjI][1]; }
