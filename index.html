@@ -403,6 +403,48 @@ section.block{padding-block:88px}
 .tr-done{padding:28px;background:var(--tile);font-size:16px;line-height:1.7}
 @media (max-width:860px){.tr-cols{grid-template-columns:1fr;gap:48px}.tr-form{grid-template-columns:1fr}.tr-intro{padding-block:48px 40px;text-align:left}}
 </style>
+<style>
+/* About: full-bleed hero, origin intro, chapter timeline, closing links. */
+#view-about{overflow-x:clip}
+.ab-hero{position:relative;width:100vw;margin-left:calc(50% - 50vw);height:clamp(420px,74vh,780px);overflow:hidden;background:#2a2622}
+.ab-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.ab-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,16,16,.05) 25%,rgba(17,16,16,.72))}
+.ab-hero .ab-title{text-shadow:0 1px 18px rgba(0,0,0,.35)}
+.ab-hero .ab-title{position:absolute;left:0;right:0;bottom:clamp(32px,7vh,72px);z-index:1;text-align:center;color:#f0eee9}
+.ab-kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;margin:0 0 14px}
+.ab-hero h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,7vw,104px);line-height:.95;margin:0;letter-spacing:.03em}
+.ab-intro{max-width:780px;margin:0 auto;text-align:center;padding-block:76px 64px;border-bottom:1px solid var(--line)}
+.ab-intro h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,3.4vw,46px);margin:0 0 24px;letter-spacing:.02em}
+.ab-intro p{font-size:17px;line-height:1.75;margin:0 0 18px}
+.ab-line{position:relative;padding-block:72px 40px}
+.ab-line::before{content:"";position:absolute;top:72px;bottom:40px;left:50%;width:1px;background:var(--line)}
+.ab-ch{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:96px;align-items:center;margin-bottom:88px}
+.ab-ch::after{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;margin:-5px 0 0 -5px;background:var(--bg);border:1px solid var(--ink);transform:rotate(45deg)}
+.ab-ch figure{margin:0;aspect-ratio:4/3;overflow:hidden;background:var(--tile)}
+.ab-ch figure img{width:100%;height:100%;object-fit:cover;display:block}
+.ab-ch:nth-child(even) figure{order:2}
+.ab-era{font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin:0 0 12px}
+.ab-ch h3{font-family:var(--display);font-weight:400;font-size:clamp(26px,2.6vw,36px);margin:0 0 16px;letter-spacing:.02em;line-height:1.15}
+.ab-ch p{font-size:16px;line-height:1.75;margin:0;max-width:440px}
+.ab-more{border-top:1px solid var(--line);padding-block:64px 104px;text-align:center}
+.ab-more h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,3.2vw,44px);margin:0 0 36px;letter-spacing:.02em}
+.ab-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;text-align:left}
+.ab-links a{color:inherit;text-decoration:none;display:block}
+.ab-links figure{margin:0 0 16px;aspect-ratio:4/5;overflow:hidden;background:var(--tile)}
+.ab-links img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.ab-links a:hover img{transform:scale(1.03)}
+.ab-links strong{display:block;font-weight:500;font-size:13px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px}
+.ab-links span{font-size:14.5px;line-height:1.6}
+.ab-fine{font-size:13px;line-height:1.7;margin:56px auto 0;max-width:640px}
+@media (max-width:860px){
+  .ab-intro{padding-block:52px 44px;text-align:left}
+  .ab-line{padding-block:48px 8px}
+  .ab-line::before,.ab-ch::after{display:none}
+  .ab-ch{grid-template-columns:1fr;gap:24px;margin-bottom:56px}
+  .ab-ch:nth-child(even) figure{order:0}
+  .ab-links{grid-template-columns:1fr;gap:40px}
+}
+</style>
 <div class="notice"><div class="wrap"><strong>Free shipping to all of the UK</strong><span class="notice-more"> · Made to order in Portugal, delivered white glove</span></div></div>
 
 <header class="site">
@@ -412,7 +454,7 @@ section.block{padding-block:88px}
       <a href="#collections">Collections</a>
       <a href="#bespoke">Bespoke</a>
       <a href="#inspirations">Inspirations</a>
-      <a href="#top">About</a>
+      <a href="#about">About</a>
       <a href="#trade">Trade</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -677,6 +719,55 @@ section.block{padding-block:88px}
   </div>
 </main>
 
+<main id="view-about" hidden>
+  <section class="ab-hero" aria-labelledby="ab-h1">
+    <img src="images/rooms/chrysler.webp" alt="Chrysler Dining Table laid for dinner" fetchpriority="low">
+    <div class="ab-title"><p class="ab-kicker">About Marquetery.uk</p><h1 id="ab-h1">Our Story</h1></div>
+  </section>
+  <div class="wrap">
+    <section class="ab-intro">
+      <h2>Marquetry, made for British rooms</h2>
+      <p>Marquetery.uk began with a simple idea: to bring contemporary marquetry, the art of laying veneers into pictures and patterns, into British homes. The company was founded in London in 2024 to represent the work of HOMMES Studio, a Portuguese design studio whose furniture is cut, inlaid and finished by hand.</p>
+      <p>We hold the exclusive right to market HOMMES designs in the United Kingdom, and a non-exclusive right to offer them beyond it. Every piece in our collection carries a Marquetery name and is made to order for the room it is going to.</p>
+    </section>
+    <section class="ab-line" aria-label="Our story in chapters">
+      <article class="ab-ch">
+        <figure><img src="images/rooms/marie.webp" alt="A marquetry console in a terracotta room" loading="lazy"></figure>
+        <div><p class="ab-era">2024 · London</p><h3>A London company</h3><p>Marquetery.uk is the trading name of After Hours Collections Ltd, incorporated in London in March 2024. From our base in the capital we look after clients, designers and architects across the country.</p></div>
+      </article>
+      <article class="ab-ch">
+        <figure><img src="images/projects/oval-1.webp" alt="An inlaid oval table top in the workshop" loading="lazy"></figure>
+        <div><p class="ab-era">The designs</p><h3>The work of HOMMES Studio</h3><p>Our collection is designed by HOMMES Studio in Portugal: tables, cabinets, mirrors and totems built around bold graphic veneers, burr woods and lacquer. We give each design a Marquetery name of its own.</p></div>
+      </article>
+      <article class="ab-ch">
+        <figure><img src="images/rooms/gustav-center-2.webp" alt="Gustav Center Table in a living room" loading="lazy"></figure>
+        <div><p class="ab-era">The United Kingdom</p><h3>Exclusive rights in the UK</h3><p>Marquetery.uk acquired from HOMMES the exclusive right to market and sell its designs in the United Kingdom. Here, these pieces are offered only through us.</p></div>
+      </article>
+      <article class="ab-ch">
+        <figure><img src="images/rooms/prisme.webp" alt="Prisme Side Table beside a sofa" loading="lazy"></figure>
+        <div><p class="ab-era">Beyond the UK</p><h3>Clients further afield</h3><p>Our agreement with HOMMES also gives us a non-exclusive right to sell the designs outside the United Kingdom, so we can make and deliver pieces for clients and projects abroad.</p></div>
+      </article>
+      <article class="ab-ch">
+        <figure><img src="images/projects/line-4.webp" alt="Marquetry pieces in the workshop in Portugal" loading="lazy"></figure>
+        <div><p class="ab-era">The workshop</p><h3>Made to order in Portugal</h3><p>Nothing is made for stock. Each piece is cut, laid and lacquered by hand once it is ordered, so sizes, veneers and finishes can be chosen to suit the room.</p></div>
+      </article>
+      <article class="ab-ch">
+        <figure><img src="images/projects/console-1.webp" alt="A finished marquetry console ready for delivery" loading="lazy"></figure>
+        <div><p class="ab-era">Delivery</p><h3>White glove, across the UK</h3><p>Every piece travels to its new home with free white glove delivery anywhere in the United Kingdom: carried in, unwrapped, placed and checked by our team.</p></div>
+      </article>
+    </section>
+    <section class="ab-more" aria-labelledby="ab-more-h">
+      <h2 id="ab-more-h">More about us</h2>
+      <div class="ab-links">
+        <a href="#bespoke"><figure><img src="images/projects/oval-8.webp" alt="" loading="lazy"></figure><strong>Bespoke</strong><span>Pieces from our workshop, made to order in the veneers and sizes our clients chose.</span></a>
+        <a href="#inspirations"><figure><img src="images/rooms/kubo.webp" alt="" loading="lazy"></figure><strong>Inspirations</strong><span>Our designs in place, in dining rooms, living rooms and bedrooms.</span></a>
+        <a href="#trade"><figure><img src="images/rooms/gustav-bedside.webp" alt="" loading="lazy"></figure><strong>Trade</strong><span>Our programme for interior designers, architects and developers.</span></a>
+      </div>
+      <p class="ab-fine">Marquetery.uk is a trading name of After Hours Collections Ltd, registered in England and Wales, company no. 15580283. Registered office: 66 Paul Street, London EC2A 4NA.</p>
+    </section>
+  </div>
+</main>
+
 <footer id="contact">
   <div class="wrap cols">
     <div>
@@ -684,7 +775,7 @@ section.block{padding-block:88px}
       <p style="color:var(--muted);max-width:30ch">Handcrafted marquetry furniture for homes, hotels and private residences.</p>
     </div>
     <div><h4>Products</h4><ul id="foot-cats"></ul></div>
-    <div><h4>Studio</h4><ul><li><a href="#top">About</a></li><li><a href="#bespoke">Bespoke</a></li><li><a href="#inspirations">Inspirations</a></li><li><a href="#top">Press</a></li></ul></div>
+    <div><h4>Studio</h4><ul><li><a href="#about">About</a></li><li><a href="#bespoke">Bespoke</a></li><li><a href="#inspirations">Inspirations</a></li><li><a href="#top">Press</a></li></ul></div>
     <div><h4>Contact</h4><ul><li>info@marquetery.uk</li><li class="phone-row"><a class="wa" href="https://wa.me/447519450282" target="_blank" rel="noopener" aria-label="Message us on WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4.1A8.6 8.6 0 1 1 8 19.3z"/><path d="M9.2 7.9c.3-.3.8-.3 1 .1l.8 1.6c.1.3.1.6-.1.8l-.6.6c.5 1.1 1.4 2 2.5 2.5l.6-.6c.2-.2.5-.3.8-.1l1.6.8c.4.2.4.7.1 1l-.6.6c-.6.6-1.6.8-2.4.4-1.9-.9-3.4-2.4-4.3-4.3-.4-.8-.2-1.8.4-2.4z"/></svg></a><a href="tel:+447519450282">+44 7519 450282</a></li><li>66 Paul Street<br>London EC2A 4NA<br>United Kingdom</li><li><a href="#top">Instagram</a></li><li><a href="#top">Pinterest</a></li></ul></div>
     <div>
       <h4>Newsletter</h4>
@@ -1133,18 +1224,18 @@ trF.addEventListener("submit",async e=>{
 
 (()=>{
   const PRODUCT_VIEWS=["collections","tables","storage","seating","lighting","accessories"];
-  const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product"), proj=document.getElementById("view-projects"), rooms=document.getElementById("view-rooms"), trade=document.getElementById("view-trade"), navTrade=document.querySelector('nav.main a[href="#trade"]');
+  const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product"), proj=document.getElementById("view-projects"), rooms=document.getElementById("view-rooms"), trade=document.getElementById("view-trade"), navTrade=document.querySelector('nav.main a[href="#trade"]'), about=document.getElementById("view-about"), navAbout=document.querySelector('nav.main a[href="#about"]');
   const navProj=document.querySelector('nav.main a[href="#bespoke"]'), navRooms=document.querySelector('nav.main a[href="#inspirations"]');
   const navCol=document.querySelector('nav.main a[href="#collections"]');
   function route(){
     const h=(location.hash||"").slice(1).toLowerCase();
-    const isProj=h==="bespoke", isRooms=h==="inspirations"||h==="projects", isTrade=h==="trade";
+    const isProj=h==="bespoke", isRooms=h==="inspirations"||h==="projects", isTrade=h==="trade", isAbout=h==="about";
     const isProd=PRODUCT_VIEWS.includes(h);
-    const isPiece=!isProd && !isProj && !isRooms && !isTrade && !!h && window.renderProduct(h);
-    home.hidden=isProd||isPiece||isProj||isRooms||isTrade; trade.hidden=!isTrade; if(navTrade){ if(isTrade) navTrade.setAttribute("aria-current","page"); else navTrade.removeAttribute("aria-current"); } prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj; rooms.hidden=!isRooms;
+    const isPiece=!isProd && !isProj && !isRooms && !isTrade && !isAbout && !!h && window.renderProduct(h);
+    home.hidden=isProd||isPiece||isProj||isRooms||isTrade||isAbout; trade.hidden=!isTrade; about.hidden=!isAbout; if(navAbout){ if(isAbout) navAbout.setAttribute("aria-current","page"); else navAbout.removeAttribute("aria-current"); } if(navTrade){ if(isTrade) navTrade.setAttribute("aria-current","page"); else navTrade.removeAttribute("aria-current"); } prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj; rooms.hidden=!isRooms;
     if(navProj){ if(isProj) navProj.setAttribute("aria-current","page"); else navProj.removeAttribute("aria-current"); }
     if(navRooms){ if(isRooms) navRooms.setAttribute("aria-current","page"); else navRooms.removeAttribute("aria-current"); }
-    if(isProj||isRooms||isTrade){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Bespoke":isTrade?"Trade":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
+    if(isProj||isRooms||isTrade||isAbout){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Bespoke":isTrade?"Trade":isAbout?"About":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
     if(isPiece){ window.scrollTo(0,0); navCol.setAttribute("aria-current","page"); return; }
     if(isProd) navCol.setAttribute("aria-current","page"); else navCol.removeAttribute("aria-current");
     document.title = isProd ? "Collections · Marquetery" : "Marquetery";
