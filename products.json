@@ -1221,16 +1221,6 @@
     "ambience": []
   },
   {
-    "id": "charlot-console-table",
-    "name": "Charlot Console Table",
-    "group": "Tables",
-    "type": "Console Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL038-001-hommes-studio-charlot-console-front-1.png",
-    "dimensions": "180 x 45 x 96 cm",
-    "description": "An Art Deco-inspired entrance console with a marble top and marquetry panels.",
-    "source": "https://hommes.studio/tables/console-table/charlot-console-table/"
-  },
-  {
     "id": "luminous-wood-floor-lamp",
     "name": "Luminous Wood Floor Lamp",
     "group": "Lighting",
