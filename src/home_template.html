@@ -1,23 +1,9 @@
 <style>
 /* Home: slider hero, category tiles, studio statement, craft sequence with veneer swatches, featured scroller, bespoke band, catalogue request. */
-/* Opening diptych: two large images side by side, before the slider. */
-.diptych{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:var(--line);border-bottom:1px solid var(--line)}
-.panel{position:relative;display:block;min-width:0;background:var(--bg)}
-.panel .media{aspect-ratio:auto;height:clamp(520px,86vh,960px);max-width:100%}
-.panel .media img{inset:7%;width:86%;height:86%}
-.panel:hover .media img{transform:scale(1.03)}
-.panel .veneer-label{display:none}
-.panel .media.photo img{inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:normal}
-.panel .media.photo ~ .cap{background:var(--bg)}
-.panel .cap{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:end;gap:16px;padding:28px max(16px, env(safe-area-inset-left, 0px)) 28px 32px}
-.panel:nth-child(2) .cap{padding-left:32px;padding-right:max(16px, env(safe-area-inset-right, 0px))}
-.panel .cap h2{font-family:var(--display);font-weight:400;font-size:clamp(40px,4.6vw,72px);line-height:.95;margin:6px 0 0;letter-spacing:.02em}
-.panel .cap .link{white-space:nowrap}
-@media (max-width:860px){
-  .diptych{grid-template-columns:1fr}
-  .panel .media{height:auto;aspect-ratio:4/5}
-  .panel .cap,.panel:nth-child(2) .cap{padding:20px var(--gutter-r) 22px var(--gutter)}
-}
+/* Opening image: one full-width photograph, no caption. */
+.opening{border-bottom:1px solid var(--line);background:var(--bg)}
+.opening img{display:block;width:100%;height:clamp(520px,86vh,960px);object-fit:cover;object-position:50% 55%}
+@media (max-width:860px){.opening img{height:auto;aspect-ratio:4/5}}
 .hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
 .slides{position:relative;min-height:clamp(480px,72vh,760px)}
 .slide{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s .9s}
@@ -102,7 +88,7 @@ section.block{padding-block:88px}
 {{HEADER}}
 
 <main id="top">
-  <section class="diptych" id="diptych" aria-label="Highlights"></section>
+  <section class="opening" aria-label="Marquetery"><img src="images/emile/emile-room.webp" alt="A marquetry dining table in a softly lit dining room" width="1500" height="1500" fetchpriority="high"></section>
   <section class="hero" aria-roledescription="carousel" aria-label="Featured pieces">
     <div class="slides" id="slides"></div>
     <div class="hero-ctrl">
@@ -195,13 +181,6 @@ function media(p, label, eager){
   const img = p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="${eager?"eager":"lazy"}" decoding="async" onerror="this.parentNode.classList.add('noimg')">` : "";
   return `<div class="media${p.image?"":" noimg"}"><div class="veneer" style="${veneer(p.id)}"></div><span class="veneer-label">${esc(label||p.name.split(" ")[0])}</span>${img}</div>`;
 }
-
-/* opening diptych */
-const DIPTYCH = [
-  {id:"emile-dining-table", eyebrow:"Dining table", title:"Émile", href:"#emile-dining-table", photo:"images/emile/emile-room.webp"},
-  {id:"helix-mirror", eyebrow:"Mirror", title:"Helix", href:"#helix-mirror", photo:"images/helix/helix-room.webp"},
-];
-$("diptych").innerHTML = DIPTYCH.map(d=>`<a class="panel" href="${d.href}">${d.photo ? media({...byId(d.id), image:d.photo}, d.title, true).replace('class="media','class="media photo') : media(byId(d.id), d.title, true)}<div class="cap"><div><span class="eyebrow">${esc(d.eyebrow)}</span><h2>${esc(d.title)}</h2></div><span class="link">Discover</span></div></a>`).join("");
 
 /* hero */
 const SLIDES = [
