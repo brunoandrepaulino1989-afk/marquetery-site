@@ -3,7 +3,13 @@
 .pj-intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:end;padding-block:28px 56px;border-bottom:1px solid var(--line)}
 .pj-intro h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,6vw,96px);line-height:.95;margin:0;letter-spacing:.02em}
 .pj-intro p{margin:0;max-width:56ch;font-size:16px}
-.pj-grid{columns:3 320px;column-gap:16px;padding-block:48px 96px}
+.pj-grid{padding-block:48px 96px}
+.pj-sec+.pj-sec{margin-top:64px}
+.pj-sec-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px;margin-bottom:24px}
+.pj-sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,3vw,40px);margin:0;letter-spacing:.02em}
+.pj-sec-head p{margin:0;font-size:14px;color:var(--muted)}
+.pj-sec-head a{margin-left:auto;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:inherit}
+.pj-cols{columns:3 320px;column-gap:16px}
 .pj-grid figure{break-inside:avoid;margin:0 0 16px;display:block}
 .pj-grid button{display:block;width:100%;padding:0;background:var(--tile);overflow:hidden;cursor:zoom-in}
 .pj-grid img{display:block;width:100%;height:auto;transition:transform .6s ease}
@@ -18,7 +24,7 @@
 .pj-box .x{top:16px;right:16px}
 .pj-box .pv{left:16px;top:50%;transform:translateY(-50%)}
 .pj-box .nx{right:16px;top:50%;transform:translateY(-50%)}
-@media (max-width:860px){.pj-intro{grid-template-columns:1fr;gap:16px;padding-bottom:36px}.pj-grid{columns:2 160px;column-gap:10px}.pj-grid figure{margin-bottom:10px}.pj-box{padding:64px 12px 20px}.pj-box .pv,.pj-box .nx{top:auto;bottom:16px;transform:none}}
+@media (max-width:860px){.pj-intro{grid-template-columns:1fr;gap:16px;padding-bottom:36px}.pj-cols{columns:2 160px;column-gap:10px}.pj-sec-head a{margin-left:0}.pj-grid figure{margin-bottom:10px}.pj-box{padding:64px 12px 20px}.pj-box .pv,.pj-box .nx{top:auto;bottom:16px;transform:none}}
 </style>
 <main id="view-projects" hidden>
   <div class="wrap">
@@ -39,63 +45,67 @@
 </div>
 <script>
 const PJ = [
-  ["coffee-1","Round centre table in burr woods, ivory and black"],
-  ["oval-1","Oval dining table in pearl-white veneer on two sculpted pedestals"],
-  ["green-1","Dining table in green marble with lacquered pedestals and brass lines"],
-  ["dressing-1","Dressing table in walnut, ivory lacquer and polished brass"],
-  ["line-1","Round centre table with hand-drawn inlay in ivory and navy"],
-  ["ebony-1","Oval dining table in black lacquer on ivory sphere pedestals"],
-  ["bedside-1","A pair of round bedside tables in bird's-eye and ebony"],
-  ["miro-1","Round centre table in blue, red and maple inlay"],
-  ["side-1","Three side tables in burr woods, ash and ebony, before lacquering"],
-  ["faceted-1","Faceted side table in bird's-eye with blue-dyed inlay"],
-  ["console-1","Console table in walnut burl, maple and poplar burl with brass bands"],
-  ["top-1","A marquetry top in the workshop, before lacquering"],
-  ["lamp-1","Stepped floor lamp in oak and black lacquer, during assembly"],
-  ["stacked-1","Stacked bedside tables in bird's-eye and palisander"],
-  ["coffee-2","Round centre table, seen from above"],
-  ["oval-2","The oval top, inlaid with polished steel discs"],
-  ["green-2","Green marble top on fluted column and sphere pedestals"],
-  ["dressing-2","Dressing table with nickel details"],
-  ["line-2","The navy and ivory top, seen from the side"],
-  ["ebony-2","The black oval top, polished to a mirror finish"],
-  ["bedside-2","Round bedside table, drawer open"],
-  ["miro-2","Blue inlaid centre table with striped apron"],
-  ["side-2","Round side table in burr woods, lacquered"],
-  ["faceted-3","Faceted side table in blue-dyed veneer"],
-  ["top-2","Burr woods and ebony, cut and laid by hand"],
-  ["stacked-2","Stacked bedside tables with hand-drawn inlay"],
-  ["coffee-3","Round centre table on two legs"],
-  ["oval-3","Two pedestals: fluted ivory column and striped sphere"],
-  ["green-3","The two pedestals in deep green lacquer"],
-  ["dressing-3","Mirror stand in polished nickel"],
-  ["line-3","The inlaid top, cut and laid before lacquering"],
-  ["ebony-3","Ribbed ivory apron above the sphere pedestal"],
-  ["bedside-3","Bedside tables in bird's-eye, burr and ebony"],
-  ["miro-3","The blue top, seen from the front"],
-  ["side-3","Burr side table, seen from the front"],
-  ["faceted-4","Faceted side table, the top face"],
-  ["coffee-4","Round centre table, leg detail"],
-  ["oval-4","Steel inlays set into the pearl-white top"],
-  ["green-4","Green dining table, ribbed apron detail"],
-  ["line-4","Lacquering the striped apron in the spray booth"],
-  ["ebony-4","Sphere pedestal with a polished brass band"],
-  ["bedside-4","Bedside tables before wrapping"],
-  ["miro-4","Blue inlaid centre table, three-quarter view"],
-  ["side-4","Side tables in the finishing room"],
-  ["faceted-2","Faceted side table in bird's-eye"],
-  ["oval-5","Oval dining table, end view"],
-  ["line-5","Fresh lacquer on the inlaid top"],
-  ["bedside-5","Bedside tables, drawers open"],
-  ["side-5","Burr side table drying in the spray booth"],
-  ["oval-6","The striped sphere pedestal on its ivory cone"],
-  ["line-6","The top polished to a high gloss"],
-  ["oval-7","Pedestal detail, fluted ivory and black lacquer"],
-  ["oval-8","Ribbed black apron under the top"],
-  ["oval-9","The top in the workshop, before finishing"],
+  ["oval-1","Oval dining table in pearl-white veneer on two sculpted pedestals","chrysler"],
+  ["oval-2","The oval top, inlaid with polished steel discs","chrysler"],
+  ["oval-3","Two pedestals: fluted ivory column and striped sphere","chrysler"],
+  ["oval-4","Steel inlays set into the pearl-white top","chrysler"],
+  ["oval-5","Oval dining table, end view","chrysler"],
+  ["oval-6","The striped sphere pedestal on its ivory cone","chrysler"],
+  ["oval-7","Pedestal detail, fluted ivory and black lacquer","chrysler"],
+  ["oval-8","Ribbed black apron under the top","chrysler"],
+  ["ebony-1","Oval dining table in black lacquer on ivory sphere pedestals","chrysler"],
+  ["ebony-2","The black oval top, polished to a mirror finish","chrysler"],
+  ["ebony-3","Ribbed ivory apron above the sphere pedestal","chrysler"],
+  ["ebony-4","Sphere pedestal with a polished brass band","chrysler"],
+  ["green-1","Dining table in green marble with lacquered pedestals and brass lines","chrysler"],
+  ["green-2","Green marble top on fluted column and sphere pedestals","chrysler"],
+  ["green-3","The two pedestals in deep green lacquer","chrysler"],
+  ["green-4","Green dining table, ribbed apron detail","chrysler"],
+  ["coffee-1","Round centre table in burr woods, ivory and black",""],
+  ["dressing-1","Dressing table in walnut, ivory lacquer and polished brass",""],
+  ["line-1","Round centre table with hand-drawn inlay in ivory and navy",""],
+  ["bedside-1","A pair of round bedside tables in bird's-eye and ebony",""],
+  ["miro-1","Round centre table in blue, red and maple inlay",""],
+  ["side-1","Three side tables in burr woods, ash and ebony, before lacquering",""],
+  ["faceted-1","Faceted side table in bird's-eye with blue-dyed inlay",""],
+  ["console-1","Console table in walnut burl, maple and poplar burl with brass bands",""],
+  ["top-1","A marquetry top in the workshop, before lacquering",""],
+  ["lamp-1","Stepped floor lamp in oak and black lacquer, during assembly",""],
+  ["stacked-1","Stacked bedside tables in bird's-eye and palisander",""],
+  ["coffee-2","Round centre table, seen from above",""],
+  ["dressing-2","Dressing table with nickel details",""],
+  ["line-2","The navy and ivory top, seen from the side",""],
+  ["bedside-2","Round bedside table, drawer open",""],
+  ["miro-2","Blue inlaid centre table with striped apron",""],
+  ["side-2","Round side table in burr woods, lacquered",""],
+  ["faceted-3","Faceted side table in blue-dyed veneer",""],
+  ["top-2","Burr woods and ebony, cut and laid by hand",""],
+  ["stacked-2","Stacked bedside tables with hand-drawn inlay",""],
+  ["coffee-3","Round centre table on two legs",""],
+  ["dressing-3","Mirror stand in polished nickel",""],
+  ["line-3","The inlaid top, cut and laid before lacquering",""],
+  ["bedside-3","Bedside tables in bird's-eye, burr and ebony",""],
+  ["miro-3","The blue top, seen from the front",""],
+  ["side-3","Burr side table, seen from the front",""],
+  ["faceted-4","Faceted side table, the top face",""],
+  ["coffee-4","Round centre table, leg detail",""],
+  ["line-4","Lacquering the striped apron in the spray booth",""],
+  ["bedside-4","Bedside tables before wrapping",""],
+  ["miro-4","Blue inlaid centre table, three-quarter view",""],
+  ["side-4","Side tables in the finishing room",""],
+  ["faceted-2","Faceted side table in bird's-eye",""],
+  ["line-5","Fresh lacquer on the inlaid top",""],
+  ["bedside-5","Bedside tables, drawers open",""],
+  ["side-5","Burr side table drying in the spray booth",""],
+  ["line-6","The top polished to a high gloss",""],
 ];
 const pjSrc = n => "images/projects/"+n+".webp";
-document.getElementById("pj-grid").innerHTML = PJ.map(([n,c],i)=>`<figure><button type="button" data-i="${i}" aria-label="Open photo: ${c}"><img src="${pjSrc(n)}" alt="${c}" loading="lazy"></button><figcaption>${c}</figcaption></figure>`).join("");
+const pjFig = ([n,c],i)=>`<figure><button type="button" data-i="${i}" aria-label="Open photo: ${c}"><img src="${pjSrc(n)}" alt="${c}" loading="lazy"></button><figcaption>${c}</figcaption></figure>`;
+const PJ_SECTIONS = [
+  {key:"chrysler", title:"Chrysler Dining Table", note:"Made in three finishes: pearl-white with steel discs, black lacquer, and green marble.", link:"#chrysler-dining-table"},
+  {key:"", title:"From the workshop"}
+];
+document.getElementById("pj-grid").innerHTML = PJ_SECTIONS.map(sec=>`<section class="pj-sec"><div class="pj-sec-head"><h2>${sec.title}</h2>${sec.note?`<p>${sec.note}</p>`:""}${sec.link?`<a href="${sec.link}">View the piece →</a>`:""}</div><div class="pj-cols">${PJ.map((x,i)=>x[2]===sec.key?pjFig(x,i):"").join("")}</div></section>`).join("");
 let pjI=0, pjLast=null;
 const box=document.getElementById("pj-box"), bimg=document.getElementById("pj-img"), bcap=document.getElementById("pj-cap");
 function pjShow(i){ pjI=(i+PJ.length)%PJ.length; bimg.src=pjSrc(PJ[pjI][0]); bimg.alt=PJ[pjI][1]; bcap.textContent=PJ[pjI][1]; }
