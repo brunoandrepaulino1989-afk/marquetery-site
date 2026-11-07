@@ -32,9 +32,15 @@ const RM = [
   ["gustav-center","Gustav Center Table","gustav-center-table"],
   ["gustav-side","Gustav Side Table","gustav-side-table"],
   ["marie","Marie Dressing Table","marie-dressing-table"],
+  ["bernard","Bernard Totem","bernard-totem"],
   ["prisme","Prisme Side Table","prisme-side-table"],
+  ["crown","Crown Center Table","crown-center-table"],
   ["maple-bedside","Maple Bedside Table","maple-bedside-table"],
+  ["kubo","Kubo Bedside Table","kubo-bedside-table"],
+  ["lempicka","Lempicka Floor Lamp","lempicka-floor-lamp"],
   ["gustav-bedside","Gustav Bedside Table","gustav-bedside-table"],
+  ["bodun","Bodún Bedside Table","bodun-bedside-table"],
+  ["gustav-center-2","Gustav Center Table","gustav-center-table"],
 ];
 const rmSrc = n => "images/rooms/"+n+".webp";
 document.getElementById("rm-grid").innerHTML = RM.map(([n,t,id],i)=>`<figure><button type="button" data-i="${i}" aria-label="Open image: ${t}"><img src="${rmSrc(n)}" alt="${t} in a room setting" loading="lazy"></button><figcaption><span>${t}</span><a href="#${id}">View the piece</a></figcaption></figure>`).join("");
