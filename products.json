@@ -967,16 +967,6 @@
     }
   },
   {
-    "id": "malaga-center-table",
-    "name": "Malaga Center Table",
-    "group": "Tables",
-    "type": "Center Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL097-001-hommes-studio-malaga-center-table-front.png",
-    "dimensions": "100 x 100 x 50 cm",
-    "description": "A coffee table with a cubist-inspired top in white and black bird's-eye on three beige lacquer legs.",
-    "source": "https://hommes.studio/tables/center-table/malaga-center-table/"
-  },
-  {
     "id": "bodun-bedside-table",
     "name": "Bodún Bedside Table",
     "group": "Tables",
