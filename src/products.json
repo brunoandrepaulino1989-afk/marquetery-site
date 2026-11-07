@@ -981,7 +981,7 @@
     "name": "Bodún Bedside Table",
     "group": "Tables",
     "type": "Bedside Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL131-001-hommes-studio-ruiz-bedside-table-front.png",
+    "image": "images/bodun/bodun-front.webp",
     "dimensions": "57 x 50 x 60 cm",
     "description": "A handmade nightstand with a Picasso-inspired marquetry pattern and sphere-shaped legs.",
     "source": "https://hommes.studio/tables/bedside-table/ruiz-bedside-table/",
@@ -995,7 +995,18 @@
     "story": {
       "title": "Cubism in grey and black",
       "text": "The marquetry takes its cue from Picasso: faces and objects broken into lines and planes, cut in black against soft grey bird's-eye. Each drawer is offset, so the drawing shifts as the drawers move. At 57 cm wide and 60 cm high it suits a minimal or mid-century bedroom, and it is made to order."
-    }
+    },
+    "gallery": [
+      "images/bodun/bodun-front.webp",
+      "images/bodun/bodun-angle.webp",
+      "images/bodun/bodun-room.webp"
+    ],
+    "ambience": [
+      {
+        "src": "images/bodun/bodun-room.webp",
+        "alt": "Bodún Bedside Table under a single spotlight with its drawers slightly open"
+      }
+    ]
   },
   {
     "id": "fernand-side-table",
