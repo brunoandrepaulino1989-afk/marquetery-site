@@ -21,6 +21,10 @@ pt=open(S+'/product_template.html').read()
 pts=pt[:pt.index('</style>')+8]
 ptm=pt[pt.index('<main id="view-product" hidden>'):pt.index('</main>')+7]
 ptscript=pt[pt.index('<script>')+8:pt.rindex('</script>')]
+pj=open(S+'/projects_template.html').read()
+pjs=pj[:pj.index('</style>')+8]
+pjm=pj[pj.index('<main id="view-projects" hidden>'):pj.index('<script>')]
+pjscript=pj[pj.index('<script>')+8:pj.rindex('</script>')]
 hs=h[:h.index('</style>')+8]
 hm=h[h.index('<main id="top">'):h.index('</main>')+7].replace('<main id="top">','<main id="view-home">',1)
 hscript=h[h.index('<script>')+8:h.rindex('</script>')].replace('const PRODUCTS = /*DATA*/[];','')
@@ -29,13 +33,17 @@ assert '$("news")' not in hscript
 router='''
 (()=>{
   const PRODUCT_VIEWS=["collections","tables","storage","seating","lighting","accessories"];
-  const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product");
+  const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product"), proj=document.getElementById("view-projects");
+  const navProj=document.querySelector('nav.main a[href="#projects"]');
   const navCol=document.querySelector('nav.main a[href="#collections"]');
   function route(){
     const h=(location.hash||"").slice(1).toLowerCase();
+    const isProj=h==="projects";
     const isProd=PRODUCT_VIEWS.includes(h);
-    const isPiece=!isProd && !!h && window.renderProduct(h);
-    home.hidden=isProd||isPiece; prod.hidden=!isProd; piece.hidden=!isPiece;
+    const isPiece=!isProd && !isProj && !!h && window.renderProduct(h);
+    home.hidden=isProd||isPiece||isProj; prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj;
+    if(navProj){ if(isProj) navProj.setAttribute("aria-current","page"); else navProj.removeAttribute("aria-current"); }
+    if(isProj){ navCol.removeAttribute("aria-current"); document.title="Projects · Marquetery"; window.scrollTo(0,0); return; }
     if(isPiece){ window.scrollTo(0,0); navCol.setAttribute("aria-current","page"); return; }
     if(isProd) navCol.setAttribute("aria-current","page"); else navCol.removeAttribute("aria-current");
     document.title = isProd ? "Collections · Marquetery" : "Marquetery";
@@ -47,7 +55,7 @@ router='''
   route();
 })();
 '''
-page=head+'\n'+hs+'\n'+pts+'\n'+header+hm+'\n'+pm+'\n'+ptm+'\n'+footer+'\n'+drawer+'<script>\nconst PRODUCTS = '+data+';\n(()=>{'+hscript+'})();\n(()=>{'+pscript+'})();\n(()=>{'+ptscript+'})();\n'+router+'</script>\n'
+page=head+'\n'+hs+'\n'+pts+'\n'+pjs+'\n'+header+hm+'\n'+pm+'\n'+ptm+'\n'+pjm+'\n'+footer+'\n'+drawer+'<script>\nconst PRODUCTS = '+data+';\n(()=>{'+hscript+'})();\n(()=>{'+pscript+'})();\n(()=>{'+ptscript+'})();\n(()=>{'+pjscript+'})();\n'+router+'</script>\n'
 pass
 BASE_FIX='*{box-sizing:border-box}\nbody{margin:0}\nimg{max-width:100%}\n[hidden]{display:none!important}'
 he=page.index('</style>')+8
