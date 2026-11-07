@@ -328,7 +328,7 @@ section.block{padding-block:88px}
 @media (max-width:520px){.enq{padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px))}.enq .row2{grid-template-columns:1fr}}
 </style>
 <style>
-/* Projects: intro + infinite running strips of workshop photographs, with a lightbox. */
+/* Projects: intro + masonry gallery of workshop photographs, with a lightbox. */
 .pj-intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:end;padding-block:28px 56px;border-bottom:1px solid var(--line)}
 .pj-intro h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,6vw,96px);line-height:.95;margin:0;letter-spacing:.02em}
 .pj-intro p{margin:0;max-width:56ch;font-size:16px}
@@ -338,18 +338,12 @@ section.block{padding-block:88px}
 .pj-sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,3vw,40px);margin:0;letter-spacing:.02em}
 .pj-sec-head p{margin:0;font-size:14px;color:var(--muted)}
 .pj-sec-head a{margin-left:auto;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:inherit}
-#view-projects{overflow-x:clip}
-.pj-run{width:100vw;margin-left:calc(50% - 50vw);overflow:hidden}
-.pj-track{display:flex;width:max-content;animation:pj-loop var(--dur,240s) linear infinite}
-.pj-run:hover .pj-track,.pj-run:focus-within .pj-track{animation-play-state:paused}
-@keyframes pj-loop{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.pj-set{display:flex;gap:16px;padding-right:16px}
-.pj-grid figure{margin:0;flex:none}
-.pj-grid button{display:block;padding:0;background:var(--tile);overflow:hidden;cursor:zoom-in}
-.pj-grid img{display:block;height:clamp(300px,46vh,460px);width:auto;transition:transform .6s ease}
+.pj-cols{columns:3 320px;column-gap:16px}
+.pj-grid figure{break-inside:avoid;margin:0 0 16px;display:block}
+.pj-grid button{display:block;width:100%;padding:0;background:var(--tile);overflow:hidden;cursor:zoom-in}
+.pj-grid img{display:block;width:100%;height:auto;transition:transform .6s ease}
 .pj-grid button:hover img{transform:scale(1.02)}
-.pj-grid figcaption{font-size:12.5px;color:var(--muted);letter-spacing:.02em;padding:8px 2px 0;max-width:0;min-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-@media (prefers-reduced-motion:reduce){.pj-run{overflow-x:auto}.pj-track{animation:none}.pj-set[aria-hidden]{display:none}}
+.pj-grid figcaption{font-size:12.5px;color:var(--muted);letter-spacing:.02em;padding:8px 2px 0}
 .pj-box{position:fixed;inset:0;z-index:60;background:rgba(17,16,16,.94);display:grid;grid-template-rows:1fr auto;place-items:center;padding:56px 72px 24px}
 .pj-box[hidden]{display:none}
 .pj-box img{max-width:100%;max-height:calc(100vh - 140px);object-fit:contain}
@@ -359,7 +353,7 @@ section.block{padding-block:88px}
 .pj-box .x{top:16px;right:16px}
 .pj-box .pv{left:16px;top:50%;transform:translateY(-50%)}
 .pj-box .nx{right:16px;top:50%;transform:translateY(-50%)}
-@media (max-width:860px){.pj-intro{grid-template-columns:1fr;gap:16px;padding-bottom:36px}.pj-sec-head a{margin-left:0}.pj-set{gap:10px;padding-right:10px}.pj-grid img{height:260px}.pj-box{padding:64px 12px 20px}.pj-box .pv,.pj-box .nx{top:auto;bottom:16px;transform:none}}
+@media (max-width:860px){.pj-intro{grid-template-columns:1fr;gap:16px;padding-bottom:36px}.pj-cols{columns:2 160px;column-gap:10px}.pj-sec-head a{margin-left:0}.pj-grid figure{margin-bottom:10px}.pj-box{padding:64px 12px 20px}.pj-box .pv,.pj-box .nx{top:auto;bottom:16px;transform:none}}
 </style>
 <div class="notice"><div class="wrap"><strong>Free shipping to all of the UK</strong><span class="notice-more"> · Made to order in Portugal, delivered white glove</span></div></div>
 
@@ -947,16 +941,12 @@ const PJ = [
   ["line-6","The top polished to a high gloss",""],
 ];
 const pjSrc = n => "images/projects/"+n+".webp";
-const pjFig = ([n,c],i,dup)=>`<figure><button type="button" data-i="${i}"${dup?' tabindex="-1"':""} aria-label="Open photo: ${c}"><img src="${pjSrc(n)}" alt="${dup?"":c}"></button><figcaption>${c}</figcaption></figure>`;
+const pjFig = ([n,c],i)=>`<figure><button type="button" data-i="${i}" aria-label="Open photo: ${c}"><img src="${pjSrc(n)}" alt="${c}" loading="lazy"></button><figcaption>${c}</figcaption></figure>`;
 const PJ_SECTIONS = [
   {key:"chrysler", title:"Chrysler Dining Table", note:"Made in three finishes: pearl-white with steel discs, black lacquer, and green marble.", link:"#chrysler-dining-table"},
   {key:"", title:"From the workshop"}
 ];
-document.getElementById("pj-grid").innerHTML = PJ_SECTIONS.map(sec=>{
-  const items=PJ.map((x,i)=>[x,i]).filter(([x])=>x[2]===sec.key);
-  const set=dup=>`<div class="pj-set"${dup?' aria-hidden="true"':""}>${items.map(([x,i])=>pjFig(x,i,dup)).join("")}</div>`;
-  return `<section class="pj-sec"><div class="pj-sec-head"><h2>${sec.title}</h2>${sec.note?`<p>${sec.note}</p>`:""}${sec.link?`<a href="${sec.link}">View the piece →</a>`:""}</div><div class="pj-run"><div class="pj-track" style="--dur:${items.length*10}s">${set(false)}${set(true)}</div></div></section>`;
-}).join("");
+document.getElementById("pj-grid").innerHTML = PJ_SECTIONS.map(sec=>`<section class="pj-sec"><div class="pj-sec-head"><h2>${sec.title}</h2>${sec.note?`<p>${sec.note}</p>`:""}${sec.link?`<a href="${sec.link}">View the piece →</a>`:""}</div><div class="pj-cols">${PJ.map((x,i)=>x[2]===sec.key?pjFig(x,i):"").join("")}</div></section>`).join("");
 let pjI=0, pjLast=null;
 const box=document.getElementById("pj-box"), bimg=document.getElementById("pj-img"), bcap=document.getElementById("pj-cap");
 function pjShow(i){ pjI=(i+PJ.length)%PJ.length; bimg.src=pjSrc(PJ[pjI][0]); bimg.alt=PJ[pjI][1]; bcap.textContent=PJ[pjI][1]; }
