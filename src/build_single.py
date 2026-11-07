@@ -52,7 +52,7 @@ router='''
     home.hidden=isProd||isPiece||isProj||isRooms||isTrade; trade.hidden=!isTrade; if(navTrade){ if(isTrade) navTrade.setAttribute("aria-current","page"); else navTrade.removeAttribute("aria-current"); } prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj; rooms.hidden=!isRooms;
     if(navProj){ if(isProj) navProj.setAttribute("aria-current","page"); else navProj.removeAttribute("aria-current"); }
     if(navRooms){ if(isRooms) navRooms.setAttribute("aria-current","page"); else navRooms.removeAttribute("aria-current"); }
-    if(isProj||isRooms||isTrade){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Bespoke":isTrade?"Trade Program":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
+    if(isProj||isRooms||isTrade){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Bespoke":isTrade?"Trade":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
     if(isPiece){ window.scrollTo(0,0); navCol.setAttribute("aria-current","page"); return; }
     if(isProd) navCol.setAttribute("aria-current","page"); else navCol.removeAttribute("aria-current");
     document.title = isProd ? "Collections · Marquetery" : "Marquetery";
