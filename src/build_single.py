@@ -29,6 +29,10 @@ rm=open(S+'/rooms_template.html').read()
 rms=rm[:rm.index('</style>')+8]
 rmm=rm[rm.index('<main id="view-rooms" hidden>'):rm.index('<script>')]
 rmscript=rm[rm.index('<script>')+8:rm.rindex('</script>')]
+tr=open(S+'/trade_template.html').read()
+trs=tr[:tr.index('</style>')+8]
+trm=tr[tr.index('<main id="view-trade" hidden>'):tr.index('<script>')]
+trscript=tr[tr.index('<script>')+8:tr.rindex('</script>')]
 hs=h[:h.index('</style>')+8]
 hm=h[h.index('<main id="top">'):h.index('</main>')+7].replace('<main id="top">','<main id="view-home">',1)
 hscript=h[h.index('<script>')+8:h.rindex('</script>')].replace('const PRODUCTS = /*DATA*/[];','')
@@ -37,18 +41,18 @@ assert '$("news")' not in hscript
 router='''
 (()=>{
   const PRODUCT_VIEWS=["collections","tables","storage","seating","lighting","accessories"];
-  const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product"), proj=document.getElementById("view-projects"), rooms=document.getElementById("view-rooms");
+  const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product"), proj=document.getElementById("view-projects"), rooms=document.getElementById("view-rooms"), trade=document.getElementById("view-trade"), navTrade=document.querySelector('.tools a[href="#trade"]');
   const navProj=document.querySelector('nav.main a[href="#bespoke"]'), navRooms=document.querySelector('nav.main a[href="#inspirations"]');
   const navCol=document.querySelector('nav.main a[href="#collections"]');
   function route(){
     const h=(location.hash||"").slice(1).toLowerCase();
-    const isProj=h==="bespoke", isRooms=h==="inspirations"||h==="projects";
+    const isProj=h==="bespoke", isRooms=h==="inspirations"||h==="projects", isTrade=h==="trade";
     const isProd=PRODUCT_VIEWS.includes(h);
-    const isPiece=!isProd && !isProj && !isRooms && !!h && window.renderProduct(h);
-    home.hidden=isProd||isPiece||isProj||isRooms; prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj; rooms.hidden=!isRooms;
+    const isPiece=!isProd && !isProj && !isRooms && !isTrade && !!h && window.renderProduct(h);
+    home.hidden=isProd||isPiece||isProj||isRooms||isTrade; trade.hidden=!isTrade; if(navTrade){ if(isTrade) navTrade.setAttribute("aria-current","page"); else navTrade.removeAttribute("aria-current"); } prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj; rooms.hidden=!isRooms;
     if(navProj){ if(isProj) navProj.setAttribute("aria-current","page"); else navProj.removeAttribute("aria-current"); }
     if(navRooms){ if(isRooms) navRooms.setAttribute("aria-current","page"); else navRooms.removeAttribute("aria-current"); }
-    if(isProj||isRooms){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Bespoke":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
+    if(isProj||isRooms||isTrade){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Bespoke":isTrade?"Trade Program":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
     if(isPiece){ window.scrollTo(0,0); navCol.setAttribute("aria-current","page"); return; }
     if(isProd) navCol.setAttribute("aria-current","page"); else navCol.removeAttribute("aria-current");
     document.title = isProd ? "Collections · Marquetery" : "Marquetery";
@@ -60,7 +64,7 @@ router='''
   route();
 })();
 '''
-page=head+'\n'+hs+'\n'+pts+'\n'+pjs+'\n'+rms+'\n'+header+hm+'\n'+pm+'\n'+ptm+'\n'+pjm+'\n'+rmm+'\n'+footer+'\n'+drawer+'<script>\nconst PRODUCTS = '+data+';\n(()=>{'+hscript+'})();\n(()=>{'+pscript+'})();\n(()=>{'+ptscript+'})();\n(()=>{'+pjscript+'})();\n(()=>{'+rmscript+'})();\n'+router+'</script>\n'
+page=head+'\n'+hs+'\n'+pts+'\n'+pjs+'\n'+rms+'\n'+trs+'\n'+header+hm+'\n'+pm+'\n'+ptm+'\n'+pjm+'\n'+rmm+'\n'+trm+'\n'+footer+'\n'+drawer+'<script>\nconst PRODUCTS = '+data+';\n(()=>{'+hscript+'})();\n(()=>{'+pscript+'})();\n(()=>{'+ptscript+'})();\n(()=>{'+pjscript+'})();\n(()=>{'+rmscript+'})();\n(()=>{'+trscript+'})();\n'+router+'</script>\n'
 pass
 BASE_FIX='*{box-sizing:border-box}\nbody{margin:0}\nimg{max-width:100%}\n[hidden]{display:none!important}'
 he=page.index('</style>')+8

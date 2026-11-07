@@ -1,0 +1,110 @@
+<style>
+/* Trade Program: full-bleed hero, intro, benefits, application form. */
+#view-trade{overflow-x:clip}
+.tr-hero{position:relative;width:100vw;margin-left:calc(50% - 50vw);height:clamp(420px,72vh,760px);overflow:hidden;background:#2a2622}
+.tr-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.tr-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,16,16,.05) 30%,rgba(17,16,16,.55))}
+.tr-hero .tr-title{position:absolute;left:0;right:0;bottom:clamp(32px,7vh,72px);z-index:1;text-align:center;color:#f0eee9}
+.tr-kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;margin:0 0 14px}
+.tr-hero h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,7vw,104px);line-height:.95;margin:0;letter-spacing:.03em}
+.tr-intro{max-width:760px;margin:0 auto;text-align:center;padding-block:72px 56px;border-bottom:1px solid var(--line)}
+.tr-intro p{font-size:17px;line-height:1.7;margin:0 0 18px}
+.tr-intro .btn{margin-top:14px}
+.tr-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;padding-block:64px;border-bottom:1px solid var(--line)}
+.tr-cols h2,.tr-apply h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,3.2vw,44px);margin:0 0 22px;letter-spacing:.02em}
+.tr-list{list-style:none;margin:0;padding:0;counter-reset:tr}
+.tr-list li{display:grid;grid-template-columns:44px 1fr;padding:16px 0;border-top:1px solid var(--line);counter-increment:tr}
+.tr-list li:last-child{border-bottom:1px solid var(--line)}
+.tr-list li::before{content:counter(tr,decimal-leading-zero);font-size:12px;letter-spacing:.14em;color:var(--muted);padding-top:3px}
+.tr-list strong{display:block;font-weight:500;font-size:15px;margin-bottom:4px}
+.tr-list span{font-size:14.5px;color:var(--muted);line-height:1.6}
+.tr-side p{font-size:15.5px;line-height:1.7;margin:0 0 18px}
+.tr-contact{display:grid;gap:18px;margin-top:30px;padding:26px 28px;background:var(--tile)}
+.tr-contact h3{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;margin:0 0 6px}
+.tr-contact a{color:inherit;font-size:16px}
+.tr-apply{max-width:760px;margin:0 auto;padding-block:64px 104px}
+.tr-apply > p{font-size:15.5px;line-height:1.7;margin:0 0 32px}
+.tr-form{display:grid;grid-template-columns:1fr 1fr;gap:26px 28px}
+.tr-form .full{grid-column:1/-1}
+.tr-form select{font:inherit;font-size:16px;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--ink);padding:8px 0;border-radius:0;width:100%}
+.tr-form .fine{font-size:12.5px;color:var(--muted);margin:0}
+.tr-status{font-size:14px;color:#9b2c1f;min-height:1em}
+.tr-done{padding:28px;background:var(--tile);font-size:16px;line-height:1.7}
+@media (max-width:860px){.tr-cols{grid-template-columns:1fr;gap:48px}.tr-form{grid-template-columns:1fr}.tr-intro{padding-block:48px 40px;text-align:left}}
+</style>
+<main id="view-trade" hidden>
+  <section class="tr-hero" aria-labelledby="tr-h1">
+    <img src="images/rooms/gustav-center.webp" alt="Gustav Center Table in a living room" fetchpriority="low">
+    <div class="tr-title"><p class="tr-kicker">Supporting professionals</p><h1 id="tr-h1">Trade Program</h1></div>
+  </section>
+  <div class="wrap">
+    <section class="tr-intro">
+      <p>We work with interior designers, architects, stylists and developers on residential, hospitality and commercial projects. If you specify furniture for your clients, we would like to work with you.</p>
+      <p>Every Marquetery piece is made to order in our workshop in Portugal, so sizes, veneers and finishes can be adapted to the project in hand.</p>
+      <a class="btn btn-solid" href="#trade-apply">Apply now</a>
+    </section>
+    <section class="tr-cols">
+      <div>
+        <h2>Trade benefits</h2>
+        <ol class="tr-list">
+          <li><div><strong>A dedicated account manager</strong><span>One person in our studio who knows your projects, by email or phone.</span></div></li>
+          <li><div><strong>Trade pricing</strong><span>Preferential pricing on every piece in the collection.</span></div></li>
+          <li><div><strong>Bespoke sizes and finishes</strong><span>Dimensions, veneers and lacquers adapted to your scheme, with veneer samples on request.</span></div></li>
+          <li><div><strong>Drawings for your project</strong><span>DWG files and technical drawings for specification and planning.</span></div></li>
+          <li><div><strong>First look at new pieces</strong><span>Previews of new designs before they are released.</span></div></li>
+          <li><div><strong>Free white glove delivery</strong><span>Free shipping across the UK, with delivery timed to your site schedule.</span></div></li>
+        </ol>
+      </div>
+      <div class="tr-side">
+        <h2>How it works</h2>
+        <p>Complete the application below. Our studio reviews every request and will email you within one working day to confirm your trade account.</p>
+        <p>Once you are approved, your account manager will be in touch to talk through your current projects.</p>
+        <div class="tr-contact">
+          <div><h3>Email us</h3><a href="mailto:info@marquetery.uk">info@marquetery.uk</a></div>
+          <div><h3>Call us</h3><a href="tel:+447519450282">+44 7519 450282</a></div>
+        </div>
+      </div>
+    </section>
+    <section class="tr-apply" id="trade-apply" aria-labelledby="tr-apply-h">
+      <h2 id="tr-apply-h">Apply for a trade account</h2>
+      <p>Tell us a little about you and your practice. Fields marked optional can be left blank.</p>
+      <form class="tr-form" name="trade" id="tr-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="trade">
+        <p hidden><label>Leave this empty <input name="bot-field"></label></p>
+        <div class="field"><label for="tr-name">Full name</label><input id="tr-name" name="name" autocomplete="name" required><p class="err" id="tr-name-err"></p></div>
+        <div class="field"><label for="tr-company">Company or studio</label><input id="tr-company" name="company" autocomplete="organization" required><p class="err" id="tr-company-err"></p></div>
+        <div class="field"><label for="tr-email">Email</label><input id="tr-email" name="email" type="email" autocomplete="email" required><p class="err" id="tr-email-err"></p></div>
+        <div class="field"><label for="tr-phone">Phone</label><input id="tr-phone" name="phone" type="tel" autocomplete="tel" required><p class="err" id="tr-phone-err"></p></div>
+        <div class="field"><label for="tr-role">Profession</label><select id="tr-role" name="profession"><option>Interior designer</option><option>Architect</option><option>Interior stylist</option><option>Developer</option><option>Hospitality</option><option>Other</option></select></div>
+        <div class="field"><label for="tr-web">Website or Instagram <span>(optional)</span></label><input id="tr-web" name="website" autocomplete="url"></div>
+        <div class="field full"><label for="tr-msg">Current projects <span>(optional)</span></label><textarea id="tr-msg" name="message"></textarea></div>
+        <p class="fine full">We use your details only to review your application and reply to you.</p>
+        <div class="full"><button class="btn btn-solid" type="submit" id="tr-submit">Send application</button><p class="tr-status" id="tr-status" role="status"></p></div>
+      </form>
+    </section>
+  </div>
+</main>
+<script>
+const trF=document.getElementById("tr-form");
+function trCheck(id,ok,msg){ const f=document.getElementById(id), e=document.getElementById(id+"-err"); f.closest(".field").classList.toggle("invalid",!ok); f.setAttribute("aria-invalid",ok?"false":"true"); e.textContent=ok?"":msg; return ok; }
+document.querySelector('#view-trade a[href="#trade-apply"]').addEventListener("click",e=>{e.preventDefault();document.getElementById("trade-apply").scrollIntoView({behavior:"smooth"});});
+trF.addEventListener("submit",async e=>{
+  e.preventDefault();
+  const v=id=>document.getElementById(id).value.trim();
+  const ok=[trCheck("tr-name",v("tr-name").length>1,"Enter your name."),
+            trCheck("tr-company",v("tr-company").length>1,"Enter your company or studio name."),
+            trCheck("tr-email",/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v("tr-email")),"Enter a valid email address, like name@example.com."),
+            trCheck("tr-phone",v("tr-phone").replace(/\D/g,"").length>=7,"Enter a phone number, including the country code if outside the UK.")];
+  if(ok.includes(false)){ trF.querySelector('[aria-invalid="true"]').focus(); return; }
+  const btn=document.getElementById("tr-submit"), st=document.getElementById("tr-status");
+  btn.disabled=true; btn.textContent="Sending…"; st.textContent="";
+  try{
+    const res=await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(trF)).toString()});
+    if(!res.ok) throw new Error(res.status);
+    const first=v("tr-name").split(" ")[0], em=v("tr-email");
+    const d=document.createElement("div"); d.className="tr-done"; d.textContent=`Thank you, ${first}. Your application has been sent. We will reply to ${em} within one working day.`;
+    trF.replaceWith(d);
+  }catch(err){ st.textContent="We couldn't send your application. Please try again, or email info@marquetery.uk."; }
+  finally{ btn.disabled=false; btn.textContent="Send application"; }
+});
+</script>
