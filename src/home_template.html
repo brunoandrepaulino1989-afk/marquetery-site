@@ -236,7 +236,7 @@ const CATS = [
   {label:"Storage", line:"Sideboards, cabinets and dressing tables", id:"alba-cabinet", href:"products.html#storage", n:5},
   {label:"Accessories", line:"Mirrors, totems, wall decor and screens", id:"helix-mirror", href:"products.html#accessories", n:13},
   {label:"Seating", line:"Benches upholstered in velvet", id:"dunn-bench", href:"products.html#seating", n:1},
-  {label:"Lighting", line:"Turned-wood floor lamps", id:"luminous-wood-floor-lamp", href:"products.html#lighting", n:1},
+  {label:"Lighting", line:"Turned-wood floor lamps", id:"lempicka-floor-lamp", href:"products.html#lighting", n:1},
   {label:"All products", line:"The complete collection", id:"kent-sideboard", href:"products.html", n:50},
 ];
 $("cats").innerHTML = CATS.map(c=>`<a class="cat" href="${c.href}">${media(byId(c.id), c.label)}<div class="row"><h4>${esc(c.label)}</h4><small>${c.n} ${c.n===1?"piece":"pieces"}</small></div><small>${esc(c.line)}</small></a>`).join("");

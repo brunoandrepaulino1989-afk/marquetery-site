@@ -1240,14 +1240,39 @@
     "ambience": []
   },
   {
-    "id": "luminous-wood-floor-lamp",
-    "name": "Luminous Wood Floor Lamp",
+    "id": "lempicka-floor-lamp",
+    "name": "Lempicka Floor Lamp",
     "group": "Lighting",
     "type": "Floor Lamp",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESLGHT016-001-hommes-studio-luminous-wood-floor-lamp-45-1.png",
+    "image": "images/lempicka/lempicka-front.webp",
     "dimensions": "51 x 51 x 154 cm",
-    "description": "A 1930s-style turned-wood lamp in walnut and wenge with gold details and a white glass globe.",
-    "source": "https://hommes.studio/lighting/floor-lamp/luminous-wood-floor-lamp/"
+    "description": "A 1930s-style stepped floor lamp in walnut and black wenge with gold details and a white glass globe.",
+    "source": "https://hommes.studio/lighting/floor-lamp/luminous-wood-floor-lamp/",
+    "lede": "A tower of stepped walnut tiers rising from a black wenge base, crowned by a ribbed white glass globe on a polished gold fitting: a floor lamp with all the poise of the 1930s.",
+    "materials": [
+      "Gloss walnut",
+      "Black wenge base",
+      "Gold polished stainless steel details",
+      "White glass globe"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/lempicka/lempicka-front.webp",
+      "images/lempicka/lempicka-angle.webp",
+      "images/lempicka/lempicka-detail.webp",
+      "images/lempicka/lempicka-detail-2.webp",
+      "images/lempicka/lempicka-room.webp"
+    ],
+    "story": {
+      "title": "Art Deco in silhouette",
+      "text": "Named for the painter whose portraits defined the glamour of the Art Deco years, the Lempicka reworks the classic turned-wood lamp as a stepped tower. Square walnut tiers narrow as they climb, casting a rhythm of light and shadow along the body, and the soft white globe glows above like a beacon. At 154 cm tall it stands well in a corner or flanking a sofa, and it can be customised to order."
+    },
+    "ambience": [
+      {
+        "src": "images/lempicka/lempicka-room.webp",
+        "alt": "Lempicka Floor Lamp beside a cream armchair and a cactus garden"
+      }
+    ]
   },
   {
     "id": "gustav-bedside-table",
