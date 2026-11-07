@@ -1221,14 +1221,34 @@
     "source": "https://hommes.studio/tables/console-table/rumba-console-table/"
   },
   {
-    "id": "matrioska-bedside-table",
-    "name": "Matrioska Bedside Table",
+    "id": "olga-bedside-table",
+    "name": "Olga Bedside Table",
     "group": "Tables",
     "type": "Bedside Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESBED009-001-hommes-studio-matrioska-bedside-table-quarter-2.png",
+    "image": "images/olga/olga-front.webp",
     "dimensions": "57 x 50 x 60 cm",
     "description": "A geometric nightstand in walnut and bird's-eye marquetry with gold steel and black lacquer.",
-    "source": "https://hommes.studio/tables/side-table/matrioska-bedside-table/"
+    "source": "https://hommes.studio/tables/side-table/matrioska-bedside-table/",
+    "lede": "Three blocks stacked slightly off-centre, in pale bird's-eye maple and dark walnut, resting on round walnut feet: a playful, sculptural bedside table finished with a knob of black lacquer and polished gold.",
+    "materials": [
+      "Natural bird's-eye veneer, gloss marquetry",
+      "Walnut wood",
+      "Interior in natural bird's-eye and walnut",
+      "Walnut wood ball feet",
+      "Gold polished stainless steel and gloss black lacquer details"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/olga/olga-front.webp",
+      "images/olga/olga-quarter.webp",
+      "images/olga/olga-detail.webp",
+      "images/olga/olga-detail-2.webp"
+    ],
+    "story": {
+      "title": "Stacked like nesting dolls",
+      "text": "Like a set of nesting dolls, the Olga plays with layers: each block steps out from the one below, so the silhouette changes as you walk around it. The honeyed figure of bird's-eye maple sits against the deep grain of walnut, and a single knob of black lacquer ringed in gold marks the top drawer. At 57 cm wide and 60 cm high, it brings a touch of wit to the bedroom and is made to order, with wood tones that can be tailored."
+    },
+    "ambience": []
   },
   {
     "id": "charlot-console-table",
