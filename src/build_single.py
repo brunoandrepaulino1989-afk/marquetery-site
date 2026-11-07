@@ -41,7 +41,7 @@ assert '$("news")' not in hscript
 router='''
 (()=>{
   const PRODUCT_VIEWS=["collections","tables","storage","seating","lighting","accessories"];
-  const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product"), proj=document.getElementById("view-projects"), rooms=document.getElementById("view-rooms"), trade=document.getElementById("view-trade"), navTrade=document.querySelector('.tools a[href="#trade"]');
+  const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product"), proj=document.getElementById("view-projects"), rooms=document.getElementById("view-rooms"), trade=document.getElementById("view-trade"), navTrade=document.querySelector('nav.main a[href="#trade"]');
   const navProj=document.querySelector('nav.main a[href="#bespoke"]'), navRooms=document.querySelector('nav.main a[href="#inspirations"]');
   const navCol=document.querySelector('nav.main a[href="#collections"]');
   function route(){

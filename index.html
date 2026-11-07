@@ -411,11 +411,11 @@ section.block{padding-block:88px}
       <a href="#bespoke">Bespoke</a>
       <a href="#inspirations">Inspirations</a>
       <a href="#top">About</a>
+      <a href="#trade">Trade Program</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="tools">
       <a class="icon-btn" href="#top" aria-label="Search" title="Search"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg></a>
-      <a class="trade-link" href="#trade">Trade<span class="t-long"> Program</span></a>
       <button class="menu-btn" type="button" aria-label="Open menu">Menu</button>
     </div>
   </div>
@@ -1131,7 +1131,7 @@ trF.addEventListener("submit",async e=>{
 
 (()=>{
   const PRODUCT_VIEWS=["collections","tables","storage","seating","lighting","accessories"];
-  const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product"), proj=document.getElementById("view-projects"), rooms=document.getElementById("view-rooms"), trade=document.getElementById("view-trade"), navTrade=document.querySelector('.tools a[href="#trade"]');
+  const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product"), proj=document.getElementById("view-projects"), rooms=document.getElementById("view-rooms"), trade=document.getElementById("view-trade"), navTrade=document.querySelector('nav.main a[href="#trade"]');
   const navProj=document.querySelector('nav.main a[href="#bespoke"]'), navRooms=document.querySelector('nav.main a[href="#inspirations"]');
   const navCol=document.querySelector('nav.main a[href="#collections"]');
   function route(){
