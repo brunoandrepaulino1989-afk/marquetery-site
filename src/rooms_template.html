@@ -1,0 +1,52 @@
+<style>
+/* Projects: Pinterest-style masonry of room scenes, each linked to its piece. */
+.rm-grid{columns:3 300px;column-gap:20px;padding-block:48px 96px}
+.rm-grid figure{break-inside:avoid;margin:0 0 28px;display:block}
+.rm-grid button{display:block;width:100%;padding:0;background:var(--tile);overflow:hidden;cursor:zoom-in}
+.rm-grid img{display:block;width:100%;height:auto;transition:transform .8s ease}
+.rm-grid button:hover img{transform:scale(1.025)}
+.rm-grid figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 2px 0;font-size:13px;letter-spacing:.04em}
+.rm-grid figcaption a{color:inherit;text-decoration:none;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;border-bottom:1px solid currentColor;padding-bottom:1px}
+@media (max-width:860px){.rm-grid{columns:2 150px;column-gap:12px}.rm-grid figure{margin-bottom:18px}.rm-grid figcaption{flex-direction:column;gap:6px;font-size:12.5px}}
+</style>
+<main id="view-rooms" hidden>
+  <div class="wrap">
+    <div class="crumbs"><a href="#home">Home</a> / Projects</div>
+    <section class="pj-intro">
+      <h1>Projects</h1>
+      <p>Our pieces in place: dining rooms, living rooms and bedrooms set around a single piece of marquetry. Every design can be made to your own sizes, veneers and finishes.</p>
+    </section>
+    <div class="rm-grid" id="rm-grid"></div>
+  </div>
+</main>
+<div class="pj-box" id="rm-box" hidden role="dialog" aria-modal="true" aria-label="Project image">
+  <img id="rm-img" alt="">
+  <p id="rm-cap"></p>
+  <button class="x" type="button" id="rm-x" aria-label="Close">✕</button>
+  <button class="pv" type="button" id="rm-pv" aria-label="Previous image">←</button>
+  <button class="nx" type="button" id="rm-nx" aria-label="Next image">→</button>
+</div>
+<script>
+const RM = [
+  ["chrysler","Chrysler Dining Table","chrysler-dining-table"],
+  ["gustav-center","Gustav Center Table","gustav-center-table"],
+  ["gustav-side","Gustav Side Table","gustav-side-table"],
+  ["marie","Marie Dressing Table","marie-dressing-table"],
+  ["prisme","Prisme Side Table","prisme-side-table"],
+  ["maple-bedside","Maple Bedside Table","maple-bedside-table"],
+  ["gustav-bedside","Gustav Bedside Table","gustav-bedside-table"],
+];
+const rmSrc = n => "images/rooms/"+n+".webp";
+document.getElementById("rm-grid").innerHTML = RM.map(([n,t,id],i)=>`<figure><button type="button" data-i="${i}" aria-label="Open image: ${t}"><img src="${rmSrc(n)}" alt="${t} in a room setting" loading="lazy"></button><figcaption><span>${t}</span><a href="#${id}">View the piece</a></figcaption></figure>`).join("");
+let rmI=0, rmLast=null;
+const rbox=document.getElementById("rm-box"), rimg=document.getElementById("rm-img"), rcap=document.getElementById("rm-cap");
+function rmShow(i){ rmI=(i+RM.length)%RM.length; rimg.src=rmSrc(RM[rmI][0]); rimg.alt=RM[rmI][1]+" in a room setting"; rcap.textContent=RM[rmI][1]; }
+function rmOpen(i){ rmLast=document.activeElement; rmShow(i); rbox.hidden=false; document.body.style.overflow="hidden"; document.getElementById("rm-x").focus(); }
+function rmClose(){ rbox.hidden=true; document.body.style.overflow=""; if(rmLast) rmLast.focus(); }
+document.getElementById("rm-grid").addEventListener("click",e=>{const b=e.target.closest("button[data-i]"); if(b) rmOpen(+b.dataset.i);});
+document.getElementById("rm-x").addEventListener("click",rmClose);
+document.getElementById("rm-pv").addEventListener("click",()=>rmShow(rmI-1));
+document.getElementById("rm-nx").addEventListener("click",()=>rmShow(rmI+1));
+rbox.addEventListener("click",e=>{ if(e.target===rbox) rmClose(); });
+document.addEventListener("keydown",e=>{ if(rbox.hidden) return; if(e.key==="Escape") rmClose(); if(e.key==="ArrowLeft") rmShow(rmI-1); if(e.key==="ArrowRight") rmShow(rmI+1); });
+</script>
