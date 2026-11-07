@@ -255,26 +255,6 @@
     ]
   },
   {
-    "id": "zola-wall-decor",
-    "name": "Zola Wall Decor",
-    "group": "Complements",
-    "type": "Wall Decor",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL047-001-hommes.studio-zola-wall-decor.png",
-    "dimensions": "90 x 10 x 120 cm",
-    "description": "A handcrafted wood wall panel with flowing, nature-inspired curves and geometric lines.",
-    "source": "https://hommes.studio/complements/wall-decor/zola-wall-decor/"
-  },
-  {
-    "id": "ruby-wall-decor",
-    "name": "Ruby Wall Decor",
-    "group": "Complements",
-    "type": "Wall Decor",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL048-001-hommes.studio-ruby-wall-decor.png",
-    "dimensions": "70 x 10 x 125 cm",
-    "description": "A handcrafted wooden wall piece with lively, irregular forms that add movement to a room.",
-    "source": "https://hommes.studio/complements/wall-decor/ruby-wall-decor/"
-  },
-  {
     "id": "kent-sideboard",
     "name": "Kent Sideboard",
     "group": "Storage",
@@ -376,37 +356,6 @@
         "alt": "Morris Mirror in an arched plaster hallway"
       }
     ]
-  },
-  {
-    "id": "cora-mirror",
-    "name": "Cora Mirror",
-    "group": "Complements",
-    "type": "Mirror",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL041-001-hommes.studio-cora-mirror.png",
-    "dimensions": "130 x 8 x 130 cm",
-    "description": "A round wood wall mirror with a geometric marquetry pattern and mid-century styling.",
-    "source": "https://hommes.studio/complements/mirror/cora-mirror/"
-  },
-  {
-    "id": "jacques-totem",
-    "name": "Jacques Totem",
-    "group": "Complements",
-    "type": "Totem",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESCPL039-hommes-totem-rubik-001.png",
-    "dimensions": "30 x 30 x 180 cm",
-    "description": "A mid-century modern totem with geometric wood marquetry in black, white and ash.",
-    "source": "https://hommes.studio/complements/totem/rubik-totem/",
-    "lede": "A tall square column, 180 cm high, laid in a playful geometric marquetry of gloss black bird's-eye, white bird's-eye and ash root.",
-    "materials": [
-      "Black bird's-eye veneer, gloss marquetry",
-      "White bird's-eye veneer",
-      "Ash root veneer"
-    ],
-    "finish": "Gloss",
-    "story": {
-      "title": "A column of light and dark",
-      "text": "Blocks of black and pale bird's-eye shift from one face to the next, with warm ash root to break the rhythm, so the pattern changes as you walk around it. It stands on its own like a sculpture and holds a corner of a living room, a hallway or a hotel lobby."
-    }
   },
   {
     "id": "kuching-totem",
@@ -863,16 +812,6 @@
     }
   },
   {
-    "id": "folk-prisma-side-table",
-    "name": "Folk Prisma Side Table",
-    "group": "Tables",
-    "type": "Side Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL130-001-hommes-studio-folk-prisma-side-table-quarter.png",
-    "dimensions": "60 x 60 x 45 cm",
-    "description": "A cube-shaped marquetry side table in black, white and cherry-root wood.",
-    "source": "https://hommes.studio/tables/side-table/folk-prisma-side-table/"
-  },
-  {
     "id": "maple-bedside-table",
     "name": "Maple Bedside Table",
     "group": "Tables",
@@ -1169,16 +1108,6 @@
       "text": "The Marie borrows the opulent geometry of the 1930s: a rounded oval top wrapped in figured walnut, brass collars that lift it clear of the pedestals, and a gleaming circular mirror on slender brass stems. Behind the curved doors of each pedestal there is generous storage, and the upholstered top gives a soft, quiet surface for everyday rituals. Made to order and open to customisation for the master bedroom."
     },
     "ambience": []
-  },
-  {
-    "id": "ludwika-side-table",
-    "name": "Ludwika Side Table",
-    "group": "Tables",
-    "type": "Side Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL122-001-hommes-studio-ludwika-side-table-front.png",
-    "dimensions": "55 x 55 x 51 cm",
-    "description": "A marquetry side table inspired by Kazimir Malevich's geometric style.",
-    "source": "https://hommes.studio/tables/side-table/ludwika-side-table/"
   },
   {
     "id": "regency-console-table",
