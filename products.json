@@ -1087,14 +1087,38 @@
     }
   },
   {
-    "id": "austria-center-table",
-    "name": "Austria Center Table",
+    "id": "gustav-center-table",
+    "name": "Gustav Center Table",
     "group": "Tables",
     "type": "Center Table",
-    "image": "https://hommes.studio/wp-content/uploads/HOMMESTBL071-001-hommes-studio-austria-center-table-front.png",
+    "image": "images/gustav/gustav-front.webp",
     "dimensions": "120 x 120 x 30 cm",
     "description": "A coffee table inlaid in toulipier, black bird's eye, ash root and cherry root.",
-    "source": "https://hommes.studio/tables/center-table/austria-center-table/"
+    "source": "https://hommes.studio/tables/center-table/austria-center-table/",
+    "lede": "A low, round table whose top and sides form one continuous mosaic of pale tulipwood, golden ash root and deep cherry root, divided by bold lines of black bird's-eye. Three wide legs carry the pattern down to the floor.",
+    "materials": [
+      "Tulipwood veneer, gloss marquetry",
+      "Black bird's-eye veneer",
+      "Ash root veneer",
+      "Cherry root veneer"
+    ],
+    "finish": "Gloss",
+    "gallery": [
+      "images/gustav/gustav-front.webp",
+      "images/gustav/gustav-top.webp",
+      "images/gustav/gustav-detail.webp",
+      "images/gustav/gustav-room.webp"
+    ],
+    "story": {
+      "title": "A Viennese mosaic",
+      "text": "Named for the Viennese painter of gold and pattern, the table treats wood like a mosaic: warm and pale pieces held together by black lines, running over the edge and down each leg. Low and generous at 120 cm across and 30 cm high, it anchors a living room, and it is made to order."
+    },
+    "ambience": [
+      {
+        "src": "images/gustav/gustav-room.webp",
+        "alt": "Gustav Center Table on a striped rug in front of a cream sofa"
+      }
+    ]
   },
   {
     "id": "zimmer-dining-table",
