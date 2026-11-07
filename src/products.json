@@ -1181,14 +1181,14 @@
     "source": "https://hommes.studio/tables/side-table/ludwika-side-table/"
   },
   {
-    "id": "rapple-console-table",
-    "name": "Rapple Console Table",
+    "id": "regency-console-table",
+    "name": "Regency Console Table",
     "group": "Tables",
     "type": "Console Table",
-    "image": "images/rapple/rapple-front.webp",
+    "image": "images/regency/regency-front.webp",
     "dimensions": "160 x 41 x 95 cm",
     "description": "A 1920s-inspired console with a glossy black top, gold-toned trim and bird's-eye finishes.",
-    "source": "https://hommes.studio/tables/console-table/rapple-console-table/",
+    "source": "https://hommes.studio/tables/console-table/regency-console-table/",
     "lede": "An Art Deco console of stepped peaks: five tapering black bird's-eye supports, each faced with layered chevrons of natural and white bird's-eye, beneath a gloss black top banded in brushed gold.",
     "materials": [
       "Gloss black bird's-eye veneer top",
@@ -1197,11 +1197,11 @@
     ],
     "finish": "Gloss",
     "gallery": [
-      "images/rapple/rapple-front.webp",
-      "images/rapple/rapple-quarter.webp",
-      "images/rapple/rapple-quarter-2.webp",
-      "images/rapple/rapple-detail.webp",
-      "images/rapple/rapple-side.webp"
+      "images/regency/regency-front.webp",
+      "images/regency/regency-quarter.webp",
+      "images/regency/regency-quarter-2.webp",
+      "images/regency/regency-detail.webp",
+      "images/regency/regency-side.webp"
     ],
     "story": {
       "title": "Ridges in wood",
