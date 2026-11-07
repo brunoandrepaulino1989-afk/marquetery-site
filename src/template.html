@@ -36,7 +36,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 
 /* announcement + header */
 .notice{background:var(--walnut);color:var(--on-marsala);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:center}
-.notice .wrap{padding-block:8px}
+.notice .wrap{padding-block:9px}
+.notice strong{font-weight:600;letter-spacing:.18em}
+@media (max-width:640px){.notice .notice-more{display:none}}
 header.site{border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:22px}
 .logo{font-family:var(--display);font-size:25px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;line-height:1;white-space:nowrap}
@@ -160,7 +162,7 @@ footer form button{font-size:11px;letter-spacing:.14em;text-transform:uppercase}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
-<div class="notice"><div class="wrap">Made to order in Portugal · Delivered across the UK, white glove</div></div>
+<div class="notice"><div class="wrap"><strong>Free shipping to all of the UK</strong><span class="notice-more"> · Made to order in Portugal, delivered white glove</span></div></div>
 
 <header class="site">
   <div class="wrap">
