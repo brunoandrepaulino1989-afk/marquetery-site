@@ -1446,7 +1446,7 @@ const PL_SECS = [
     if(!items.length) continue;
     idx+=`<a href="#pl-${slug}" data-pl="${slug}">${e(label)}</a>`;
     html+=`<section class="pl-sec" id="pl-${slug}"><div class="pl-sec-h"><h2>${e(label)}</h2><span>${items.length} ${items.length===1?"piece":"pieces"}</span></div>`+
-      items.map(p=>`<a class="pl-row" href="#${e(p.id)}"><div class="pl-thumb"><img src="${e(p.image)}" alt="" loading="lazy" decoding="async"></div><div><h3 class="pl-name">${e(p.name)}</h3><div class="pl-meta"><span><b>Size</b>${dims(p.dimensions)}</span><span><b>Finish</b>${e(p.finish||"")}</span></div></div><div class="pl-price">${gbp(PL_GBP[p.id])}<small>Inc. VAT</small></div></a>`).join("")+`</section>`;
+      items.map(p=>`<a class="pl-row" href="#${e(p.id)}"><div class="pl-thumb"><img src="${e(p.image)}" alt="" loading="lazy" decoding="async"></div><div><h3 class="pl-name">${e(p.name)}</h3><div class="pl-meta"><span><b>Size</b>${dims(p.dimensions)}</span></div></div><div class="pl-price">${gbp(PL_GBP[p.id])}<small>Inc. VAT</small></div></a>`).join("")+`</section>`;
   }
   document.getElementById("pl-index").innerHTML=idx;
   document.getElementById("pl-list").innerHTML=html;
