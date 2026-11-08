@@ -62,10 +62,10 @@ router='''
   const navCol=document.querySelector('nav.main a[href="#collections"]');
   function route(){
     const h=(location.hash||"").slice(1).toLowerCase();
-    const isProj=h==="atelier"||h==="bespoke", isRooms=h==="inspirations"||h==="projects", isTrade=h==="trade", isAbout=h==="about", isPl=h==="pricelist"||h==="price-list";
+    const isProj=h==="atelier"||h==="bespoke", isRooms=h==="inspirations"||h==="projects", isTrade=h==="trade", isAbout=h==="about", isPl=!!plist&&(h==="pricelist"||h==="price-list");
     const isProd=PRODUCT_VIEWS.includes(h);
     const isPiece=!isProd && !isProj && !isRooms && !isTrade && !isAbout && !isPl && !!h && window.renderProduct(h);
-    home.hidden=isProd||isPiece||isProj||isRooms||isTrade||isAbout||isPl; trade.hidden=!isTrade; about.hidden=!isAbout; plist.hidden=!isPl; if(navAbout){ if(isAbout) navAbout.setAttribute("aria-current","page"); else navAbout.removeAttribute("aria-current"); } if(navTrade){ if(isTrade) navTrade.setAttribute("aria-current","page"); else navTrade.removeAttribute("aria-current"); } prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj; rooms.hidden=!isRooms;
+    home.hidden=isProd||isPiece||isProj||isRooms||isTrade||isAbout||isPl; trade.hidden=!isTrade; about.hidden=!isAbout; if(plist) plist.hidden=!isPl; if(navAbout){ if(isAbout) navAbout.setAttribute("aria-current","page"); else navAbout.removeAttribute("aria-current"); } if(navTrade){ if(isTrade) navTrade.setAttribute("aria-current","page"); else navTrade.removeAttribute("aria-current"); } prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj; rooms.hidden=!isRooms;
     if(navProj){ if(isProj) navProj.setAttribute("aria-current","page"); else navProj.removeAttribute("aria-current"); }
     if(navRooms){ if(isRooms) navRooms.setAttribute("aria-current","page"); else navRooms.removeAttribute("aria-current"); }
     if(isProj||isRooms||isTrade||isAbout||isPl){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Atelier":isTrade?"Trade":isAbout?"About":isPl?"Price List":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
@@ -85,4 +85,11 @@ pass
 BASE_FIX='*{box-sizing:border-box}\nbody{margin:0}\nimg{max-width:100%}\n[hidden]{display:none!important}'
 he=page.index('</style>')+8
 doc='<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'+page[:he]+'\n</head>\n<body>\n'+page[he:]+'\n</body>\n</html>\n'
-open(OUT+'/index.html','w').write(doc.replace('*{box-sizing:border-box}',BASE_FIX,1))
+PRIVATE='price-list-a19173cf.html'
+def wrap(pg,extra=''):
+  he=pg.index('</style>')+8
+  return ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'+extra+pg[:he]+'\n</head>\n<body>\n'+pg[he:]+'\n</body>\n</html>\n').replace('*{box-sizing:border-box}',BASE_FIX,1)
+public=page.replace(pls+'\n','',1).replace(plm+'\n','',1).replace(plscript+'\n','',1)
+open(OUT+'/index.html','w').write(wrap(public))
+priv=page.replace(router,'if(!location.hash) history.replaceState(null,"","#pricelist");\n'+router,1)
+open(OUT+'/'+PRIVATE,'w').write(wrap(priv,'<meta name="robots" content="noindex, nofollow">\n'))

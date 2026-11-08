@@ -499,52 +499,6 @@ section.block.bespoke-block{padding-top:0}
   .ab-links{grid-template-columns:1fr;gap:40px}
 }
 </style>
-<style>
-/* Price list: walnut title band, notes, category index, editorial rows. */
-#view-pricelist{overflow-x:clip}
-.pl-hero{position:relative;width:100vw;margin-left:calc(50% - 50vw);background:linear-gradient(rgba(20,14,10,.48),rgba(20,14,10,.48)),url(images/rooms/gustav-center-2.webp) center 62%/cover no-repeat;text-shadow:0 1px 18px rgba(0,0,0,.35);color:#f0eee9;text-align:center;padding:clamp(64px,10vh,112px) 16px clamp(56px,8vh,96px)}
-.pl-hero .pl-kicker{font-size:12px;letter-spacing:.26em;text-transform:uppercase;margin:0 auto 16px;max-width:none}
-.pl-hero h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,7vw,100px);line-height:.95;margin:0;letter-spacing:.03em}
-.pl-hero p{margin:20px auto 0;max-width:52ch;font-size:15.5px;line-height:1.7;opacity:.92}
-.pl-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line)}
-.pl-notes div{padding:26px 24px;text-align:center;border-right:1px solid var(--line)}
-.pl-notes div:last-child{border-right:0}
-.pl-notes strong{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;margin-bottom:6px}
-.pl-notes span{font-size:14.5px}
-.pl-index{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 10px;padding:28px 0 8px}
-.pl-index a{font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border:1px solid var(--line);border-radius:999px;color:inherit;text-decoration:none;transition:background .2s,border-color .2s}
-.pl-index a:hover{border-color:var(--ink);background:var(--tile)}
-.pl-sec{padding-top:56px;scroll-margin-top:24px}
-.pl-sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:1px solid var(--ink);padding-bottom:12px;margin-bottom:6px}
-.pl-sec-h h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,3vw,40px);margin:0;letter-spacing:.02em}
-.pl-sec-h span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.pl-row{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:28px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);color:inherit;text-decoration:none}
-.pl-row:hover .pl-name{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
-.pl-thumb{width:150px;aspect-ratio:1/1;background:#fff;overflow:hidden;box-shadow:0 0 0 1px var(--line)}
-.pl-thumb img{width:100%;height:100%;object-fit:contain;padding:6px;display:block;transition:transform .5s ease}
-.pl-row:hover .pl-thumb img{transform:scale(1.05)}
-.pl-name{font-family:var(--display);font-size:clamp(22px,2.2vw,28px);line-height:1.15;margin:0 0 6px;letter-spacing:.01em}
-.pl-meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13.5px;color:var(--muted)}
-.pl-meta b{font-weight:500;color:var(--ink);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-right:6px}
-.pl-price{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:clamp(22px,2.2vw,28px);letter-spacing:.02em;white-space:nowrap;text-align:right}
-.pl-price small{display:block;font-family:inherit;font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.pl-foot{padding:56px 0 96px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center}
-.pl-foot p{margin:0;font-size:13.5px;line-height:1.75;color:var(--muted);max-width:70ch}
-.pl-foot .pl-acts{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
-@media (max-width:720px){
-  .pl-notes{grid-template-columns:1fr}.pl-notes div{border-right:0;border-bottom:1px solid var(--line);padding:16px}
-  .pl-row{grid-template-columns:96px minmax(0,1fr);gap:0 16px}
-  .pl-thumb{width:96px;grid-row:span 2}
-  .pl-price{grid-column:2;text-align:left;font-size:22px;margin-top:8px}
-  .pl-foot{grid-template-columns:1fr}.pl-foot .pl-acts{justify-content:flex-start}
-}
-@media print{
-  header.site,footer,.notice,.pl-index,.pl-foot .pl-acts,.enq,.enq-scrim{display:none!important}
-  .pl-hero{background:none!important;color:#000;padding:24px 0}
-  .pl-row{break-inside:avoid}
-  .pl-sec{padding-top:24px}
-}
-</style>
 <div class="notice"><div class="wrap"><strong>Free shipping to all of the UK</strong><span class="notice-more"> · Made to order in Portugal, delivered white glove</span></div></div>
 
 <header class="site">
@@ -903,27 +857,6 @@ section.block.bespoke-block{padding-top:0}
   </div>
 </main>
 
-<main id="view-pricelist" hidden>
-  <section class="pl-hero" aria-labelledby="pl-h1">
-    <p class="pl-kicker">Collection 2026</p>
-    <h1 id="pl-h1">Price List</h1>
-    <p>Every piece is made to order in our workshop in Portugal. Sizes, veneers and finishes can be adapted; ask us for a quotation on any variation.</p>
-  </section>
-  <div class="wrap">
-    <div class="pl-notes">
-      <div><strong>Prices</strong><span>In pounds sterling, VAT included</span></div>
-      <div><strong>Lead time</strong><span>10–12 weeks, made to order</span></div>
-      <div><strong>Delivery</strong><span>Free white glove delivery across the UK by Gander &amp; White</span></div>
-    </div>
-    <nav class="pl-index" id="pl-index" aria-label="Price list sections"></nav>
-    <div id="pl-list"></div>
-    <div class="pl-foot">
-      <p>Prices valid from November 2026 and subject to change without notice. Dimensions are width x depth x height in centimetres. Marquetery.uk is a trading name of After Hours Collections Ltd, company no. 15580283, 66 Paul Street, London EC2A 4NA.</p>
-      <div class="pl-acts"><button class="btn" type="button" id="pl-print">Print or save as PDF</button><a class="btn btn-solid" href="#contact" data-enq="service">Request a quotation</a></div>
-    </div>
-  </div>
-</main>
-
 <footer id="contact">
   <div class="wrap cols">
     <div>
@@ -931,7 +864,7 @@ section.block.bespoke-block{padding-top:0}
       <p style="color:var(--muted);max-width:30ch">Handcrafted marquetry furniture for homes, hotels and private residences.</p>
     </div>
     <div><h4>Products</h4><ul id="foot-cats"></ul></div>
-    <div><h4>Studio</h4><ul><li><a href="#about">About</a></li><li><a href="#atelier">Atelier</a></li><li><a href="#inspirations">Inspirations</a></li><li><a href="#pricelist">Price list</a></li><li><a href="#top">Press</a></li></ul></div>
+    <div><h4>Studio</h4><ul><li><a href="#about">About</a></li><li><a href="#atelier">Atelier</a></li><li><a href="#inspirations">Inspirations</a></li><li><a href="#top">Press</a></li></ul></div>
     <div><h4>Contact</h4><ul><li>info@marquetery.uk</li><li class="phone-row"><a class="wa" href="https://wa.me/447519450282" target="_blank" rel="noopener" aria-label="Message us on WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4.1A8.6 8.6 0 1 1 8 19.3z"/><path d="M9.2 7.9c.3-.3.8-.3 1 .1l.8 1.6c.1.3.1.6-.1.8l-.6.6c.5 1.1 1.4 2 2.5 2.5l.6-.6c.2-.2.5-.3.8-.1l1.6.8c.4.2.4.7.1 1l-.6.6c-.6.6-1.6.8-2.4.4-1.9-.9-3.4-2.4-4.3-4.3-.4-.8-.2-1.8.4-2.4z"/></svg></a><a href="tel:+447519450282">+44 7519 450282</a></li><li>66 Paul Street<br>London EC2A 4NA<br>United Kingdom</li><li><a href="#top">Instagram</a></li><li><a href="#top">Pinterest</a></li></ul></div>
     <div>
       <h4>Newsletter</h4>
@@ -1423,38 +1356,6 @@ trF.addEventListener("submit",async e=>{
 });
 })();
 
-const PL_GBP = {"chrysler-dining-table": 14850, "kramer-dining-table": 20150, "emile-dining-table": 13600, "hastings-desk": 11350, "regency-console-table": 10600, "catalonia-center-table": 4400, "crown-center-table": 4150, "gris-center-table": 4150, "gustav-center-table": 5650, "blue-star-side-table": 3350, "fernand-side-table": 3350, "ferra-side-table": 3600, "gustav-side-table": 3350, "harlequin-side-table": 3350, "maple-side-table": 3350, "prisme-side-table": 3350, "bodun-bedside-table": 4500, "georges-bedside-table": 4400, "gustav-bedside-table": 4400, "kubo-bedside-table": 4500, "maple-bedside-table": 4500, "olga-bedside-table": 4500, "sanogo-bedside-table": 4400, "tuxedo-bedside-table": 4500, "alba-cabinet": 9200, "cadogan-sideboard": 16000, "kelly-sideboard": 17250, "kent-sideboard": 11300, "marie-dressing-table": 10250, "dunn-bench": 9100, "helix-mirror": 7400, "morris-mirror": 6450, "savile-mirror": 7400, "stuart-wall-decor": 7350, "bernard-totem": 7500, "charlotte-totem": 7950, "jean-jacques-room-divider": 9900, "kuching-totem": 8750, "tahuna-totem": 7500, "lempicka-floor-lamp": 6050};
-const PL_SECS = [
-  ["dining","Dining tables",["Dining Table"]],
-  ["desks","Desks and consoles",["Desk","Console Table"]],
-  ["center","Center tables",["Center Table"]],
-  ["side","Side tables",["Side Table"]],
-  ["bedside","Bedside tables",["Bedside Table"]],
-  ["storage","Storage",["Sideboard","Cabinet","Dresser"]],
-  ["seating","Seating",["Bench"]],
-  ["mirrors","Mirrors and wall decor",["Mirror","Wall Decor"]],
-  ["totems","Totems and room dividers",["Totem","Room Divider"]],
-  ["lighting","Lighting",["Floor Lamp"]]
-];
-(()=>{
-  const e = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const gbp = n => "£" + n.toLocaleString("en-GB");
-  const dims = d => { const m=String(d).match(/([\d.]+)\s*x\s*([\d.]+)\s*x\s*([\d.]+)/); return m?`${m[1]} x ${m[2]} x ${m[3]} cm`:e(d); };
-  let idx="", html="";
-  for(const [slug,label,types] of PL_SECS){
-    const items=PRODUCTS.filter(p=>types.includes(p.type) && PL_GBP[p.id]).sort((a,b)=>PL_GBP[a.id]-PL_GBP[b.id]||a.name.localeCompare(b.name));
-    if(!items.length) continue;
-    idx+=`<a href="#pl-${slug}" data-pl="${slug}">${e(label)}</a>`;
-    html+=`<section class="pl-sec" id="pl-${slug}"><div class="pl-sec-h"><h2>${e(label)}</h2><span>${items.length} ${items.length===1?"piece":"pieces"}</span></div>`+
-      items.map(p=>`<a class="pl-row" href="#${e(p.id)}"><div class="pl-thumb"><img src="${e(p.image)}" alt="" loading="lazy" decoding="async"></div><div><h3 class="pl-name">${e(p.name)}</h3><div class="pl-meta"><span><b>Size</b>${dims(p.dimensions)}</span></div></div><div class="pl-price">${gbp(PL_GBP[p.id])}<small>Inc. VAT</small></div></a>`).join("")+`</section>`;
-  }
-  document.getElementById("pl-index").innerHTML=idx;
-  document.getElementById("pl-list").innerHTML=html;
-  document.getElementById("pl-index").addEventListener("click",ev=>{ const a=ev.target.closest("[data-pl]"); if(!a) return; ev.preventDefault(); document.getElementById("pl-"+a.dataset.pl).scrollIntoView({behavior:"smooth"}); });
-  document.getElementById("pl-print").addEventListener("click",()=>window.print());
-})();
-
-
 (()=>{ const hd=document.querySelector("header.site"), mb=document.querySelector(".menu-btn"); if(!hd||!mb) return;
   mb.setAttribute("aria-expanded","false");
   const set=o=>{ hd.classList.toggle("menu-open",o); mb.setAttribute("aria-expanded",String(o)); mb.textContent=o?"Close":"Menu"; };
@@ -1471,10 +1372,10 @@ const PL_SECS = [
   const navCol=document.querySelector('nav.main a[href="#collections"]');
   function route(){
     const h=(location.hash||"").slice(1).toLowerCase();
-    const isProj=h==="atelier"||h==="bespoke", isRooms=h==="inspirations"||h==="projects", isTrade=h==="trade", isAbout=h==="about", isPl=h==="pricelist"||h==="price-list";
+    const isProj=h==="atelier"||h==="bespoke", isRooms=h==="inspirations"||h==="projects", isTrade=h==="trade", isAbout=h==="about", isPl=!!plist&&(h==="pricelist"||h==="price-list");
     const isProd=PRODUCT_VIEWS.includes(h);
     const isPiece=!isProd && !isProj && !isRooms && !isTrade && !isAbout && !isPl && !!h && window.renderProduct(h);
-    home.hidden=isProd||isPiece||isProj||isRooms||isTrade||isAbout||isPl; trade.hidden=!isTrade; about.hidden=!isAbout; plist.hidden=!isPl; if(navAbout){ if(isAbout) navAbout.setAttribute("aria-current","page"); else navAbout.removeAttribute("aria-current"); } if(navTrade){ if(isTrade) navTrade.setAttribute("aria-current","page"); else navTrade.removeAttribute("aria-current"); } prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj; rooms.hidden=!isRooms;
+    home.hidden=isProd||isPiece||isProj||isRooms||isTrade||isAbout||isPl; trade.hidden=!isTrade; about.hidden=!isAbout; if(plist) plist.hidden=!isPl; if(navAbout){ if(isAbout) navAbout.setAttribute("aria-current","page"); else navAbout.removeAttribute("aria-current"); } if(navTrade){ if(isTrade) navTrade.setAttribute("aria-current","page"); else navTrade.removeAttribute("aria-current"); } prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj; rooms.hidden=!isRooms;
     if(navProj){ if(isProj) navProj.setAttribute("aria-current","page"); else navProj.removeAttribute("aria-current"); }
     if(navRooms){ if(isRooms) navRooms.setAttribute("aria-current","page"); else navRooms.removeAttribute("aria-current"); }
     if(isProj||isRooms||isTrade||isAbout||isPl){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Atelier":isTrade?"Trade":isAbout?"About":isPl?"Price List":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
