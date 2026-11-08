@@ -194,12 +194,14 @@ $("pd-stage").addEventListener("touchend",e=>{ if(tx===null) return; const dx=e.
 
 /* enquiry form */
 let enqLast=null;
+document.body.append($("enq-scrim"),$("enq"));
 function openEnq(kind){
-  const p=current; if(!p) return;
+  const p=kind==="service"?{name:""}:current; if(!p) return;
   enqLast=document.activeElement;
   const K={
     enquiry:{eb:"Enquiry", t:`Enquire about the ${p.name}`, i:"Leave your details and our studio will reply within one working day with pricing, lead time and finish options.", r:"Enquiry"},
     bespoke:{eb:"Customization request", t:`Make the ${p.name} yours`, i:"Tell us how you would like to adapt this piece: size, veneers or finish. Our studio will reply within one working day.", r:"Customization request"},
+    service:{eb:"Bespoke service", t:"Start a bespoke project", i:"Tell us about the piece you have in mind: the room, sizes, veneers or finish. Our studio will reply within one working day.", r:"Bespoke service request"},
     dwg:{eb:"DWG file", t:`Download the ${p.name} DWG`, i:"Leave your details and we will email you the DWG drawing of this piece within one working day.", r:"DWG file request"}
   }[kind]||{};
   $("enq-eyebrow").textContent = K.eb;
@@ -219,6 +221,8 @@ function closeEnq(){
 $("pd-enquire").onclick=()=>openEnq("enquiry");
 $("pd-bespoke").onclick=()=>openEnq("bespoke");
 $("pd-dwg").onclick=()=>openEnq("dwg");
+window.openEnq=openEnq;
+document.addEventListener("click",e=>{ const a=e.target.closest("[data-enq]"); if(!a) return; e.preventDefault(); openEnq(a.dataset.enq); });
 $("enq-close").onclick=closeEnq; $("enq-scrim").onclick=closeEnq;
 document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeEnq(); });
 window.addEventListener("hashchange",closeEnq);
