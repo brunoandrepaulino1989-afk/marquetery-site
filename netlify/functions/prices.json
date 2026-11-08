@@ -1,0 +1,254 @@
+{
+ "cadogan-sideboard": {
+  "name": "Cadogan Sideboard",
+  "price": 16000,
+  "dimensions": "140 x 40 x 80 cm",
+  "image": "images/cadogan/cadogan-front.webp"
+ },
+ "dunn-bench": {
+  "name": "Dunn Bench",
+  "price": 9100,
+  "dimensions": "180 x 50 x 85 cm",
+  "image": "images/dunn/dunn-front.webp"
+ },
+ "hastings-desk": {
+  "name": "Hastings Desk",
+  "price": 11350,
+  "dimensions": "180 x 70 x 79 cm",
+  "image": "images/hastings/hastings-main.webp"
+ },
+ "jean-dining-chair": {
+  "name": "Jean Dining Chair",
+  "price": 3800,
+  "dimensions": "45 x 50 x 89.5 cm",
+  "image": "images/jean/jean-front.webp"
+ },
+ "chloe-sideboard": {
+  "name": "Chloe Sideboard",
+  "price": 9750,
+  "dimensions": "180 x 58 x 82 cm",
+  "image": "images/chloe/chloe-front.webp"
+ },
+ "crown-center-table": {
+  "name": "Crown Center Table",
+  "price": 4800,
+  "dimensions": "100 x 100 x 50 cm",
+  "image": "images/crown/crown-front.webp"
+ },
+ "emile-dining-table": {
+  "name": "Émile Dining Table",
+  "price": 13600,
+  "dimensions": "240 x 120 x 74 cm",
+  "image": "images/emile/emile-front.webp"
+ },
+ "alba-cabinet": {
+  "name": "Alba Cabinet",
+  "price": 9200,
+  "dimensions": "180 x 55 x 150 cm",
+  "image": "images/alba/alba-front.webp"
+ },
+ "stuart-wall-decor": {
+  "name": "Stuart Wall Decor",
+  "price": 7350,
+  "dimensions": "90 x 10 x 140 cm",
+  "image": "images/stuart/stuart-front.webp"
+ },
+ "helix-mirror": {
+  "name": "Helix Mirror",
+  "price": 7400,
+  "dimensions": "130 x 9 x 130 cm",
+  "image": "images/helix/helix-front.webp"
+ },
+ "kent-sideboard": {
+  "name": "Kent Sideboard",
+  "price": 11300,
+  "dimensions": "240 x 55 x 82 cm",
+  "image": "images/kent/kent-front.webp"
+ },
+ "savile-mirror": {
+  "name": "Savile Mirror",
+  "price": 7400,
+  "dimensions": "130 x 8 x 130 cm",
+  "image": "images/savile/savile-front.webp"
+ },
+ "morris-mirror": {
+  "name": "Morris Mirror",
+  "price": 6450,
+  "dimensions": "102.5 x 12 x 140 cm",
+  "image": "images/morris/morris-front.webp"
+ },
+ "kuching-totem": {
+  "name": "Kuching Totem",
+  "price": 8750,
+  "dimensions": "35 x 50 x 180 cm",
+  "image": "images/kuching/kuching-front.webp"
+ },
+ "tahuna-totem": {
+  "name": "Tāhuna Totem",
+  "price": 7500,
+  "dimensions": "40 x 40 x 160 cm",
+  "image": "images/tahuna/tahuna-front.webp"
+ },
+ "gris-center-table": {
+  "name": "Gris Center Table",
+  "price": 4800,
+  "dimensions": "100 x 100 x 50 cm",
+  "image": "images/gris/gris-front.webp"
+ },
+ "jean-jacques-room-divider": {
+  "name": "Jean-Jacques Room Divider",
+  "price": 9900,
+  "dimensions": "300 x 6 x 200 cm",
+  "image": "images/jean-jacques/jean-jacques-front.webp"
+ },
+ "charlotte-totem": {
+  "name": "Charlotte Totem",
+  "price": 7950,
+  "dimensions": "40 x 40 x 180 cm",
+  "image": "images/charlotte/charlotte-front.webp"
+ },
+ "bernard-totem": {
+  "name": "Bernard Totem",
+  "price": 7500,
+  "dimensions": "49 x 49 x 160 cm",
+  "image": "images/bernard/bernard-front.webp"
+ },
+ "prisme-side-table": {
+  "name": "Prisme Side Table",
+  "price": 4050,
+  "dimensions": "60 x 60 x 45 cm",
+  "image": "images/prisme/prisme-front.webp"
+ },
+ "sanogo-bedside-table": {
+  "name": "Sanogo Bedside Table",
+  "price": 4400,
+  "dimensions": "55 x 55 x 50 cm",
+  "image": "images/sanogo/sanogo-front.webp"
+ },
+ "kelly-sideboard": {
+  "name": "Kelly Sideboard",
+  "price": 17250,
+  "dimensions": "160 x 55 x 85 cm",
+  "image": "images/kelly/kelly-front.webp"
+ },
+ "catalonia-center-table": {
+  "name": "Catalonia Center Table",
+  "price": 5050,
+  "dimensions": "100 x 100 x 50 cm",
+  "image": "images/catalonia/catalonia-front.webp"
+ },
+ "blue-star-side-table": {
+  "name": "Blue Star Side Table",
+  "price": 4050,
+  "dimensions": "55 x 55 x 51 cm",
+  "image": "images/blue-star/blue-star-front.webp"
+ },
+ "gustav-side-table": {
+  "name": "Gustav Side Table",
+  "price": 4050,
+  "dimensions": "55 x 55 x 51 cm",
+  "image": "images/gustav-side/gustav-side-front.webp"
+ },
+ "tuxedo-bedside-table": {
+  "name": "Tuxedo Bedside Table",
+  "price": 4500,
+  "dimensions": "57 x 50 x 60 cm",
+  "image": "images/tuxedo/tuxedo-front.webp"
+ },
+ "kubo-bedside-table": {
+  "name": "Kubo Bedside Table",
+  "price": 4500,
+  "dimensions": "57 x 50 x 60 cm",
+  "image": "images/kubo/kubo-front.webp"
+ },
+ "maple-side-table": {
+  "name": "Maple Side Table",
+  "price": 4050,
+  "dimensions": "55 x 55 x 51 cm",
+  "image": "images/maple/maple-front.webp"
+ },
+ "maple-bedside-table": {
+  "name": "Maple Bedside Table",
+  "price": 4500,
+  "dimensions": "57 x 50 x 60 cm",
+  "image": "images/maple-bedside/maple-bedside-front.webp"
+ },
+ "chrysler-dining-table": {
+  "name": "Chrysler Dining Table",
+  "price": 14850,
+  "dimensions": "280 x 120 x 77 cm",
+  "image": "images/chrysler/chrysler-front.webp"
+ },
+ "ferra-side-table": {
+  "name": "Ferrá Side Table",
+  "price": 4300,
+  "dimensions": "60 x 60 x 45 cm",
+  "image": "images/ferra/ferra-front.webp"
+ },
+ "bodun-bedside-table": {
+  "name": "Bodún Bedside Table",
+  "price": 4500,
+  "dimensions": "57 x 50 x 60 cm",
+  "image": "images/bodun/bodun-front.webp"
+ },
+ "fernand-side-table": {
+  "name": "Fernand Side Table",
+  "price": 4300,
+  "dimensions": "60 x 60 x 45 cm",
+  "image": "images/fernand/fernand-front.webp"
+ },
+ "harlequin-side-table": {
+  "name": "Harlequin Side Table",
+  "price": 4050,
+  "dimensions": "60 x 60 x 45 cm",
+  "image": "images/harlequin/harlequin-front.webp"
+ },
+ "georges-bedside-table": {
+  "name": "Georges Bedside Table",
+  "price": 4400,
+  "dimensions": "55 x 55 x 50 cm",
+  "image": "images/georges/georges-front.webp"
+ },
+ "gustav-center-table": {
+  "name": "Gustav Center Table",
+  "price": 5650,
+  "dimensions": "120 x 120 x 30 cm",
+  "image": "images/gustav/gustav-front.webp"
+ },
+ "kramer-dining-table": {
+  "name": "Kramer Dining Table",
+  "price": 20150,
+  "dimensions": "280 x 110 x 76 cm",
+  "image": "images/kramer/kramer-front.webp"
+ },
+ "marie-dressing-table": {
+  "name": "Marie Dressing Table",
+  "price": 10250,
+  "dimensions": "155 x 55 x 144 cm",
+  "image": "images/marie/marie-quarter.webp"
+ },
+ "regency-console-table": {
+  "name": "Regency Console Table",
+  "price": 10600,
+  "dimensions": "160 x 41 x 95 cm",
+  "image": "images/regency/regency-front.webp"
+ },
+ "olga-bedside-table": {
+  "name": "Olga Bedside Table",
+  "price": 4500,
+  "dimensions": "57 x 50 x 60 cm",
+  "image": "images/olga/olga-front.webp"
+ },
+ "lempicka-floor-lamp": {
+  "name": "Lempicka Floor Lamp",
+  "price": 6050,
+  "dimensions": "51 x 51 x 154 cm",
+  "image": "images/lempicka/lempicka-front.webp"
+ },
+ "gustav-bedside-table": {
+  "name": "Gustav Bedside Table",
+  "price": 4400,
+  "dimensions": "55 x 55 x 50 cm",
+  "image": "images/gustav-bedside/gustav-bedside-front.webp"
+ }
+}

@@ -1,4 +1,4 @@
-import json,sys
+import json,sys, os
 S=sys.argv[1]; OUT=sys.argv[2]
 t=open(S+'/template.html').read(); h=open(S+'/home_template.html').read()
 data=json.dumps(json.load(open(S+'/products.json')),ensure_ascii=False)
@@ -93,3 +93,10 @@ public=page.replace(pls+'\n','',1).replace(plm+'\n','',1).replace(plscript+'\n',
 open(OUT+'/index.html','w').write(wrap(public))
 priv=page.replace(router,'if(!location.hash) history.replaceState(null,"","#pricelist");\n'+router,1)
 open(OUT+'/'+PRIVATE,'w').write(wrap(priv,'<meta name="robots" content="noindex, nofollow">\n'))
+
+# Server-side price data for the price-request email function (not linked from the site; /netlify/* is blocked in netlify.toml)
+import re as _re
+_g=json.loads(_re.search(r'const PL_GBP = (\{.*?\});',pl).group(1))
+_P=json.load(open(S+'/products.json'))
+os.makedirs(OUT+'/netlify/functions',exist_ok=True)
+json.dump({p['id']:{'name':p['name'],'price':_g[p['id']],'dimensions':p.get('dimensions',''),'image':p.get('image','')} for p in _P if p['id'] in _g},open(OUT+'/netlify/functions/prices.json','w'),ensure_ascii=False,indent=1)

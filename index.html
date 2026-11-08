@@ -684,6 +684,7 @@ section.block.bespoke-block{padding-top:0}
         <input type="hidden" name="form-name" value="enquiry">
         <input type="hidden" name="request" id="enq-request" value="Enquiry">
         <input type="hidden" name="piece" id="enq-piece" value="">
+        <input type="hidden" name="piece-id" id="enq-piece-id" value="">
         <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <div class="field"><label for="enq-name">Name</label><input id="enq-name" name="name" type="text" autocomplete="name" required><span class="err" aria-live="polite"></span></div>
         <div class="row2">
@@ -1153,7 +1154,7 @@ function openEnq(kind){
   const p=kind==="service"?{name:""}:current; if(!p) return;
   enqLast=document.activeElement;
   const K={
-    enquiry:{eb:"Price request", t:`Price for the ${p.name}`, i:"Leave your details and our studio will reply within one working day with the price, lead time and finish options.", r:"Price request"},
+    enquiry:{eb:"Price request", t:`Price for the ${p.name}`, i:"Leave your details and we will email you the price of this piece straight away, with lead time and delivery details.", r:"Price request"},
     bespoke:{eb:"Customization request", t:`Make the ${p.name} yours`, i:"Tell us how you would like to adapt this piece: size, veneers or finish. Our studio will reply within one working day.", r:"Customization request"},
     service:{eb:"Bespoke service", t:"Start a bespoke project", i:"Tell us about the piece you have in mind, however unusual: the room, sizes, veneers or finish. Drag in a sketch, mood board or photo, and our studio will reply within one working day.", r:"Bespoke service request"},
     dwg:{eb:"DWG file", t:`Download the ${p.name} DWG`, i:"Leave your details and we will email you the DWG drawing of this piece within one working day.", r:"DWG file request"}
@@ -1162,7 +1163,7 @@ function openEnq(kind){
   $("enq-title").textContent = K.t;
   $("enq-intro").textContent = K.i;
   $("enq-request").value = K.r;
-  $("enq-piece").value = p.name;
+  $("enq-piece").value = p.name; $("enq-piece-id").value = p.id;
   clearDrop(); $("enq-drop-wrap").hidden = kind!=="service";
   $("enq-form").hidden=false; $("enq-status").textContent=""; const d=$("enq-body").querySelector(".done"); if(d) d.remove();
   $("enq").classList.add("open"); $("enq-scrim").classList.add("open"); $("enq").setAttribute("aria-hidden","false");
@@ -1226,7 +1227,7 @@ $("enq-form").addEventListener("submit",async e=>{
     if(!res.ok) throw new Error(res.status);
     const about=$("enq-piece").value?`about the ${esc($("enq-piece").value)} `:"";
     $("enq-form").hidden=true; $("enq-form").reset(); clearDrop();
-    $("enq-body").insertAdjacentHTML("beforeend",`<div class="done"><p class="intro-txt" style="margin:0">Thank you, ${esc(name.split(" ")[0])}. Your request ${about}has been sent. We will reply to ${esc(email)} within one working day.</p><button class="btn" type="button" onclick="document.getElementById('enq-close').click()">Close</button></div>`);
+    $("enq-body").insertAdjacentHTML("beforeend",`<div class="done"><p class="intro-txt" style="margin:0">Thank you, ${esc(name.split(" ")[0])}. ${$("enq-request").value==="Price request"?`The price${$("enq-piece").value?` of the ${esc($("enq-piece").value)}`:""} is on its way to ${esc(email)}. If it has not arrived in a few minutes, please check your spam folder or write to info@marquetery.uk.`:`Your request ${about}has been sent. We will reply to ${esc(email)} within one working day.`}</p><button class="btn" type="button" onclick="document.getElementById('enq-close').click()">Close</button></div>`);
   }catch(err){
     $("enq-status").textContent="We couldn't send your request. Please try again, or email info@marquetery.uk.";
   }finally{ btn.disabled=false; btn.textContent="Send request"; }
