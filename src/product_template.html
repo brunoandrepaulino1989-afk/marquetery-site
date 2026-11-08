@@ -61,6 +61,17 @@
 .field .err{font-size:12.5px;color:#9b2c1f;min-height:0}
 .field.invalid input,.field.invalid textarea{border-color:#9b2c1f}
 .enq .row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.enq .drop{position:relative;display:grid;justify-items:center;gap:6px;text-align:center;padding:26px 18px;border:1px dashed var(--ink);background:var(--tile);cursor:pointer;transition:background .2s,border-color .2s}
+.enq .drop strong{font-weight:500;font-size:15px}
+.enq .drop span{font-size:13px;color:var(--muted);max-width:34ch}
+.enq .drop.over{background:#e3ddd2;border-style:solid}
+.enq .drop:focus-within{outline:2px solid var(--ink);outline-offset:2px}
+.enq .drop-pick{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.enq .drop-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+.enq .drop-list li{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;font-size:13.5px}
+.enq .drop-list img{width:44px;height:44px;object-fit:cover;display:block}
+.enq .drop-list small{display:block;color:var(--muted);font-size:12px}
+.enq .drop-list button{font:inherit;font-size:12px;letter-spacing:.12em;text-transform:uppercase;background:none;border:0;border-bottom:1px solid currentColor;padding:2px 0;cursor:pointer;color:var(--ink)}
 .enq .fine{font-size:12.5px;color:var(--muted);margin:0}
 .enq .submit{justify-self:start}
 .enq .status{font-size:14px;margin:0}
@@ -116,6 +127,20 @@
           <div class="field"><label for="enq-phone">Phone number</label><input id="enq-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required><span class="err" aria-live="polite"></span></div>
         </div>
         <div class="field"><label for="enq-msg">Additional information <span>(optional)</span></label><textarea id="enq-msg" name="message" rows="4" maxlength="1500" placeholder="Room size, preferred veneers, delivery date…"></textarea></div>
+        <div class="field drop-wrap" id="enq-drop-wrap" hidden>
+          <label for="enq-pick">Reference images <span>(optional)</span></label>
+          <div class="drop" id="enq-drop">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5"/><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/></svg>
+            <strong>Drag your images here</strong>
+            <span>or <u>choose files</u>. Sketches, mood boards or photos: up to 3 images, 8 MB in total.</span>
+            <input id="enq-pick" class="drop-pick" type="file" accept="image/*" multiple>
+          </div>
+          <input type="file" name="attachment-1" class="enq-file" accept="image/*" hidden>
+          <input type="file" name="attachment-2" class="enq-file" accept="image/*" hidden>
+          <input type="file" name="attachment-3" class="enq-file" accept="image/*" hidden>
+          <ul class="drop-list" id="enq-drop-list"></ul>
+          <span class="err" id="enq-drop-err" aria-live="polite"></span>
+        </div>
         <p class="fine">We use your details only to reply to this request.</p>
         <button class="btn btn-solid submit" type="submit" id="enq-submit">Send request</button>
         <p class="status" id="enq-status" role="status"></p>
@@ -201,7 +226,7 @@ function openEnq(kind){
   const K={
     enquiry:{eb:"Enquiry", t:`Enquire about the ${p.name}`, i:"Leave your details and our studio will reply within one working day with pricing, lead time and finish options.", r:"Enquiry"},
     bespoke:{eb:"Customization request", t:`Make the ${p.name} yours`, i:"Tell us how you would like to adapt this piece: size, veneers or finish. Our studio will reply within one working day.", r:"Customization request"},
-    service:{eb:"Bespoke service", t:"Start a bespoke project", i:"Tell us about the piece you have in mind: the room, sizes, veneers or finish. Our studio will reply within one working day.", r:"Bespoke service request"},
+    service:{eb:"Bespoke service", t:"Start a bespoke project", i:"Tell us about the piece you have in mind, however unusual: the room, sizes, veneers or finish. Drag in a sketch, mood board or photo, and our studio will reply within one working day.", r:"Bespoke service request"},
     dwg:{eb:"DWG file", t:`Download the ${p.name} DWG`, i:"Leave your details and we will email you the DWG drawing of this piece within one working day.", r:"DWG file request"}
   }[kind]||{};
   $("enq-eyebrow").textContent = K.eb;
@@ -209,6 +234,7 @@ function openEnq(kind){
   $("enq-intro").textContent = K.i;
   $("enq-request").value = K.r;
   $("enq-piece").value = p.name;
+  clearDrop(); $("enq-drop-wrap").hidden = kind!=="service";
   $("enq-form").hidden=false; $("enq-status").textContent=""; const d=$("enq-body").querySelector(".done"); if(d) d.remove();
   $("enq").classList.add("open"); $("enq-scrim").classList.add("open"); $("enq").setAttribute("aria-hidden","false");
   document.body.style.overflow="hidden"; setTimeout(()=>$("enq-name").focus(),350);
@@ -226,6 +252,34 @@ document.addEventListener("click",e=>{ const a=e.target.closest("[data-enq]"); i
 $("enq-close").onclick=closeEnq; $("enq-scrim").onclick=closeEnq;
 document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeEnq(); });
 window.addEventListener("hashchange",closeEnq);
+/* reference images (bespoke service form): drag and drop, up to 3 images, 8 MB total */
+let dropFiles=[];
+const MAXF=3, MAXB=8*1024*1024;
+function fmtSize(b){ return b>1048576?(b/1048576).toFixed(1)+" MB":Math.max(1,Math.round(b/1024))+" KB"; }
+function syncDrop(){
+  const slots=[...document.querySelectorAll("#enq-form .enq-file")];
+  slots.forEach((inp,i)=>{ const dt=new DataTransfer(); if(dropFiles[i]) dt.items.add(dropFiles[i]); inp.files=dt.files; });
+  const list=$("enq-drop-list"); list.querySelectorAll("img").forEach(im=>URL.revokeObjectURL(im.src));
+  list.innerHTML=dropFiles.map((f,i)=>`<li><img src="${URL.createObjectURL(f)}" alt=""><span>${esc(f.name)}<small>${fmtSize(f.size)}</small></span><button type="button" data-rm="${i}">Remove</button></li>`).join("");
+}
+function addDrop(files){
+  let msg="";
+  for(const f of files){
+    if(!/^image\//.test(f.type)){ msg="Only image files can be attached."; continue; }
+    if(dropFiles.length>=MAXF){ msg="You can attach up to 3 images."; break; }
+    const total=dropFiles.reduce((a,x)=>a+x.size,0);
+    if(total+f.size>MAXB){ msg="Images can be up to 8 MB in total. Try a smaller file."; continue; }
+    dropFiles.push(f);
+  }
+  $("enq-drop-err").textContent=msg; syncDrop();
+}
+function clearDrop(){ dropFiles=[]; $("enq-drop-err").textContent=""; $("enq-pick").value=""; syncDrop(); }
+const dz=$("enq-drop");
+["dragenter","dragover"].forEach(t=>dz.addEventListener(t,e=>{ e.preventDefault(); dz.classList.add("over"); }));
+["dragleave","drop"].forEach(t=>dz.addEventListener(t,e=>{ e.preventDefault(); dz.classList.remove("over"); }));
+dz.addEventListener("drop",e=>addDrop(e.dataTransfer.files));
+$("enq-pick").addEventListener("change",e=>{ addDrop(e.target.files); e.target.value=""; });
+$("enq-drop-list").addEventListener("click",e=>{ const b=e.target.closest("[data-rm]"); if(!b) return; dropFiles.splice(+b.dataset.rm,1); $("enq-drop-err").textContent=""; syncDrop(); });
 function check(id,ok,msg){ const f=$(id).closest(".field"); f.classList.toggle("invalid",!ok); f.querySelector(".err").textContent= ok?"":msg; return ok; }
 $("enq-form").addEventListener("submit",async e=>{
   e.preventDefault();
@@ -236,10 +290,14 @@ $("enq-form").addEventListener("submit",async e=>{
   if(ok.includes(false)){ $("enq-form").querySelector(".invalid input, .invalid textarea").focus(); return; }
   const btn=$("enq-submit"); btn.disabled=true; btn.textContent="Sending…"; $("enq-status").textContent="";
   try{
-    const res=await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData($("enq-form"))).toString()});
+    const fd=new FormData($("enq-form"));
+    const res = dropFiles.length
+      ? await fetch("/",{method:"POST",body:fd})
+      : await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams([...fd].filter(([,v])=>typeof v==="string")).toString()});
     if(!res.ok) throw new Error(res.status);
-    $("enq-form").hidden=true; $("enq-form").reset();
-    $("enq-body").insertAdjacentHTML("beforeend",`<div class="done"><p class="intro-txt" style="margin:0">Thank you, ${esc(name.split(" ")[0])}. Your request about the ${esc(current.name)} has been sent. We will reply to ${esc(email)} within one working day.</p><button class="btn" type="button" onclick="document.getElementById('enq-close').click()">Close</button></div>`);
+    const about=$("enq-piece").value?`about the ${esc($("enq-piece").value)} `:"";
+    $("enq-form").hidden=true; $("enq-form").reset(); clearDrop();
+    $("enq-body").insertAdjacentHTML("beforeend",`<div class="done"><p class="intro-txt" style="margin:0">Thank you, ${esc(name.split(" ")[0])}. Your request ${about}has been sent. We will reply to ${esc(email)} within one working day.</p><button class="btn" type="button" onclick="document.getElementById('enq-close').click()">Close</button></div>`);
   }catch(err){
     $("enq-status").textContent="We couldn't send your request. Please try again, or email info@marquetery.uk.";
   }finally{ btn.disabled=false; btn.textContent="Send request"; }
