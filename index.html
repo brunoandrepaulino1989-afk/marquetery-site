@@ -166,11 +166,18 @@ footer form button{font-size:11px;letter-spacing:.14em;text-transform:uppercase}
 
 @media (max-width:1100px){nav.main{gap:18px}.grid{--cols:3 !important}footer .cols{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:860px){
-  nav.main,.tools .t-hide{display:none}.menu-btn{display:block}header.site .wrap{grid-template-columns:1fr auto}
   .intro{grid-template-columns:1fr}.band .wrap{grid-template-columns:1fr}
   .grid{--cols:2 !important;gap:36px 12px}.density{display:none}
   .rail .wrap{flex-wrap:wrap}.rail-right{width:100%;justify-content:space-between}
   footer .cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:960px){nav.main{gap:14px;font-size:12px;letter-spacing:.05em}header.site .wrap{gap:16px}}
+@media (max-width:720px){
+  nav.main,.tools .t-hide{display:none}.menu-btn{display:block}header.site .wrap{grid-template-columns:1fr auto}
+  header.site{position:relative}
+  header.site.menu-open nav.main{display:flex;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;z-index:55;background:var(--bg);border-bottom:1px solid var(--ink);padding:8px var(--gutter-r,16px) 16px var(--gutter,16px);font-size:13px;letter-spacing:.1em}
+  header.site.menu-open nav.main a{padding:14px 0;border-bottom:1px solid var(--line)}
+  header.site.menu-open nav.main a:last-child{border-bottom:0}
 }
 @media (max-width:420px){.caption{flex-direction:column;gap:2px}.drawer .body{padding:24px 20px 32px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -262,11 +269,6 @@ section.block{padding-block:88px}
 
 @media (max-width:1100px){.cats{grid-template-columns:repeat(2,minmax(0,1fr))}.scroller{grid-auto-columns:minmax(240px,30%)}}
 @media (max-width:860px){
-  .slides{min-height:0}
-  .slide{position:relative;display:none;grid-template-columns:1fr}
-  .slide.on{display:grid}
-  .slide .media{aspect-ratio:1/1;height:auto;order:-1}
-  .slide .copy{padding:28px var(--gutter-r) 90px var(--gutter)}
   .catalogue{grid-template-columns:1fr !important}
   .about{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;gap:24px !important}
   .steps{grid-template-columns:1fr;gap:28px}
@@ -274,6 +276,13 @@ section.block{padding-block:88px}
   .tabu{grid-template-columns:1fr;gap:28px;padding:28px 22px}
   section.block{padding-block:64px}
   .scroller{grid-auto-columns:72%}
+}
+@media (max-width:720px){
+  .slides{min-height:0}
+  .slide{position:relative;display:none;grid-template-columns:1fr}
+  .slide.on{display:grid}
+  .slide .media{aspect-ratio:1/1;height:auto;order:-1}
+  .slide .copy{padding:28px var(--gutter-r) 90px var(--gutter)}
 }
 @media (max-width:520px){.cats{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.dots button i{animation:none!important;width:100%}}
@@ -1319,6 +1328,15 @@ trF.addEventListener("submit",async e=>{
   }catch(err){ st.textContent="We couldn't send your application. Please try again, or email info@marquetery.uk."; }
   finally{ btn.disabled=false; btn.textContent="Send application"; }
 });
+})();
+
+(()=>{ const hd=document.querySelector("header.site"), mb=document.querySelector(".menu-btn"); if(!hd||!mb) return;
+  mb.setAttribute("aria-expanded","false");
+  const set=o=>{ hd.classList.toggle("menu-open",o); mb.setAttribute("aria-expanded",String(o)); mb.textContent=o?"Close":"Menu"; };
+  mb.addEventListener("click",()=>set(!hd.classList.contains("menu-open")));
+  document.querySelector("nav.main").addEventListener("click",e=>{ if(e.target.closest("a")) set(false); });
+  window.addEventListener("hashchange",()=>set(false));
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape") set(false); });
 })();
 
 (()=>{

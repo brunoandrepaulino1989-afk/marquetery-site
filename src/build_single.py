@@ -42,6 +42,15 @@ hscript=h[h.index('<script>')+8:h.rindex('</script>')].replace('const PRODUCTS =
 hscript=hscript.replace('$("news").addEventListener("submit",e=>{e.preventDefault(); $("news-note").textContent = okEmail($("email").value) ? "Thank you. You\'re on the list." : "Enter a valid email address, like name@example.com.";});','')
 assert '$("news")' not in hscript
 router='''
+(()=>{ const hd=document.querySelector("header.site"), mb=document.querySelector(".menu-btn"); if(!hd||!mb) return;
+  mb.setAttribute("aria-expanded","false");
+  const set=o=>{ hd.classList.toggle("menu-open",o); mb.setAttribute("aria-expanded",String(o)); mb.textContent=o?"Close":"Menu"; };
+  mb.addEventListener("click",()=>set(!hd.classList.contains("menu-open")));
+  document.querySelector("nav.main").addEventListener("click",e=>{ if(e.target.closest("a")) set(false); });
+  window.addEventListener("hashchange",()=>set(false));
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape") set(false); });
+})();
+
 (()=>{
   const PRODUCT_VIEWS=["collections","tables","storage","seating","lighting","accessories"];
   const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product"), proj=document.getElementById("view-projects"), rooms=document.getElementById("view-rooms"), trade=document.getElementById("view-trade"), navTrade=document.querySelector('nav.main a[href="#trade"]'), about=document.getElementById("view-about"), navAbout=document.querySelector('nav.main a[href="#about"]');
