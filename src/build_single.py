@@ -36,6 +36,10 @@ trscript=tr[tr.index('<script>')+8:tr.rindex('</script>')]
 ab=open(S+'/about_template.html').read()
 abs_=ab[:ab.index('</style>')+8]
 abm=ab[ab.index('<main id="view-about" hidden>'):ab.index('<script>')]
+pl=open(S+'/pricelist_template.html').read()
+pls=pl[:pl.index('</style>')+8]
+plm=pl[pl.index('<main id="view-pricelist" hidden>'):pl.index('<script>')]
+plscript=pl[pl.index('<script>')+8:pl.rindex('</script>')]
 hs=h[:h.index('</style>')+8]
 hm=h[h.index('<main id="top">'):h.index('</main>')+7].replace('<main id="top">','<main id="view-home">',1)
 hscript=h[h.index('<script>')+8:h.rindex('</script>')].replace('const PRODUCTS = /*DATA*/[];','')
@@ -53,18 +57,18 @@ router='''
 
 (()=>{
   const PRODUCT_VIEWS=["collections","tables","storage","seating","lighting","accessories"];
-  const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product"), proj=document.getElementById("view-projects"), rooms=document.getElementById("view-rooms"), trade=document.getElementById("view-trade"), navTrade=document.querySelector('nav.main a[href="#trade"]'), about=document.getElementById("view-about"), navAbout=document.querySelector('nav.main a[href="#about"]');
+  const home=document.getElementById("view-home"), prod=document.getElementById("view-products"), piece=document.getElementById("view-product"), proj=document.getElementById("view-projects"), rooms=document.getElementById("view-rooms"), trade=document.getElementById("view-trade"), navTrade=document.querySelector('nav.main a[href="#trade"]'), about=document.getElementById("view-about"), plist=document.getElementById("view-pricelist"), navAbout=document.querySelector('nav.main a[href="#about"]');
   const navProj=document.querySelector('nav.main a[href="#atelier"]'), navRooms=document.querySelector('nav.main a[href="#inspirations"]');
   const navCol=document.querySelector('nav.main a[href="#collections"]');
   function route(){
     const h=(location.hash||"").slice(1).toLowerCase();
-    const isProj=h==="atelier"||h==="bespoke", isRooms=h==="inspirations"||h==="projects", isTrade=h==="trade", isAbout=h==="about";
+    const isProj=h==="atelier"||h==="bespoke", isRooms=h==="inspirations"||h==="projects", isTrade=h==="trade", isAbout=h==="about", isPl=h==="pricelist"||h==="price-list";
     const isProd=PRODUCT_VIEWS.includes(h);
-    const isPiece=!isProd && !isProj && !isRooms && !isTrade && !isAbout && !!h && window.renderProduct(h);
-    home.hidden=isProd||isPiece||isProj||isRooms||isTrade||isAbout; trade.hidden=!isTrade; about.hidden=!isAbout; if(navAbout){ if(isAbout) navAbout.setAttribute("aria-current","page"); else navAbout.removeAttribute("aria-current"); } if(navTrade){ if(isTrade) navTrade.setAttribute("aria-current","page"); else navTrade.removeAttribute("aria-current"); } prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj; rooms.hidden=!isRooms;
+    const isPiece=!isProd && !isProj && !isRooms && !isTrade && !isAbout && !isPl && !!h && window.renderProduct(h);
+    home.hidden=isProd||isPiece||isProj||isRooms||isTrade||isAbout||isPl; trade.hidden=!isTrade; about.hidden=!isAbout; plist.hidden=!isPl; if(navAbout){ if(isAbout) navAbout.setAttribute("aria-current","page"); else navAbout.removeAttribute("aria-current"); } if(navTrade){ if(isTrade) navTrade.setAttribute("aria-current","page"); else navTrade.removeAttribute("aria-current"); } prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj; rooms.hidden=!isRooms;
     if(navProj){ if(isProj) navProj.setAttribute("aria-current","page"); else navProj.removeAttribute("aria-current"); }
     if(navRooms){ if(isRooms) navRooms.setAttribute("aria-current","page"); else navRooms.removeAttribute("aria-current"); }
-    if(isProj||isRooms||isTrade||isAbout){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Atelier":isTrade?"Trade":isAbout?"About":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
+    if(isProj||isRooms||isTrade||isAbout||isPl){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Atelier":isTrade?"Trade":isAbout?"About":isPl?"Price List":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
     if(isPiece){ window.scrollTo(0,0); navCol.setAttribute("aria-current","page"); return; }
     if(isProd) navCol.setAttribute("aria-current","page"); else navCol.removeAttribute("aria-current");
     document.title = isProd ? "Collections · Marquetery" : "Marquetery";
@@ -76,7 +80,7 @@ router='''
   route();
 })();
 '''
-page=head+'\n'+hs+'\n'+pts+'\n'+pjs+'\n'+rms+'\n'+trs+'\n'+abs_+'\n'+header+hm+'\n'+pm+'\n'+ptm+'\n'+pjm+'\n'+rmm+'\n'+trm+'\n'+abm+'\n'+footer+'\n'+drawer+'<script>\nconst PRODUCTS = '+data+';\n(()=>{'+hscript+'})();\n(()=>{'+pscript+'})();\n(()=>{'+ptscript+'})();\n(()=>{'+pjscript+'})();\n(()=>{'+rmscript+'})();\n(()=>{'+trscript+'})();\n'+router+'</script>\n'
+page=head+'\n'+hs+'\n'+pts+'\n'+pjs+'\n'+rms+'\n'+trs+'\n'+abs_+'\n'+pls+'\n'+header+hm+'\n'+pm+'\n'+ptm+'\n'+pjm+'\n'+rmm+'\n'+trm+'\n'+abm+'\n'+plm+'\n'+footer+'\n'+drawer+'<script>\nconst PRODUCTS = '+data+';\n(()=>{'+hscript+'})();\n(()=>{'+pscript+'})();\n(()=>{'+ptscript+'})();\n(()=>{'+pjscript+'})();\n(()=>{'+rmscript+'})();\n(()=>{'+trscript+'})();\n'+plscript+'\n'+router+'</script>\n'
 pass
 BASE_FIX='*{box-sizing:border-box}\nbody{margin:0}\nimg{max-width:100%}\n[hidden]{display:none!important}'
 he=page.index('</style>')+8
