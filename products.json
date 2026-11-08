@@ -1137,6 +1137,35 @@
   "ambience": []
  },
  {
+  "id": "chloe-sideboard",
+  "name": "Chloe Sideboard",
+  "group": "Storage",
+  "type": "Sideboard",
+  "image": "images/chloe/chloe-front.webp",
+  "dimensions": "180 x 58 x 82 cm",
+  "description": "A three-door sideboard in banded sucupira and cherry marquetry, lined in bird's-eye maple and set on a low plinth.",
+  "source": "https://hommes.studio/storage/sideboard/emma-sideboard/",
+  "lede": "Broad bands of dark sucupira and warm cherry run across the doors and wrap around the sides, crossed by three solid horizontal handles. Open it and the whole interior glows in natural bird's-eye maple.",
+  "materials": [
+   "Sucupira wood veneer, gloss marquetry",
+   "Cherry wood veneer",
+   "Natural bird's-eye veneer, interior"
+  ],
+  "finish": "Gloss",
+  "gallery": [
+   "images/chloe/chloe-front.webp",
+   "images/chloe/chloe-open.webp",
+   "images/chloe/chloe-side.webp",
+   "images/chloe/chloe-interior.webp",
+   "images/chloe/chloe-detail.webp",
+   "images/chloe/chloe-room.webp"
+  ],
+  "story": {
+   "title": "Stripes, set in wood",
+   "text": "The Chloe Sideboard is built like a textile: alternating strips of sucupira and cherry are laid in marquetry so that the pattern carries without a break from door to door and round the corners. The handles are long bars of the same dark wood, staggered across the front like a running stitch. Behind the doors, adjustable shelves in bird's-eye maple give plenty of room for tableware or a bar. The cabinet floats above a recessed plinth, which keeps a long piece light in a dining room, living room or hall."
+  }
+ },
+ {
   "id": "regency-console-table",
   "name": "Regency Console Table",
   "group": "Tables",
