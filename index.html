@@ -233,6 +233,12 @@ section.block{padding-block:88px}
 .step b{font-family:var(--display);font-weight:400;font-size:44px;line-height:1}
 .step h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin:0}
 .step p{margin:0;color:var(--muted);max-width:40ch}
+.tabu{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:48px;align-items:center;margin-top:56px;padding:36px 40px;border:1px solid var(--line);background:var(--tile)}
+.tabu .eyebrow{display:block;margin-bottom:10px}
+.tabu h4{font-family:var(--display);font-weight:400;font-size:clamp(26px,2.6vw,34px);margin:0 0 14px;letter-spacing:.02em;text-transform:none}
+.tabu p{font-size:15.5px;line-height:1.7;margin:0;max-width:60ch}
+.tabu-acts{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:56px}
 .sw{display:grid;gap:8px;font-size:12px;color:var(--muted)}
 .sw i{display:block;aspect-ratio:1;border-radius:2px}
@@ -258,6 +264,7 @@ section.block{padding-block:88px}
   .about,.catalogue{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr;gap:28px}
   .swatches{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tabu{grid-template-columns:1fr;gap:28px;padding:28px 22px}
   section.block{padding-block:64px}
   .scroller{grid-auto-columns:72%}
 }
@@ -517,6 +524,17 @@ section.block{padding-block:88px}
         <div class="sw"><i style="background:radial-gradient(circle at 60% 50%,#c9a77c,#a98257 55%,#c2a078)"></i><span>Ash root</span>Swirling figure</div>
         <div class="sw"><i style="background:repeating-linear-gradient(80deg,#5a2f22 0 4px,#6e3a2a 4px 9px)"></i><span>Palissander</span>Deep red-brown</div>
         <div class="sw"><i style="background:radial-gradient(circle at 40% 60%,#a5583a,#8a4630 60%,#9c5236)"></i><span>Cherry root</span>Rich, figured</div>
+      </div>
+      <div class="tabu">
+        <div>
+          <span class="eyebrow">Our veneer partner</span>
+          <h4>Veneers by Tabu</h4>
+          <p>We work with Tabu, the Italian veneer house, for many of the woods in our pieces. Beyond the veneers shown here, you can choose from the whole Tabu wood veneer collection: browse their catalogue, note the veneer you like and tell us when you enquire.</p>
+        </div>
+        <div class="tabu-acts">
+          <a class="btn btn-solid" href="https://www.tabu.it/en/collections/collections-wood-veneers/" target="_blank" rel="noopener">Explore Tabu veneers<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+          <a class="link" href="#contact" data-enq="service">Tell us your choice</a>
+        </div>
       </div>
     </div>
   </section>
