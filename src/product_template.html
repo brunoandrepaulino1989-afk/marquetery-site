@@ -6,8 +6,10 @@
 .stage .media img{inset:4%;width:92%;height:92%;cursor:zoom-in}
 .stage.zoom .media img{inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.6);cursor:zoom-out}
 .stage .nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-size:16px;z-index:2}
-.ship-seal{position:absolute;top:16px;left:16px;z-index:2;width:124px;height:124px;pointer-events:none;filter:drop-shadow(0 2px 8px rgba(0,0,0,.22))}
-@media (max-width:640px){.ship-seal{width:96px;height:96px;top:12px;left:12px}}
+.pd-title{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.pd-title h1{min-width:0}
+.ship-seal{flex:none;width:112px;height:112px;pointer-events:none;filter:drop-shadow(0 2px 8px rgba(0,0,0,.18))}
+@media (max-width:640px){.ship-seal{width:84px;height:84px}.pd-title{gap:14px}}
 .ship-seal svg{display:block;width:100%;height:100%}
 .stage .nav.prev{left:16px}.stage .nav.next{right:16px}
 .stage .count{position:absolute;right:16px;bottom:14px;font-size:12px;letter-spacing:.12em;font-variant-numeric:tabular-nums;background:var(--bg);padding:3px 8px;z-index:2}
@@ -87,7 +89,7 @@
       <div>
         <div class="stage" id="pd-stage">
           <div class="media" id="pd-media"><div class="veneer"></div><span class="veneer-label"></span><img id="pd-img" alt=""></div>
-          <span class="ship-seal" role="img" aria-label="Free shipping and white glove services all across the UK, by Gander &amp; White"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><radialGradient id="seal-pearl" cx="38%" cy="30%" r="80%"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#f8f6f1"/><stop offset=".85" stop-color="#eee9e0"/><stop offset="1" stop-color="#e2dbcf"/></radialGradient><linearGradient id="seal-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4ecf3" stop-opacity=".5"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#e6eff0" stop-opacity=".45"/></linearGradient><path id="seal-ring" d="M13.53 64.37a39.2 39.2 0 1 1 72.94-28.74a39.2 39.2 0 1 1-72.94 28.74"/></defs><circle cx="50" cy="50" r="49.4" fill="url(#seal-pearl)"/><circle cx="50" cy="50" r="49.4" fill="url(#seal-sheen)"/><circle cx="50" cy="50" r="49" fill="none" stroke="#9a7a52" stroke-width=".7"/><circle cx="50" cy="50" r="47.3" fill="none" stroke="#9a7a52" stroke-width=".35"/><text font-family="'Cormorant Garamond', Georgia, serif" font-weight="600" font-size="6.1" fill="#1b1a19"><textPath href="#seal-ring" startOffset="0" textLength="242" lengthAdjust="spacing">FREE SHIPPING &amp; WHITE GLOVE SERVICES ✦ ALL ACROSS THE UK ✦</textPath></text><circle cx="50" cy="50" r="33.6" fill="none" stroke="#9a7a52" stroke-width=".35"/><circle cx="50" cy="50" r="32.2" fill="none" stroke="#9a7a52" stroke-width=".7"/><image href="images/ui/gw-logo.png" x="25" y="37.7" width="50" height="24.6" preserveAspectRatio="xMidYMid meet"/></svg></span><button class="nav prev" type="button" id="pd-prev" aria-label="Previous image">←</button>
+          <button class="nav prev" type="button" id="pd-prev" aria-label="Previous image">←</button>
           <button class="nav next" type="button" id="pd-next" aria-label="Next image">→</button>
           <span class="count" id="pd-count"></span>
         </div>
@@ -95,7 +97,7 @@
       </div>
       <div class="info">
         <span class="eyebrow" id="pd-cat"></span>
-        <h1 id="pd-name"></h1>
+        <div class="pd-title"><h1 id="pd-name"></h1><span class="ship-seal" role="img" aria-label="Free shipping and white glove services all across the UK, by Gander &amp; White"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><radialGradient id="seal-pearl" cx="38%" cy="30%" r="80%"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#f8f6f1"/><stop offset=".85" stop-color="#eee9e0"/><stop offset="1" stop-color="#e2dbcf"/></radialGradient><linearGradient id="seal-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4ecf3" stop-opacity=".5"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#e6eff0" stop-opacity=".45"/></linearGradient><path id="seal-ring" d="M13.53 64.37a39.2 39.2 0 1 1 72.94-28.74a39.2 39.2 0 1 1-72.94 28.74"/></defs><circle cx="50" cy="50" r="49.4" fill="url(#seal-pearl)"/><circle cx="50" cy="50" r="49.4" fill="url(#seal-sheen)"/><circle cx="50" cy="50" r="49" fill="none" stroke="#9a7a52" stroke-width=".7"/><circle cx="50" cy="50" r="47.3" fill="none" stroke="#9a7a52" stroke-width=".35"/><text font-family="'Cormorant Garamond', Georgia, serif" font-weight="600" font-size="6.1" fill="#1b1a19"><textPath href="#seal-ring" startOffset="0" textLength="242" lengthAdjust="spacing">FREE SHIPPING &amp; WHITE GLOVE SERVICES ✦ ALL ACROSS THE UK ✦</textPath></text><circle cx="50" cy="50" r="33.6" fill="none" stroke="#9a7a52" stroke-width=".35"/><circle cx="50" cy="50" r="32.2" fill="none" stroke="#9a7a52" stroke-width=".7"/><image href="images/ui/gw-logo.png" x="25" y="37.7" width="50" height="24.6" preserveAspectRatio="xMidYMid meet"/></svg></span></div>
         <p class="lede" id="pd-desc"></p>
         <dl class="spec" id="pd-spec"></dl>
         <div class="actions">
