@@ -107,7 +107,7 @@ section.block.bespoke-block{padding-top:0}
 {{HEADER}}
 
 <main id="top">
-  <section class="opening" aria-label="Marquetery"><img src="images/emile/emile-room.webp" alt="A marquetry dining table in a softly lit dining room" width="1500" height="1500" fetchpriority="high"></section>
+  <section class="opening" aria-label="Marquetry"><img src="images/emile/emile-room.webp" alt="A marquetry dining table in a softly lit dining room" width="1500" height="1500" fetchpriority="high"></section>
   <section class="hero" aria-roledescription="carousel" aria-label="Featured pieces">
     <div class="slides" id="slides"></div>
     <div class="hero-ctrl">
@@ -263,7 +263,7 @@ const okEmail = v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim());
 $("cat-form").addEventListener("submit",async e=>{e.preventDefault(); const f=e.target, n=$("cat-note");
   if(!okEmail($("cat-email").value)){ n.textContent="Enter a valid email address, like name@example.com."; return; }
   try{ const r=await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(f)).toString()}); if(!r.ok) throw new Error(r.status);
-    n.textContent="Thank you. We will email you the catalogue shortly."; f.reset(); }catch(err){ n.textContent="Sorry, that didn't go through. Please email info@marquetery.uk."; } });
+    n.textContent="Thank you. We will email you the catalogue shortly."; f.reset(); }catch(err){ n.textContent="Sorry, that didn't go through. Please email info@marquetry.uk."; } });
 $("news").addEventListener("submit",e=>{e.preventDefault(); $("news-note").textContent = okEmail($("email").value) ? "Thank you. You're on the list." : "Enter a valid email address, like name@example.com.";});
 $("foot-cats").innerHTML = [["Tables","tables"],["Storage","storage"],["Seating","seating"],["Lighting","lighting"],["Accessories","accessories"]].map(([l,h])=>`<li><a href="products.html#${h}">${l}</a></li>`).join("");
 </script>

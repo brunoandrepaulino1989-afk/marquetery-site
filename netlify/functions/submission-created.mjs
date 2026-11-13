@@ -3,15 +3,15 @@
 // price to the customer (with a copy to the studio) through Resend.
 //
 // Netlify environment variables:
-//   RESEND_API_KEY  required. From resend.com, after verifying marquetery.uk.
-//   MAIL_FROM       optional. Default: Marquetery.uk <info@marquetery.uk>
-//   MAIL_COPY_TO    optional. Default: info@marquetery.uk (blind copy of every price email)
-//   SITE_URL        optional. Default: https://marquetery.uk
+//   RESEND_API_KEY  required. From resend.com, after verifying marquetry.uk.
+//   MAIL_FROM       optional. Default: Marquetry.uk <info@marquetry.uk>
+//   MAIL_COPY_TO    optional. Default: info@marquetry.uk (blind copy of every price email)
+//   SITE_URL        optional. Default: https://marquetry.uk
 import { readFile } from "node:fs/promises";
 
-const FROM = process.env.MAIL_FROM || "Marquetery.uk <info@marquetery.uk>";
-const COPY = process.env.MAIL_COPY_TO || "info@marquetery.uk";
-const SITE = (process.env.SITE_URL || "https://marquetery.uk").replace(/\/$/, "");
+const FROM = process.env.MAIL_FROM || "Marquetry.uk <info@marquetry.uk>";
+const COPY = process.env.MAIL_COPY_TO || "info@marquetry.uk";
+const SITE = (process.env.SITE_URL || "https://marquetry.uk").replace(/\/$/, "");
 
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const gbp = (n) => "£" + Number(n).toLocaleString("en-GB");
@@ -28,7 +28,7 @@ function emailHtml({ first, piece, id }) {
   return `<!doctype html><html><body style="margin:0;background:#F0EEE9;font-family:Georgia,'Times New Roman',serif;color:#111">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F0EEE9"><tr><td align="center" style="padding:32px 16px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#fff">
-<tr><td style="padding:28px 32px 8px;letter-spacing:.32em;font-size:13px;text-transform:uppercase">Marquetery</td></tr>
+<tr><td style="padding:28px 32px 8px;letter-spacing:.32em;font-size:13px;text-transform:uppercase">Marquetry</td></tr>
 <tr><td style="padding:8px 32px 0;font-size:16px;line-height:1.6">Dear ${esc(first)},<br><br>Thank you for your interest in the <strong>${esc(piece.name)}</strong>. Here is the price you requested.</td></tr>
 ${img ? `<tr><td align="center" style="padding:24px 32px 0"><a href="${link}"><img src="${img}" width="320" alt="${esc(piece.name)}" style="display:block;width:320px;max-width:100%;height:auto;border:0"></a></td></tr>` : ""}
 <tr><td style="padding:24px 32px 0">
@@ -41,7 +41,7 @@ Free white glove delivery across the UK by Gander &amp; White.<br>
 Veneers, finish and size can be adapted; ask us for a quotation on any variation.</td></tr>
 <tr><td style="padding:24px 32px 0;font-size:15px;line-height:1.6">To place an order or ask a question, simply reply to this email or call us on +44 7519 450282.</td></tr>
 <tr><td style="padding:24px 32px 32px"><a href="${link}" style="display:inline-block;background:#111;color:#fff;text-decoration:none;padding:12px 22px;font-size:12px;letter-spacing:.14em;text-transform:uppercase">View the piece</a></td></tr>
-<tr><td style="padding:16px 32px 28px;border-top:1px solid #eee;font-size:11px;line-height:1.6;color:#888">Prices valid from November 2026 and subject to change. Marquetery.uk is a trading name of After Hours Collections Ltd, company no. 15580283, 66 Paul Street, London EC2A 4NA.</td></tr>
+<tr><td style="padding:16px 32px 28px;border-top:1px solid #eee;font-size:11px;line-height:1.6;color:#888">Prices valid from November 2026 and subject to change. Marquetry.uk is a trading name of After Hours Collections Ltd, company no. 15580283, 66 Paul Street, London EC2A 4NA.</td></tr>
 </table></td></tr></table></body></html>`;
 }
 
@@ -57,7 +57,7 @@ Made to order in Portugal, 10 to 12 weeks. Free white glove delivery across the 
 To order, reply to this email or call +44 7519 450282.
 ${SITE}/#${id}
 
-Marquetery.uk, a trading name of After Hours Collections Ltd, company no. 15580283.`;
+Marquetry.uk, a trading name of After Hours Collections Ltd, company no. 15580283.`;
 }
 
 export const handler = async (event) => {

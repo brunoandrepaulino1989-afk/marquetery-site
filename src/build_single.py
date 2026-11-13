@@ -9,7 +9,7 @@ t=links(t); h=links(h)
 t=t.replace('try{history.replaceState(null,"",state.group==="all"?location.pathname:"#"+slug(state.group))}catch(err){}','try{history.replaceState(null,"","#"+(state.group==="all"?"collections":slug(state.group)))}catch(err){}')
 assert '"#"+(state.group' in t
 se=t.index('</style>')+len('</style>')
-head=t[:se].replace('<title>Marquetery All Products</title>','<title>Marquetery</title>')
+head=t[:se].replace('<title>Marquetry All Products</title>','<title>Marquetry</title>')
 header=t[t.index('<div class="notice">'):t.index('<main id="top">')].replace(' aria-current="page"','')
 pm=t[t.index('<main id="top">'):t.index('</main>')+7]
 pm=pm[:pm.index('<section class="band" id="bespoke">')]+'</main>'
@@ -68,10 +68,10 @@ router='''
     home.hidden=isProd||isPiece||isProj||isRooms||isTrade||isAbout||isPl; trade.hidden=!isTrade; about.hidden=!isAbout; if(plist) plist.hidden=!isPl; if(navAbout){ if(isAbout) navAbout.setAttribute("aria-current","page"); else navAbout.removeAttribute("aria-current"); } if(navTrade){ if(isTrade) navTrade.setAttribute("aria-current","page"); else navTrade.removeAttribute("aria-current"); } prod.hidden=!isProd; piece.hidden=!isPiece; proj.hidden=!isProj; rooms.hidden=!isRooms;
     if(navProj){ if(isProj) navProj.setAttribute("aria-current","page"); else navProj.removeAttribute("aria-current"); }
     if(navRooms){ if(isRooms) navRooms.setAttribute("aria-current","page"); else navRooms.removeAttribute("aria-current"); }
-    if(isProj||isRooms||isTrade||isAbout||isPl){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Atelier":isTrade?"Trade":isAbout?"About":isPl?"Price List":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
+    if(isProj||isRooms||isTrade||isAbout||isPl){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Atelier":isTrade?"Trade":isAbout?"About":isPl?"Price List":"Inspirations")+" · Marquetry"; window.scrollTo(0,0); return; }
     if(isPiece){ window.scrollTo(0,0); navCol.setAttribute("aria-current","page"); return; }
     if(isProd) navCol.setAttribute("aria-current","page"); else navCol.removeAttribute("aria-current");
-    document.title = isProd ? "Collections · Marquetery" : "Marquetery.uk | Handcrafted marquetry furniture, made to order";
+    document.title = isProd ? "Collections · Marquetry" : "Marquetry.uk | Handcrafted marquetry furniture, made to order";
     const target = !isProd && h && h!=="home" && h!=="top" ? document.getElementById(h) : null;
     if(target) target.scrollIntoView(); else window.scrollTo(0,0);
   }
@@ -90,16 +90,16 @@ def wrap(pg,extra=''):
   he=pg.index('</style>')+8
   return ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'+extra+pg[:he]+'\n</head>\n<body>\n'+pg[he:]+'\n</body>\n</html>\n').replace('*{box-sizing:border-box}',BASE_FIX,1)
 public=page.replace(pls+'\n','',1).replace(plm+'\n','',1).replace(plscript+'\n','',1)
-SEO=('<link rel="canonical" href="https://marquetery.uk/">\n'
+SEO=('<link rel="canonical" href="https://marquetry.uk/">\n'
  '<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n<link rel="icon" href="/favicon.ico" sizes="32x32">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n'
  '<meta name="theme-color" content="#F0EEE9">\n'
- '<meta property="og:type" content="website">\n<meta property="og:site_name" content="Marquetery.uk">\n'
- '<meta property="og:title" content="Marquetery.uk | Handcrafted marquetry furniture">\n'
+ '<meta property="og:type" content="website">\n<meta property="og:site_name" content="Marquetry.uk">\n'
+ '<meta property="og:title" content="Marquetry.uk | Handcrafted marquetry furniture">\n'
  '<meta property="og:description" content="Marquetry furniture made to order in Portugal and delivered white glove across the UK. Tables, storage, seating and bespoke pieces.">\n'
- '<meta property="og:url" content="https://marquetery.uk/">\n<meta property="og:image" content="https://marquetery.uk/og-image.jpg">\n'
+ '<meta property="og:url" content="https://marquetry.uk/">\n<meta property="og:image" content="https://marquetry.uk/og-image.jpg">\n'
  '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta name="twitter:card" content="summary_large_image">\n'
- '<script type="application/ld+json">{"@context":"https://schema.org","@type":"FurnitureStore","name":"Marquetery.uk","legalName":"After Hours Collections Ltd","url":"https://marquetery.uk/","logo":"https://marquetery.uk/apple-touch-icon.png","image":"https://marquetery.uk/og-image.jpg","email":"info@marquetery.uk","telephone":"+447519450282","address":{"@type":"PostalAddress","streetAddress":"66 Paul Street","addressLocality":"London","postalCode":"EC2A 4NA","addressCountry":"GB"}}</script>\n')
-public=public.replace('<title>Marquetery</title>','<title>Marquetery.uk | Handcrafted marquetry furniture, made to order</title>',1)
+ '<script type="application/ld+json">{"@context":"https://schema.org","@type":"FurnitureStore","name":"Marquetry.uk","legalName":"After Hours Collections Ltd","url":"https://marquetry.uk/","logo":"https://marquetry.uk/apple-touch-icon.png","image":"https://marquetry.uk/og-image.jpg","email":"info@marquetry.uk","telephone":"+447519450282","address":{"@type":"PostalAddress","streetAddress":"66 Paul Street","addressLocality":"London","postalCode":"EC2A 4NA","addressCountry":"GB"}}</script>\n')
+public=public.replace('<title>Marquetry</title>','<title>Marquetry.uk | Handcrafted marquetry furniture, made to order</title>',1)
 open(OUT+'/index.html','w').write(wrap(public,SEO))
 priv=page.replace(router,'if(!location.hash) history.replaceState(null,"","#pricelist");\n'+router,1)
 open(OUT+'/'+PRIVATE,'w').write(wrap(priv,'<meta name="robots" content="noindex, nofollow">\n<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'))

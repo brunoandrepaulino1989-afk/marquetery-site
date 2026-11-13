@@ -1,6 +1,6 @@
-# marquetery.uk
+# marquetry.uk
 
-Static website for Marquetery (After Hours Collections Ltd).
+Static website for Marquetry (After Hours Collections Ltd).
 
 - `index.html` — the site (homepage and collections, one page, hash-routed).
 - `products.json` — catalogue data.

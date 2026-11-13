@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://marquetery.uk/sitemap.xml
+Sitemap: https://marquetry.uk/sitemap.xml
