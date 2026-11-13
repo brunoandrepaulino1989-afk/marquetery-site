@@ -12,6 +12,9 @@
 @media (max-width:640px){.ship-seal{width:84px;height:84px}.pd-title{gap:14px}}
 .ship-seal svg{display:block;width:100%;height:100%}
 .stage .nav.prev{left:16px}.stage .nav.next{right:16px}
+.stage .stock{position:absolute;left:16px;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:7px;background:var(--bg);color:#b3141c;border:1px solid #b3141c;padding:4px 10px 4px 9px;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;line-height:1;pointer-events:none}
+.stage .stock::before{content:"";width:6px;height:6px;border-radius:50%;background:#b3141c}
+.stage .stock[hidden]{display:none}
 .stage .count{position:absolute;right:16px;bottom:14px;font-size:12px;letter-spacing:.12em;font-variant-numeric:tabular-nums;background:var(--bg);padding:3px 8px;z-index:2}
 .thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px;margin-top:10px}
 .thumbs button{aspect-ratio:1/1;background:var(--tile);overflow:hidden;border:1px solid transparent;position:relative}
@@ -91,6 +94,7 @@
           <div class="media" id="pd-media"><div class="veneer"></div><span class="veneer-label"></span><img id="pd-img" alt=""></div>
           <button class="nav prev" type="button" id="pd-prev" aria-label="Previous image">←</button>
           <button class="nav next" type="button" id="pd-next" aria-label="Next image">→</button>
+          <span class="stock" id="pd-stock" hidden>In Stock</span>
           <span class="count" id="pd-count"></span>
         </div>
         <div class="thumbs" id="pd-thumbs" role="tablist" aria-label="Product images"></div>
@@ -183,6 +187,7 @@ function show(i){
 window.renderProduct = function(id){
   const p = PRODUCTS.find(x=>x.id===id); if(!p) return false;
   current=p;
+  $("pd-stock").hidden = !p.inStock;
   const groupSlug = GROUP_LABEL[p.group].toLowerCase();
   $("pd-crumbs").innerHTML = `<a href="#home">Home</a> / <a href="#collections">Collections</a> / <a href="#${groupSlug}">${GROUP_LABEL[p.group]}</a> / ${esc(p.name)}`;
   $("pd-cat").textContent = `${GROUP_LABEL[p.group]} · ${p.type}`;
