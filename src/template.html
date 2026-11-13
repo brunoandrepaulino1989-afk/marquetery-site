@@ -43,8 +43,8 @@ header.site{border-bottom:1px solid var(--line)}
 header.site .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;padding-block:22px}
 header.site .logo{justify-self:start}
 header.site .tools{justify-self:end}
-.logo{font-family:var(--display);font-size:25px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;line-height:1;white-space:nowrap}
-.logo span{color:var(--accent)}
+.logo{display:inline-grid;justify-items:center;gap:5px;font-family:"Cormorant Garamond","Garamond","Times New Roman",serif;text-transform:uppercase;line-height:1;white-space:nowrap}.logo .lw{font-weight:600;font-size:27px;letter-spacing:.32em;margin-right:-.32em}.logo .ls{display:flex;align-items:center;gap:9px;font-weight:500;font-size:9.5px;letter-spacing:.5em;margin-right:-.5em}.logo .ls::before,.logo .ls::after{content:"";width:26px;border-top:.75px solid currentColor}
+
 nav.main{display:flex;gap:28px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
 nav.main a{padding-block:4px;border-bottom:1px solid transparent}
 nav.main a[aria-current]{border-color:var(--ink)}
@@ -59,7 +59,7 @@ footer .phone-row{display:flex;align-items:center;gap:8px}
 footer .wa{display:inline-grid;place-items:center;width:22px;height:22px;color:var(--ink);transition:opacity .2s}
 footer .wa svg{width:20px;height:20px}
 footer .wa:hover{opacity:.6}
-@media (max-width:440px){.logo{font-size:20px;letter-spacing:.18em}.tools{gap:12px}.t-long{display:none}}
+@media (max-width:440px){.logo .lw{font-size:20px;letter-spacing:.24em;margin-right:-.24em}.logo .ls{font-size:8px}.tools{gap:12px}.t-long{display:none}}
 
 /* title block */
 .crumbs{font-size:12px;color:var(--muted);letter-spacing:.06em;padding-top:28px}
@@ -178,7 +178,7 @@ footer form button{font-size:11px;letter-spacing:.14em;text-transform:uppercase}
 
 <header class="site">
   <div class="wrap">
-    <a class="logo" href="index.html" aria-label="Marquetry home">Marque<span>try</span></a>
+    <a class="logo" href="index.html" aria-label="Marquetry home"><span class="lw">Marquetry</span><span class="ls">London</span></a>
     <nav class="main" aria-label="Main">
       <a href="products.html" aria-current="page">Collections</a>
       <a href="#atelier">Atelier</a>
@@ -242,7 +242,7 @@ footer form button{font-size:11px;letter-spacing:.14em;text-transform:uppercase}
 <footer id="contact">
   <div class="wrap cols">
     <div>
-      <a class="logo" href="index.html">Marque<span>try</span></a>
+      <a class="logo" href="index.html"><span class="lw">Marquetry</span><span class="ls">London</span></a>
       <p style="color:var(--muted);max-width:30ch">Handcrafted marquetry furniture for homes, hotels and private residences.</p>
     </div>
     <div><h4>Products</h4><ul id="foot-cats"></ul></div>
