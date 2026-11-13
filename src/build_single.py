@@ -71,7 +71,7 @@ router='''
     if(isProj||isRooms||isTrade||isAbout||isPl){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Atelier":isTrade?"Trade":isAbout?"About":isPl?"Price List":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
     if(isPiece){ window.scrollTo(0,0); navCol.setAttribute("aria-current","page"); return; }
     if(isProd) navCol.setAttribute("aria-current","page"); else navCol.removeAttribute("aria-current");
-    document.title = isProd ? "Collections · Marquetery" : "Marquetery";
+    document.title = isProd ? "Collections · Marquetery" : "Marquetery.uk | Handcrafted marquetry furniture, made to order";
     const target = !isProd && h && h!=="home" && h!=="top" ? document.getElementById(h) : null;
     if(target) target.scrollIntoView(); else window.scrollTo(0,0);
   }
@@ -90,9 +90,19 @@ def wrap(pg,extra=''):
   he=pg.index('</style>')+8
   return ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'+extra+pg[:he]+'\n</head>\n<body>\n'+pg[he:]+'\n</body>\n</html>\n').replace('*{box-sizing:border-box}',BASE_FIX,1)
 public=page.replace(pls+'\n','',1).replace(plm+'\n','',1).replace(plscript+'\n','',1)
-open(OUT+'/index.html','w').write(wrap(public))
+SEO=('<link rel="canonical" href="https://marquetery.uk/">\n'
+ '<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n<link rel="icon" href="/favicon.ico" sizes="32x32">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n'
+ '<meta name="theme-color" content="#F0EEE9">\n'
+ '<meta property="og:type" content="website">\n<meta property="og:site_name" content="Marquetery.uk">\n'
+ '<meta property="og:title" content="Marquetery.uk | Handcrafted marquetry furniture">\n'
+ '<meta property="og:description" content="Marquetry furniture made to order in Portugal and delivered white glove across the UK. Tables, storage, seating and bespoke pieces.">\n'
+ '<meta property="og:url" content="https://marquetery.uk/">\n<meta property="og:image" content="https://marquetery.uk/og-image.jpg">\n'
+ '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta name="twitter:card" content="summary_large_image">\n'
+ '<script type="application/ld+json">{"@context":"https://schema.org","@type":"FurnitureStore","name":"Marquetery.uk","legalName":"After Hours Collections Ltd","url":"https://marquetery.uk/","logo":"https://marquetery.uk/apple-touch-icon.png","image":"https://marquetery.uk/og-image.jpg","email":"info@marquetery.uk","telephone":"+447519450282","address":{"@type":"PostalAddress","streetAddress":"66 Paul Street","addressLocality":"London","postalCode":"EC2A 4NA","addressCountry":"GB"}}</script>\n')
+public=public.replace('<title>Marquetery</title>','<title>Marquetery.uk | Handcrafted marquetry furniture, made to order</title>',1)
+open(OUT+'/index.html','w').write(wrap(public,SEO))
 priv=page.replace(router,'if(!location.hash) history.replaceState(null,"","#pricelist");\n'+router,1)
-open(OUT+'/'+PRIVATE,'w').write(wrap(priv,'<meta name="robots" content="noindex, nofollow">\n'))
+open(OUT+'/'+PRIVATE,'w').write(wrap(priv,'<meta name="robots" content="noindex, nofollow">\n<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'))
 
 # Server-side price data for the price-request email function (not linked from the site; /netlify/* is blocked in netlify.toml)
 import re as _re
