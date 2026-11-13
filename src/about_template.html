@@ -1,7 +1,7 @@
 <style>
 /* About: full-bleed hero, origin intro, chapter timeline, closing links. */
 #view-about{overflow-x:clip}
-.ab-hero{position:relative;width:100vw;margin-left:calc(50% - 50vw);height:clamp(420px,74vh,780px);overflow:hidden;background:#2a2622}
+.ab-hero{position:relative;width:min(100vw,1500px);margin-left:calc(50% - min(50vw,750px));height:clamp(420px,74vh,780px);overflow:hidden;background:#2a2622}
 .ab-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
 .ab-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,16,16,.05) 25%,rgba(17,16,16,.72))}
 .ab-hero .ab-title{text-shadow:0 1px 18px rgba(0,0,0,.35)}
@@ -45,7 +45,7 @@
 </style>
 <main id="view-about" hidden>
   <section class="ab-hero" aria-labelledby="ab-h1">
-    <img src="images/rooms/crown.webp" alt="Crown Center Table in a living room" fetchpriority="low">
+    <img src="images/hastings/hastings-salon.webp" alt="Hastings Desk in a panelled Parisian salon" width="1500" height="1500" fetchpriority="low">
     <div class="ab-title"><p class="ab-kicker">About Marquetry.uk</p><h1 id="ab-h1">Our Story</h1></div>
   </section>
   <div class="wrap">
