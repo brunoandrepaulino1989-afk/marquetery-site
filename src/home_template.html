@@ -186,9 +186,9 @@ section.block.bespoke-block{padding-top:0}
         <p>Every piece with full dimensions, veneer options and lead times. Leave your email and we will send the PDF.</p>
       </div>
       <div>
-        <form id="cat-form" novalidate>
+        <form name="catalogue" id="cat-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate><input type="hidden" name="form-name" value="catalogue"><p hidden><label>Leave this empty <input name="bot-field"></label></p>
           <label for="cat-email" style="position:absolute;left:-9999px">Email address</label>
-          <input id="cat-email" type="email" placeholder="Your email address" autocomplete="email">
+          <input id="cat-email" name="email" type="email" placeholder="Your email address" autocomplete="email">
           <button type="submit">Request catalogue</button>
         </form>
         <p class="form-note" id="cat-note"></p>
@@ -260,7 +260,10 @@ $("cats").innerHTML = CATS.map(c=>`<a class="cat" href="${c.href}">${media(byId(
 
 /* forms + footer */
 const okEmail = v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim());
-$("cat-form").addEventListener("submit",e=>{e.preventDefault(); $("cat-note").textContent = okEmail($("cat-email").value) ? "Thank you. The catalogue is on its way to your inbox." : "Enter a valid email address, like name@example.com.";});
+$("cat-form").addEventListener("submit",async e=>{e.preventDefault(); const f=e.target, n=$("cat-note");
+  if(!okEmail($("cat-email").value)){ n.textContent="Enter a valid email address, like name@example.com."; return; }
+  try{ const r=await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(f)).toString()}); if(!r.ok) throw new Error(r.status);
+    n.textContent="Thank you. We will email you the catalogue shortly."; f.reset(); }catch(err){ n.textContent="Sorry, that didn't go through. Please email info@marquetery.uk."; } });
 $("news").addEventListener("submit",e=>{e.preventDefault(); $("news-note").textContent = okEmail($("email").value) ? "Thank you. You're on the list." : "Enter a valid email address, like name@example.com.";});
 $("foot-cats").innerHTML = [["Tables","tables"],["Storage","storage"],["Seating","seating"],["Lighting","lighting"],["Accessories","accessories"]].map(([l,h])=>`<li><a href="products.html#${h}">${l}</a></li>`).join("");
 </script>

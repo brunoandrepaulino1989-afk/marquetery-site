@@ -251,9 +251,9 @@ footer form button{font-size:11px;letter-spacing:.14em;text-transform:uppercase}
     <div>
       <h4>Newsletter</h4>
       <p style="color:var(--muted);margin:0">New pieces and studio news, a few times a year.</p>
-      <form id="news" novalidate>
+      <form name="newsletter" id="news" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate><input type="hidden" name="form-name" value="newsletter"><p hidden><label>Leave this empty <input name="bot-field"></label></p>
         <label for="email" style="position:absolute;left:-9999px">Email address</label>
-        <input id="email" type="email" placeholder="Email address" autocomplete="email">
+        <input id="email" name="email" type="email" placeholder="Email address" autocomplete="email">
         <button type="submit">Subscribe</button>
       </form>
       <p class="form-note" id="news-note"></p>
@@ -388,8 +388,10 @@ document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeDrawer(); })
 
 /* footer + newsletter */
 $("foot-cats").innerHTML = GROUP_ORDER.map(g=>`<li><a href="products.html#${slug(g)}">${GROUP_LABEL[g]}</a></li>`).join("");
-$("news").addEventListener("submit", e=>{ e.preventDefault(); const v=$("email").value.trim();
-  $("news-note").textContent = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v) ? "Thank you. You're on the list." : "Enter a valid email address, like name@example.com."; });
+async function nfPost(f){const r=await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(f)).toString()});if(!r.ok)throw new Error(r.status);}
+$("news").addEventListener("submit", async e=>{ e.preventDefault(); const f=e.target, v=$("email").value.trim(), n=$("news-note");
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ n.textContent="Enter a valid email address, like name@example.com."; return; }
+  try{ await nfPost(f); n.textContent="Thank you. You're on the list."; f.reset(); }catch(err){ n.textContent="Sorry, that didn't go through. Please email info@marquetery.uk."; } });
 
 fromHash();
 render();

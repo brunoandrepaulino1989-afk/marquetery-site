@@ -3,7 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Marquetery</title>
+<link rel="canonical" href="https://marquetery.uk/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#F0EEE9">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Marquetery.uk">
+<meta property="og:title" content="Marquetery.uk | Handcrafted marquetry furniture">
+<meta property="og:description" content="Marquetry furniture made to order in Portugal and delivered white glove across the UK. Tables, storage, seating and bespoke pieces.">
+<meta property="og:url" content="https://marquetery.uk/">
+<meta property="og:image" content="https://marquetery.uk/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FurnitureStore","name":"Marquetery.uk","legalName":"After Hours Collections Ltd","url":"https://marquetery.uk/","logo":"https://marquetery.uk/apple-touch-icon.png","image":"https://marquetery.uk/og-image.jpg","email":"info@marquetery.uk","telephone":"+447519450282","address":{"@type":"PostalAddress","streetAddress":"66 Paul Street","addressLocality":"London","postalCode":"EC2A 4NA","addressCountry":"GB"}}</script>
+<title>Marquetery.uk | Handcrafted marquetry furniture, made to order</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Marquetery: handcrafted marquetry furniture. Tables, storage, seating, lighting and accessories, made to order.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -600,9 +615,9 @@ section.block.bespoke-block{padding-top:0}
         <p>Every piece with full dimensions, veneer options and lead times. Leave your email and we will send the PDF.</p>
       </div>
       <div>
-        <form id="cat-form" novalidate>
+        <form name="catalogue" id="cat-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate><input type="hidden" name="form-name" value="catalogue"><p hidden><label>Leave this empty <input name="bot-field"></label></p>
           <label for="cat-email" style="position:absolute;left:-9999px">Email address</label>
-          <input id="cat-email" type="email" placeholder="Your email address" autocomplete="email">
+          <input id="cat-email" name="email" type="email" placeholder="Your email address" autocomplete="email">
           <button type="submit">Request catalogue</button>
         </form>
         <p class="form-note" id="cat-note"></p>
@@ -871,9 +886,9 @@ section.block.bespoke-block{padding-top:0}
     <div>
       <h4>Newsletter</h4>
       <p style="color:var(--muted);margin:0">New pieces and studio news, a few times a year.</p>
-      <form id="news" novalidate>
+      <form name="newsletter" id="news" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate><input type="hidden" name="form-name" value="newsletter"><p hidden><label>Leave this empty <input name="bot-field"></label></p>
         <label for="email" style="position:absolute;left:-9999px">Email address</label>
-        <input id="email" type="email" placeholder="Email address" autocomplete="email">
+        <input id="email" name="email" type="email" placeholder="Email address" autocomplete="email">
         <button type="submit">Subscribe</button>
       </form>
       <p class="form-note" id="news-note"></p>
@@ -965,7 +980,10 @@ $("cats").innerHTML = CATS.map(c=>`<a class="cat" href="${c.href}">${media(byId(
 
 /* forms + footer */
 const okEmail = v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim());
-$("cat-form").addEventListener("submit",e=>{e.preventDefault(); $("cat-note").textContent = okEmail($("cat-email").value) ? "Thank you. The catalogue is on its way to your inbox." : "Enter a valid email address, like name@example.com.";});
+$("cat-form").addEventListener("submit",async e=>{e.preventDefault(); const f=e.target, n=$("cat-note");
+  if(!okEmail($("cat-email").value)){ n.textContent="Enter a valid email address, like name@example.com."; return; }
+  try{ const r=await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(f)).toString()}); if(!r.ok) throw new Error(r.status);
+    n.textContent="Thank you. We will email you the catalogue shortly."; f.reset(); }catch(err){ n.textContent="Sorry, that didn't go through. Please email info@marquetery.uk."; } });
 
 $("foot-cats").innerHTML = [["Tables","tables"],["Storage","storage"],["Seating","seating"],["Lighting","lighting"],["Accessories","accessories"]].map(([l,h])=>`<li><a href="#${h}">${l}</a></li>`).join("");
 })();
@@ -1074,8 +1092,10 @@ document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeDrawer(); })
 
 /* footer + newsletter */
 $("foot-cats").innerHTML = GROUP_ORDER.map(g=>`<li><a href="#${slug(g)}">${GROUP_LABEL[g]}</a></li>`).join("");
-$("news").addEventListener("submit", e=>{ e.preventDefault(); const v=$("email").value.trim();
-  $("news-note").textContent = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v) ? "Thank you. You're on the list." : "Enter a valid email address, like name@example.com."; });
+async function nfPost(f){const r=await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(f)).toString()});if(!r.ok)throw new Error(r.status);}
+$("news").addEventListener("submit", async e=>{ e.preventDefault(); const f=e.target, v=$("email").value.trim(), n=$("news-note");
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ n.textContent="Enter a valid email address, like name@example.com."; return; }
+  try{ await nfPost(f); n.textContent="Thank you. You're on the list."; f.reset(); }catch(err){ n.textContent="Sorry, that didn't go through. Please email info@marquetery.uk."; } });
 
 fromHash();
 render();
@@ -1387,7 +1407,7 @@ trF.addEventListener("submit",async e=>{
     if(isProj||isRooms||isTrade||isAbout||isPl){ navCol.removeAttribute("aria-current"); document.title=(isProj?"Atelier":isTrade?"Trade":isAbout?"About":isPl?"Price List":"Inspirations")+" · Marquetery"; window.scrollTo(0,0); return; }
     if(isPiece){ window.scrollTo(0,0); navCol.setAttribute("aria-current","page"); return; }
     if(isProd) navCol.setAttribute("aria-current","page"); else navCol.removeAttribute("aria-current");
-    document.title = isProd ? "Collections · Marquetery" : "Marquetery";
+    document.title = isProd ? "Collections · Marquetery" : "Marquetery.uk | Handcrafted marquetry furniture, made to order";
     const target = !isProd && h && h!=="home" && h!=="top" ? document.getElementById(h) : null;
     if(target) target.scrollIntoView(); else window.scrollTo(0,0);
   }
