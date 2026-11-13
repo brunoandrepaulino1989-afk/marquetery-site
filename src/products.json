@@ -528,7 +528,8 @@
     "src": "images/gris/gris-room.webp",
     "alt": "Gris Center Table with books beside a hoop chair"
    }
-  ]
+  ],
+  "inStock": true
  },
  {
   "id": "jean-jacques-room-divider",
@@ -788,7 +789,8 @@
     "src": "images/gustav-side/gustav-side-room.webp",
     "alt": "Gustav Side Table on a yellow and grey rug beside a cream armchair and a stepped wooden lamp"
    }
-  ]
+  ],
+  "inStock": true
  },
  {
   "id": "tuxedo-bedside-table",
@@ -1103,7 +1105,8 @@
     "src": "images/gustav/gustav-room.webp",
     "alt": "Gustav Center Table on a striped rug in front of a cream sofa"
    }
-  ]
+  ],
+  "inStock": true
  },
  {
   "id": "kramer-dining-table",
@@ -1263,6 +1266,7 @@
     "src": "images/gustav-bedside/gustav-bedside-room.webp",
     "alt": "A pair of Gustav Bedside Tables either side of a bed against a patterned wall"
    }
-  ]
+  ],
+  "inStock": true
  }
 ]
