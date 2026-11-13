@@ -1166,35 +1166,6 @@
   "ambience": []
  },
  {
-  "id": "regency-console-table",
-  "name": "Regency Console Table",
-  "group": "Tables",
-  "type": "Console Table",
-  "image": "images/regency/regency-front.webp",
-  "dimensions": "160 x 41 x 95 cm",
-  "description": "A 1920s-inspired console with a glossy black top, gold-toned trim and bird's-eye finishes.",
-  "source": "https://hommes.studio/tables/console-table/regency-console-table/",
-  "lede": "An Art Deco console of stepped peaks: five tapering black bird's-eye supports, each faced with layered chevrons of natural and white bird's-eye, beneath a gloss black top banded in brushed gold.",
-  "materials": [
-   "Gloss black bird's-eye veneer top",
-   "Brushed gold stainless steel trims",
-   "Structure in gloss black, white and natural bird's-eye veneer"
-  ],
-  "finish": "Gloss",
-  "gallery": [
-   "images/regency/regency-front.webp",
-   "images/regency/regency-quarter.webp",
-   "images/regency/regency-quarter-2.webp",
-   "images/regency/regency-detail.webp",
-   "images/regency/regency-side.webp"
-  ],
-  "story": {
-   "title": "Ridges in wood",
-   "text": "The design draws on the 1920s and on the layered rock ridges of the American desert. Each support is built up in receding chevrons of pale bird's-eye, so the base reads like a row of stepped peaks, while three fine bands of brushed gold run around the black top. At 160 cm wide and 41 cm deep it is made for an entrance hall, and it can be customised to order."
-  },
-  "ambience": []
- },
- {
   "id": "olga-bedside-table",
   "name": "Olga Bedside Table",
   "group": "Tables",

@@ -227,12 +227,6 @@
   "dimensions": "155 x 55 x 144 cm",
   "image": "images/marie/marie-quarter.webp"
  },
- "regency-console-table": {
-  "name": "Regency Console Table",
-  "price": 10600,
-  "dimensions": "160 x 41 x 95 cm",
-  "image": "images/regency/regency-front.webp"
- },
  "olga-bedside-table": {
   "name": "Olga Bedside Table",
   "price": 4500,
